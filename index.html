@@ -8,17 +8,6 @@
 <meta content="no-referrer" name="referrer"/>
 <meta content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src https: http://localhost:* http://127.0.0.1:*; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'" http-equiv="Content-Security-Policy"/>
 <title>RajAIAssist</title>
-
-<!-- RajAIAssist browser-tab and device icons -->
-<meta name="application-name" content="RajAIAssist"/>
-<meta name="theme-color" content="#0b0d10"/>
-<link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml"/>
-<link rel="icon" href="./favicon-32x32.png?v=2" type="image/png" sizes="32x32"/>
-<link rel="icon" href="./favicon-16x16.png?v=2" type="image/png" sizes="16x16"/>
-<link rel="shortcut icon" href="./favicon.ico?v=2"/>
-<link rel="apple-touch-icon" href="./apple-touch-icon.png?v=2" sizes="180x180"/>
-<link rel="manifest" href="./site.webmanifest?v=2"/>
-
 <meta name="description" content="Local AI with Unlimited Usage, Complete Privacy, and Full Control"/>
 <link rel="canonical" href="https://rajmohanacharya.github.io/ai/"/>
 
@@ -36,7 +25,7 @@
 
 <!-- Twitter/X card metadata -->
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="RajAIAssist"/>
+<meta name="twitter:title" content="Local AI with Unlimited Usage, Complete Privacy, and Full Control"/>
 <meta name="twitter:description" content="Local AI with Unlimited Usage, Complete Privacy, and Full Control"/>
 <meta name="twitter:image" content="https://rajmohanacharya.github.io/ai/rajai-social-preview.webp"/>
 <style>
@@ -278,7 +267,7 @@
 <div class="status-line" id="linkStatus">Checking the current Colab endpoint…</div>
 <div class="field">
 <label for="apiKey">API key shared by Raj</label>
-<input autocomplete="off" id="apiKey" placeholder="Paste the API key printed in Colab" type="password"/>
+<input autocomplete="off" id="apiKey" placeholder="Paste the API key here" type="password"/>
 </div>
 <div class="row" style="margin-top:10px">
 <button class="btn btn-primary grow" id="unlockBtn">Unlock RajAIAssist</button>
@@ -287,7 +276,7 @@
 <label class="toggle"><input id="rememberKey" type="checkbox"/> Remember key on this browser</label>
 <div class="status-line" id="connectionStatus">When RajAIAssist is online, enter the API key shared by Raj.</div>
 <button class="btn" id="refreshStatusBtn" style="width:100%;margin-top:9px">Check service status</button>
-<div class="service-note">This permanent page automatically reads the current signed Colab endpoint from GitHub. The API key is never stored in the public repository and is verified locally before it is sent.</div>
+<div class="service-note">Click the button above to check whether AI is currently running.</div>
 </section>
 <section class="card" id="currentChatCard">
 <div class="card-title"><span>Current chat</span><button class="btn btn-small" id="newChatBtn">New</button></div>
@@ -327,7 +316,7 @@
 <header class="topbar">
 <div>
 <h2>Your personal AI workspace</h2>
-<p>GitHub Pages provides the permanent UI; Colab publishes its current signed Cloudflare endpoint automatically.</p>
+<p>The platform uses secure backend resources to process requests, store data, and generate AI responses.</p>
 </div>
 <div class="badges">
 <span class="badge" id="onlineBadge">Offline</span>
@@ -338,7 +327,8 @@
 <section class="chat" id="chat">
 <div class="welcome" id="welcome">
 <h3>Ask RajAIAssist.</h3>
-<div>Open this permanent page and enter the API key shared by Raj. When Colab is online, requests go directly to Ollama on the assigned GPU.</div>
+<div>To get started, enter the API key shared by Raj. Then type your prompt and click the AskAI button.</div>
+<div>Local AI prioritizes privacy and control, but response quality, speed, and availability may vary compared to managed cloud AI providers.</div>
 <div class="examples">
 <button class="example" data-prompt="Summarize the uploaded document. Include key findings, risks, and action items.">Summarize an uploaded document</button>
 <button class="example" data-prompt="Review the uploaded code, identify defects and security risks, then provide a corrected version.">Review uploaded code</button>
@@ -357,14 +347,14 @@
 </div>
 </div>
 </section>
-<div class="footer">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect · RajAIAssist v2.5.1</div>
+<div class="footer">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
 <div aria-labelledby="offlineTitle" aria-modal="true" class="modal-backdrop" id="offlineModal" role="dialog">
 <div class="modal-card">
 <h3 id="offlineTitle">RajAIAssist is currently offline</h3>
-<p id="offlineMessage">Notify Raj to start the Local AI in Colab.</p>
+<p id="offlineMessage">Notify Raj to start the Local AI.</p>
 <div class="row">
 <a class="btn btn-primary grow" hidden="" href="#" id="notifyRajBtn" rel="noopener noreferrer" target="_blank">Notify Raj</a>
 <button class="btn grow" id="closeOfflineBtn">Close</button>
@@ -418,7 +408,7 @@
       statusPollMs: Math.max(15000, Number(RAW_CONFIG.statusPollMs) || 30000),
       manifestPollMs: Math.max(60000, Number(RAW_CONFIG.manifestPollMs) || 120000),
       offlineMessage: String(
-        RAW_CONFIG.offlineMessage || "Notify Raj to start the Local AI in Colab."
+        RAW_CONFIG.offlineMessage || "Notify Raj to start the Local AI."
       ).trim(),
       notifyUrl: String(RAW_CONFIG.notifyUrl || "").trim()
     });
@@ -525,7 +515,7 @@
 
     function showAccessNotice(message) {
       offlineTitleEl.textContent = "RajAIAssist is unavailable";
-      offlineMessageEl.textContent = message || "Notify Raj to start the Local AI in Colab, then refresh this page.";
+      offlineMessageEl.textContent = message || "Notify Raj to start the Local AI, then refresh this page.";
       offlineModal.classList.add("show");
       showToast(offlineMessageEl.textContent, true);
     }
