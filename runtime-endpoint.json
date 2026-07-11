@@ -1,12 +1,12 @@
 {
   "app_version": "2.5.1",
-  "backend_url": "https://betty-shows-expertise-mar.trycloudflare.com",
-  "expires_at": 1783822840,
-  "issued_at": 1783779640,
+  "backend_url": "https://document-strap-demographic-wind.trycloudflare.com",
+  "expires_at": 1783825946,
+  "issued_at": 1783782746,
   "model": "llama3.1:8b",
   "online": true,
   "schema_version": 1,
-  "signature": "c79072a5a353a43ed6e39ab8a25af3f270c341cbf463262bb7958384c106ebd3",
+  "signature": "bed1ba6e607aa429c4223072b80e1d76be89f8124f5b8f684298dd01bfd1f7b9",
   "tunnel_mode": "quick",
-  "updated_at": "2026-07-11T14:20:40.832086+00:00"
+  "updated_at": "2026-07-11T15:12:26.071565+00:00"
 }
