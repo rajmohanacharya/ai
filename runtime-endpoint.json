@@ -1,12 +1,12 @@
 {
   "app_version": "2.5.1",
-  "backend_url": "https://document-strap-demographic-wind.trycloudflare.com",
-  "expires_at": 1783825946,
-  "issued_at": 1783782746,
-  "model": "llama3.1:8b",
+  "backend_url": "https://numbers-nominations-conf-agenda.trycloudflare.com",
+  "expires_at": 1783827534,
+  "issued_at": 1783784334,
+  "model": "qwen3:8b",
   "online": true,
   "schema_version": 1,
-  "signature": "bed1ba6e607aa429c4223072b80e1d76be89f8124f5b8f684298dd01bfd1f7b9",
+  "signature": "32e0b56df5961b371f57fb6f82deb809f1af308dfa3297c72e2ad0c8621da38e",
   "tunnel_mode": "quick",
-  "updated_at": "2026-07-11T15:12:26.071565+00:00"
+  "updated_at": "2026-07-11T15:38:54.027333+00:00"
 }
