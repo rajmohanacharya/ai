@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com; connect-src https: http://localhost:* http://127.0.0.1:*; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <title>RajAIAssist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css">
+  <style>
+    :root {
+      --bg: #090c10;
+      --panel: #11161d;
+      --panel-2: #171d25;
+      --panel-3: #0d1218;
+      --border: #25303b;
+      --border-soft: #1d2630;
+      --text: #eef4fa;
+      --muted: #94a3b4;
+      --accent: #21d18b;
+      --accent-2: #12ac70;
+      --danger: #ff7676;
+      --warning: #f8cb67;
+      --shadow: 0 16px 44px rgba(0, 0, 0, .28);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% -10%, rgba(33, 209, 139, .10), transparent 26rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    a { color: var(--accent); }
+    .shell {
+      width: min(1580px, 100%);
+      margin: 0 auto;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 310px minmax(0, 1fr);
+      gap: 18px;
+      min-height: 100vh;
+    }
+    .sidebar {
+      position: sticky;
+      top: 18px;
+      align-self: start;
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(17, 22, 29, .98), rgba(11, 16, 22, .98));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+    .brand { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
+    .brand-mark {
+      width: 38px; height: 38px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--accent), #79f2bf);
+      color: #02120a; font-weight: 900;
+      box-shadow: 0 8px 24px rgba(33, 209, 139, .24);
+    }
+    .brand h1 { font-size: 1.08rem; margin: 0; letter-spacing: -.025em; }
+    .brand p { color: var(--muted); font-size: .76rem; margin: 3px 0 0; }
+    .card {
+      background: rgba(20, 27, 35, .74);
+      border: 1px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 13px;
+      margin-top: 12px;
+    }
+    .card-title {
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
+      font-size: .86rem; font-weight: 800; margin-bottom: 10px;
+    }
+    .field { margin-top: 10px; }
+    .field label { display: block; color: var(--muted); font-size: .76rem; margin-bottom: 6px; }
+    input[type="url"], input[type="password"], input[type="text"], input[type="number"], textarea {
+      width: 100%; color: var(--text); background: var(--panel-3);
+      border: 1px solid var(--border); border-radius: 12px; outline: none;
+      padding: 10px 11px;
+    }
+    input:focus, textarea:focus { border-color: rgba(33, 209, 139, .65); box-shadow: 0 0 0 3px rgba(33, 209, 139, .08); }
+    .row { display: flex; gap: 8px; align-items: center; }
+    .row > * { min-width: 0; }
+    .grow { flex: 1; }
+    .btn {
+      border: 1px solid var(--border); border-radius: 11px; padding: 9px 11px;
+      background: #1a222c; color: var(--text); font-weight: 750; font-size: .82rem;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover { background: #222d39; border-color: #344250; }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { background: var(--accent); color: #03130b; border-color: transparent; }
+    .btn-primary:hover { background: var(--accent-2); border-color: transparent; }
+    .btn-danger { color: #ffaaaa; }
+    .btn-small { padding: 6px 8px; font-size: .73rem; }
+    .status-line { min-height: 18px; margin-top: 9px; color: var(--muted); font-size: .75rem; line-height: 1.45; }
+    .status-line.ok { color: #86f1c1; }
+    .status-line.err { color: #ff9e9e; }
+    .status-line.warn { color: var(--warning); }
+    .toggle { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: .76rem; margin-top: 10px; }
+    .toggle input { accent-color: var(--accent); }
+    .documents { display: grid; gap: 8px; max-height: 230px; overflow: auto; }
+    .doc {
+      padding: 9px; border: 1px solid var(--border-soft); border-radius: 11px; background: var(--panel-3);
+    }
+    .doc-name { font-size: .78rem; font-weight: 700; word-break: break-word; }
+    .doc-meta { color: var(--muted); font-size: .68rem; margin-top: 4px; }
+    .doc-actions { margin-top: 7px; }
+    .empty-mini { color: var(--muted); font-size: .75rem; line-height: 1.5; }
+    .main { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+      padding: 15px 17px; background: rgba(17, 22, 29, .86); backdrop-filter: blur(12px);
+      border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow);
+    }
+    .topbar h2 { margin: 0; font-size: 1.03rem; }
+    .topbar p { margin: 4px 0 0; color: var(--muted); font-size: .78rem; }
+    .badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .badge {
+      padding: 7px 10px; border-radius: 999px; border: 1px solid var(--border);
+      color: var(--muted); background: #111821; font-size: .72rem; font-weight: 700;
+    }
+    .badge.online { color: #84efbd; border-color: rgba(33, 209, 139, .26); background: rgba(33, 209, 139, .08); }
+    .chat {
+      flex: 1; min-height: 520px; overflow: auto;
+      padding: 22px clamp(14px, 3vw, 42px);
+      background: rgba(13, 18, 24, .80);
+      border: 1px solid var(--border); border-radius: 22px; box-shadow: var(--shadow);
+    }
+    .welcome {
+      max-width: 760px; margin: 70px auto; text-align: center; color: var(--muted); line-height: 1.7;
+    }
+    .welcome h3 { color: var(--text); font-size: clamp(1.35rem, 3vw, 2.1rem); margin: 0 0 9px; letter-spacing: -.04em; }
+    .examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px; }
+    .example {
+      text-align: left; padding: 13px; color: #cfdae5; background: #131a22;
+      border: 1px solid var(--border); border-radius: 13px; font-size: .82rem;
+    }
+    .example:hover { border-color: rgba(33, 209, 139, .38); }
+    .message { max-width: 980px; margin: 0 auto 22px; }
+    .message-head { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
+    .role { color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .09em; font-weight: 800; }
+    .message-time { color: #687789; font-size: .68rem; }
+    .message-box {
+      padding: 15px 17px; border: 1px solid var(--border-soft); border-radius: 16px;
+      background: #111820; line-height: 1.68; overflow-wrap: anywhere;
+    }
+    .message.user .message-box { background: rgba(33, 209, 139, .065); border-color: rgba(33, 209, 139, .20); white-space: pre-wrap; }
+    .message.assistant .message-box { background: #10161d; }
+    .message.pending .message-box::after { content: "▌"; animation: blink 1s step-end infinite; color: var(--accent); }
+    @keyframes blink { 50% { opacity: 0; } }
+    .markdown p { margin: 0 0 13px; }
+    .markdown p:last-child { margin-bottom: 0; }
+    .markdown h1, .markdown h2, .markdown h3, .markdown h4 { margin: 21px 0 10px; line-height: 1.25; letter-spacing: -.025em; }
+    .markdown h1 { font-size: 1.4rem; }
+    .markdown h2 { font-size: 1.22rem; }
+    .markdown h3 { font-size: 1.08rem; }
+    .markdown ul, .markdown ol { margin: 0 0 13px 22px; padding: 0; }
+    .markdown li { margin: 5px 0; }
+    .markdown blockquote { margin: 14px 0; padding: 9px 13px; border-left: 3px solid var(--accent); background: rgba(33, 209, 139, .05); color: #c5d0db; }
+    .markdown table { border-collapse: collapse; display: block; max-width: 100%; overflow: auto; margin: 14px 0; }
+    .markdown th, .markdown td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; }
+    .markdown th { background: #18212a; }
+    .markdown code:not(pre code) { padding: .16rem .38rem; border: 1px solid #2b3744; border-radius: 7px; background: #1b2430; }
+    .code-wrap { margin: 15px 0; border: 1px solid #2a3643; border-radius: 14px; overflow: hidden; background: #0d1117; }
+    .code-tools { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; background: #141b23; border-bottom: 1px solid #27313c; }
+    .code-language { color: var(--muted); font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; }
+    pre { margin: 0; padding: 14px 15px; overflow: auto; background: #0d1117 !important; }
+    pre code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .83rem; }
+    .sources { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
+    .source { border: 1px solid #2d3a47; border-radius: 999px; padding: 5px 8px; color: #a9b8c8; background: #151d26; font-size: .67rem; }
+    .stats { margin-top: 8px; color: #728196; font-size: .68rem; }
+    .composer {
+      padding: 13px; background: rgba(17, 22, 29, .94); border: 1px solid var(--border);
+      border-radius: 20px; box-shadow: var(--shadow);
+    }
+    .composer textarea { min-height: 92px; max-height: 300px; resize: vertical; line-height: 1.5; }
+    .composer-bottom { display: flex; justify-content: space-between; gap: 10px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+    .composer-note { color: var(--muted); font-size: .72rem; }
+    .upload-input { width: 100%; color: var(--muted); font-size: .74rem; }
+    .upload-input::file-selector-button {
+      margin-right: 8px; border: 1px solid var(--border); border-radius: 9px; padding: 7px 9px;
+      background: #1b2430; color: var(--text); cursor: pointer;
+    }
+    .range-row { display: grid; grid-template-columns: 1fr 78px; gap: 8px; }
+    .footer { text-align: center; color: #667487; font-size: .69rem; padding: 2px 0 5px; }
+    .toast {
+      position: fixed; right: 18px; bottom: 18px; z-index: 20; max-width: min(420px, calc(100vw - 36px));
+      padding: 11px 13px; border: 1px solid var(--border); border-radius: 12px; background: #171f28;
+      color: var(--text); box-shadow: var(--shadow); font-size: .78rem; transform: translateY(20px); opacity: 0; pointer-events: none;
+      transition: .2s ease;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.err { border-color: rgba(255, 118, 118, .4); color: #ffb0b0; }
+    @media (max-width: 980px) {
+      .shell { grid-template-columns: 1fr; }
+      .sidebar { position: static; max-height: none; order: 2; }
+      .main { order: 1; }
+      .chat { min-height: 55vh; }
+    }
+    @media (max-width: 620px) {
+      .shell { padding: 10px; gap: 10px; }
+      .examples { grid-template-columns: 1fr; }
+      .chat { padding: 16px 10px; border-radius: 16px; }
+      .topbar, .composer, .sidebar { border-radius: 16px; }
+      .message-box { padding: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">R</div>
+        <div>
+          <h1>RajAIAssist</h1>
+          <p>Private inference on your Colab GPU</p>
+        </div>
+      </div>
+
+      <section class="card">
+        <div class="card-title"><span>Connection</span><span id="connectionDot">●</span></div>
+        <div class="field">
+          <label for="apiBase">Colab / Cloudflare backend URL</label>
+          <input id="apiBase" type="url" placeholder="https://example.trycloudflare.com" autocomplete="url">
+        </div>
+        <div class="field">
+          <label for="apiKey">API key printed by the Colab notebook</label>
+          <input id="apiKey" type="password" placeholder="Paste the session API key" autocomplete="off">
+        </div>
+        <div class="row" style="margin-top:10px">
+          <button class="btn btn-primary grow" id="connectBtn">Connect</button>
+          <button class="btn" id="showKeyBtn" aria-label="Show or hide API key">Show</button>
+        </div>
+        <label class="toggle"><input id="rememberKey" type="checkbox"> Remember key on this browser</label>
+        <div class="status-line" id="connectionStatus">Not connected.</div>
+      </section>
+
+      <section class="card">
+        <div class="card-title"><span>Current chat</span><button class="btn btn-small" id="newChatBtn">New</button></div>
+        <div class="status-line" id="sessionLabel"></div>
+        <div class="row" style="margin-top:8px">
+          <button class="btn btn-danger grow" id="deleteSessionBtn">Delete chat + files</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title"><span>Documents</span><button class="btn btn-small" id="refreshDocsBtn">Refresh</button></div>
+        <input class="upload-input" id="fileInput" type="file" accept=".txt,.md,.pdf,.py,.js,.ts,.tsx,.jsx,.json,.csv,.html,.css,.sql,.sh,.log,.xml,.yaml,.yml,.toml,.ini,.cfg,.java,.go,.rs,.c,.h,.cpp,.hpp">
+        <button class="btn btn-primary" id="uploadBtn" style="width:100%;margin-top:9px">Upload and ingest</button>
+        <div class="status-line" id="uploadStatus"></div>
+        <div class="documents" id="documents"><div class="empty-mini">No documents loaded for this chat.</div></div>
+      </section>
+
+      <section class="card">
+        <div class="card-title"><span>Generation</span></div>
+        <label class="toggle"><input id="useDocuments" type="checkbox" checked> Use ingested documents</label>
+        <label class="toggle"><input id="useStreaming" type="checkbox" checked> Stream the answer</label>
+        <div class="field">
+          <label for="temperature">Temperature</label>
+          <div class="range-row">
+            <input id="temperature" type="range" min="0" max="1.5" step="0.05" value="0.35">
+            <input id="temperatureValue" type="number" min="0" max="2" step="0.05" value="0.35">
+          </div>
+        </div>
+        <div class="field">
+          <label for="maxTokens">Maximum output tokens</label>
+          <input id="maxTokens" type="number" min="32" max="1200" step="32" value="1200">
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-title"><span>Long-term memory</span></div>
+        <div class="row">
+          <button class="btn grow" id="viewMemoryBtn">View</button>
+          <button class="btn btn-danger grow" id="clearMemoryBtn">Clear</button>
+        </div>
+        <div class="status-line" id="memoryStatus">Memory is maintained by the backend when enabled.</div>
+      </section>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h2>Your personal AI workspace</h2>
+          <p>Colab provides compute; Google Drive stores your data; Ollama performs inference.</p>
+        </div>
+        <div class="badges">
+          <span class="badge" id="onlineBadge">Offline</span>
+          <span class="badge" id="modelBadge">Model: unknown</span>
+          <span class="badge" id="gpuBadge">GPU: unknown</span>
+        </div>
+      </header>
+
+      <section class="chat" id="chat">
+        <div class="welcome" id="welcome">
+          <h3>Connect, upload, and ask.</h3>
+          <div>The browser never runs the model. It sends authenticated requests to your temporary Colab backend, which uses Ollama on the assigned GPU.</div>
+          <div class="examples">
+            <button class="example" data-prompt="Summarize the uploaded document. Include key findings, risks, and action items.">Summarize an uploaded document</button>
+            <button class="example" data-prompt="Review the uploaded code, identify defects and security risks, then provide a corrected version.">Review uploaded code</button>
+            <button class="example" data-prompt="Explain this topic from first principles, then give me a practical example:">Learn a topic</button>
+            <button class="example" data-prompt="Create a detailed implementation plan with assumptions, milestones, risks, and acceptance criteria for:">Build an implementation plan</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="composer">
+        <textarea id="question" placeholder="Ask anything, or ask a question about your uploaded documents..."></textarea>
+        <div class="composer-bottom">
+          <div class="composer-note">Enter to send · Shift+Enter for a new line</div>
+          <div class="row">
+            <button class="btn" id="stopBtn" disabled>Stop display</button>
+            <button class="btn btn-primary" id="sendBtn">Ask AI</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/18.0.6/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.4.11/purify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script>
+    "use strict";
+
+    const $ = (selector) => document.querySelector(selector);
+    const chat = $("#chat");
+    const questionInput = $("#question");
+    const sendBtn = $("#sendBtn");
+    const stopBtn = $("#stopBtn");
+    const apiBaseInput = $("#apiBase");
+    const apiKeyInput = $("#apiKey");
+    const connectionStatus = $("#connectionStatus");
+    const onlineBadge = $("#onlineBadge");
+    const modelBadge = $("#modelBadge");
+    const gpuBadge = $("#gpuBadge");
+    const documentsEl = $("#documents");
+    const sessionLabel = $("#sessionLabel");
+    const toastEl = $("#toast");
+
+    let connected = false;
+    let activeAbortController = null;
+    let toastTimer = null;
+
+    if (window.marked) {
+      marked.setOptions({ gfm: true, breaks: true });
+    }
+
+    function createSessionId() {
+      if (window.crypto && crypto.randomUUID) return crypto.randomUUID().replaceAll("-", "");
+      return `${Date.now().toString(36)}${Math.random().toString(36).slice(2)}${Math.random().toString(36).slice(2)}`;
+    }
+
+    function getSessionId() {
+      let value = localStorage.getItem("rajai_session_id");
+      if (!value || !/^[A-Za-z0-9_-]{8,64}$/.test(value)) {
+        value = createSessionId().slice(0, 64);
+        localStorage.setItem("rajai_session_id", value);
+      }
+      return value;
+    }
+
+    function setNewSession() {
+      const value = createSessionId().slice(0, 64);
+      localStorage.setItem("rajai_session_id", value);
+      updateSessionLabel();
+      clearChatView();
+      renderDocuments([]);
+      return value;
+    }
+
+    function updateSessionLabel() {
+      const id = getSessionId();
+      sessionLabel.textContent = `Session ${id.slice(0, 12)}…`;
+      sessionLabel.title = id;
+    }
+
+    function normalizeBase(value) {
+      return String(value || "").trim().replace(/\/+$/, "");
+    }
+
+    function getApiBase() {
+      return normalizeBase(apiBaseInput.value);
+    }
+
+    function getApiKey() {
+      return apiKeyInput.value.trim();
+    }
+
+    function authHeaders(extra = {}) {
+      return { Authorization: `Bearer ${getApiKey()}`, ...extra };
+    }
+
+    function saveConnectionSettings() {
+      localStorage.setItem("rajai_api_base", getApiBase());
+      if ($("#rememberKey").checked) {
+        localStorage.setItem("rajai_api_key", getApiKey());
+        sessionStorage.removeItem("rajai_api_key");
+      } else {
+        sessionStorage.setItem("rajai_api_key", getApiKey());
+        localStorage.removeItem("rajai_api_key");
+      }
+    }
+
+    function loadConnectionSettings() {
+      const sameOriginBackend = !location.hostname.endsWith("github.io") && location.protocol.startsWith("http");
+      apiBaseInput.value = localStorage.getItem("rajai_api_base") || (sameOriginBackend ? location.origin : "");
+      const localKey = localStorage.getItem("rajai_api_key");
+      const sessionKey = sessionStorage.getItem("rajai_api_key");
+      apiKeyInput.value = localKey || sessionKey || "";
+      $("#rememberKey").checked = Boolean(localKey);
+    }
+
+    function setConnectionState(ok, message, kind = "") {
+      connected = ok;
+      connectionStatus.textContent = message;
+      connectionStatus.className = `status-line ${kind}`;
+      onlineBadge.textContent = ok ? "Connected" : "Offline";
+      onlineBadge.className = `badge ${ok ? "online" : ""}`;
+      $("#connectionDot").style.color = ok ? "var(--accent)" : "var(--danger)";
+    }
+
+    function showToast(message, isError = false) {
+      clearTimeout(toastTimer);
+      toastEl.textContent = message;
+      toastEl.className = `toast show ${isError ? "err" : ""}`;
+      toastTimer = setTimeout(() => { toastEl.className = "toast"; }, 3500);
+    }
+
+    async function parseError(response) {
+      try {
+        const payload = await response.json();
+        return payload.detail ? `${payload.error || "Request failed"}: ${payload.detail}` : (payload.error || `HTTP ${response.status}`);
+      } catch (_) {
+        return `HTTP ${response.status}: ${response.statusText}`;
+      }
+    }
+
+    async function apiFetch(path, options = {}) {
+      const base = getApiBase();
+      if (!base) throw new Error("Enter the Colab / Cloudflare backend URL.");
+      const response = await fetch(`${base}${path}`, options);
+      if (!response.ok) throw new Error(await parseError(response));
+      return response;
+    }
+
+    async function connect() {
+      const base = getApiBase();
+      const key = getApiKey();
+      if (!base || !key) {
+        setConnectionState(false, "Backend URL and API key are required.", "err");
+        return;
+      }
+      setConnectionState(false, "Checking the backend…");
+      $("#connectBtn").disabled = true;
+      try {
+        const healthResponse = await fetch(`${base}/api/health`);
+        const health = await healthResponse.json().catch(() => ({}));
+        if (!healthResponse.ok) throw new Error(health.error || "Ollama is not healthy.");
+        const statusResponse = await apiFetch("/api/status", { headers: authHeaders() });
+        const status = await statusResponse.json();
+        saveConnectionSettings();
+        modelBadge.textContent = `Model: ${status.model || health.model || "unknown"}`;
+        if (status.gpu) {
+          gpuBadge.textContent = `${status.gpu.name} · ${status.gpu.memory_used_mb}/${status.gpu.memory_total_mb} MB`;
+        } else {
+          gpuBadge.textContent = "GPU: not detected";
+        }
+        setConnectionState(true, `Connected to ${status.model || health.model}.`, "ok");
+        await Promise.all([loadHistory(), loadDocuments()]);
+      } catch (error) {
+        setConnectionState(false, error.message, "err");
+      } finally {
+        $("#connectBtn").disabled = false;
+      }
+    }
+
+    function formatTime(value) {
+      if (!value) return "";
+      const date = new Date(value);
+      return Number.isNaN(date.getTime()) ? "" : date.toLocaleString();
+    }
+
+    function escapeHtml(text) {
+      const node = document.createElement("div");
+      node.textContent = String(text || "");
+      return node.innerHTML;
+    }
+
+    function renderMarkdown(text) {
+      const source = String(text || "");
+      if (!window.marked || !window.DOMPurify) {
+        return `<p>${escapeHtml(source).replaceAll("\n", "<br>")}</p>`;
+      }
+      const rawHtml = marked.parse(source);
+      return DOMPurify.sanitize(rawHtml, { USE_PROFILES: { html: true } });
+    }
+
+    function extensionForLanguage(language) {
+      const map = {
+        javascript: "js", typescript: "ts", python: "py", bash: "sh", shell: "sh",
+        json: "json", html: "html", css: "css", sql: "sql", java: "java", go: "go",
+        rust: "rs", c: "c", cpp: "cpp", yaml: "yaml", markdown: "md", text: "txt"
+      };
+      return map[language] || "txt";
+    }
+
+    function enhanceCodeBlocks(container) {
+      container.querySelectorAll("pre:not([data-enhanced])").forEach((pre) => {
+        pre.dataset.enhanced = "true";
+        const code = pre.querySelector("code");
+        if (window.hljs && code && !code.dataset.highlighted) {
+          try { hljs.highlightElement(code); } catch (_) { /* keep plain code */ }
+        }
+        const languageClass = [...(code?.classList || [])].find((name) => name.startsWith("language-"));
+        const language = languageClass ? languageClass.replace("language-", "") : "code";
+        const wrapper = document.createElement("div");
+        wrapper.className = "code-wrap";
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        const toolbar = document.createElement("div");
+        toolbar.className = "code-tools";
+        toolbar.innerHTML = `<span class="code-language"></span><span class="row"></span>`;
+        toolbar.querySelector(".code-language").textContent = language;
+        const actions = toolbar.querySelector(".row");
+
+        const copy = document.createElement("button");
+        copy.className = "btn btn-small";
+        copy.textContent = "Copy";
+        copy.addEventListener("click", async () => {
+          await navigator.clipboard.writeText(code?.textContent || "");
+          copy.textContent = "Copied";
+          setTimeout(() => { copy.textContent = "Copy"; }, 1200);
+        });
+
+        const download = document.createElement("button");
+        download.className = "btn btn-small";
+        download.textContent = "Download";
+        download.addEventListener("click", () => {
+          const blob = new Blob([code?.textContent || ""], { type: "text/plain;charset=utf-8" });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = `rajai_code.${extensionForLanguage(language)}`;
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+        });
+
+        actions.append(copy, download);
+        wrapper.insertBefore(toolbar, pre);
+      });
+    }
+
+    function clearChatView() {
+      chat.innerHTML = `
+        <div class="welcome" id="welcome">
+          <h3>Start a new conversation.</h3>
+          <div>Upload relevant files, then ask a focused question. Your chat and document index are isolated by the current session ID.</div>
+        </div>`;
+    }
+
+    function addMessage(role, content, options = {}) {
+      const welcome = $("#welcome");
+      if (welcome) welcome.remove();
+      const article = document.createElement("article");
+      article.className = `message ${role} ${options.pending ? "pending" : ""}`;
+      article.dataset.messageId = options.id || "";
+      const head = document.createElement("div");
+      head.className = "message-head";
+      const roleLabel = document.createElement("span");
+      roleLabel.className = "role";
+      roleLabel.textContent = role === "user" ? "You" : "RajAIAssist";
+      const time = document.createElement("span");
+      time.className = "message-time";
+      time.textContent = formatTime(options.createdAt || new Date().toISOString());
+      head.append(roleLabel, time);
+
+      const box = document.createElement("div");
+      box.className = "message-box";
+      const body = document.createElement("div");
+      body.className = role === "assistant" ? "markdown" : "";
+      if (role === "assistant") {
+        body.innerHTML = renderMarkdown(content);
+        enhanceCodeBlocks(body);
+      } else {
+        body.textContent = content;
+      }
+      box.appendChild(body);
+
+      const sources = document.createElement("div");
+      sources.className = "sources";
+      const stats = document.createElement("div");
+      stats.className = "stats";
+      box.append(sources, stats);
+      article.append(head, box);
+      chat.appendChild(article);
+      chat.scrollTop = chat.scrollHeight;
+      updateMessageMeta(article, options.sources || [], options.stats || null);
+      return { article, body, sources, stats };
+    }
+
+    function updateAssistantBody(message, text) {
+      message.body.innerHTML = renderMarkdown(text || "");
+      enhanceCodeBlocks(message.body);
+      chat.scrollTop = chat.scrollHeight;
+    }
+
+    function updateMessageMeta(articleOrMessage, sources = [], stats = null) {
+      const article = articleOrMessage.article || articleOrMessage;
+      const sourceBox = article.querySelector(".sources");
+      const statsBox = article.querySelector(".stats");
+      sourceBox.innerHTML = "";
+      for (const source of sources || []) {
+        const chip = document.createElement("span");
+        chip.className = "source";
+        chip.textContent = source.label || source.filename || "document";
+        sourceBox.appendChild(chip);
+      }
+      if (stats) {
+        const parts = [];
+        if (stats.output_tokens) parts.push(`${stats.output_tokens} output tokens`);
+        if (stats.tokens_per_second) parts.push(`${stats.tokens_per_second} tok/s`);
+        if (stats.total_duration_ms) parts.push(`${(stats.total_duration_ms / 1000).toFixed(1)} s`);
+        statsBox.textContent = parts.join(" · ");
+      } else {
+        statsBox.textContent = "";
+      }
+    }
+
+    async function loadHistory() {
+      if (!getApiBase() || !getApiKey()) return;
+      const response = await apiFetch(`/api/history?session_id=${encodeURIComponent(getSessionId())}`, { headers: authHeaders() });
+      const payload = await response.json();
+      const messages = payload.history?.messages || [];
+      if (!messages.length) {
+        clearChatView();
+        return;
+      }
+      chat.innerHTML = "";
+      for (const message of messages) {
+        addMessage(message.role, message.content, {
+          id: message.id,
+          createdAt: message.created_at,
+          sources: message.sources,
+          stats: message.stats
+        });
+      }
+    }
+
+    function renderDocuments(documents) {
+      documentsEl.innerHTML = "";
+      if (!documents.length) {
+        documentsEl.innerHTML = `<div class="empty-mini">No documents loaded for this chat.</div>`;
+        return;
+      }
+      for (const item of documents) {
+        const card = document.createElement("div");
+        card.className = "doc";
+        const name = document.createElement("div");
+        name.className = "doc-name";
+        name.textContent = item.filename || "document";
+        const meta = document.createElement("div");
+        meta.className = "doc-meta";
+        const details = [];
+        if (item.page_count) details.push(`${item.page_count} pages`);
+        if (item.chunk_count) details.push(`${item.chunk_count} chunks`);
+        if (item.size_bytes) details.push(`${(item.size_bytes / 1024 / 1024).toFixed(1)} MB`);
+        meta.textContent = details.join(" · ");
+        const actions = document.createElement("div");
+        actions.className = "doc-actions";
+        const remove = document.createElement("button");
+        remove.className = "btn btn-small btn-danger";
+        remove.textContent = "Remove";
+        remove.addEventListener("click", () => deleteDocument(item.id, item.filename));
+        actions.appendChild(remove);
+        card.append(name, meta, actions);
+        documentsEl.appendChild(card);
+      }
+    }
+
+    async function loadDocuments() {
+      if (!getApiBase() || !getApiKey()) return;
+      try {
+        const response = await apiFetch(`/api/documents?session_id=${encodeURIComponent(getSessionId())}`, { headers: authHeaders() });
+        const payload = await response.json();
+        renderDocuments(payload.documents || []);
+      } catch (error) {
+        showToast(error.message, true);
+      }
+    }
+
+    async function uploadFile() {
+      const file = $("#fileInput").files[0];
+      if (!file) {
+        $("#uploadStatus").textContent = "Choose a file first.";
+        $("#uploadStatus").className = "status-line err";
+        return;
+      }
+      const form = new FormData();
+      form.append("session_id", getSessionId());
+      form.append("file", file);
+      $("#uploadBtn").disabled = true;
+      $("#uploadStatus").textContent = `Uploading ${file.name}…`;
+      $("#uploadStatus").className = "status-line";
+      try {
+        const response = await apiFetch("/api/upload", { method: "POST", headers: authHeaders(), body: form });
+        const payload = await response.json();
+        $("#uploadStatus").textContent = payload.duplicate
+          ? `${file.name} was already indexed.`
+          : `${file.name}: ${payload.document.chunk_count} chunks indexed.`;
+        $("#uploadStatus").className = "status-line ok";
+        $("#fileInput").value = "";
+        await loadDocuments();
+      } catch (error) {
+        $("#uploadStatus").textContent = error.message;
+        $("#uploadStatus").className = "status-line err";
+      } finally {
+        $("#uploadBtn").disabled = false;
+      }
+    }
+
+    async function deleteDocument(documentId, filename) {
+      if (!confirm(`Remove ${filename || "this document"} from the current chat?`)) return;
+      try {
+        await apiFetch(`/api/document/${encodeURIComponent(getSessionId())}/${encodeURIComponent(documentId)}`, {
+          method: "DELETE", headers: authHeaders()
+        });
+        await loadDocuments();
+        showToast("Document removed.");
+      } catch (error) {
+        showToast(error.message, true);
+      }
+    }
+
+    function chatPayload() {
+      return {
+        session_id: getSessionId(),
+        question: questionInput.value.trim(),
+        use_documents: $("#useDocuments").checked,
+        temperature: Number($("#temperatureValue").value || 0.35),
+        max_tokens: Number($("#maxTokens").value || 1200)
+      };
+    }
+
+    async function askNonStreaming(payload, assistantMessage) {
+      const response = await apiFetch("/api/chat", {
+        method: "POST",
+        headers: authHeaders({ "Content-Type": "application/json" }),
+        body: JSON.stringify(payload),
+        signal: activeAbortController.signal
+      });
+      const result = await response.json();
+      updateAssistantBody(assistantMessage, result.answer);
+      updateMessageMeta(assistantMessage, result.sources, result.stats);
+    }
+
+    async function askStreaming(payload, assistantMessage) {
+      const response = await apiFetch("/api/chat/stream", {
+        method: "POST",
+        headers: authHeaders({ "Content-Type": "application/json" }),
+        body: JSON.stringify(payload),
+        signal: activeAbortController.signal
+      });
+      if (!response.body) throw new Error("This browser does not support streaming responses.");
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let answer = "";
+      let sources = [];
+      let lastRender = 0;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          let event;
+          try { event = JSON.parse(line); } catch (_) { continue; }
+          if (event.type === "start") {
+            sources = event.sources || [];
+            updateMessageMeta(assistantMessage, sources, null);
+          } else if (event.type === "token") {
+            answer += event.content || "";
+            const now = performance.now();
+            if (now - lastRender > 80) {
+              updateAssistantBody(assistantMessage, answer);
+              lastRender = now;
+            }
+          } else if (event.type === "done") {
+            sources = event.sources || sources;
+            updateAssistantBody(assistantMessage, answer);
+            updateMessageMeta(assistantMessage, sources, event.stats || null);
+          } else if (event.type === "error") {
+            throw new Error(event.detail ? `${event.error}: ${event.detail}` : event.error);
+          }
+        }
+      }
+      if (buffer.trim()) {
+        try {
+          const event = JSON.parse(buffer);
+          if (event.type === "token") answer += event.content || "";
+          if (event.type === "error") throw new Error(event.error);
+        } catch (error) {
+          if (error instanceof SyntaxError) console.debug("Trailing stream data was not JSON", buffer);
+          else throw error;
+        }
+      }
+      updateAssistantBody(assistantMessage, answer);
+      if (!answer.trim()) throw new Error("The backend returned an empty streamed answer.");
+    }
+
+    async function askAI() {
+      const payload = chatPayload();
+      if (!payload.question) return;
+      if (!connected) {
+        showToast("Connect to the Colab backend first.", true);
+        return;
+      }
+      addMessage("user", payload.question);
+      questionInput.value = "";
+      const assistantMessage = addMessage("assistant", "", { pending: true });
+      sendBtn.disabled = true;
+      stopBtn.disabled = false;
+      activeAbortController = new AbortController();
+      try {
+        if ($("#useStreaming").checked) await askStreaming(payload, assistantMessage);
+        else await askNonStreaming(payload, assistantMessage);
+      } catch (error) {
+        if (error.name === "AbortError") {
+          updateAssistantBody(assistantMessage, "_Display stopped in this browser. The backend may still be finishing the request._");
+        } else {
+          updateAssistantBody(assistantMessage, `**Error:** ${error.message}`);
+          showToast(error.message, true);
+        }
+      } finally {
+        assistantMessage.article.classList.remove("pending");
+        sendBtn.disabled = false;
+        stopBtn.disabled = true;
+        activeAbortController = null;
+        questionInput.focus();
+      }
+    }
+
+    async function deleteCurrentSession() {
+      if (!confirm("Delete this chat history and all documents indexed in it?")) return;
+      try {
+        await apiFetch("/api/session", {
+          method: "DELETE",
+          headers: authHeaders({ "Content-Type": "application/json" }),
+          body: JSON.stringify({ session_id: getSessionId() })
+        });
+        setNewSession();
+        showToast("Chat and documents deleted.");
+      } catch (error) {
+        showToast(error.message, true);
+      }
+    }
+
+    async function viewMemory() {
+      try {
+        const response = await apiFetch("/api/memory", { headers: authHeaders() });
+        const payload = await response.json();
+        const text = payload.summary || "No long-term profile has been created yet.";
+        $("#memoryStatus").textContent = text;
+        $("#memoryStatus").className = "status-line";
+      } catch (error) {
+        $("#memoryStatus").textContent = error.message;
+        $("#memoryStatus").className = "status-line err";
+      }
+    }
+
+    async function clearMemory() {
+      if (!confirm("Clear the assistant's long-term user profile?")) return;
+      try {
+        await apiFetch("/api/memory", { method: "DELETE", headers: authHeaders() });
+        $("#memoryStatus").textContent = "Long-term memory cleared.";
+        $("#memoryStatus").className = "status-line ok";
+      } catch (error) {
+        $("#memoryStatus").textContent = error.message;
+        $("#memoryStatus").className = "status-line err";
+      }
+    }
+
+    $("#connectBtn").addEventListener("click", connect);
+    $("#showKeyBtn").addEventListener("click", () => {
+      const hidden = apiKeyInput.type === "password";
+      apiKeyInput.type = hidden ? "text" : "password";
+      $("#showKeyBtn").textContent = hidden ? "Hide" : "Show";
+    });
+    $("#newChatBtn").addEventListener("click", () => {
+      setNewSession();
+      showToast("New local chat created.");
+    });
+    $("#deleteSessionBtn").addEventListener("click", deleteCurrentSession);
+    $("#refreshDocsBtn").addEventListener("click", loadDocuments);
+    $("#uploadBtn").addEventListener("click", uploadFile);
+    $("#viewMemoryBtn").addEventListener("click", viewMemory);
+    $("#clearMemoryBtn").addEventListener("click", clearMemory);
+    sendBtn.addEventListener("click", askAI);
+    stopBtn.addEventListener("click", () => activeAbortController?.abort());
+    questionInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        askAI();
+      }
+    });
+    document.querySelectorAll(".example").forEach((button) => {
+      button.addEventListener("click", () => {
+        questionInput.value = button.dataset.prompt || "";
+        questionInput.focus();
+      });
+    });
+    $("#temperature").addEventListener("input", (event) => {
+      $("#temperatureValue").value = event.target.value;
+    });
+    $("#temperatureValue").addEventListener("input", (event) => {
+      $("#temperature").value = Math.max(0, Math.min(1.5, Number(event.target.value || 0.35)));
+    });
+
+    loadConnectionSettings();
+    updateSessionLabel();
+    if (getApiBase() && getApiKey()) connect();
+  </script>
+</body>
+</html>
