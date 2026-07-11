@@ -244,7 +244,7 @@
 </div>
 <section class="card" id="serviceCard">
 <div class="card-title"><span>Secure access</span><span id="connectionDot">●</span></div>
-<div class="status-line" id="linkStatus">Reading the signed access link…</div>
+<div class="status-line" id="linkStatus">Checking the current Colab endpoint…</div>
 <div class="field">
 <label for="apiKey">API key shared by Raj</label>
 <input autocomplete="off" id="apiKey" placeholder="Paste the API key printed in Colab" type="password"/>
@@ -254,9 +254,9 @@
 <button aria-label="Show or hide API key" class="btn" id="showKeyBtn">Show</button>
 </div>
 <label class="toggle"><input id="rememberKey" type="checkbox"/> Remember key on this browser</label>
-<div class="status-line" id="connectionStatus">Open the full access link shared by Raj, then enter its API key.</div>
+<div class="status-line" id="connectionStatus">When RajAIAssist is online, enter the API key shared by Raj.</div>
 <button class="btn" id="refreshStatusBtn" style="width:100%;margin-top:9px">Check service status</button>
-<div class="service-note">The temporary Colab address is carried inside a signed, expiring link. The API key is never placed in the URL and is verified locally before it is sent.</div>
+<div class="service-note">This permanent page automatically reads the current signed Colab endpoint from GitHub. The API key is never stored in the public repository and is verified locally before it is sent.</div>
 </section>
 <section class="card" id="currentChatCard">
 <div class="card-title"><span>Current chat</span><button class="btn btn-small" id="newChatBtn">New</button></div>
@@ -296,7 +296,7 @@
 <header class="topbar">
 <div>
 <h2>Your personal AI workspace</h2>
-<p>GitHub Pages provides the UI; a signed Cloudflare launch link reaches Colab and Ollama on the assigned GPU.</p>
+<p>GitHub Pages provides the permanent UI; Colab publishes its current signed Cloudflare endpoint automatically.</p>
 </div>
 <div class="badges">
 <span class="badge" id="onlineBadge">Offline</span>
@@ -307,7 +307,7 @@
 <section class="chat" id="chat">
 <div class="welcome" id="welcome">
 <h3>Ask RajAIAssist.</h3>
-<div>Open the signed access link shared by Raj and enter its API key. When Colab is online, requests go directly to Ollama on the assigned GPU.</div>
+<div>Open this permanent page and enter the API key shared by Raj. When Colab is online, requests go directly to Ollama on the assigned GPU.</div>
 <div class="examples">
 <button class="example" data-prompt="Summarize the uploaded document. Include key findings, risks, and action items.">Summarize an uploaded document</button>
 <button class="example" data-prompt="Review the uploaded code, identify defects and security risks, then provide a corrected version.">Review uploaded code</button>
@@ -326,7 +326,7 @@
 </div>
 </div>
 </section>
-<div class="footer">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect · RajAIAssist v2.4</div>
+<div class="footer">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect · RajAIAssist v2.5</div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -371,12 +371,21 @@
     let activeAbortController = null;
     let toastTimer = null;
     let statusCheckPromise = null;
-    let launchContext = null;
+    let endpointContext = null;
+    let manifestLoadPromise = null;
     let capabilities = { chat: true, streaming: true, files: true, history: true, memory: false, delete_session: true };
 
     const RAW_CONFIG = window.RAJAI_CONFIG || {};
     const CONFIG = Object.freeze({
+      endpointManifestApiUrl: String(
+        RAW_CONFIG.endpointManifestApiUrl ||
+        "https://api.github.com/repos/rajmohanacharya/ai/contents/runtime-endpoint.json?ref=main"
+      ).trim(),
+      endpointManifestFallbackUrl: String(
+        RAW_CONFIG.endpointManifestFallbackUrl || "./runtime-endpoint.json"
+      ).trim(),
       statusPollMs: Math.max(15000, Number(RAW_CONFIG.statusPollMs) || 30000),
+      manifestPollMs: Math.max(60000, Number(RAW_CONFIG.manifestPollMs) || 120000),
       offlineMessage: String(
         RAW_CONFIG.offlineMessage || "Notify Raj to start the Local AI in Colab."
       ).trim(),
@@ -408,7 +417,6 @@
     });
 
     const STORAGE = Object.freeze({
-      launch: "rajai_signed_launch_v1",
       sessionKey: "rajai_api_key_session",
       rememberedKey: "rajai_api_key_remembered"
     });
@@ -454,10 +462,10 @@
       }
     }
 
-    class AccessLinkError extends Error {
+    class EndpointManifestError extends Error {
       constructor(message) {
         super(message);
-        this.name = "AccessLinkError";
+        this.name = "EndpointManifestError";
       }
     }
 
@@ -485,8 +493,8 @@
     }
 
     function showAccessNotice(message) {
-      offlineTitleEl.textContent = "A valid access link is required";
-      offlineMessageEl.textContent = message || "Ask Raj for the latest RajAIAssist access link and API key.";
+      offlineTitleEl.textContent = "RajAIAssist is unavailable";
+      offlineMessageEl.textContent = message || "Notify Raj to start the Local AI in Colab, then refresh this page.";
       offlineModal.classList.add("show");
       showToast(offlineMessageEl.textContent, true);
     }
@@ -513,70 +521,196 @@
       $("#deleteSessionBtn").hidden = !capabilities.delete_session;
     }
 
-    function validateLaunchContext(raw) {
-      if (!raw || typeof raw !== "object") throw new AccessLinkError("This access link is incomplete.");
-      const backendRaw = normalizeBase(raw.backend);
-      const expires = Number.parseInt(String(raw.expires || ""), 10);
-      const signature = String(raw.sig || "").trim().toLowerCase();
-      if (!backendRaw || !Number.isSafeInteger(expires) || !/^[a-f0-9]{64}$/.test(signature)) {
-        throw new AccessLinkError("This access link is incomplete or malformed.");
+    function endpointSignatureMessage(context) {
+      return `rajai-endpoint-v1|${context.online ? 1 : 0}|${context.backend}|${context.issuedAt}|${context.expires}`;
+    }
+
+    function decodeBase64Utf8(value) {
+      const compact = String(value || "").replace(/\s+/g, "");
+      const binary = atob(compact);
+      const bytes = Uint8Array.from(binary, (character) => character.charCodeAt(0));
+      return new TextDecoder().decode(bytes);
+    }
+
+    function validateEndpointManifest(raw) {
+      if (!raw || typeof raw !== "object") {
+        throw new EndpointManifestError("The endpoint manifest is missing or malformed.");
       }
+
+      const schemaVersion = Number.parseInt(String(raw.schema_version ?? ""), 10);
+      const online = raw.online === true;
+      const backendRaw = normalizeBase(raw.backend_url);
+      const issuedAt = Number.parseInt(String(raw.issued_at ?? ""), 10);
+      const expires = Number.parseInt(String(raw.expires_at ?? ""), 10);
+      const signature = String(raw.signature || "").trim().toLowerCase();
+
+      if (schemaVersion !== 1) {
+        throw new EndpointManifestError("This endpoint manifest version is not supported.");
+      }
+
+      if (!online) {
+        return {
+          online: false,
+          backend: "",
+          issuedAt: Number.isSafeInteger(issuedAt) ? issuedAt : 0,
+          expires: Number.isSafeInteger(expires) ? expires : 0,
+          sig: signature,
+          model: String(raw.model || "").trim(),
+          updatedAt: String(raw.updated_at || "").trim()
+        };
+      }
+
+      if (!backendRaw || !Number.isSafeInteger(issuedAt) || !Number.isSafeInteger(expires) || !/^[a-f0-9]{64}$/.test(signature)) {
+        throw new EndpointManifestError("The published Colab endpoint is incomplete.");
+      }
+
       let parsed;
-      try { parsed = new URL(backendRaw); } catch (_) { throw new AccessLinkError("The backend address in this link is invalid."); }
+      try {
+        parsed = new URL(backendRaw);
+      } catch (_) {
+        throw new EndpointManifestError("The published Colab endpoint is invalid.");
+      }
+
       const localHost = parsed.hostname === "localhost" || parsed.hostname === "127.0.0.1";
       if (parsed.protocol !== "https:" && !(localHost && parsed.protocol === "http:")) {
-        throw new AccessLinkError("The backend address must use HTTPS.");
+        throw new EndpointManifestError("The published Colab endpoint must use HTTPS.");
       }
       if (parsed.username || parsed.password || (parsed.pathname !== "/" && parsed.pathname !== "") || parsed.search || parsed.hash) {
-        throw new AccessLinkError("The backend address in this link has an unsupported format.");
+        throw new EndpointManifestError("The published Colab endpoint has an unsupported format.");
       }
-      const context = { backend: parsed.origin, expires, sig: signature };
-      if (Math.floor(Date.now() / 1000) >= context.expires) {
-        throw new AccessLinkError("This access link has expired. Ask Raj for the latest link.");
+
+      const now = Math.floor(Date.now() / 1000);
+      if (issuedAt > now + 300) {
+        throw new EndpointManifestError("The endpoint manifest has a future timestamp.");
       }
-      return context;
+      if (expires <= issuedAt || expires - issuedAt > 7 * 24 * 60 * 60) {
+        throw new EndpointManifestError("The endpoint manifest lifetime is invalid.");
+      }
+      if (now >= expires) {
+        throw new EndpointManifestError("The published Colab endpoint has expired.");
+      }
+
+      return {
+        online: true,
+        backend: parsed.origin,
+        issuedAt,
+        expires,
+        sig: signature,
+        model: String(raw.model || "").trim(),
+        updatedAt: String(raw.updated_at || "").trim()
+      };
     }
 
-    function readLaunchContextFromHash() {
-      const hash = String(window.location.hash || "").replace(/^#/, "");
-      const params = new URLSearchParams(hash);
-      const hasLaunchData = params.has("backend") || params.has("expires") || params.has("sig");
-      if (!hasLaunchData) return null;
-      return { backend: params.get("backend"), expires: params.get("expires"), sig: params.get("sig") };
+    async function fetchManifestJson(url, githubApi = false) {
+      if (!url) throw new Error("Endpoint manifest URL is not configured.");
+      const target = new URL(url, window.location.href);
+      target.searchParams.set("rajai_cache_bust", String(Date.now()));
+      const response = await fetch(target.toString(), {
+        cache: "no-store",
+        credentials: "omit"
+      });
+      if (!response.ok) {
+        throw new Error(`Endpoint manifest request returned HTTP ${response.status}.`);
+      }
+      if (!githubApi) return response.json();
+      const payload = await response.json();
+      if (!payload || typeof payload.content !== "string" || payload.encoding !== "base64") {
+        throw new Error("GitHub returned an unexpected endpoint-manifest response.");
+      }
+      return JSON.parse(decodeBase64Utf8(payload.content));
     }
 
-    function loadLaunchContext() {
-      signatureVerified = false;
-      connected = false;
-      activeApiKey = "";
-      let raw = readLaunchContextFromHash();
-      if (!raw) {
-        try { raw = JSON.parse(sessionStorage.getItem(STORAGE.launch) || "null"); } catch (_) { raw = null; }
+    async function fetchCurrentEndpointManifest() {
+      const errors = [];
+      if (CONFIG.endpointManifestApiUrl) {
+        try {
+          return await fetchManifestJson(CONFIG.endpointManifestApiUrl, true);
+        } catch (error) {
+          errors.push(error.message || String(error));
+        }
       }
-      try {
-        launchContext = validateLaunchContext(raw);
-        sessionStorage.setItem(STORAGE.launch, JSON.stringify(launchContext));
-        const expiry = new Date(launchContext.expires * 1000).toLocaleString();
-        linkStatus.textContent = `Signed access link valid until ${expiry}.`;
-        linkStatus.className = "status-line ok";
-        setConnectionState(false, "Enter the API key shared by Raj.", "", "Locked");
-        return true;
-      } catch (error) {
-        launchContext = null;
-        sessionStorage.removeItem(STORAGE.launch);
-        linkStatus.textContent = error.message || "Open the full access link shared by Raj.";
-        linkStatus.className = "status-line err";
-        setConnectionState(false, "Ask Raj for the latest full access link and API key.", "err", "No link");
-        return false;
+      if (CONFIG.endpointManifestFallbackUrl) {
+        try {
+          return await fetchManifestJson(CONFIG.endpointManifestFallbackUrl, false);
+        } catch (error) {
+          errors.push(error.message || String(error));
+        }
       }
+      throw new EndpointManifestError(errors.join(" ") || "The endpoint manifest could not be loaded.");
     }
 
-    function launchIsCurrent() {
-      return Boolean(launchContext && Math.floor(Date.now() / 1000) < launchContext.expires);
+    function endpointIsCurrent() {
+      return Boolean(
+        endpointContext &&
+        endpointContext.online &&
+        endpointContext.backend &&
+        Math.floor(Date.now() / 1000) < endpointContext.expires
+      );
+    }
+
+    async function loadEndpointManifest({ force = false, quiet = false } = {}) {
+      if (!force && endpointIsCurrent()) return true;
+      if (manifestLoadPromise) return manifestLoadPromise;
+
+      manifestLoadPromise = (async () => {
+        const previous = endpointContext;
+        try {
+          const raw = await fetchCurrentEndpointManifest();
+          const next = validateEndpointManifest(raw);
+          const changed = !previous ||
+            previous.backend !== next.backend ||
+            previous.issuedAt !== next.issuedAt ||
+            previous.expires !== next.expires ||
+            previous.sig !== next.sig ||
+            previous.online !== next.online;
+
+          endpointContext = next;
+          if (changed) {
+            connected = false;
+            signatureVerified = false;
+            activeApiKey = "";
+          }
+
+          if (!next.online) {
+            linkStatus.textContent = "RajAIAssist is not currently published as online.";
+            linkStatus.className = "status-line err";
+            setConnectionState(false, OFFLINE_MESSAGE, "err", "Offline");
+            return false;
+          }
+
+          const expiry = new Date(next.expires * 1000).toLocaleString();
+          const updated = next.updatedAt ? ` · updated ${formatTime(next.updatedAt)}` : "";
+          linkStatus.textContent = `Current signed endpoint available until ${expiry}${updated}.`;
+          linkStatus.className = "status-line ok";
+          if (!signatureVerified) {
+            setConnectionState(false, "Enter the API key shared by Raj.", "", "Locked");
+          }
+          return true;
+        } catch (error) {
+          if (previous && endpointIsCurrent()) {
+            endpointContext = previous;
+            linkStatus.textContent = "Using the last current endpoint because GitHub could not be refreshed.";
+            linkStatus.className = "status-line warn";
+            return true;
+          }
+          endpointContext = null;
+          connected = false;
+          signatureVerified = false;
+          activeApiKey = "";
+          linkStatus.textContent = error.message || "The current Colab endpoint is unavailable.";
+          linkStatus.className = "status-line err";
+          setConnectionState(false, OFFLINE_MESSAGE, "err", "Offline");
+          if (!quiet) console.debug("Endpoint manifest load failed", error);
+          return false;
+        } finally {
+          manifestLoadPromise = null;
+        }
+      })();
+      return manifestLoadPromise;
     }
 
     async function hmacSha256Hex(secret, message) {
-      if (!window.crypto?.subtle) throw new Error("This browser cannot verify secure RajAI access links.");
+      if (!window.crypto?.subtle) throw new Error("This browser cannot verify secure RajAI endpoint manifests.");
       const encoder = new TextEncoder();
       const key = await crypto.subtle.importKey(
         "raw", encoder.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]
@@ -616,12 +750,17 @@
       }
     }
 
-    async function ensureAccess(showPrompt = true) {
-      if (!launchIsCurrent()) {
-        loadLaunchContext();
-        if (showPrompt) showAccessNotice("This access link is missing or expired. Ask Raj for the latest link.");
-        return false;
+    async function ensureEndpoint(showPrompt = true) {
+      if (!endpointIsCurrent()) {
+        await loadEndpointManifest({ force: true, quiet: !showPrompt });
       }
+      if (endpointIsCurrent()) return true;
+      if (showPrompt) showOfflineNotice();
+      return false;
+    }
+
+    async function ensureAccess(showPrompt = true) {
+      if (!(await ensureEndpoint(showPrompt))) return false;
       if (signatureVerified && activeApiKey) return true;
       const candidate = apiKeyInput.value.trim();
       if (!candidate) {
@@ -630,15 +769,15 @@
         if (showPrompt) showToast("Enter the API key shared by Raj.", true);
         return false;
       }
-      setConnectionState(false, "Verifying the access link locally…", "", "Locked");
+      setConnectionState(false, "Verifying the current endpoint locally…", "", "Locked");
       try {
-        const expected = await hmacSha256Hex(candidate, `${launchContext.backend}|${launchContext.expires}`);
-        if (!constantTimeHexEqual(expected, launchContext.sig)) {
+        const expected = await hmacSha256Hex(candidate, endpointSignatureMessage(endpointContext));
+        if (!constantTimeHexEqual(expected, endpointContext.sig)) {
           clearStoredKeys();
           activeApiKey = "";
           signatureVerified = false;
-          setConnectionState(false, "The API key does not match this access link.", "err", "Locked");
-          if (showPrompt) showToast("Invalid API key for this access link.", true);
+          setConnectionState(false, "The API key does not match the current endpoint.", "err", "Locked");
+          if (showPrompt) showToast("Invalid API key for the current RajAIAssist endpoint.", true);
           return false;
         }
         activeApiKey = candidate;
@@ -654,18 +793,19 @@
     }
 
     async function apiFetch(path, options = {}) {
-      if (!launchIsCurrent()) throw new AccessLinkError("This access link has expired. Ask Raj for a new link.");
+      if (!endpointIsCurrent()) throw new EndpointManifestError("The current Colab endpoint is unavailable or expired.");
       if (!signatureVerified || !activeApiKey) throw new ApiKeyError("Enter the API key shared by Raj.");
       const headers = new Headers(options.headers || {});
       headers.set("Authorization", `Bearer ${activeApiKey}`);
       let response;
       try {
-        response = await fetch(`${launchContext.backend}${path}`, {
+        response = await fetch(`${endpointContext.backend}${path}`, {
           cache: "no-store", credentials: "omit", ...options, headers
         });
       } catch (error) {
         if (error?.name === "AbortError") throw error;
         setConnectionState(false, OFFLINE_MESSAGE, "err", "Offline");
+        void loadEndpointManifest({ force: true, quiet: true });
         throw new BackendOfflineError(OFFLINE_MESSAGE, "The Colab tunnel could not be reached.");
       }
       if (!response.ok) {
@@ -675,7 +815,7 @@
           signatureVerified = false;
           activeApiKey = "";
           clearStoredKeys();
-          throw new ApiKeyError("The backend rejected this key. Ask Raj for the latest access link and API key.");
+          throw new ApiKeyError("The backend rejected this API key. Ask Raj for the current key.");
         }
         if ([502, 503, 504, 520, 521, 522, 523, 524, 525, 526, 527, 530].includes(response.status)) {
           setConnectionState(false, OFFLINE_MESSAGE, "err", "Offline");
@@ -716,8 +856,8 @@
         } catch (error) {
           if (error instanceof ApiKeyError) {
             setConnectionState(false, error.message, "err", "Locked");
-          } else if (error instanceof AccessLinkError) {
-            setConnectionState(false, error.message, "err", "No link");
+          } else if (error instanceof EndpointManifestError) {
+            setConnectionState(false, error.message, "err", "Offline");
           } else if (error instanceof BackendOfflineError) {
             setConnectionState(false, OFFLINE_MESSAGE, "err", "Offline");
           } else {
@@ -732,7 +872,8 @@
       return statusCheckPromise;
     }
 
-    async function unlockAccess({ quiet = false } = {}) {
+    async function unlockAccess({ quiet = false, refreshManifest = true } = {}) {
+      if (refreshManifest) await loadEndpointManifest({ force: true, quiet });
       if (!(await ensureAccess(!quiet))) return false;
       const online = await checkBackendStatus({ silent: quiet, skipAccess: true });
       if (!online && !quiet) showOfflineNotice();
@@ -1305,25 +1446,31 @@
         questionInput.focus();
       });
     });
-    window.addEventListener("hashchange", async () => {
-      loadLaunchContext();
+    async function initializeApp() {
+      updateSessionLabel();
+      applyCapabilities(capabilities);
       loadStoredKey();
-      if (launchContext && apiKeyInput.value.trim()) await unlockAccess({ quiet: true });
-    });
-
-    updateSessionLabel();
-    applyCapabilities(capabilities);
-    loadLaunchContext();
-    loadStoredKey();
-    if (launchContext && apiKeyInput.value.trim()) unlockAccess({ quiet: true });
-    const pollMs = Math.max(15000, Number(CONFIG.statusPollMs) || 30000);
-    setInterval(() => {
-      if (!launchIsCurrent()) {
-        loadLaunchContext();
-        return;
+      const endpointReady = await loadEndpointManifest({ force: true, quiet: true });
+      if (endpointReady && apiKeyInput.value.trim()) {
+        await unlockAccess({ quiet: true, refreshManifest: false });
       }
-      if (signatureVerified) checkBackendStatus({ silent: true, skipAccess: true });
-    }, pollMs);
+    }
+
+    void initializeApp();
+
+    setInterval(() => {
+      if (connected && signatureVerified && endpointIsCurrent()) {
+        void checkBackendStatus({ silent: true, skipAccess: true });
+      }
+    }, CONFIG.statusPollMs);
+
+    setInterval(async () => {
+      if (connected) return;
+      const endpointReady = await loadEndpointManifest({ force: true, quiet: true });
+      if (endpointReady && apiKeyInput.value.trim()) {
+        await unlockAccess({ quiet: true, refreshManifest: false });
+      }
+    }, CONFIG.manifestPollMs);
 </script>
 </body>
 </html>
