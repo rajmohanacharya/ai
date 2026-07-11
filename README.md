@@ -1,18 +1,34 @@
-# GitHub Pages files
+# RajAIAssist Georgia-R favicon update
 
-Upload all files in this directory to the root of the `rajmohanacharya/ai` repository:
+This package keeps the existing RajAIAssist design and replaces the favicon letterform with a single serif **R** using this font stack:
 
-```text
-index.html
-config.js
-runtime-endpoint.json
-.nojekyll
+```css
+Georgia, "Times New Roman", "Liberation Serif", serif
 ```
 
-The public interface is permanently:
+`Georgia` is the first-choice font in the SVG. The other serif fonts are fallbacks for platforms where Georgia is unavailable.
 
-```text
-https://rajmohanacharya.github.io/ai/
-```
+Upload or replace these files in the root of the `rajmohanacharya/ai` repository:
 
-`runtime-endpoint.json` starts offline. The v2.5 Colab notebook replaces it automatically whenever a new Cloudflare Tunnel is ready. Do not place API keys or GitHub tokens in this directory.
+- `index.html`
+- `favicon.svg`
+- `favicon-16x16.png`
+- `favicon-32x32.png`
+- `favicon-48x48.png`
+- `favicon.ico`
+- `apple-touch-icon.png`
+- `android-chrome-192x192.png`
+- `favicon-512x512.png`
+- `site.webmanifest`
+- `rajai-social-preview.webp`
+
+Keep the existing `config.js`, `runtime-endpoint.json`, and `.nojekyll` files.
+
+The favicon references in `index.html` now use `?v=2` to bypass Chrome's old icon cache.
+
+After GitHub Pages redeploys, verify:
+
+- `https://rajmohanacharya.github.io/ai/favicon.svg?v=2`
+- `https://rajmohanacharya.github.io/ai/?v=georgia-r2`
+
+Only the favicon letter uses Georgia. The main RajAIAssist interface typography is unchanged.
