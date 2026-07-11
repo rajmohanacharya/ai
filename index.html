@@ -62,12 +62,12 @@
       box-shadow: var(--shadow);
     }
     .brand { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
-    .brand-mark {
-      width: 38px; height: 38px; border-radius: 12px;
-      display: grid; place-items: center;
-      background: linear-gradient(135deg, var(--accent), #79f2bf);
-      color: #02120a; font-weight: 900;
-      box-shadow: 0 8px 24px rgba(33, 209, 139, .24);
+    .brand-photo {
+      width: 46px; height: 46px; border-radius: 14px; flex: 0 0 46px;
+      object-fit: cover; object-position: center;
+      border: 2px solid rgba(33, 209, 139, .55);
+      box-shadow: 0 8px 24px rgba(33, 209, 139, .20);
+      background: #10161d;
     }
     .brand h1 { font-size: 1.08rem; margin: 0; letter-spacing: -.025em; }
     .brand p { color: var(--muted); font-size: .76rem; margin: 3px 0 0; }
@@ -148,6 +148,9 @@
       border: 1px solid var(--border); border-radius: 13px; font-size: .82rem;
     }
     .example:hover { border-color: rgba(33, 209, 139, .38); }
+    .sidebar-examples { display: grid; gap: 8px; }
+    .sidebar-examples .example { width: 100%; }
+    .file-help { color: var(--muted); font-size: .72rem; line-height: 1.45; margin: 8px 0 0; }
     .message { max-width: 980px; margin: 0 auto 22px; }
     .message-head { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
     .role { color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .09em; font-weight: 800; }
@@ -222,10 +225,10 @@
   <div class="shell">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark">R</div>
+        <img class="brand-photo" src="data:image/webp;base64,UklGRlAZAABXRUJQVlA4IEQZAAAQbACdASrAAMAAPkkejEQioaEWCX6oKASEsYBf1A6Vr8n0ZfJvjh+O6Ke89PO4L81XnCfkB77/8N6gH936oz0bumR/uf/Lto/k7++8K/MV85ln+IWpT3r5AeL/zW1Efy7+s8IvD3UeztP+n5dfrf2D/2BYn74AiUu1qMLPXJqsQy/fwO9fCl/SoZhoHzVImEdERWPKlA3cz6K5DpmEOeApbB8B65+l/2zqGhXVPagtoviSZoJKqm/M5M9NADugfsPN3SrRPCr7TQB8lUr4EP1BRThJ12SHC/Ef/Zd4KLP1n0/CwgVM/Yg9rjeBPTUpvsjbSOC+r/4RwFqxOAtLH8tdo4XibMWGiiQY3vEpVo0nZhL0NcssQSWcIAFMhxwEffVOfR6lrFayyg7+UZ0z/dIbuSpnncceFLZ95NoDebs9lsdXKpw64zcEfb0OOsYHAfogUCaa5dklSqpveaS2sj+b6cFn6GDsCUygpd5T/QMu4XTxIDIlyBHEXvw5VgYUNCgydJvLjOBTillc365TfjFoyeQMalgb6X5LG9G7svstPTl1qOIhuAgihvmpIMJRcaNz4l5avse0fBeKWFILqIVA8gdb797LFNAFi/Yy9AjP2AHVc00Q8yeeHkyRNVBACIrZ2E3aijbNkfPhlfeTUHfy9jwgkuD91Q//iI7YDDvr7gaTuieEGK+J01K7nEuAfWvRe/58Q88Yi1mXnSAQXxaBHmFToYKhszbYCl+JzlSjreXEfqMnY0Dd1GdG0SjGNxAT4DI+Ei9YbE61d2+xYhe0IGzSjv0peXyM2v8ZjR9/NrPOticeIxmbo4INnPVUaybxguU5kzXCaTyhIIPRyhWVW70V+c3wh71wCcWjFZulwG3NZw8jYnOCu1YxIfhHllLYzfM/W314eObCxz+6wc9jnLU18qzbXrjpq68N6LaTcyxc19eJlvsB1KGhRBAM5R89PUiCw6KJpHObqJaaHs2y3wfta1+7YDftQUuj+gJPKSK//otye7rk+jjaxnakBKTyL4aFapCcqPGrdiHs1n4dQnLxKml9NGbZ50o1ZhuGeFSbNyz3YT79mDD7CAcGPwYB+eZHd0oRQHjTHZWlnTuwrAH2ZIZRyOujEZu/R/yBnym/AmHfnQiSqdp0R4mRJa/p5XDz3OFZHgAA/uz7/Pg/NLgTul0n9htnusLMHzN4bOvadcFuf5tWH+Ahk+ufMn2f4FQ52p/BQmItMs8wChDtiYDr0qYsa3Wrzqk7UfDd4dYT3IJg+D/yNoKKftUL7lEUglzeDkxTXoi6g0giu+RfKoymz+//HvYNu+pesaaIVLplwwNZQXpPyj/oVQPG4CcFd4X/+/UQF6Q8TFfR5hjKPcDoSFCgk2K/IwY/aCcAJ/n3lU6foU41hy3R3F8YOmyCrVqz+FkJJVcUuFMR+1HtNauPywZZgrmXw7YnU2fsz4f7YZ05cBMoG1nDuvk2+ZTsmFNk3NGUSMd5nYtumaI6KJ7t3L72hX26TH4oqhE0suh8bS6uI/r4BkhCeinvrjlTrwhlEziAuPqAHfHQTftt98LlDiB9ejlUivH1Q+7GRtSml+XY6vCLFf2WOrZriEBTH4NJ2ySpp7cfcr290DWeYHRFuJwKgUxnj8VVe9tt3nz9+Gaah5MgHuypWqGinrbAY2kMb5dCdHaX9nUonrjG2AQRke5Swnf54msqdx1Zy5Tezo90l3jQhlb8CeAhiXzbDv828p5cBWRp2Ge/nPfOOnlKPiGulUfxh4gyNa5zJAe5eNbcQvDe6QwOrLDFhoIySHYPJlUwdUR3evdd0yhaeyqLVfAeNsSiqj7+fImG6VKd6I2Nry52r8UzqQ+t7aMSp/bz7npwk7yHTb0brF+wTIJuaASXfeJgZAwWWTK+sSDYa89drrUe7HcoM6W+aBnpq+x8BSU7KQeWXdw355lLGgXiIev9y6R0GvMrjN1SmKY8V0hlNAHxcnVqitm/qKz5IFkKgT4G5sN8X9gaA3fLXktzQYJKdCEash4i17b2wE6fbAgwG437r8WvT5ZxSuB+gaaYk5CVaDvligq8/0kkNiaGU0GlGx3bc1ynnB9WeBEof5JAUbUA/xsAaYNgZg2A8/Tt3tYoV8v6m+nbuoF2MCKlQAS6peGuSn3k2U1tVM3Ys/GUpyyxFaYUTFtaKLKBFxR+BbNHfG4qKaQdCIr6FgRVpfubNPmXD3Oh2/n5Ys2brOm1FHBCax/UswzHVbCa8ZkHuTVY1G9NXrCXX4RJj6kxu4uarITjX/i5aMhK13MVOqhulzo/tiQ3HeAkyimoIijoE+G+pyx3plDe9P1HRKHWpKbHBxMacUkVAwooiUXfdY8I6r+ITn7o/tuPH/qaYeLaZtiSOtRtcezP1xQcZ4dH9eLXKsjGFy5US732Uux9gdcBUZvU1ZqYnpI3j08Jnvhf3KRQoj7Tf+hRn5hcBmeTC+Wq+TuTgS+eGHk/keGmGu+RSEM+sLE3ayXpurY/986+nCzRULqQ2WBPvW6WEliRjeiWstbj93vxvdoEqNkCi3CiKQTIZG4LOEaZqGPgIZDbySOYk9+Aarc7jNov5g/4vV++Fl1catMz/naHx5l/dHdSn8sT8JFMHK6uoysUTFz7JT9mB7OlKs6HLe+C/U+YIk5HwZuMYt3RR8e4e9uPKeU3PTZwHy9ewsXwGBfY6+3IqPlJHc5rAkyuXt/QHx7/dEpQlKXEWsYxHTONy2OsbrkS0i2NAi1uRQb7fmWfgEgMvPMxBFOEu0AI6QUOhDIEN7iIDHWPGncK+WAK+sdzxKe8lRGY9W+LPGSxtpEzOx8Q15Kx5cqBDZk+Klrljz8oUD8r9Kwz1aRpsocG03VBhNGpq+H20shZlaMQstIz0yzi82vBTmXmPTB9tDaWDi+AEaEHuhagsQZ73GZNJJYA7KQSfxMrSqYnuWRjDNsEftQZFCu8d2ZhhUVUIHIu9jXdt3XF77EsTC1S5Sn33824hqdhGPjZQWCltWebYDC0DqcdKd3u/NptYRnXYxqWYsBnUYrLQlj66z5vY1xrWFy2E1AAX3Zf5sgXzGqJ3h9TiZlubzBGeUeVKd9BG8Kw3riivXN9nGxxN3/yb5knGquK+G+CYFd2pB5MFWjKztJc8QsVBl3rXUZErIqcqwkvlJVB4VIKu2jA8KE6fEWpAQLO+18BrHh4p9pRTcGWNgyGgdMXyD9LE6H2NmCOz2/yNHzconoe4UPt2hYay3VbvcjX5yOVoehHy328ziAsr20e/7bo5NQyZvnpadt9+0XkPpe4wnbhXe6ZF7EZkHm7Kx5DC9AxccWXnaBfUINdBXkdvx9CN22SzmKcfLZii6uS98XV85m7XH5pgZELQfxBJdq/q9xx50OTv8ltGYv1HKBLzFo/FQRnphpqRsaUbf3H9ZNZlnsqOAk6xDHYsJUGruU3sK5WGtn9dmebsnXfjtIo/SBLpGudF9hNspuvvqT1elRRreh8qiyDHucNMI0IOWKkCWczOHvwx2vX2kx9Ae0ZmGpVIvulPTuuw8spTF2WTVBJYY0k7f1RfHpHlUEucyIwMHgnW5/s5N2XKtyK3VazNrsxtdVt4Ke1lj8FQhWuzPcbDTb1/V4vT8rhsUN09CUJubm5FewpNj1DbwLEUZlsoNS1KA5CQwaf5xCwyM3SJNjLJcJiAIbHO1rNEhyzh8KgnzsO+8rhyephGNyGTQz9VZTkAi3a1GlW3Qz0zN8lbiumPULXBfact5OIuQVgTqhQj0Mku8gVjdPO9B+Di35D9w0T9NlH9vjAmsfimXVUXevB3lQHjnDECgnpyfXVS4+90eYUrXcuvXysbZhM879u51LZbE2agf6xY3Hev8I3F2sr/NWn18dUh5OldLnBM2bXmNprQJQ4TVXHTqDaPQaXj8wItA7a4LszWB/Nzi3ak2+x+n5saivFRY1kCx/nqumPKt7yF28s6O+9wXbUxdnE0VXB3h4h1Iy9QMcotFBGDsfIVBlAT4Kje7sTRN73QMglZCj9BT4kLZEZDDvH6HcbgIZnrxH6p9hT9SRwQoYeh4JmK5bJBV9Pz03u1UqWKVEfK2hD4caoVZpQAUHRVjd1mEBCtUFrfPeEpRZCC4WPa/pxFGSQ/70f9+fLqqVI4ILP4KThEsXXJzuDQKaEvkKc6BE/UA90fNjaXOJbzyigpljL1O4pjGS9+NDDuCM3EVLFwzjmo+qC6XzJJcvLJibDHuepuDP5xt8B8e8UbzTqIqtyRgKelNh/EtFeZ/jhQUn/zFQ24p81udvrbjWxwW6+I6zyV24kze4QcI8YlgfRT1fX2I7ZOjmd5LqxcpuTo8dLPxr6SABwEcG/MBPtHCecUB+BEHvhL+AmdfPx6sa6q5+Bp3N0Mn9KbT6jObAq4eZ2Tpd1PZlooDIbsRx3cbjKVvCIMFFvqAcMI8eHsw3e7Wa1jDYoVBeR3xdfJLzAX/mgi+iAoniv1oi5efqJMHc6pO2v8io3cJN8VbU/tqP5Mhayg2Vsc8/ox5gXBe3leXRfBKvtPC//eQMYixqggVKBNfFDlJ9Yv9Xt6Og0dFumQ822Z2jHLY0D8Mh/Qu+Ooo5SSKNbaYT6qjSnDnw6QNEQWxqvmnSRDc9XOmod1vsEa9sPlC2wYyMa0sabXQRnEqSqYVIuXnJwPln13ViD57elEOiG2gPt2zlr7iYNHfHGfXUjTydn8taXZZ5mlBHmtHEAusxruy6u+yCdhPJB3kbTvapvkC1OSifiVHEGjBy1W/OHZS8ZqkVybxCyXzGGbsw7MEZ0Ep+ENMtTJ/GPASCkq1tG2AgBXvtcL+SWeFlsk/yJGx6dDf/4ocl8TMIKEpTlWKXjYfM8Yyf9luNi3sfII6R+ZgFUeBZghJw1E6Twm5wfJDJK36+EUSX0E42pi2HsB8vLwWgBfJZFntZHmNx2GNXW6ZEm1kWH/SBmMwtPq8HLyqhQktTfGl1/Lt4DyJkF2frhaMyOYYxhIQDZ0Q8zvI2H8p8uD4g/nU7E00PMQxfoXaLs8LJ7Zid1Yhp/cLNWwOirXCHeaRdYvdL2S3WNwnknTyQPrUY1YAVoeBTmPWGWbQ1XJ/thvYeIgTv8EwoyqtS1Zv3auMeDn/uH5uEfv3UZ0Bq6whbSr1NWhwNTLOenITiVoiqdBanlqbhdMmnjurd8pNgXZY5haGq9NdGBWS2QUKsM3v7DXQ+qY6qMN+XoVaBhfWYcb8UOvKMq+54y/sK99wuhNLzCyZ2vNdi8Ezgjz+r+5UTiW3uOT0vC2orhwav7qr49mqkWyy18zEk2mVAXLmS4yi4d46sDRV4+85lguOViDzVbJgGg2w1X1Jjc6+tmR2N4BDjdIlYArmLl8cRHWywuSt84nWhJsfMadTugkyaF19QSKSLzq9IVBzEjtNaViSKg3ocSlRIlrP4p/nCh9vXmALEC9vPD/8/HrzfJW8k7sKsUiYblojHWPoE9fzL+5KCdyJOYkJPk8xjk2t0Avi4BOonu/6XhczWsExOJYVDpDX9XhSXkfTfNTAlK3iLBPCQDvPXLATirn0c7D28q38riAo/Q3yXV6V853cnSENvDCcBISqGXDzgawLZDWwJEHyN4mqA9bLZNpZ7K9T3YnJKW3ugoD9Xj7o2aUN24vqn7b3dqvgTblpNj5Kg38a8C/lvWW8Czc2kHUsKxiL99qczHdI9g6GAvpE5pRBD5pBiaQHLcgw5vLuAQpjw19NeuhdiHooVBfgaFLZ7K2QqBHBLx4fAuw1PgnJF8/RXuVgsUSMRqLchebmKvB6azEE2wQgQnapt5LgT5mU0Ij7wef3CJltJ9ZAgNLcjtH+p30CdhDKJwM9h0+v75bY1PzIfk0vvsFyHRTJYN7qu/BZK6ztTseBhOrHNhQAk2POA7AXW1aFB15UqlzUQ5Ug3PwmRldGkZL2SK0OB36lN7n2cg2pb9jjrWZ+suo5bqYXTwt41wlHUOOR+c02nnaqjpHb28yZLom4pUuF0QpZiN8bHNwo+4PH6T6xDEVnKPusuzYzmEJ53o2R0+VkxvC/3FaAiWPn1YPb2J13mRVlRacvjNzCZX/uVZs0dlow/QhvEoTdQhuDc6fC57c8zBmdqvA9MWE/Uv6m0HHfOjev/nuEM4+5cdrpMRU+KkZdqlVT6KvNrxpxSvZ6AQl03Pr71o/LjroOOepjsWrBQxAeqf1BRFtOVt3kDIzO8pe0ZFNX46qqZ9HeO6CuGWF9e/yhPn/0LpKZc4TvY3TXvXo7pmmsnim9Q213vy7H2sTmynr/v8jIHXCe12NOQ3o0Z2BSpbOB4shhfn0ZNocYSmQE5gv9/F8D/0hTwDSuAk4+5Dyw4fdR8tQxI0v1ijAkzLnRAgwwfWF9Jqbr3Ynts7/bySYs9ml9m6P6z0wU78Js/cbha0rHFSJYwM0kxnN7iPDA00NERKx4pS++0j5SXjsozWZrSlG9tQCEjPtDqoNOWbWcSgJwzlhCp5pIULHZTqOn9n8xYTF+7paE69FcdkUD8qn5sI8zFmzynW4/C6os/vtTP+Tayc35/c5xWj4rEY7vrdLqCh2UZ7wdNiBYT/L9ss3J0rmdkGETdFYKHGTFqVsseKXIgIfCVjnWoRKcqgacWiA4gcsfaRLFiXxf45rOLmIXhKJMZ4tTAdOqH7wrgyPyM2l8GFRO+2crlzb1OIyO/xAY5gvI3HIh/VH0IifW2yZnEDa+ERgPQb71/XYPoKrG4AXY/5L7xdn+LPJGrkyEI8NmaxoOkmkTVwVUWjJKMZn4vnVTydX1iCS2P/aBg/eon3fyWcqAJkaQgi6Uw7lMyysORl3C/v/FA/31W2zeivCiVxmvnxRpxmT2sIh2YIacNfE/JgGDqjZbo00zxgfqt+fedxGVu5Z20YiuEv/PLeY+C1lu4g+S2MgBs8/lcvP8ncmZQwQ8GI5kTv/X/AQtNwXRsbpKQq3wLxUSaOPBA7kfRaSGj3z1eL/qC+NuhwtXD/42Tq5kA/6VSAzQDSWEH2KtQ/40MoM5saFA4cyOQkA596KPc8RcorC2wCSt2qOnT1Hw3eKG/SI82MFYOYLjYjlFMPFJEY9A/kTm4NavYvabr1yp0TqpQoVBvXhJ0FHfQWv5Uhg/kQG4MtVliVulX+qHn7fGJna9dqy51eYLPo9KdN7UATcl/ODmncg6bMdGhMuqd6pgJf8NTwinfxlIbAmbnYRyHQ5r85MbTsppJ2+S+aFXUMoCvrFqaRtExyQxKWf/EluI0VDMtcaW3lXfFnFouNLsYdSlpJ7d/QUUR7bFv2gDxY2m4R8Kl85VmFT7FMpzcUAwKFvAn+T2XvYqxnQDg5n2kq7UNHa+9yTNqJIZ8rexMGCvUBo3OHau/kVfuLZPU/y0mMA/xKDnCMKpB8vgm+5X6qDgTY+BzgVdVcLCTlD5amFhaHAzdKxnlMtXCdyLY9gmBN5H30aaa/YRYxElXaJGJgniK0bO2lwxtwRgsLziqmdQw6aeBP7eHeHX8XfmcwogXzbSvKQJ/sdzN+8h9OliQcoHgwsrUIVPHXswyMSO4XaG/76/8iAKe5FTIHYiTg3/SLO3VSSM5p4PFbJSg8zAeRZXlE0JJNbi1q7+nTytNg3SP2w2rNxKdtgap5bTo9RBWnlgv86S+ACT2yj1vKMBtpIihNQ4lW0JqHW/d69k/rmr2c11RiOia0P88pst5PAugJMSJO79KxUxc10ktRJbdu+FhCrVCSj+8RKy6G1p+GgB7x4xV+Yqj0fqd5k9NRsDUhZl//96yAZB7K5cbJyzGTOpXT3BbM6wmRyG3X4jyDx3vF0ZrhfLJ9ecslZMegqmq1WApk7tOF8Gv9rWv9vsjTe1CjyAJNFuVfLjTY67TiNpx8Lnt34Vlcrd++72tehwWSvV0kqW5EOwueXg5N93FfWM/uKi2y0oR9PpWxphg/rHv/CpZQJMqiAgkszSIYSvwnQiUaii5uga2xwJM6K5BHDtwhRem1TqU7qW37wJEU84m3NQrtX7LJQpnYs3R4HJW5w9/JYDpQQHe9rC/IjDFOEfo15hbMrqs+aiKXz0b37lD7WpUcBENCOHKBkYhJXiXx+x2qncMsbnm9jkBDJYhD4ap4nrMlyZw/0sjq4uK2vW5LMgwwPUJaajoMg4cRMetOx0squ0C4hmHKtxLdxY/Xo/Y8KAv17XQzJ/687RsTd3Hbq0ZU4GyjTV0DBZWf+GO4ua8vZ09da0LSJd+/lahUO6H0m9x2W00VJUDvFcGK31Is0HPEUbbBo6LjbNmV/WzlYgLSNZ47l7T5OyF86x8SSrS/irfByre4yQbJvPPwH1leoErz8VWG7B3A+NedH9oyg3HhA2jkNcZSf0ydUs5Kx7e/9ngj+zNQaQgk16SGu/n29x4+3RdnJAVkSmlaJRlhR3G9GKwKH6n2RlWywO1vXKdXj2aPT59f+j9bXkZnvOqVWS2vDGoKLBM+0iOk97HVsXzsI4AbIVCm7I53JjCNeoUfLNTPfgv9W78o6Z04HwJNy2656rKez9Q3NuZw2Xawb85ImSqGz6E8q1V+MtqjLttIv4vr1g/Zgz/Uz9Fqj8KY3AWK1XBDJ7haZQR9h7KqYYKSit4zKaqq3ftvz7lndKcfDzFf5jgAAAA=" alt="Raj profile photo">
         <div>
           <h1>RajAIAssist</h1>
-          <p>Private inference on your Colab GPU</p>
+          <p>Local AI with Unlimited Usage, Complete Privacy, and Full Control</p>
         </div>
       </div>
 
@@ -256,27 +259,22 @@
       </section>
 
       <section class="card">
-        <div class="card-title"><span>Documents</span><button class="btn btn-small" id="refreshDocsBtn">Refresh</button></div>
-        <input class="upload-input" id="fileInput" type="file" accept=".txt,.md,.pdf,.py,.js,.ts,.tsx,.jsx,.json,.csv,.html,.css,.sql,.sh,.log,.xml,.yaml,.yml,.toml,.ini,.cfg,.java,.go,.rs,.c,.h,.cpp,.hpp">
+        <div class="card-title"><span>File Ingest</span><button class="btn btn-small" id="refreshDocsBtn">Refresh</button></div>
+        <input class="upload-input" id="fileInput" type="file">
+        <p class="file-help">Choose any file type. Common documents, source code, archives, emails, spreadsheets, presentations, and images are processed locally; opaque binaries are stored as searchable metadata only.</p>
         <button class="btn btn-primary" id="uploadBtn" style="width:100%;margin-top:9px">Upload and ingest</button>
         <div class="status-line" id="uploadStatus"></div>
-        <div class="documents" id="documents"><div class="empty-mini">No documents loaded for this chat.</div></div>
+        <div class="documents" id="documents"><div class="empty-mini">No files loaded for this chat.</div></div>
       </section>
 
       <section class="card">
-        <div class="card-title"><span>Generation</span></div>
-        <label class="toggle"><input id="useDocuments" type="checkbox" checked> Use ingested documents</label>
-        <label class="toggle"><input id="useStreaming" type="checkbox" checked> Stream the answer</label>
-        <div class="field">
-          <label for="temperature">Temperature</label>
-          <div class="range-row">
-            <input id="temperature" type="range" min="0" max="1.5" step="0.05" value="0.35">
-            <input id="temperatureValue" type="number" min="0" max="2" step="0.05" value="0.35">
-          </div>
-        </div>
-        <div class="field">
-          <label for="maxTokens">Maximum output tokens</label>
-          <input id="maxTokens" type="number" min="32" max="1200" step="32" value="1200">
+        <div class="card-title"><span>Example Prompts</span></div>
+        <div class="sidebar-examples">
+          <button class="example" data-prompt="Summarize the uploaded file. Highlight key findings, risks, decisions, and action items.">Summarize a file</button>
+          <button class="example" data-prompt="Review the uploaded code or configuration, identify defects and security risks, then provide a corrected version.">Review code or config</button>
+          <button class="example" data-prompt="Analyze the uploaded logs, identify the probable root cause, and give me a step-by-step remediation plan.">Troubleshoot logs</button>
+          <button class="example" data-prompt="Draft a clear professional email for the following situation:">Draft an email</button>
+          <button class="example" data-prompt="Create a detailed implementation plan with assumptions, milestones, dependencies, risks, and acceptance criteria for:">Build an implementation plan</button>
         </div>
       </section>
 
@@ -357,6 +355,13 @@
     let connected = false;
     let activeAbortController = null;
     let toastTimer = null;
+
+    const GENERATION_DEFAULTS = Object.freeze({
+      useDocuments: true,
+      useStreaming: true,
+      temperature: 0.35,
+      maxTokens: 1200
+    });
 
     if (window.marked) {
       marked.setOptions({ gfm: true, breaks: true });
@@ -669,7 +674,7 @@
     function renderDocuments(documents) {
       documentsEl.innerHTML = "";
       if (!documents.length) {
-        documentsEl.innerHTML = `<div class="empty-mini">No documents loaded for this chat.</div>`;
+        documentsEl.innerHTML = `<div class="empty-mini">No files loaded for this chat.</div>`;
         return;
       }
       for (const item of documents) {
@@ -681,8 +686,10 @@
         const meta = document.createElement("div");
         meta.className = "doc-meta";
         const details = [];
+        if (item.kind) details.push(item.kind.replaceAll("-", " "));
         if (item.page_count) details.push(`${item.page_count} pages`);
         if (item.chunk_count) details.push(`${item.chunk_count} chunks`);
+        if (item.content_extracted === false) details.push("metadata only");
         if (item.size_bytes) details.push(`${(item.size_bytes / 1024 / 1024).toFixed(1)} MB`);
         meta.textContent = details.join(" · ");
         const actions = document.createElement("div");
@@ -724,9 +731,10 @@
       try {
         const response = await apiFetch("/api/upload", { method: "POST", headers: authHeaders(), body: form });
         const payload = await response.json();
+        const warning = payload.document?.warning ? ` ${payload.document.warning}` : "";
         $("#uploadStatus").textContent = payload.duplicate
           ? `${file.name} was already indexed.`
-          : `${file.name}: ${payload.document.chunk_count} chunks indexed.`;
+          : `${file.name}: ${payload.document.chunk_count} chunks indexed.${warning}`;
         $("#uploadStatus").className = "status-line ok";
         $("#fileInput").value = "";
         await loadDocuments();
@@ -755,9 +763,9 @@
       return {
         session_id: getSessionId(),
         question: questionInput.value.trim(),
-        use_documents: $("#useDocuments").checked,
-        temperature: Number($("#temperatureValue").value || 0.35),
-        max_tokens: Number($("#maxTokens").value || 1200)
+        use_documents: GENERATION_DEFAULTS.useDocuments,
+        temperature: GENERATION_DEFAULTS.temperature,
+        max_tokens: GENERATION_DEFAULTS.maxTokens
       };
     }
 
@@ -845,7 +853,7 @@
       stopBtn.disabled = false;
       activeAbortController = new AbortController();
       try {
-        if ($("#useStreaming").checked) await askStreaming(payload, assistantMessage);
+        if (GENERATION_DEFAULTS.useStreaming) await askStreaming(payload, assistantMessage);
         else await askNonStreaming(payload, assistantMessage);
       } catch (error) {
         if (error.name === "AbortError") {
@@ -932,13 +940,6 @@
         questionInput.focus();
       });
     });
-    $("#temperature").addEventListener("input", (event) => {
-      $("#temperatureValue").value = event.target.value;
-    });
-    $("#temperatureValue").addEventListener("input", (event) => {
-      $("#temperature").value = Math.max(0, Math.min(1.5, Number(event.target.value || 0.35)));
-    });
-
     loadConnectionSettings();
     updateSessionLabel();
     if (getApiBase() && getApiKey()) connect();
