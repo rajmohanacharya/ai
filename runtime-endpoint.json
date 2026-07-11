@@ -1,12 +1,12 @@
 {
-  "schema_version": 1,
   "app_version": "2.5.0",
-  "online": false,
-  "backend_url": "",
-  "issued_at": 0,
-  "expires_at": 0,
-  "updated_at": "",
-  "model": "",
-  "tunnel_mode": "",
-  "signature": ""
+  "backend_url": "https://samples-pros-sounds-ref.trycloudflare.com",
+  "expires_at": 1783820847,
+  "issued_at": 1783777647,
+  "model": "llama3.1:8b",
+  "online": true,
+  "schema_version": 1,
+  "signature": "f716a9c1eee9f7096fc08ae6311463ec00b57a611729c0dbddd13b4f5c651a0d",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-11T13:47:27.059373+00:00"
 }
