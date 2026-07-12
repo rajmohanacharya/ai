@@ -1,12 +1,12 @@
 {
   "app_version": "2.6.2",
-  "backend_url": "https://reform-snake-fare-laughing.trycloudflare.com",
-  "expires_at": 1783908894,
-  "issued_at": 1783865694,
-  "model": "llama3.1:8b",
+  "backend_url": "https://reviewer-folding-interesting-ing.trycloudflare.com",
+  "expires_at": 1783913905,
+  "issued_at": 1783870705,
+  "model": "qwen3:8b",
   "online": true,
   "schema_version": 1,
-  "signature": "8831df4e7dd1f05f975d741eaf3414ace3b38c375ba2974ecc1bba07cb0130e4",
+  "signature": "543917fa23025a1d5cab7c66cfa0647672dbe7937e7932687978ded818e20896",
   "tunnel_mode": "quick",
-  "updated_at": "2026-07-12T14:14:54.341199+00:00"
+  "updated_at": "2026-07-12T15:38:25.693715+00:00"
 }
