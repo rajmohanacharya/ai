@@ -1,12 +1,12 @@
 {
-  "app_version": "2.5.1",
-  "backend_url": "https://carrier-independent-gst-lovely.trycloudflare.com",
-  "expires_at": 1783837233,
-  "issued_at": 1783794033,
-  "model": "qwen3:8b",
-  "online": true,
+  "app_version": "2.6.0-cli",
+  "backend_url": "",
+  "expires_at": 1783835448,
+  "issued_at": 1783831848,
+  "model": "llama3.1:8b",
+  "online": false,
   "schema_version": 1,
-  "signature": "76adecc59228619e6e44097ddc655cbe886db1f585b7917bf060150b8ddea2f6",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-11T18:20:33.410631+00:00"
+  "signature": "71ab509a4c6cbf3d05228eb8b4f576ab27ebd76047f6da5511bc7fa7430c0ac6",
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-12T04:50:48.413096+00:00"
 }
