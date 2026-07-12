@@ -1,12 +1,12 @@
 {
-  "app_version": "2.6.0-cli",
+  "app_version": "2.6.1-cli",
   "backend_url": "",
-  "expires_at": 1783835464,
-  "issued_at": 1783831864,
+  "expires_at": 1783836762,
+  "issued_at": 1783833162,
   "model": "llama3.1:8b",
   "online": false,
   "schema_version": 1,
-  "signature": "c2150521f005c8aa7c56ad1b420af86717a94224afc5015ffde9d0da8497c4fd",
+  "signature": "bb8c682023037706e0e382c0b4fff678e1ce08f539e1619984be6df1f586ba68",
   "tunnel_mode": "offline",
-  "updated_at": "2026-07-12T04:51:04.684643+00:00"
+  "updated_at": "2026-07-12T05:12:42.324594+00:00"
 }
