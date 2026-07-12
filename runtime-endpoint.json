@@ -1,16 +1,16 @@
 {
   "app_version": "2.7.0-cli",
-  "backend_url": "https://regional-tyler-caught-aaa.trycloudflare.com",
+  "backend_url": "",
   "compute_type": "cpu",
-  "expires_at": 1783924266,
-  "issued_at": 1783881066,
+  "expires_at": 1783884682,
+  "issued_at": 1783881082,
   "lifecycle_id": "842b5588bf0448ff4de1a721d656b7c5",
   "model": "qwen3:1.7b",
-  "online": true,
+  "online": false,
   "provider": "local_cpu",
   "schema_version": 1,
-  "signature": "f4a16d198907956003f7f170f3ec666bf833c2e054c903962822deca2db592bf",
+  "signature": "2c2904e4f699d3c328792957fd81e297c60dfa4731af1baed30bf95a1efebe0b",
   "storage_mode": "local_persistent",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-12T18:31:06.565269+00:00"
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-12T18:31:22.522436+00:00"
 }
