@@ -1192,16 +1192,41 @@
         chip.textContent = source.label || source.filename || "document";
         sourceBox.appendChild(chip);
       }
-      if (stats) {
-        const parts = [];
-        if (stats.output_tokens) parts.push(`${stats.output_tokens} output tokens`);
-        if (stats.tokens_per_second) parts.push(`${stats.tokens_per_second} tok/s`);
-        if (stats.total_duration_ms) parts.push(`${(stats.total_duration_ms / 1000).toFixed(1)} s`);
-        statsBox.textContent = parts.join(" · ");
-      } else {
-        statsBox.textContent = "";
-      }
-    }
+      
+if (stats) {
+  const parts = [];
+
+  if (stats.output_tokens) {
+    parts.push(`${stats.output_tokens} output tokens`);
+  }
+
+  if (stats.tokens_per_second) {
+    parts.push(`${stats.tokens_per_second} tok/s`);
+  }
+
+  if (stats.total_duration_ms) {
+    parts.push(
+      `${(stats.total_duration_ms / 1000).toFixed(1)} s`
+    );
+  }
+
+  const outputLimitReached =
+    stats.done_reason === "length" ||
+    Number(stats.output_tokens || 0) >=
+      GENERATION_DEFAULTS.maxTokens;
+
+  if (outputLimitReached) {
+    parts.push("output limit reached — ask Continue");
+    statsBox.style.color = "var(--warning)";
+  } else {
+    statsBox.style.color = "";
+  }
+
+  statsBox.textContent = parts.join(" · ");
+} else {
+  statsBox.textContent = "";
+  statsBox.style.color = "";
+}
 
     async function loadHistory() {
       if (!connected || !capabilities.history) return;
