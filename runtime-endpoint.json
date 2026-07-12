@@ -1,12 +1,12 @@
 {
-  "app_version": "2.6.0",
-  "backend_url": "https://midwest-shut-ontario-conclude.trycloudflare.com",
-  "expires_at": 1783901661,
-  "issued_at": 1783858461,
-  "model": "qwen3:8b",
+  "app_version": "2.6.1",
+  "backend_url": "https://bangkok-exam-doe-badly.trycloudflare.com",
+  "expires_at": 1783904924,
+  "issued_at": 1783861724,
+  "model": "qwen2.5-coder:7b",
   "online": true,
   "schema_version": 1,
-  "signature": "7ec28832f426bf1cdc3eb5b96acd8ffc7ccba115c8032d69e5c2428280beb90b",
+  "signature": "51e5c5fd325fe9625af2262823eae619641e8219ce50b8b201d79a3a8f426e95",
   "tunnel_mode": "quick",
-  "updated_at": "2026-07-12T12:14:21.292059+00:00"
+  "updated_at": "2026-07-12T13:08:44.119013+00:00"
 }
