@@ -1,12 +1,12 @@
 {
-  "app_version": "2.5.1",
-  "backend_url": "https://picked-valves-exams-lesson.trycloudflare.com",
-  "expires_at": 1783887507,
-  "issued_at": 1783844307,
+  "app_version": "2.6.0",
+  "backend_url": "https://midwest-shut-ontario-conclude.trycloudflare.com",
+  "expires_at": 1783901661,
+  "issued_at": 1783858461,
   "model": "qwen3:8b",
   "online": true,
   "schema_version": 1,
-  "signature": "1efd38b375c47c5cf40f0e092cbcd1eefc53a2fdb305001c988f23bf4aea745f",
+  "signature": "7ec28832f426bf1cdc3eb5b96acd8ffc7ccba115c8032d69e5c2428280beb90b",
   "tunnel_mode": "quick",
-  "updated_at": "2026-07-12T08:18:27.662218+00:00"
+  "updated_at": "2026-07-12T12:14:21.292059+00:00"
 }
