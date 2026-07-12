@@ -17,28 +17,28 @@
 <!-- Legacy and compatibility fallback -->
 <link
   rel="icon"
-  href="./favicon.ico?v=5"
+  href="./favicon.ico?v=6"
   type="image/x-icon"
 />
 
 <!-- Fixed-size browser-tab icons -->
 <link
   rel="icon"
-  href="./favicon-16x16.png?v=5"
+  href="./favicon-16x16.png?v=6"
   type="image/png"
   sizes="16x16"
 />
 
 <link
   rel="icon"
-  href="./favicon-32x32.png?v=5"
+  href="./favicon-32x32.png?v=6"
   type="image/png"
   sizes="32x32"
 />
 
 <link
   rel="icon"
-  href="./favicon-48x48.png?v=5"
+  href="./favicon-48x48.png?v=6"
   type="image/png"
   sizes="48x48"
 />
@@ -46,7 +46,7 @@
 <!-- Preferred scalable Georgia-R icon for modern browsers -->
 <link
   rel="icon"
-  href="./favicon.svg?v=5"
+  href="./favicon.svg?v=6"
   type="image/svg+xml"
   sizes="any"
 />
@@ -54,7 +54,7 @@
 <!-- iPhone and iPad home-screen icon -->
 <link
   rel="apple-touch-icon"
-  href="./apple-touch-icon.png?v=5"
+  href="./apple-touch-icon.png?v=6"
   type="image/png"
   sizes="180x180"
 />
@@ -62,7 +62,7 @@
 <!-- Android and installed-app configuration -->
 <link
   rel="manifest"
-  href="./site.webmanifest?v=5"
+  href="./site.webmanifest?v=6"
 />
   
 
@@ -271,6 +271,24 @@
     }
     .range-row { display: grid; grid-template-columns: 1fr 78px; gap: 8px; }
     .footer { text-align: center; color: #667487; font-size: .69rem; padding: 2px 0 5px; }
+    .footer a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer a:hover,
+.footer a:focus-visible {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
     .toast {
       position: fixed; right: 18px; bottom: 18px; z-index: 20; max-width: min(420px, calc(100vw - 36px));
       padding: 11px 13px; border: 1px solid var(--border); border-radius: 12px; background: #171f28;
@@ -319,7 +337,7 @@
 </div>
 <section class="card" id="serviceCard">
 <div class="card-title"><span>Secure access</span><span id="connectionDot">●</span></div>
-<div class="status-line" id="linkStatus">Checking the current Model endpoint…</div>
+<div class="status-line" id="linkStatus">Checking the current AI endpoint…</div>
 <div class="field">
 <label for="apiKey">API key shared by Raj</label>
 <input autocomplete="off" id="apiKey" placeholder="Paste the API key here" type="password"/>
@@ -330,7 +348,7 @@
 </div>
 <label class="toggle"><input id="rememberKey" type="checkbox"/> Remember key on this browser</label>
 <div class="status-line" id="connectionStatus">When RajAIAssist is online, enter the API key shared by Raj.</div>
-<button class="btn" id="refreshStatusBtn" style="width:100%;margin-top:9px">Check service status</button>
+<button class="btn" id="refreshStatusBtn" style="width:100%;margin-top:9px">Check AI status</button>
 <div class="service-note">Click the button above to check whether AI is currently running.</div>
 </section>
 <section class="card" id="currentChatCard">
@@ -342,9 +360,9 @@
 </section>
 <section class="card" id="fileIngestCard">
 <div class="card-title"><span>File Ingest</span><button class="btn btn-small" id="refreshDocsBtn">Refresh</button></div>
-<input class="upload-input" id="fileInput" type="file"/>
-<p class="file-help">You can upload any file type. Common files like documents, code, archives, emails, spreadsheets, presentations, and images are processed locally.</p>
-<button class="btn btn-primary" id="uploadBtn" style="width:100%;margin-top:9px">Upload and ingest</button>
+<input class="upload-input" id="fileInput" type="file" multiple/>
+<p class="file-help">Choose one or more files in a single selection. Common documents, source code, archives, emails, spreadsheets, presentations, and images are processed locally.</p>
+<button class="btn btn-primary" id="uploadBtn" style="width:100%;margin-top:9px">Upload and Ingest selected</button>
 <div class="status-line" id="uploadStatus"></div>
 <div class="documents" id="documents"><div class="empty-mini">No files loaded for this chat.</div></div>
 </section>
@@ -405,14 +423,24 @@
 </div>
 </div>
 </section>
-<div class="footer">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</div>
+<div class="footer">
+  <a
+    href="https://www.linkedin.com/in/rajmohanacharya/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Visit Raj Mohan Acharya's LinkedIn profile"
+    title="Connect with Raj Mohan Acharya on LinkedIn"
+  >
+    Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect
+  </a>
+</div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
 <div aria-labelledby="offlineTitle" aria-modal="true" class="modal-backdrop" id="offlineModal" role="dialog">
 <div class="modal-card">
 <h3 id="offlineTitle">RajAIAssist is currently offline</h3>
-<p id="offlineMessage">Notify Raj to start the Local AI.</p>
+<p id="offlineMessage">Ask Raj to start AI.</p>
 <div class="row">
 <a class="btn btn-primary grow" hidden="" href="#" id="notifyRajBtn" rel="noopener noreferrer" target="_blank">Notify Raj</a>
 <button class="btn grow" id="closeOfflineBtn">Close</button>
@@ -466,7 +494,7 @@
       statusPollMs: Math.max(15000, Number(RAW_CONFIG.statusPollMs) || 30000),
       manifestPollMs: Math.max(60000, Number(RAW_CONFIG.manifestPollMs) || 120000),
       offlineMessage: String(
-        RAW_CONFIG.offlineMessage || "Notify Raj to start the Local AI."
+        RAW_CONFIG.offlineMessage || "Ask Raj to start AI."
       ).trim(),
       notifyUrl: String(RAW_CONFIG.notifyUrl || "").trim()
     });
@@ -566,14 +594,16 @@
 
     function showOfflineNotice(reason = "") {
       offlineTitleEl.textContent = "RajAIAssist is currently offline";
-      offlineMessageEl.textContent = reason ? `${OFFLINE_MESSAGE} ${reason}` : OFFLINE_MESSAGE;
+      offlineMessageEl.textContent = OFFLINE_MESSAGE;
+      offlineMessageEl.title = reason || "";
+      if (reason) console.debug("AI service offline detail:", reason);
       offlineModal.classList.add("show");
       showToast(OFFLINE_MESSAGE, true);
     }
 
     function showAccessNotice(message) {
       offlineTitleEl.textContent = "RajAIAssist is unavailable";
-      offlineMessageEl.textContent = message || "Notify Raj to start the Local AI, then refresh this page.";
+      offlineMessageEl.textContent = message || "Ask Raj to start AI, then refresh this page.";
       offlineModal.classList.add("show");
       showToast(offlineMessageEl.textContent, true);
     }
@@ -640,22 +670,22 @@
       }
 
       if (!backendRaw || !Number.isSafeInteger(issuedAt) || !Number.isSafeInteger(expires) || !/^[a-f0-9]{64}$/.test(signature)) {
-        throw new EndpointManifestError("The published Colab endpoint is incomplete.");
+        throw new EndpointManifestError("The published AI endpoint is incomplete.");
       }
 
       let parsed;
       try {
         parsed = new URL(backendRaw);
       } catch (_) {
-        throw new EndpointManifestError("The published Colab endpoint is invalid.");
+        throw new EndpointManifestError("The published AI endpoint is invalid.");
       }
 
       const localHost = parsed.hostname === "localhost" || parsed.hostname === "127.0.0.1";
       if (parsed.protocol !== "https:" && !(localHost && parsed.protocol === "http:")) {
-        throw new EndpointManifestError("The published Colab endpoint must use HTTPS.");
+        throw new EndpointManifestError("The published AI endpoint must use HTTPS.");
       }
       if (parsed.username || parsed.password || (parsed.pathname !== "/" && parsed.pathname !== "") || parsed.search || parsed.hash) {
-        throw new EndpointManifestError("The published Colab endpoint has an unsupported format.");
+        throw new EndpointManifestError("The published AI endpoint has an unsupported format.");
       }
 
       const now = Math.floor(Date.now() / 1000);
@@ -666,7 +696,7 @@
         throw new EndpointManifestError("The endpoint manifest lifetime is invalid.");
       }
       if (now >= expires) {
-        throw new EndpointManifestError("The published Colab endpoint has expired.");
+        throw new EndpointManifestError("The published AI endpoint has expired.");
       }
 
       return {
@@ -776,7 +806,7 @@
           connected = false;
           signatureVerified = false;
           activeApiKey = "";
-          linkStatus.textContent = error.message || "The current Colab endpoint is unavailable.";
+          linkStatus.textContent = error.message || "The current AI endpoint is unavailable.";
           linkStatus.className = "status-line err";
           setConnectionState(false, OFFLINE_MESSAGE, "err", "Offline");
           if (!quiet) console.debug("Endpoint manifest load failed", error);
@@ -862,7 +892,7 @@
         activeApiKey = candidate;
         signatureVerified = true;
         storeVerifiedKey(candidate);
-        setConnectionState(false, "API key accepted. Checking Colab…", "", "Checking");
+        setConnectionState(false, "API key accepted. Checking AI…", "", "Checking");
         return true;
       } catch (error) {
         setConnectionState(false, error.message, "err", "Locked");
@@ -872,7 +902,7 @@
     }
 
     async function apiFetch(path, options = {}) {
-      if (!endpointIsCurrent()) throw new EndpointManifestError("The current Colab endpoint is unavailable or expired.");
+      if (!endpointIsCurrent()) throw new EndpointManifestError("The current AI endpoint is unavailable or expired.");
       if (!signatureVerified || !activeApiKey) throw new ApiKeyError("Enter the API key shared by Raj.");
       const headers = new Headers(options.headers || {});
       headers.set("Authorization", `Bearer ${activeApiKey}`);
@@ -885,7 +915,7 @@
         if (error?.name === "AbortError") throw error;
         setConnectionState(false, OFFLINE_MESSAGE, "err", "Offline");
         void loadEndpointManifest({ force: true, quiet: true });
-        throw new BackendOfflineError(OFFLINE_MESSAGE, "The Colab tunnel could not be reached.");
+        throw new BackendOfflineError(OFFLINE_MESSAGE, "The AI service could not be reached.");
       }
       if (!response.ok) {
         const payload = await readErrorPayload(response);
@@ -898,7 +928,7 @@
         }
         if ([502, 503, 504, 520, 521, 522, 523, 524, 525, 526, 527, 530].includes(response.status)) {
           setConnectionState(false, OFFLINE_MESSAGE, "err", "Offline");
-          throw new BackendOfflineError(OFFLINE_MESSAGE, payload.error || "The Colab service is unavailable.");
+          throw new BackendOfflineError(OFFLINE_MESSAGE, payload.error || "The AI service is unavailable.");
         }
         const message = payload.detail
           ? `${payload.error || "Request failed"}: ${payload.detail}`
@@ -912,7 +942,7 @@
       if (statusCheckPromise) return statusCheckPromise;
       statusCheckPromise = (async () => {
         if (!skipAccess && !(await ensureAccess(!silent))) return false;
-        if (!silent) setConnectionState(false, "Checking the Colab service…", "", "Checking");
+        if (!silent) setConnectionState(false, "Checking the AI service…", "", "Checking");
         try {
           const response = await apiFetch("/api/status");
           const status = await response.json();
@@ -1191,7 +1221,6 @@
 
       if (sourceBox) {
         sourceBox.innerHTML = "";
-
         for (const source of sources || []) {
           const chip = document.createElement("span");
           chip.className = "source";
@@ -1201,36 +1230,62 @@
       }
 
       if (!statsBox) return;
-
       if (!stats) {
         statsBox.textContent = "";
         statsBox.style.color = "";
+        statsBox.removeAttribute("title");
         return;
       }
 
       const parts = [];
-
       if (stats.output_tokens) {
         parts.push(`${stats.output_tokens} output tokens`);
       }
-
       if (stats.tokens_per_second) {
         parts.push(`${stats.tokens_per_second} tok/s`);
       }
 
-      if (stats.total_duration_ms) {
-        parts.push(`${(stats.total_duration_ms / 1000).toFixed(1)} s`);
+      const durationMs = Number(
+        stats.pipeline_total_duration_ms || stats.total_duration_ms || 0
+      );
+      if (durationMs) {
+        parts.push(`${(durationMs / 1000).toFixed(1)} s`);
+      }
+
+      if (stats.prompt_enhanced) {
+        const task = String(stats.prompt_task || "general")
+          .replaceAll("_", " ");
+        parts.push(`Auto-expert: ${task}`);
+      }
+      if (Number(stats.verification_passes || 0) > 0) {
+        parts.push("verified answer");
       }
 
       const outputLimitReached =
         stats.done_reason === "length" ||
         Number(stats.output_tokens || 0) >= GENERATION_DEFAULTS.maxTokens;
 
+      const qualityWarning = stats.quality_gate === "warning";
       if (outputLimitReached) {
         parts.push("output limit reached — ask Continue");
+      }
+      if (qualityWarning) {
+        parts.push("quality checks need review");
+      }
+
+      if (outputLimitReached || qualityWarning) {
         statsBox.style.color = "var(--warning)";
       } else {
         statsBox.style.color = "";
+      }
+
+      const qualityIssues = Array.isArray(stats.quality_issues)
+        ? stats.quality_issues.filter(Boolean)
+        : [];
+      if (qualityIssues.length) {
+        statsBox.title = qualityIssues.join("\n");
+      } else {
+        statsBox.removeAttribute("title");
       }
 
       statsBox.textContent = parts.join(" · ");
@@ -1300,35 +1355,78 @@
       }
     }
 
-    async function uploadFile() {
-      if (!capabilities.files) { showToast("File ingestion is disabled for this service.", true); return; }
+    async function uploadFiles() {
+      if (!capabilities.files) {
+        showToast("File ingestion is disabled for this service.", true);
+        return;
+      }
       if (!(await ensureAccess())) return;
-      if (!connected && !(await checkBackendStatus({ skipAccess: true }))) { showOfflineNotice(); return; }
-      const file = $("#fileInput").files[0];
-      if (!file) {
-        $("#uploadStatus").textContent = "Choose a file first.";
+      if (!connected && !(await checkBackendStatus({ skipAccess: true }))) {
+        showOfflineNotice();
+        return;
+      }
+
+      const input = $("#fileInput");
+      const files = Array.from(input.files || []);
+      if (!files.length) {
+        $("#uploadStatus").textContent = "Choose one or more files first.";
         $("#uploadStatus").className = "status-line err";
         return;
       }
-      const form = new FormData();
-      form.append("session_id", getSessionId());
-      form.append("file", file);
+
+      const results = [];
+      const failures = [];
+      let duplicates = 0;
       $("#uploadBtn").disabled = true;
-      $("#uploadStatus").textContent = `Uploading ${file.name}…`;
       $("#uploadStatus").className = "status-line";
+
       try {
-        const response = await apiFetch("/api/upload", { method: "POST", body: form });
-        const payload = await response.json();
-        const warning = payload.document?.warning ? ` ${payload.document.warning}` : "";
-        $("#uploadStatus").textContent = payload.duplicate
-          ? `${file.name} was already indexed.`
-          : `${file.name}: ${payload.document.chunk_count} chunks indexed.${warning}`;
-        $("#uploadStatus").className = "status-line ok";
-        $("#fileInput").value = "";
+        for (let index = 0; index < files.length; index += 1) {
+          const file = files[index];
+          $("#uploadStatus").textContent =
+            `Uploading ${index + 1}/${files.length}: ${file.name}…`;
+
+          const form = new FormData();
+          form.append("session_id", getSessionId());
+          form.append("file", file);
+
+          try {
+            const response = await apiFetch("/api/upload", {
+              method: "POST",
+              body: form
+            });
+            const payload = await response.json();
+            if (payload.duplicate) {
+              duplicates += 1;
+            } else {
+              results.push({
+                name: file.name,
+                chunks: Number(payload.document?.chunk_count || 0),
+                warning: String(payload.document?.warning || "").trim()
+              });
+            }
+          } catch (error) {
+            failures.push(`${file.name}: ${error.message}`);
+            if (error instanceof BackendOfflineError) break;
+          }
+        }
+
+        input.value = "";
         await loadDocuments();
-      } catch (error) {
-        $("#uploadStatus").textContent = error.message;
-        $("#uploadStatus").className = "status-line err";
+
+        const summary = [];
+        if (results.length) {
+          const chunkTotal = results.reduce((sum, item) => sum + item.chunks, 0);
+          summary.push(`${results.length} file(s) indexed · ${chunkTotal} chunks`);
+        }
+        if (duplicates) summary.push(`${duplicates} duplicate(s) skipped`);
+        if (failures.length) summary.push(`${failures.length} failed`);
+
+        $("#uploadStatus").textContent = summary.join(" · ") || "No files were ingested.";
+        $("#uploadStatus").className = failures.length
+          ? (results.length || duplicates ? "status-line warn" : "status-line err")
+          : "status-line ok";
+        $("#uploadStatus").title = failures.join("\n");
       } finally {
         $("#uploadBtn").disabled = false;
       }
@@ -1398,6 +1496,13 @@
           if (event.type === "start") {
             sources = event.sources || [];
             updateMessageMeta(assistantMessage, sources, null);
+          } else if (event.type === "status") {
+            if (!answer) {
+              updateAssistantBody(
+                assistantMessage,
+                `_${event.message || "Preparing the response…"}_`
+              );
+            }
           } else if (event.type === "token") {
             answer += event.content || "";
             const now = performance.now();
@@ -1540,7 +1645,14 @@
     $("#refreshDocsBtn").addEventListener("click", async () => {
       if (await ensureAccess()) loadDocuments();
     });
-    $("#uploadBtn").addEventListener("click", uploadFile);
+    $("#uploadBtn").addEventListener("click", uploadFiles);
+    $("#fileInput").addEventListener("change", () => {
+      const count = $("#fileInput").files?.length || 0;
+      if (count) {
+        $("#uploadStatus").textContent = `${count} file(s) selected.`;
+        $("#uploadStatus").className = "status-line";
+      }
+    });
     $("#viewMemoryBtn").addEventListener("click", viewMemory);
     $("#clearMemoryBtn").addEventListener("click", clearMemory);
     sendBtn.addEventListener("click", askAI);
