@@ -319,7 +319,7 @@
 </div>
 <section class="card" id="serviceCard">
 <div class="card-title"><span>Secure access</span><span id="connectionDot">●</span></div>
-<div class="status-line" id="linkStatus">Checking the current Colab endpoint…</div>
+<div class="status-line" id="linkStatus">Checking the current Model endpoint…</div>
 <div class="field">
 <label for="apiKey">API key shared by Raj</label>
 <input autocomplete="off" id="apiKey" placeholder="Paste the API key here" type="password"/>
@@ -1183,52 +1183,58 @@
     }
 
     function updateMessageMeta(articleOrMessage, sources = [], stats = null) {
-      const article = articleOrMessage.article || articleOrMessage;
+      const article = articleOrMessage?.article || articleOrMessage;
+      if (!article) return;
+
       const sourceBox = article.querySelector(".sources");
       const statsBox = article.querySelector(".stats");
-      sourceBox.innerHTML = "";
-      for (const source of sources || []) {
-        const chip = document.createElement("span");
-        chip.className = "source";
-        chip.textContent = source.label || source.filename || "document";
-        sourceBox.appendChild(chip);
+
+      if (sourceBox) {
+        sourceBox.innerHTML = "";
+
+        for (const source of sources || []) {
+          const chip = document.createElement("span");
+          chip.className = "source";
+          chip.textContent = source.label || source.filename || "document";
+          sourceBox.appendChild(chip);
+        }
       }
-      
-if (stats) {
-  const parts = [];
 
-  if (stats.output_tokens) {
-    parts.push(`${stats.output_tokens} output tokens`);
-  }
+      if (!statsBox) return;
 
-  if (stats.tokens_per_second) {
-    parts.push(`${stats.tokens_per_second} tok/s`);
-  }
+      if (!stats) {
+        statsBox.textContent = "";
+        statsBox.style.color = "";
+        return;
+      }
 
-  if (stats.total_duration_ms) {
-    parts.push(
-      `${(stats.total_duration_ms / 1000).toFixed(1)} s`
-    );
-  }
+      const parts = [];
 
-  const outputLimitReached =
-    stats.done_reason === "length" ||
-    Number(stats.output_tokens || 0) >=
-      GENERATION_DEFAULTS.maxTokens;
+      if (stats.output_tokens) {
+        parts.push(`${stats.output_tokens} output tokens`);
+      }
 
-  if (outputLimitReached) {
-    parts.push("output limit reached — ask Continue");
-    statsBox.style.color = "var(--warning)";
-  } else {
-    statsBox.style.color = "";
-  }
-}
+      if (stats.tokens_per_second) {
+        parts.push(`${stats.tokens_per_second} tok/s`);
+      }
 
-  statsBox.textContent = parts.join(" · ");
-} else {
-  statsBox.textContent = "";
-  statsBox.style.color = "";
-}
+      if (stats.total_duration_ms) {
+        parts.push(`${(stats.total_duration_ms / 1000).toFixed(1)} s`);
+      }
+
+      const outputLimitReached =
+        stats.done_reason === "length" ||
+        Number(stats.output_tokens || 0) >= GENERATION_DEFAULTS.maxTokens;
+
+      if (outputLimitReached) {
+        parts.push("output limit reached — ask Continue");
+        statsBox.style.color = "var(--warning)";
+      } else {
+        statsBox.style.color = "";
+      }
+
+      statsBox.textContent = parts.join(" · ");
+    }
 
     async function loadHistory() {
       if (!connected || !capabilities.history) return;
