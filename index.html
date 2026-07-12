@@ -271,24 +271,6 @@
     }
     .range-row { display: grid; grid-template-columns: 1fr 78px; gap: 8px; }
     .footer { text-align: center; color: #667487; font-size: .69rem; padding: 2px 0 5px; }
-    .footer a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-
-.footer a:hover,
-.footer a:focus-visible {
-  color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.footer a:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-  border-radius: 4px;
-}
     .toast {
       position: fixed; right: 18px; bottom: 18px; z-index: 20; max-width: min(420px, calc(100vw - 36px));
       padding: 11px 13px; border: 1px solid var(--border); border-radius: 12px; background: #171f28;
@@ -361,8 +343,8 @@
 <section class="card" id="fileIngestCard">
 <div class="card-title"><span>File Ingest</span><button class="btn btn-small" id="refreshDocsBtn">Refresh</button></div>
 <input class="upload-input" id="fileInput" type="file" multiple/>
-<p class="file-help">Choose one or more files in a single selection. Common documents, source code, archives, emails, spreadsheets, presentations, and images are processed locally.</p>
-<button class="btn btn-primary" id="uploadBtn" style="width:100%;margin-top:9px">Upload and Ingest selected</button>
+<p class="file-help">Choose one or more files in a single selection. Common documents, source code, archives, emails, spreadsheets, presentations, and images are processed locally; opaque binaries are stored as searchable metadata only.</p>
+<button class="btn btn-primary" id="uploadBtn" style="width:100%;margin-top:9px">Upload and ingest selected</button>
 <div class="status-line" id="uploadStatus"></div>
 <div class="documents" id="documents"><div class="empty-mini">No files loaded for this chat.</div></div>
 </section>
@@ -423,17 +405,7 @@
 </div>
 </div>
 </section>
-<div class="footer">
-  <a
-    href="https://www.linkedin.com/in/rajmohanacharya/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Visit Raj Mohan Acharya's LinkedIn profile"
-    title="Connect with Raj Mohan Acharya on LinkedIn"
-  >
-    Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect
-  </a>
-</div>
+<div class="footer">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect · RajAIAssist v2.6.1</div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -1468,20 +1440,92 @@
       updateMessageMeta(assistantMessage, result.sources, result.stats);
     }
 
+    function parseStreamEventLine(line) {
+      let text = String(line || "").trim();
+      if (!text || text.startsWith(":")) return null;
+      if (text.startsWith("data:")) text = text.slice(5).trim();
+      if (!text || text === "[DONE]") return null;
+      try {
+        return JSON.parse(text);
+      } catch (error) {
+        console.debug("Ignoring malformed stream event", text, error);
+        return null;
+      }
+    }
+
     async function askStreaming(payload, assistantMessage) {
       const response = await apiFetch("/api/chat/stream", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "text/event-stream"
+        },
         body: JSON.stringify(payload),
         signal: activeAbortController.signal
       });
       if (!response.body) throw new Error("This browser does not support streaming responses.");
+
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let buffer = "";
       let answer = "";
       let sources = [];
       let lastRender = 0;
+      let streamCompleted = false;
+      let lastStatusMessage = "Preparing the response…";
+
+      function processEvent(event) {
+        if (!event || typeof event !== "object") return;
+
+        if (event.type === "start") {
+          sources = event.sources || [];
+          updateMessageMeta(assistantMessage, sources, null);
+          return;
+        }
+
+        if (event.type === "status" || event.type === "heartbeat") {
+          lastStatusMessage = event.message || lastStatusMessage;
+          if (!answer) {
+            const elapsed = event.elapsed_seconds
+              ? ` (${event.elapsed_seconds}s)`
+              : "";
+            updateAssistantBody(
+              assistantMessage,
+              `_${lastStatusMessage}${elapsed}_`
+            );
+          }
+          return;
+        }
+
+        if (event.type === "token") {
+          answer += event.content || "";
+          const now = performance.now();
+          if (now - lastRender > 80) {
+            updateAssistantBody(assistantMessage, answer);
+            lastRender = now;
+          }
+          return;
+        }
+
+        if (event.type === "done") {
+          streamCompleted = true;
+          sources = event.sources || sources;
+          if (!answer.trim() && typeof event.answer === "string") {
+            answer = event.answer;
+          }
+          updateAssistantBody(assistantMessage, answer);
+          updateMessageMeta(assistantMessage, sources, event.stats || null);
+          return;
+        }
+
+        if (event.type === "error") {
+          throw new Error(
+            event.detail
+              ? `${event.error}: ${event.detail}`
+              : (event.error || "The AI request failed.")
+          );
+        }
+      }
 
       while (true) {
         const { done, value } = await reader.read();
@@ -1490,48 +1534,33 @@
         const lines = buffer.split("\n");
         buffer = lines.pop() || "";
         for (const line of lines) {
-          if (!line.trim()) continue;
-          let event;
-          try { event = JSON.parse(line); } catch (_) { continue; }
-          if (event.type === "start") {
-            sources = event.sources || [];
-            updateMessageMeta(assistantMessage, sources, null);
-          } else if (event.type === "status") {
-            if (!answer) {
-              updateAssistantBody(
-                assistantMessage,
-                `_${event.message || "Preparing the response…"}_`
-              );
-            }
-          } else if (event.type === "token") {
-            answer += event.content || "";
-            const now = performance.now();
-            if (now - lastRender > 80) {
-              updateAssistantBody(assistantMessage, answer);
-              lastRender = now;
-            }
-          } else if (event.type === "done") {
-            sources = event.sources || sources;
-            updateAssistantBody(assistantMessage, answer);
-            updateMessageMeta(assistantMessage, sources, event.stats || null);
-          } else if (event.type === "error") {
-            throw new Error(event.detail ? `${event.error}: ${event.detail}` : event.error);
-          }
+          const event = parseStreamEventLine(line);
+          if (event) processEvent(event);
         }
       }
+
+      buffer += decoder.decode();
       if (buffer.trim()) {
-        try {
-          const event = JSON.parse(buffer);
-          if (event.type === "token") answer += event.content || "";
-          if (event.type === "error") throw new Error(event.error);
-        } catch (error) {
-          if (error instanceof SyntaxError) console.debug("Trailing stream data was not JSON", buffer);
-          else throw error;
+        for (const line of buffer.split("\n")) {
+          const event = parseStreamEventLine(line);
+          if (event) processEvent(event);
         }
       }
+
+      if (!streamCompleted) {
+        throw new Error(
+          answer.trim()
+            ? "The AI connection closed before the response was marked complete. Please retry."
+            : "The AI connection closed before the verified answer was delivered. Please retry."
+        );
+      }
+
       updateAssistantBody(assistantMessage, answer);
-      if (!answer.trim()) throw new Error("The backend returned an empty streamed answer.");
+      if (!answer.trim()) {
+        throw new Error("The backend completed the request without a final answer.");
+      }
     }
+
 
     async function askAI() {
       const payload = chatPayload();
