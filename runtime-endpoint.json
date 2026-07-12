@@ -1,12 +1,12 @@
 {
-  "app_version": "2.6.1",
-  "backend_url": "https://pope-judges-wheat-galleries.trycloudflare.com",
-  "expires_at": 1783906685,
-  "issued_at": 1783863485,
-  "model": "qwen3:8b",
+  "app_version": "2.6.2",
+  "backend_url": "https://reform-snake-fare-laughing.trycloudflare.com",
+  "expires_at": 1783908894,
+  "issued_at": 1783865694,
+  "model": "llama3.1:8b",
   "online": true,
   "schema_version": 1,
-  "signature": "aa734217551e8c2382f6ecd4d9f36b93bc25307cadf4dd0135c259a4ab8f626f",
+  "signature": "8831df4e7dd1f05f975d741eaf3414ace3b38c375ba2974ecc1bba07cb0130e4",
   "tunnel_mode": "quick",
-  "updated_at": "2026-07-12T13:38:05.261136+00:00"
+  "updated_at": "2026-07-12T14:14:54.341199+00:00"
 }
