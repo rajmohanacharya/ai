@@ -1,12 +1,12 @@
 {
   "app_version": "2.6.1",
-  "backend_url": "https://bangkok-exam-doe-badly.trycloudflare.com",
-  "expires_at": 1783904924,
-  "issued_at": 1783861724,
-  "model": "qwen2.5-coder:7b",
+  "backend_url": "https://pope-judges-wheat-galleries.trycloudflare.com",
+  "expires_at": 1783906685,
+  "issued_at": 1783863485,
+  "model": "qwen3:8b",
   "online": true,
   "schema_version": 1,
-  "signature": "51e5c5fd325fe9625af2262823eae619641e8219ce50b8b201d79a3a8f426e95",
+  "signature": "aa734217551e8c2382f6ecd4d9f36b93bc25307cadf4dd0135c259a4ab8f626f",
   "tunnel_mode": "quick",
-  "updated_at": "2026-07-12T13:08:44.119013+00:00"
+  "updated_at": "2026-07-12T13:38:05.261136+00:00"
 }
