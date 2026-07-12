@@ -212,7 +212,7 @@
       border: 1px solid var(--border); border-radius: 22px; box-shadow: var(--shadow);
     }
     .welcome {
-      max-width: 760px; margin: 70px auto; text-align: center; color: var(--muted); line-height: 1.7;
+      max-width: 920px; margin: 54px auto; text-align: center; color: var(--muted); line-height: 1.7;
     }
     .welcome h3 { color: var(--text); font-size: clamp(1.35rem, 3vw, 2.1rem); margin: 0 0 9px; letter-spacing: -.04em; }
     .examples { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px; }
@@ -282,6 +282,43 @@
       background: #121922;
     }
     .prompt-example::before { content: "↳ "; color: var(--accent); }
+    .prompt-safety-note {
+      margin: 0 8px 8px; padding: 9px 10px; border: 1px solid rgba(248, 203, 103, .28);
+      border-radius: 10px; background: rgba(248, 203, 103, .06); color: #d9c68f;
+      font-size: .69rem; line-height: 1.5;
+    }
+    .prompt-formula {
+      margin: 24px auto 0; padding: 16px; text-align: left;
+      border: 1px solid rgba(33, 209, 139, .24); border-radius: 16px;
+      background: linear-gradient(180deg, rgba(33, 209, 139, .065), rgba(17, 24, 32, .82));
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .02);
+    }
+    .prompt-formula-head { margin-bottom: 12px; }
+    .prompt-formula-kicker {
+      display: inline-flex; margin-bottom: 7px; padding: 4px 8px; border-radius: 999px;
+      background: rgba(33, 209, 139, .11); color: #8af0c1; border: 1px solid rgba(33, 209, 139, .22);
+      font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+    }
+    .prompt-formula h4 { margin: 0; color: var(--text); font-size: 1rem; letter-spacing: -.02em; }
+    .prompt-formula-head p { margin: 5px 0 0; color: var(--muted); font-size: .76rem; line-height: 1.5; }
+    .prompt-formula-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;
+    }
+    .prompt-formula-item {
+      padding: 10px 11px; border: 1px solid var(--border-soft); border-radius: 11px;
+      background: rgba(9, 14, 19, .55); color: #bdc9d5; font-size: .73rem; line-height: 1.45;
+    }
+    .prompt-formula-label {
+      display: block; margin-bottom: 2px; color: var(--accent); font-size: .69rem;
+      font-weight: 850; letter-spacing: .035em; text-transform: uppercase;
+    }
+    .prompt-formula-template {
+      margin-top: 10px; padding: 11px 12px; border: 1px dashed #334250; border-radius: 11px;
+      background: #0d1319; color: #b9c6d3; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .7rem; line-height: 1.55;
+    }
+    .prompt-formula-template strong { color: #eef4fa; font-family: inherit; }
+    .prompt-formula-template div + div { margin-top: 3px; }
     .file-help { color: var(--muted); font-size: .72rem; line-height: 1.45; margin: 8px 0 0; }
     .message { max-width: 980px; margin: 0 auto 22px; }
     .message-head { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
@@ -362,7 +399,7 @@
     }
     @media (max-width: 620px) {
       .shell { padding: 10px; gap: 10px; }
-      .examples { grid-template-columns: 1fr; }
+      .examples, .prompt-formula-grid { grid-template-columns: 1fr; }
       .chat { padding: 16px 10px; border-radius: 16px; }
       .topbar, .composer, .sidebar { border-radius: 16px; }
       .message-box { padding: 13px; }
@@ -517,6 +554,155 @@
 </details>
 </div>
 </details>
+
+<details class="prompt-category">
+<summary>Shopping Ideas &amp; Buying Guides</summary>
+<div class="prompt-category-body">
+<details class="prompt-subcategory">
+<summary>Ideas, shortlist &amp; value</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Act as an independent buying advisor. Help me choose [product or category] for [primary use case]. My budget is [currency and range], location is [country or region], must-have features are [list], deal-breakers are [list], and options I am considering are [list]. Use only specifications, prices, reviews, links, or uploaded material I provide; clearly label assumptions and anything that needs current-market verification. Build a requirements table, explain the key trade-offs, recommend a good / better / best shortlist, and finish with a practical purchase checklist.">Personalized buying guide</button>
+<button class="example prompt-example" data-prompt="Generate thoughtful shopping ideas for [recipient, occasion, or personal need] within a budget of [amount and currency]. Consider interests, age range, location, practicality, sustainability, space, compatibility, and what the person may already own. Group the ideas into safe choice, personalized choice, experience, useful upgrade, and premium option. Explain why each idea fits, identify risks or compatibility questions, and list the questions that would narrow the shortlist. Do not invent current availability or prices.">Shopping and gift ideas</button>
+<button class="example prompt-example" data-prompt="Create a value-focused shortlist for [product category] across three price levels: budget, balanced, and premium. My use case is [describe it], expected usage period is [duration], and priorities are [ranked criteria]. Compare feature value, reliability, support, repairability, energy or operating cost, upgrade path, and likely total cost of ownership. Clearly distinguish facts I supplied from assumptions and identify what must be verified before purchase.">Budget vs premium shortlist</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Compare, inspect &amp; decide</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Compare the following options using a weighted decision matrix: [Option A], [Option B], and [Option C]. My priorities and weights are [criteria and percentages]. Use only the information I provide or upload. Score each option, explain every score, identify missing or uncertain data, compare total ownership cost, and recommend the best fit for my actual use case rather than the most expensive option.">Product comparison matrix</button>
+<button class="example prompt-example" data-prompt="Evaluate whether I should buy [item] new, used, refurbished, leased, or wait. Consider purchase price, warranty, expected life, repair risk, depreciation, availability of parts, financing, resale value, and urgency. Create a break-even comparison, a pre-purchase inspection checklist, questions for the seller, warning signs, and a final decision framework. Mark anything that requires current local verification.">New vs used vs refurbished</button>
+<button class="example prompt-example" data-prompt="Review the uploaded product specifications, quotation, warranty, and seller terms. Identify mismatches, missing accessories, hidden costs, weak warranty clauses, compatibility concerns, return-policy risks, and questions that must be answered before payment. Finish with a concise buy / negotiate / avoid recommendation and the exact negotiation points.">Review a quotation or offer</button>
+</div>
+</details>
+</div>
+</details>
+
+<details class="prompt-category">
+<summary>Health, Medical &amp; Wellness</summary>
+<p class="prompt-safety-note"><strong>Important:</strong> These templates support education and appointment preparation, not diagnosis or emergency care. For severe, sudden, or rapidly worsening symptoms, contact local emergency services or a licensed clinician.</p>
+<div class="prompt-category-body">
+<details class="prompt-subcategory">
+<summary>Symptoms &amp; consultation preparation</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Help me prepare for a medical consultation about the following symptoms: [describe symptoms]. Organize the information into onset, duration, severity, location, triggers, relieving factors, associated symptoms, recent changes, relevant history, medicines, allergies, and questions for the clinician. Do not diagnose. Explain which details are important, identify general red-flag symptoms that would warrant urgent local care, and finish with a concise appointment summary I can take to a licensed professional.">Prepare for a doctor consultation</button>
+<button class="example prompt-example" data-prompt="Create a structured symptom timeline from the information I provide. Separate confirmed facts from uncertainty, identify missing questions a clinician is likely to ask, and suggest what observations I should safely record before the appointment. Do not provide a diagnosis or recommend starting, stopping, or changing medication. Include a short section on urgent warning signs that require professional or emergency evaluation.">Build a symptom timeline</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Medicines, pharma &amp; treatment questions</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Explain the following medicine in plain language: [medicine name, strength, and form]. Cover its usual purpose, how it generally works, common side effects, serious warning signs, major interaction categories, storage, and questions to ask a doctor or pharmacist. Use reliable general medical knowledge, state uncertainty, and do not advise me to start, stop, combine, or change the dose. Remind me to follow the prescriber's and pharmacist's instructions.">Understand a medicine</button>
+<button class="example prompt-example" data-prompt="Help me prepare a medication review for a clinician or pharmacist. I will provide my medicines, supplements, doses, timing, and reasons for use. Organize them into a clear table, identify duplicate-purpose or interaction questions that should be professionally checked, list adherence or side-effect concerns to discuss, and create a concise consultation agenda. Do not recommend medication changes.">Medication review checklist</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Lab reports, scans &amp; test results</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Explain the uploaded laboratory report in plain language. For each result, show the value, reference range, whether it is flagged, what the test generally measures, common non-diagnostic reasons it may vary, and questions to discuss with a licensed clinician. Look for trends only when multiple dated results are available. Do not diagnose or prescribe, and clearly identify results that may require prompt professional review.">Explain a lab report</button>
+<button class="example prompt-example" data-prompt="Translate the uploaded scan or radiology report into plain language. Explain the findings and impression section term by term, distinguish normal, incidental, uncertain, and potentially important findings, and prepare questions for the ordering clinician. Do not infer findings that are not written in the report and do not diagnose from the text alone. Note any wording that the report itself indicates needs urgent follow-up.">Explain a scan or radiology report</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Wellness &amp; preventive habits</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Create a realistic wellness plan for [goal] based on my age range, current routine, work schedule, sleep, activity level, dietary preferences, health limitations, budget, and available time. Focus on sustainable sleep, movement, nutrition, stress management, and tracking habits. Avoid extreme diets or medical claims, identify when professional advice is appropriate, and provide a two-week starter plan with measurable but flexible targets.">Personal wellness plan</button>
+<button class="example prompt-example" data-prompt="Help me prepare for an annual health check-up. Based on the general information I provide, create a non-diagnostic checklist covering medical history updates, family history, medicines, vaccines, screening questions, lifestyle, sleep, mental well-being, dental and vision care, and concerns to raise. Do not recommend specific tests as mandatory; frame them as questions for a licensed clinician based on age, history, and local guidelines.">Annual check-up preparation</button>
+</div>
+</details>
+</div>
+</details>
+
+<details class="prompt-category">
+<summary>Psychology &amp; Art of Living</summary>
+<p class="prompt-safety-note"><strong>Important:</strong> These prompts support reflection and practical skills; they are not a diagnosis or a substitute for therapy. If there is immediate risk of harm, contact local emergency or crisis services.</p>
+<div class="prompt-category-body">
+<details class="prompt-subcategory">
+<summary>Self-reflection &amp; emotional skills</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Guide me through a structured reflection on this situation: [describe it]. Help me separate facts, interpretations, emotions, physical reactions, needs, and controllable actions. Ask compassionate but challenging questions, identify possible thinking traps without diagnosing me, and help me create one balanced perspective and three practical next steps.">Structured self-reflection</button>
+<button class="example prompt-example" data-prompt="Help me build a safe, practical coping plan for stress or anxiety related to [situation]. Include immediate grounding options, a 24-hour plan, a one-week routine, triggers to monitor, supportive people or services to contact, and signs that professional help would be appropriate. Avoid diagnosis and avoid presenting the plan as medical treatment.">Stress and anxiety coping plan</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Habits, values &amp; art of living</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Design a sustainable habit-change plan for [habit or goal]. Explore my motivation, values, current routine, triggers, friction, environment, likely setbacks, and available support. Break the change into a minimum viable habit, implementation intentions, weekly progression, tracking method, recovery plan after missed days, and a 30-day review. Keep the plan compassionate and realistic rather than perfectionistic.">Build a habit-change plan</button>
+<button class="example prompt-example" data-prompt="Facilitate a values and life-direction exercise. Help me reflect on what matters across health, relationships, work, learning, contribution, finances, creativity, rest, and spirituality or meaning. Identify tensions between values and current behavior, then help me choose three priorities, boundaries, and small actions for the next 90 days. Do not prescribe a single philosophy; present options and questions for reflection.">Values and life direction</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Relationships &amp; communication</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Help me prepare for a difficult conversation with [person or role] about [topic]. Separate facts from assumptions, clarify my goal and boundaries, anticipate their perspective, and draft an opening using respectful, non-accusatory language. Provide questions to listen better, phrases for de-escalation, and a plan if the discussion becomes unproductive or unsafe.">Prepare a difficult conversation</button>
+<button class="example prompt-example" data-prompt="Analyze the following relationship or workplace conflict without taking sides: [describe the situation]. Identify each person's likely interests, misunderstandings, communication patterns, power dynamics, and unresolved needs. Distinguish evidence from interpretation, suggest fair options, and draft a practical next-step conversation. Do not diagnose anyone's personality or mental health.">Reflect on a conflict</button>
+</div>
+</details>
+</div>
+</details>
+
+<details class="prompt-category">
+<summary>Career, CV, Job Search &amp; Freelance</summary>
+<div class="prompt-category-body">
+<details class="prompt-subcategory">
+<summary>CV, resume &amp; LinkedIn</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Act as an expert CV writer and recruiter for [target role and region]. Use my uploaded CV and the job description. Rewrite the CV for relevance and ATS readability without inventing employers, dates, skills, certifications, metrics, or achievements. Strengthen the summary and bullet points, map evidence to the role requirements, identify missing proof, and provide a concise change log plus questions needed to complete the final version.">ATS-focused CV rewrite</button>
+<button class="example prompt-example" data-prompt="Create or improve my LinkedIn profile for [target role or professional positioning] using the facts I provide. Produce a headline, About section, role descriptions, featured-content ideas, skills strategy, and a short networking message. Keep the voice credible and specific, avoid inflated claims, and identify which accomplishments need measurable evidence.">LinkedIn profile upgrade</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Job search &amp; interviews</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Build a focused job-search plan for [target roles, locations, industries, and timeline]. Assess my current experience, transferable skills, constraints, salary expectations, and network. Create a target-company strategy, weekly activity plan, application tracker fields, networking approach, recruiter message templates, interview preparation milestones, and measures for adjusting the strategy when results are weak.">Job-search strategy</button>
+<button class="example prompt-example" data-prompt="Prepare me for an interview for [role] at [company]. Use the job description, company material, and my CV. Identify likely technical, behavioral, leadership, and business questions; map each to evidence from my background; create STAR answer outlines without fabricating facts; suggest questions to ask the panel; and provide a 30 / 60 / 90-day discussion framework.">Interview preparation</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Job market &amp; company portfolio</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Assess my fit for the following job market or role family: [describe target]. Use the experience, skills, location, compensation expectations, and constraints I provide. Identify strong matches, gaps, adjacent roles, evidence I need to build, and a practical upskilling plan. Clearly mark any market claims that require current external verification rather than presenting them as live facts.">Role and market fit</button>
+<button class="example prompt-example" data-prompt="Create a company research brief for [company] using only the uploaded materials and facts I provide. Cover business model, products, customers, leadership themes, competitive position, recent initiatives, technology footprint, culture signals, risks, and why my profile may fit. Separate verified evidence from assumptions and list current information that must be checked before an interview or investment decision.">Company portfolio brief</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Freelance &amp; professional portfolio</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Design a clear freelance service offer based on my experience in [skills or domain] for [ideal client]. Define the client problem, deliverables, boundaries, process, timeline, pricing options, proof, risks, onboarding questions, and success measures. Create a one-page service description and three package levels without making unsupported claims.">Create a freelance offer</button>
+<button class="example prompt-example" data-prompt="Draft a tailored freelance proposal for the following client requirement: [paste requirement]. Use only my real capabilities and evidence. Include an understanding of the problem, proposed approach, deliverables, assumptions, exclusions, milestones, client responsibilities, risk controls, commercial options, and next steps. Keep it persuasive but specific and avoid guaranteeing outcomes outside my control.">Freelance proposal</button>
+<button class="example prompt-example" data-prompt="Plan a professional portfolio for [target role, service, or audience]. Recommend the best case studies, structure, evidence, screenshots, metrics, testimonials, and narrative. For each case study, provide a template covering context, challenge, constraints, actions, architecture or method, measurable result, lessons, and confidentiality-safe presentation. Do not invent outcomes.">Portfolio and case-study plan</button>
+</div>
+</details>
+</div>
+</details>
+
+<details class="prompt-category">
+<summary>Technology, Education &amp; Travel</summary>
+<div class="prompt-category-body">
+<details class="prompt-subcategory">
+<summary>Technology decisions &amp; digital skills</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Help me choose a technology, device, platform, or software approach for [goal]. My environment, budget, users, skills, integrations, security needs, and constraints are [details]. Build a requirements matrix, compare realistic options, explain trade-offs, identify lock-in and operating risks, and recommend a phased decision with a proof-of-concept checklist. Mark any product, price, or version information that needs current verification.">Technology selection guide</button>
+<button class="example prompt-example" data-prompt="Troubleshoot the following technology issue methodically: [describe symptoms, device or software, versions, recent changes, and error messages]. Start with the most likely and least disruptive checks, separate diagnosis from remediation, provide safe commands or settings with rollback steps, and explain what evidence each step gathers. Do not suggest destructive actions without a backup and explicit warning.">Technology troubleshooting</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Education, courses &amp; study plans</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Create a personalized learning plan for [subject or skill] at my current level [level]. My goal, deadline, weekly time, preferred learning style, available resources, and constraints are [details]. Break the plan into milestones, weekly topics, practice, projects, spaced review, assessment, and recovery options when I fall behind. Include measurable outcomes and a final capstone.">Personal learning plan</button>
+<button class="example prompt-example" data-prompt="Help me evaluate the following course, degree, certification, or training options: [list options]. Compare prerequisites, curriculum, depth, practical work, recognition, time, cost, opportunity cost, fit with my target role, and evidence of outcomes. Use only details I provide, identify what needs current verification, and finish with a decision matrix and questions to ask each provider.">Compare education options</button>
+<button class="example prompt-example" data-prompt="Teach me [topic] from first principles. Begin with the mental model and prerequisite concepts, then explain the topic in layers from beginner to advanced. Use one intuitive analogy, one worked example, common mistakes, five self-check questions with answers, and a small practical exercise. Adapt the explanation to my background: [describe background].">Learn a topic deeply</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Travel planning &amp; preparation</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Create a practical travel itinerary for [destination] from [dates] for [number and type of travellers]. Budget, starting point, interests, pace, mobility needs, dietary needs, and must-do items are [details]. Build a day-by-day plan with logical routing, rest time, alternatives, approximate budget categories, booking priorities, packing considerations, and safety notes. Clearly mark visas, opening hours, prices, transport schedules, weather, and local rules that require current verification.">Personalized travel itinerary</button>
+<button class="example prompt-example" data-prompt="Build a travel budget and decision comparison for [destinations or itinerary options]. Include transport, accommodation, food, local travel, activities, insurance, connectivity, visas, contingency, exchange-rate sensitivity, and hidden costs. Use the values I provide, show assumptions, compare value and risk, and create a pre-booking checklist of information that must be verified live.">Travel budget comparison</button>
+<button class="example prompt-example" data-prompt="Create a complete travel-preparation checklist for [destination, dates, and travel style]. Cover documents, visas and entry rules to verify, insurance, health preparation, money, connectivity, transport, accommodation, weather, clothing, medicines, accessibility, emergency contacts, digital backups, home preparation, and a compact packing list. Distinguish universal guidance from destination-specific information that requires current confirmation.">Travel preparation checklist</button>
+</div>
+</details>
+</div>
+</details>
 </div>
 </details>
 </section>
@@ -545,9 +731,34 @@
 </header>
 <section class="chat" id="chat">
 <div class="welcome" id="welcome">
-<h3>Ask RajAIAssist.</h3>
-<div>To get started, enter the API key shared by Raj. Then type your prompt and click the AskAI button.</div>
+<h3>Start a new conversation.</h3>
+<div>Enter the API key shared by Raj, upload relevant files when needed, then ask a focused question.</div>
 <div>Local AI prioritizes privacy and control, but response quality, speed, and availability may vary compared to managed cloud AI providers.</div>
+<section class="prompt-formula" aria-labelledby="promptFormulaTitle">
+<div class="prompt-formula-head">
+<span class="prompt-formula-kicker">First-time user guide</span>
+<h4 id="promptFormulaTitle">Recommended prompt formula</h4>
+<p>Include as many of these elements as relevant. Clear instructions generally produce stronger, more useful answers.</p>
+</div>
+<div class="prompt-formula-grid">
+<div class="prompt-formula-item"><span class="prompt-formula-label">Task</span>State the exact outcome you want.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Files / Input</span>Name the files, data, text, or examples to use.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Context</span>Explain the audience, situation, and why it matters.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Requirements</span>List mandatory features, checks, or sections.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Constraints</span>Specify budget, tools, versions, length, deadline, or exclusions.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Output</span>Choose the format: table, plan, script, email, summary, checklist, and so on.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Validation</span>Ask for assumptions, uncertainties, evidence, risks, and verification steps.</div>
+</div>
+<div class="prompt-formula-template" aria-label="Copy-ready prompt structure">
+<div><strong>Task:</strong> [What do you need?]</div>
+<div><strong>Files / Input:</strong> [What should be used?]</div>
+<div><strong>Context:</strong> [Audience, situation, purpose]</div>
+<div><strong>Requirements:</strong> [Mandatory details]</div>
+<div><strong>Constraints:</strong> [Budget, tools, limits, exclusions]</div>
+<div><strong>Output:</strong> [Exact response format]</div>
+<div><strong>Validation:</strong> [Assumptions, evidence, risks, checks]</div>
+</div>
+</section>
 <div class="examples">
 <button class="example" data-prompt="Summarize the uploaded document. Include key findings, risks, and action items.">Summarize an uploaded document</button>
 <button class="example" data-prompt="Review the uploaded code, identify defects and security risks, then provide a corrected version.">Review uploaded code</button>
@@ -1291,7 +1502,32 @@
       chat.innerHTML = `
         <div class="welcome" id="welcome">
           <h3>Start a new conversation.</h3>
-          <div>Upload relevant files, then ask a focused question. Your chat and document index are isolated by the current session ID.</div>
+          <div>Upload relevant files when needed, then ask a focused question. Your chat and document index are isolated by the current session ID.</div>
+          <section class="prompt-formula" aria-labelledby="promptFormulaTitle">
+<div class="prompt-formula-head">
+<span class="prompt-formula-kicker">First-time user guide</span>
+<h4 id="promptFormulaTitle">Recommended prompt formula</h4>
+<p>Include as many of these elements as relevant. Clear instructions generally produce stronger, more useful answers.</p>
+</div>
+<div class="prompt-formula-grid">
+<div class="prompt-formula-item"><span class="prompt-formula-label">Task</span>State the exact outcome you want.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Files / Input</span>Name the files, data, text, or examples to use.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Context</span>Explain the audience, situation, and why it matters.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Requirements</span>List mandatory features, checks, or sections.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Constraints</span>Specify budget, tools, versions, length, deadline, or exclusions.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Output</span>Choose the format: table, plan, script, email, summary, checklist, and so on.</div>
+<div class="prompt-formula-item"><span class="prompt-formula-label">Validation</span>Ask for assumptions, uncertainties, evidence, risks, and verification steps.</div>
+</div>
+<div class="prompt-formula-template" aria-label="Copy-ready prompt structure">
+<div><strong>Task:</strong> [What do you need?]</div>
+<div><strong>Files / Input:</strong> [What should be used?]</div>
+<div><strong>Context:</strong> [Audience, situation, purpose]</div>
+<div><strong>Requirements:</strong> [Mandatory details]</div>
+<div><strong>Constraints:</strong> [Budget, tools, limits, exclusions]</div>
+<div><strong>Output:</strong> [Exact response format]</div>
+<div><strong>Validation:</strong> [Assumptions, evidence, risks, checks]</div>
+</div>
+</section>
         </div>`;
     }
 
