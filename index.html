@@ -223,6 +223,65 @@
     .example:hover { border-color: rgba(33, 209, 139, .38); }
     .sidebar-examples { display: grid; gap: 8px; }
     .sidebar-examples .example { width: 100%; }
+    .prompt-library-shell,
+    .prompt-category,
+    .prompt-subcategory {
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      background: var(--panel-3);
+    }
+    .prompt-library-shell > summary,
+    .prompt-category > summary,
+    .prompt-subcategory > summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      list-style: none;
+      color: #d7e1eb;
+      font-weight: 780;
+      line-height: 1.35;
+    }
+    .prompt-library-shell > summary::-webkit-details-marker,
+    .prompt-category > summary::-webkit-details-marker,
+    .prompt-subcategory > summary::-webkit-details-marker { display: none; }
+    .prompt-library-shell > summary { padding: 10px 11px; font-size: .79rem; }
+    .prompt-category > summary { padding: 9px 10px; font-size: .76rem; }
+    .prompt-subcategory > summary { padding: 8px 9px; font-size: .72rem; color: #b9c7d5; }
+    .prompt-library-shell > summary::after,
+    .prompt-category > summary::after,
+    .prompt-subcategory > summary::after {
+      content: "+";
+      flex: 0 0 auto;
+      color: var(--accent);
+      font-size: .95rem;
+      font-weight: 900;
+    }
+    .prompt-library-shell[open] > summary::after,
+    .prompt-category[open] > summary::after,
+    .prompt-subcategory[open] > summary::after { content: "−"; }
+    .prompt-library-shell[open] > summary,
+    .prompt-category[open] > summary,
+    .prompt-subcategory[open] > summary { border-bottom: 1px solid var(--border-soft); }
+    .prompt-library-help {
+      margin: 10px 10px 8px;
+      color: var(--muted);
+      font-size: .69rem;
+      line-height: 1.45;
+    }
+    .prompt-library { display: grid; gap: 8px; padding: 0 8px 8px; }
+    .prompt-category-body { display: grid; gap: 7px; padding: 8px; }
+    .prompt-list { display: grid; gap: 6px; padding: 7px; }
+    .prompt-example {
+      width: 100%;
+      padding: 9px 10px;
+      border-radius: 10px;
+      font-size: .72rem;
+      line-height: 1.35;
+      background: #121922;
+    }
+    .prompt-example::before { content: "↳ "; color: var(--accent); }
     .file-help { color: var(--muted); font-size: .72rem; line-height: 1.45; margin: 8px 0 0; }
     .message { max-width: 980px; margin: 0 auto 22px; }
     .message-head { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
@@ -271,6 +330,9 @@
     }
     .range-row { display: grid; grid-template-columns: 1fr 78px; gap: 8px; }
     .footer { text-align: center; color: #667487; font-size: .69rem; padding: 2px 0 5px; }
+    .footer a { color: inherit; text-decoration: none; transition: color .15s ease; }
+    .footer a:hover, .footer a:focus-visible { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .footer a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
     .toast {
       position: fixed; right: 18px; bottom: 18px; z-index: 20; max-width: min(420px, calc(100vw - 36px));
       padding: 11px 13px; border: 1px solid var(--border); border-radius: 12px; background: #171f28;
@@ -343,21 +405,120 @@
 <section class="card" id="fileIngestCard">
 <div class="card-title"><span>File Ingest</span><button class="btn btn-small" id="refreshDocsBtn">Refresh</button></div>
 <input class="upload-input" id="fileInput" type="file" multiple/>
-<p class="file-help">Choose one or more files in a single selection. Common documents, source code, archives, emails, spreadsheets, presentations, and images are processed locally; opaque binaries are stored as searchable metadata only.</p>
+<p class="file-help">Choose one or more files in a single selection. Common documents, source code, archives, emails, spreadsheets, presentations, and images are processed locally.</p>
 <button class="btn btn-primary" id="uploadBtn" style="width:100%;margin-top:9px">Upload and ingest selected</button>
 <div class="status-line" id="uploadStatus"></div>
 <div class="documents" id="documents"><div class="empty-mini">No files loaded for this chat.</div></div>
 </section>
-<section class="card">
+<section class="card" id="promptLibraryCard">
 <div class="card-title"><span>Example Prompts</span></div>
-<div class="sidebar-examples">
-<button class="example" data-prompt="Analyze the uploaded logs and produce one complete executable Python script.&#10;&#10;Output the complete script first, inside one Python code block. Do not interrupt the code with explanations. After the code, provide only brief setup and usage instructions.">Generate script from logs</button>
-<button class="example" data-prompt="Summarize the uploaded file. Highlight key findings, risks, decisions, and action items.">Summarize a file</button>
-<button class="example" data-prompt="Review the uploaded code or configuration, identify defects and security risks, then provide a corrected version.">Review code or config</button>
-<button class="example" data-prompt="Analyze the uploaded logs, identify the probable root cause, and give me a step-by-step remediation plan.">Troubleshoot logs</button>
-<button class="example" data-prompt="Draft a clear professional email for the following situation:">Draft an email</button>
-<button class="example" data-prompt="Create a detailed implementation plan with assumptions, milestones, dependencies, risks, and acceptance criteria for:">Build an implementation plan</button>
+<details class="prompt-library-shell">
+<summary>Browse advanced prompt library</summary>
+<p class="prompt-library-help">Open a category and select a prompt. It will be copied into the question box for you to review and customize before sending.</p>
+<div class="prompt-library">
+<details class="prompt-category">
+<summary>Coding &amp; Automation</summary>
+<div class="prompt-category-body">
+<details class="prompt-subcategory">
+<summary>Generate &amp; build</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Act as a senior Python engineer. Create one complete, executable Python 3.10+ solution for the following requirement:&#10;&#10;[Describe the requirement here]&#10;&#10;Output the complete code first in one Python code block. Include all imports, configuration, validation, error handling, logging, type hints, docstrings, command-line arguments where appropriate, and the full __main__ entry point. Do not use TODOs, ellipses, placeholders, or omitted sections. After the code, provide only brief setup and one example command.">Production Python script</button>
+<button class="example prompt-example" data-prompt="Design and implement a production-ready command-line utility for the following task:&#10;&#10;[Describe the task here]&#10;&#10;Use Python 3.10+, argparse, pathlib, structured logging, meaningful exit codes, input validation, and explicit exception handling. Include one complete executable script, a --help experience, a dry-run option when relevant, and a built-in self-test. Output code first, followed by concise usage instructions.">Command-line utility</button>
+<button class="example prompt-example" data-prompt="Create one complete Bash script for the following automation requirement:&#10;&#10;[Describe the requirement here]&#10;&#10;Use set -euo pipefail, validate prerequisites and arguments, quote variables safely, provide clear logs, handle cleanup with trap, support --help and --dry-run when appropriate, and return meaningful exit codes. Output the full script first and then only brief setup and usage notes.">Bash automation</button>
 </div>
+</details>
+<details class="prompt-subcategory">
+<summary>Review, repair &amp; test</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Perform a hostile production-readiness review of the uploaded code. Identify correctness, security, reliability, concurrency, error-handling, performance, and maintainability defects. Verify variable scope, repeated-state handling, counters, averages, serialization, command-line behavior, and failure paths. Then output one complete corrected replacement file, not a patch. Do not omit unchanged sections. Finish with a concise defect summary and validation commands.">Hostile code review + replacement</button>
+<button class="example prompt-example" data-prompt="Review the uploaded application or configuration as a security engineer. Identify exposed secrets, unsafe input handling, injection risks, weak authentication, insecure defaults, path traversal, unsafe file processing, CORS issues, missing timeouts, and excessive permissions. Rank findings by severity, explain exploitability, and provide a complete hardened replacement for every affected file.">Security hardening</button>
+<button class="example prompt-example" data-prompt="Analyze the uploaded code and create a comprehensive automated test suite. Cover normal behavior, edge cases, invalid input, exceptions, concurrency or repeated runs, serialization, and regression cases for every defect you identify. Output complete runnable test files first, then provide the exact commands to run them and the expected success criteria.">Generate tests</button>
+</div>
+</details>
+</div>
+</details>
+<details class="prompt-category">
+<summary>Logs, Incidents &amp; Observability</summary>
+<div class="prompt-category-body">
+<details class="prompt-subcategory">
+<summary>Log analysis</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Analyze all relevant uploaded logs as a senior reliability engineer. Build a timestamped incident timeline, separate verified evidence from inference, identify the most likely root cause and contributing factors, rank alternative hypotheses, and provide a concrete verification step for each hypothesis. Finish with immediate remediation, long-term prevention, and the exact additional telemetry needed to remove uncertainty.">Root-cause analysis</button>
+<button class="example prompt-example" data-prompt="Correlate the uploaded application, database, operating-system, network, and infrastructure logs. Determine which events belong to the same incident, identify the causal chain and blast radius, distinguish symptoms from causes, and cite the relevant source labels. Provide a concise executive summary followed by a detailed technical analysis and verification plan.">Cross-source correlation</button>
+<button class="example prompt-example" data-prompt="Inspect the uploaded logs for recurring failures, timing patterns, abnormal sequences, latency spikes, missing lifecycle events, retries, and possible resource exhaustion. Quantify each pattern where the data permits, cite representative source lines, explain likely operational impact, and recommend monitoring signals and thresholds.">Detect patterns and anomalies</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Monitoring &amp; alerting</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Analyze the uploaded logs and produce one complete executable Python 3.10+ monitoring script.&#10;&#10;First infer the exact observed log grammar, lifecycle markers, timestamps, and correlation fields. Do not invent identifiers that are absent. The script must read a real log file through argparse, preserve every repeated execution as a separate record, correlate start/end/error/no-result events, handle malformed and incomplete records, calculate statistics using completed runs only, support terminal plus JSON/CSV output, use monitoring exit codes 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN, perform atomic report writes, and include assertion-based --self-test coverage.&#10;&#10;Output the complete script first inside exactly one Python code block. Do not use ellipses, placeholders, TODOs, hard-coded sample logs, or silent except blocks. After the code, provide only brief setup, one example command, and assumptions.">Production log monitor</button>
+<button class="example prompt-example" data-prompt="Using the uploaded logs and the observed event format, design an Oracle Enterprise Manager metric extension or equivalent collector. Provide one complete Bash or Python collection script that emits stable key-value metrics, meaningful status and error output, configurable thresholds, timeout handling, duplicate-event protection, and monitoring exit codes. Also provide the metric columns, data types, key columns, collection schedule, warning/critical expressions, and a safe validation procedure.">Oracle metric extension</button>
+<button class="example prompt-example" data-prompt="Design an actionable alerting strategy for the uploaded telemetry. Define the exact signals, calculation windows, baselines, warning and critical thresholds, suppression and deduplication rules, recovery conditions, routing, runbook links, and false-positive controls. Separate symptom alerts from cause-oriented alerts and explain how each alert would be validated before production rollout.">Alert design</button>
+</div>
+</details>
+</div>
+</details>
+<details class="prompt-category">
+<summary>Documents &amp; Knowledge</summary>
+<div class="prompt-category-body">
+<details class="prompt-subcategory">
+<summary>Summarize &amp; compare</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Summarize the uploaded document for an executive audience. Preserve important names, dates, numbers, commitments, and constraints. Organize the response into purpose, key findings, decisions, risks, unresolved questions, and prioritized action items. Cite the supplied source labels for material claims and clearly mark any uncertainty.">Executive summary</button>
+<button class="example prompt-example" data-prompt="Compare all uploaded documents. Identify agreements, contradictions, missing information, terminology differences, changed requirements, and implications. Produce a comparison matrix followed by a consolidated recommendation. Cite the source label for every important difference and do not invent content that is not present.">Compare documents</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Extract &amp; transform</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Convert the uploaded material into a production-ready standard operating procedure. Include purpose, scope, prerequisites, roles, step-by-step instructions, validation checks, rollback or recovery steps, troubleshooting, escalation criteria, and completion evidence. Preserve exact commands and warnings from the source, and cite the relevant source labels.">Create an SOP</button>
+<button class="example prompt-example" data-prompt="Extract all explicit and implied requirements, controls, dependencies, assumptions, risks, owners, deadlines, and acceptance criteria from the uploaded files. Present them in a structured table with source citations, then list conflicts, gaps, and questions that must be resolved before implementation.">Requirements and controls table</button>
+<button class="example prompt-example" data-prompt="Answer the following question using only the uploaded evidence:&#10;&#10;[Enter your question here]&#10;&#10;Cite source labels for every document-derived claim. Distinguish direct evidence, reasonable inference, and missing information. If the documents do not support a definitive answer, state exactly what is missing rather than guessing.">Evidence-based Q&amp;A</button>
+</div>
+</details>
+</div>
+</details>
+<details class="prompt-category">
+<summary>Architecture &amp; Planning</summary>
+<div class="prompt-category-body">
+<details class="prompt-subcategory">
+<summary>Solution architecture</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Review the proposed architecture in the uploaded files. Evaluate functional fit, availability, scalability, performance, security, privacy, operability, observability, failure isolation, cost, and maintainability. Identify single points of failure and hidden dependencies. Provide prioritized recommendations, an improved target architecture, and a validation checklist.">Architecture review</button>
+<button class="example prompt-example" data-prompt="Create a detailed migration strategy from the current state described in the uploaded files to the target state. Include assumptions, discovery, dependencies, data migration, integration changes, security, testing, cutover, rollback, monitoring, communications, ownership, and measurable exit criteria for every phase.">Migration design</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Delivery planning</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Create an implementation plan for the following objective:&#10;&#10;[Describe the objective here]&#10;&#10;Include scope, assumptions, workstreams, milestones, dependencies, owners, sequencing, risks, mitigations, test strategy, rollout, rollback, observability, documentation, and acceptance criteria. Make the plan operational, with clear deliverables and decision gates.">Implementation plan</button>
+<button class="example prompt-example" data-prompt="Create a complete validation and acceptance plan for the uploaded solution. Cover functional, integration, performance, resilience, security, data quality, upgrade, rollback, monitoring, and operational-readiness testing. For each test, specify prerequisites, steps, expected result, evidence, owner, severity, and pass/fail criteria.">Test and acceptance plan</button>
+<button class="example prompt-example" data-prompt="Build a prioritized risk register for the uploaded project or design. Include risk statement, cause, consequence, likelihood, impact, score, early warning indicators, owner, preventive control, contingency, residual risk, and target review date. Highlight the top decisions that require stakeholder approval.">Risk register</button>
+</div>
+</details>
+</div>
+</details>
+<details class="prompt-category">
+<summary>Writing &amp; Communication</summary>
+<div class="prompt-category-body">
+<details class="prompt-subcategory">
+<summary>Email &amp; incident communication</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Draft a clear professional email for the following situation:&#10;&#10;[Describe the situation, audience, and desired outcome]&#10;&#10;Provide a concise subject line, an executive-friendly opening, the essential context, required actions with owners and dates, and a courteous close. Keep the tone confident, factual, and free of unnecessary jargon.">Professional email</button>
+<button class="example prompt-example" data-prompt="Using the uploaded incident evidence, draft a stakeholder update with: current status, customer or business impact, confirmed facts, actions completed, work in progress, risks, next update time, and owner contacts. Do not speculate or expose sensitive technical details. Provide an executive version first and a technical-operations version second.">Incident update</button>
+</div>
+</details>
+<details class="prompt-subcategory">
+<summary>Rewrite &amp; explain</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Rewrite the following content so it is concise, professional, clear, and action-oriented while preserving the original meaning:&#10;&#10;[Paste the content here]&#10;&#10;Remove repetition, clarify ownership and deadlines, retain important technical facts, and provide only the improved version unless a material ambiguity must be flagged.">Concise professional rewrite</button>
+<button class="example prompt-example" data-prompt="Translate the uploaded technical content into an executive explanation. Focus on business impact, risk, urgency, options, cost or effort, and the decision required. Avoid low-level jargon, but preserve critical facts and uncertainty. Finish with a one-paragraph recommendation.">Technical to executive</button>
+</div>
+</details>
+</div>
+</details>
+</div>
+</details>
 </section>
 <section class="card" id="memoryCard">
 <div class="card-title"><span>Long-term memory</span></div>
@@ -405,13 +566,13 @@
 </div>
 </div>
 </section>
-<div class="footer">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect · RajAIAssist v2.6.1</div>
+<div class="footer"><a href="https://www.linkedin.com/in/rajmohanacharya/" target="_blank" rel="noopener noreferrer" aria-label="Visit Raj Mohan Acharya's LinkedIn profile">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v2.6.2</div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
 <div aria-labelledby="offlineTitle" aria-modal="true" class="modal-backdrop" id="offlineModal" role="dialog">
 <div class="modal-card">
-<h3 id="offlineTitle">RajAIAssist is currently offline</h3>
+<h3 id="offlineTitle">RajAIAssist is offline</h3>
 <p id="offlineMessage">Ask Raj to start AI.</p>
 <div class="row">
 <a class="btn btn-primary grow" hidden="" href="#" id="notifyRajBtn" rel="noopener noreferrer" target="_blank">Notify Raj</a>
@@ -465,12 +626,9 @@
       ).trim(),
       statusPollMs: Math.max(15000, Number(RAW_CONFIG.statusPollMs) || 30000),
       manifestPollMs: Math.max(60000, Number(RAW_CONFIG.manifestPollMs) || 120000),
-      offlineMessage: String(
-        RAW_CONFIG.offlineMessage || "Ask Raj to start AI."
-      ).trim(),
       notifyUrl: String(RAW_CONFIG.notifyUrl || "").trim()
     });
-    const OFFLINE_MESSAGE = CONFIG.offlineMessage;
+    const OFFLINE_MESSAGE = "Ask Raj to start AI.";
 
     function safeNotifyUrl(value) {
       if (!value) return "";
@@ -564,18 +722,17 @@
       connectionDot.style.color = ok ? "var(--accent)" : (signatureVerified ? "var(--danger)" : "var(--warning)");
     }
 
-    function showOfflineNotice(reason = "") {
-      offlineTitleEl.textContent = "RajAIAssist is currently offline";
+    function showOfflineNotice() {
+      offlineTitleEl.textContent = "RajAIAssist is offline";
       offlineMessageEl.textContent = OFFLINE_MESSAGE;
-      offlineMessageEl.title = reason || "";
-      if (reason) console.debug("AI service offline detail:", reason);
+      offlineMessageEl.removeAttribute("title");
       offlineModal.classList.add("show");
       showToast(OFFLINE_MESSAGE, true);
     }
 
     function showAccessNotice(message) {
       offlineTitleEl.textContent = "RajAIAssist is unavailable";
-      offlineMessageEl.textContent = message || "Ask Raj to start AI, then refresh this page.";
+      offlineMessageEl.textContent = message || OFFLINE_MESSAGE;
       offlineModal.classList.add("show");
       showToast(offlineMessageEl.textContent, true);
     }
@@ -1216,50 +1373,22 @@
       if (stats.tokens_per_second) {
         parts.push(`${stats.tokens_per_second} tok/s`);
       }
-
-      const durationMs = Number(
-        stats.pipeline_total_duration_ms || stats.total_duration_ms || 0
-      );
+      const durationMs = Number(stats.total_duration_ms || 0);
       if (durationMs) {
         parts.push(`${(durationMs / 1000).toFixed(1)} s`);
-      }
-
-      if (stats.prompt_enhanced) {
-        const task = String(stats.prompt_task || "general")
-          .replaceAll("_", " ");
-        parts.push(`Auto-expert: ${task}`);
-      }
-      if (Number(stats.verification_passes || 0) > 0) {
-        parts.push("verified answer");
       }
 
       const outputLimitReached =
         stats.done_reason === "length" ||
         Number(stats.output_tokens || 0) >= GENERATION_DEFAULTS.maxTokens;
 
-      const qualityWarning = stats.quality_gate === "warning";
       if (outputLimitReached) {
         parts.push("output limit reached — ask Continue");
-      }
-      if (qualityWarning) {
-        parts.push("quality checks need review");
-      }
-
-      if (outputLimitReached || qualityWarning) {
         statsBox.style.color = "var(--warning)";
       } else {
         statsBox.style.color = "";
       }
-
-      const qualityIssues = Array.isArray(stats.quality_issues)
-        ? stats.quality_issues.filter(Boolean)
-        : [];
-      if (qualityIssues.length) {
-        statsBox.title = qualityIssues.join("\n");
-      } else {
-        statsBox.removeAttribute("title");
-      }
-
+      statsBox.removeAttribute("title");
       statsBox.textContent = parts.join(" · ");
     }
 
@@ -1551,7 +1680,7 @@
         throw new Error(
           answer.trim()
             ? "The AI connection closed before the response was marked complete. Please retry."
-            : "The AI connection closed before the verified answer was delivered. Please retry."
+            : "The AI connection closed before an answer was delivered. Please retry."
         );
       }
 
@@ -1584,7 +1713,7 @@
           updateAssistantBody(assistantMessage, "_Display stopped in this browser. The backend may still be finishing the request._");
         } else if (error instanceof BackendOfflineError) {
           updateAssistantBody(assistantMessage, `**RajAIAssist is offline.** ${OFFLINE_MESSAGE}`);
-          showOfflineNotice(error.reason);
+          showOfflineNotice();
         } else {
           updateAssistantBody(assistantMessage, `**Error:** ${error.message}`);
           showToast(error.message, true);
@@ -1696,6 +1825,8 @@
       button.addEventListener("click", () => {
         questionInput.value = button.dataset.prompt || "";
         questionInput.focus();
+        questionInput.scrollIntoView({ behavior: "smooth", block: "center" });
+        showToast("Prompt added. Review or customize it before sending.");
       });
     });
     async function initializeApp() {
