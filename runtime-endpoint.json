@@ -1,12 +1,12 @@
 {
-  "app_version": "2.6.1-cli",
-  "backend_url": "",
-  "expires_at": 1783837409,
-  "issued_at": 1783833809,
-  "model": "llama3.1:8b",
-  "online": false,
+  "app_version": "2.5.1",
+  "backend_url": "https://amanda-applies-simple-shakira.trycloudflare.com",
+  "expires_at": 1783877994,
+  "issued_at": 1783834794,
+  "model": "qwen3:8b",
+  "online": true,
   "schema_version": 1,
-  "signature": "27451ff873110e5a5d4750ba0a6ef8b911b66f454378d73ac947a227882b4431",
-  "tunnel_mode": "offline",
-  "updated_at": "2026-07-12T05:23:29.292106+00:00"
+  "signature": "67a04f7c44d776d05b74321f044ea6f3aa7c9c38eaf59f7fe8e521e027526422",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-12T05:39:54.675337+00:00"
 }
