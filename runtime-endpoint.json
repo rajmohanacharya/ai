@@ -1,12 +1,13 @@
 {
-  "app_version": "2.6.2",
-  "backend_url": "https://reviewer-folding-interesting-ing.trycloudflare.com",
-  "expires_at": 1783913905,
-  "issued_at": 1783870705,
-  "model": "qwen3:8b",
-  "online": true,
+  "app_version": "2.7.0-cli",
+  "backend_url": "",
+  "expires_at": 1783884171,
+  "issued_at": 1783880571,
+  "model": "llama3.1:8b",
+  "online": false,
+  "provider": "offline",
   "schema_version": 1,
-  "signature": "543917fa23025a1d5cab7c66cfa0647672dbe7937e7932687978ded818e20896",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-12T15:38:25.693715+00:00"
+  "signature": "e0103daa118f1d2bb06e3edfc88ff01325da63d2568e10171354b2151e1cd11f",
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-12T18:22:51.546743+00:00"
 }
