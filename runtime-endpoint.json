@@ -1,16 +1,16 @@
 {
   "app_version": "2.7.0-cli",
-  "backend_url": "https://tablet-visited-reporting-chips.trycloudflare.com",
+  "backend_url": "",
   "compute_type": "gpu",
-  "expires_at": 1783925021,
-  "issued_at": 1783881821,
+  "expires_at": 1783887508,
+  "issued_at": 1783883908,
   "lifecycle_id": "252cb00aa2eb37be3470bc2ff53bae1e",
   "model": "llama3.1:8b",
-  "online": true,
+  "online": false,
   "provider": "colab_gpu",
   "schema_version": 1,
-  "signature": "9be0a128e20139eaa5489c854ea210cfd4594b3f3b0c69800e871773bf3f37d6",
+  "signature": "02c2e46f32d87313846ae7fa43b1d1cc9b25e2f5644c75b5393d88b51b1c14ab",
   "storage_mode": "drive",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-12T18:43:41.043484+00:00"
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-12T19:18:28.687262+00:00"
 }
