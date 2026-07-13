@@ -1,16 +1,14 @@
 {
-  "app_version": "2.7.0-cli",
+  "app_version": "2.7.3-cli",
   "backend_url": "",
-  "compute_type": "cpu",
-  "expires_at": 1783936797,
-  "issued_at": 1783933197,
-  "lifecycle_id": "af24809e4502c0426f65367576745934",
-  "model": "qwen3:1.7b",
+  "expires_at": 1783951365,
+  "issued_at": 1783947765,
+  "lifecycle_id": "4248c34608149599156f8634ffc1a4c5",
+  "model": "llama3.1:8b",
   "online": false,
-  "provider": "local_cpu",
+  "provider": "starting",
   "schema_version": 1,
-  "signature": "dc185193c1e62a7c9cb0d2f8f24e4e4612158bc266d9309716b16fd5932e25f6",
-  "storage_mode": "local_persistent",
+  "signature": "069741425d801ceff3715b10b304410f1c95df2fbf55ebf0badc0205ec1a8635",
   "tunnel_mode": "offline",
-  "updated_at": "2026-07-13T08:59:57.498375+00:00"
+  "updated_at": "2026-07-13T13:02:45.713100+00:00"
 }
