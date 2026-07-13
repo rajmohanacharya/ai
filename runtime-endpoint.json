@@ -1,16 +1,16 @@
 {
   "app_version": "2.7.0-cli",
-  "backend_url": "https://dust-alaska-kelly-roller.trycloudflare.com",
+  "backend_url": "",
   "compute_type": "gpu",
-  "expires_at": 1783957578,
-  "issued_at": 1783914378,
+  "expires_at": 1783936453,
+  "issued_at": 1783932853,
   "lifecycle_id": "af24809e4502c0426f65367576745934",
   "model": "llama3.1:8b",
-  "online": true,
+  "online": false,
   "provider": "colab_gpu",
   "schema_version": 1,
-  "signature": "9b9f9b1399772c22ab61d961d493d9fbba574c4b45296128bbf30a49374defe0",
+  "signature": "ce32e4b2074c3c8382a2c91dcd99475b10e64d2b336766bac0b5c654fcaab255",
   "storage_mode": "drive",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-13T03:46:18.736284+00:00"
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-13T08:54:13.756656+00:00"
 }
