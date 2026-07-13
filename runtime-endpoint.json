@@ -1,16 +1,16 @@
 {
   "app_version": "2.7.0-cli",
-  "backend_url": "https://coming-radius-roughly-nutrition.trycloudflare.com",
+  "backend_url": "",
   "compute_type": "cpu",
-  "expires_at": 1783956112,
-  "issued_at": 1783912912,
+  "expires_at": 1783917096,
+  "issued_at": 1783913496,
   "lifecycle_id": "e76f4e94756bcf9d31ada3d2f5a34716",
   "model": "qwen3:1.7b",
-  "online": true,
+  "online": false,
   "provider": "local_cpu",
   "schema_version": 1,
-  "signature": "96a12573755995a7cd515f48eee0d29c12c54bebbf68c36526f1a124a59b862d",
+  "signature": "ae4bde7a43e0cdc82947fa0709f2d2e3605ec59566c736a2fcc3a433a618a424",
   "storage_mode": "local_persistent",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-13T03:21:52.925118+00:00"
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-13T03:31:36.388546+00:00"
 }
