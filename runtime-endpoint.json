@@ -1,16 +1,16 @@
 {
   "app_version": "2.7.0-cli",
-  "backend_url": "https://acids-garlic-flexibility-arkansas.trycloudflare.com",
+  "backend_url": "",
   "compute_type": "cpu",
-  "expires_at": 1783976377,
-  "issued_at": 1783933177,
+  "expires_at": 1783936797,
+  "issued_at": 1783933197,
   "lifecycle_id": "af24809e4502c0426f65367576745934",
   "model": "qwen3:1.7b",
-  "online": true,
+  "online": false,
   "provider": "local_cpu",
   "schema_version": 1,
-  "signature": "2b7501988c5555824bb0630a1798ddd152672019743d66b98c897ba669a0a91c",
+  "signature": "dc185193c1e62a7c9cb0d2f8f24e4e4612158bc266d9309716b16fd5932e25f6",
   "storage_mode": "local_persistent",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-13T08:59:37.583548+00:00"
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-13T08:59:57.498375+00:00"
 }
