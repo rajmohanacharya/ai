@@ -1,16 +1,16 @@
 {
   "app_version": "2.7.0-cli",
-  "backend_url": "",
-  "compute_type": "cpu",
-  "expires_at": 1783917096,
-  "issued_at": 1783913496,
-  "lifecycle_id": "e76f4e94756bcf9d31ada3d2f5a34716",
-  "model": "qwen3:1.7b",
-  "online": false,
-  "provider": "local_cpu",
+  "backend_url": "https://dust-alaska-kelly-roller.trycloudflare.com",
+  "compute_type": "gpu",
+  "expires_at": 1783957578,
+  "issued_at": 1783914378,
+  "lifecycle_id": "af24809e4502c0426f65367576745934",
+  "model": "llama3.1:8b",
+  "online": true,
+  "provider": "colab_gpu",
   "schema_version": 1,
-  "signature": "ae4bde7a43e0cdc82947fa0709f2d2e3605ec59566c736a2fcc3a433a618a424",
-  "storage_mode": "local_persistent",
-  "tunnel_mode": "offline",
-  "updated_at": "2026-07-13T03:31:36.388546+00:00"
+  "signature": "9b9f9b1399772c22ab61d961d493d9fbba574c4b45296128bbf30a49374defe0",
+  "storage_mode": "drive",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-13T03:46:18.736284+00:00"
 }
