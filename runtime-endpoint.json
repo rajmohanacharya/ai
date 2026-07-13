@@ -1,14 +1,16 @@
 {
   "app_version": "2.7.3-cli",
-  "backend_url": "",
-  "expires_at": 1783951365,
-  "issued_at": 1783947765,
-  "lifecycle_id": "4248c34608149599156f8634ffc1a4c5",
+  "backend_url": "https://jessica-roy-avatar-bikini.trycloudflare.com",
+  "compute_type": "gpu",
+  "expires_at": 1783991693,
+  "issued_at": 1783948493,
+  "lifecycle_id": "ac2182f21c99ae83df239a552539ffc1",
   "model": "llama3.1:8b",
-  "online": false,
-  "provider": "starting",
+  "online": true,
+  "provider": "colab_gpu",
   "schema_version": 1,
-  "signature": "069741425d801ceff3715b10b304410f1c95df2fbf55ebf0badc0205ec1a8635",
-  "tunnel_mode": "offline",
-  "updated_at": "2026-07-13T13:02:45.713100+00:00"
+  "signature": "0d617b80896ca166997e4bb5b0b5cc64e137c34a179e7ccf30bd6a49d7b85383",
+  "storage_mode": "drive",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-13T13:14:53.570339+00:00"
 }
