@@ -2,15 +2,15 @@
   "app_version": "2.7.3-cli",
   "backend_url": "",
   "compute_type": "gpu",
-  "expires_at": 1783960771,
-  "issued_at": 1783957171,
+  "expires_at": 1783960831,
+  "issued_at": 1783957231,
   "lifecycle_id": "ac2182f21c99ae83df239a552539ffc1",
   "model": "llama3.1:8b",
   "online": false,
   "provider": "colab_gpu",
   "schema_version": 1,
-  "signature": "1d5db29649bc6529f5925b2ea68df89b6ea1fe36f60c1a0a3591b257a710601e",
+  "signature": "f8361fe71a0f0bf750312111f91cda22965d9964e1ac8f1db8c5e5be7d03e48d",
   "storage_mode": "drive",
   "tunnel_mode": "offline",
-  "updated_at": "2026-07-13T15:39:31.445583+00:00"
+  "updated_at": "2026-07-13T15:40:31.006662+00:00"
 }
