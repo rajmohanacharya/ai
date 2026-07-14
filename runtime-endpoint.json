@@ -1,16 +1,20 @@
 {
+  "app_version": "2.8.1-cli",
+  "backend_url": "https://surgeon-women-asylum-providers.trycloudflare.com",
+  "compute_type": "gpu",
+  "expires_at": 1784095393,
+  "issued_at": 1784052193,
+  "lifecycle_id": "d173b7abfa4081b7516e1c76fee2168b",
+  "model": "qwen3:8b",
+  "online": true,
+  "provider": "colab_gpu",
   "schema_version": 2,
-  "online": false,
-  "backend_url": "",
-  "issued_at": 0,
-  "expires_at": 0,
-  "signatures": [],
-  "signature": "",
-  "model": "",
-  "provider": "offline",
-  "compute_type": "",
-  "storage_mode": "",
-  "tunnel_mode": "offline",
-  "updated_at": "",
-  "lifecycle_id": ""
+  "signature": "56188e6f7400bd6c2605a413dad206ee864efae0f9da4cf4e290760a8545e941",
+  "signatures": [
+    "56188e6f7400bd6c2605a413dad206ee864efae0f9da4cf4e290760a8545e941",
+    "6a410555e8fb8878c478e45927c4efcaf0d3e39792e6db0471565a08246e0caf"
+  ],
+  "storage_mode": "drive",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-14T18:03:13.440579+00:00"
 }
