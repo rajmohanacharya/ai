@@ -390,6 +390,11 @@
     .modal-card h3 { margin: 0 0 9px; font-size: 1.08rem; }
     .modal-card p { margin: 0 0 16px; color: #c0ccd9; line-height: 1.6; font-size: .86rem; }
     .service-note { color: var(--muted); font-size: .72rem; line-height: 1.5; margin-top: 8px; }
+    .vault-results { display: grid; gap: 8px; max-height: 240px; overflow: auto; margin-top: 9px; }
+    .vault-result { padding: 9px; border: 1px solid var(--border-soft); border-radius: 11px; background: var(--panel-3); }
+    .vault-result strong { display: block; font-size: .76rem; margin-bottom: 4px; }
+    .vault-result div { color: var(--muted); font-size: .69rem; line-height: 1.4; }
+    .scope-badge { color: var(--warning); font-size: .69rem; font-weight: 800; }
     [hidden] { display: none !important; }
     @media (max-width: 980px) {
       .shell { grid-template-columns: 1fr; }
@@ -557,24 +562,49 @@
 </details>
 <details class="prompt-category">
 <summary>Documents &amp; Knowledge</summary>
+<p class="prompt-safety-note"><strong>Accuracy-first document templates:</strong> These prompts require source citations, explicit coverage checks, and clear refusal when evidence is missing. For long books or large archives, use the Memory Vault compiler rather than assuming every chunk fits in one request.</p>
 <div class="prompt-category-body">
 <details class="prompt-subcategory">
-<summary>Summarize &amp; compare</summary>
+<summary>Evidence, extraction &amp; coverage</summary>
 <div class="prompt-list">
-<button class="example prompt-example" data-prompt="Summarize the uploaded document for an executive audience. Preserve important names, dates, numbers, commitments, and constraints. Organize the response into purpose, key findings, decisions, risks, unresolved questions, and prioritized action items. Cite the supplied source labels for material claims and clearly mark any uncertainty.">Executive summary</button>
-<button class="example prompt-example" data-prompt="Compare all uploaded documents. Identify agreements, contradictions, missing information, terminology differences, changed requirements, and implications. Produce a comparison matrix followed by a consolidated recommendation. Cite the source label for every important difference and do not invent content that is not present.">Compare documents</button>
-</div>
-</details>
+<button class="example prompt-example" data-prompt="Act as a source-integrity auditor. Examine all uploaded files before answering substantive questions. Determine which files, pages, sections, tables, appendices, images, and attachments were actually extracted and indexed. Report page count, pages with readable text, extraction warnings, OCR symptoms, duplicate or missing sections, out-of-order material, truncation, and whether the beginning and ending are present. Do not infer coverage from filename or file size. Build a coverage table with status Complete, Partial, Missing, Unreadable, or Unverified, cite source labels for every conclusion, and state whether the evidence is sufficient for full-document analysis. If coverage is incomplete, recommend the safest next action such as re-OCR, splitting by chapter, or uploading a cleaner source. Do not summarize content until the coverage gate is complete.">Document extraction &amp; coverage audit</button>
+<button class="example prompt-example" data-prompt="Answer the following question using only evidence retrieved from the uploaded files: [ENTER A COMPLETE SELF-CONTAINED QUESTION]. Do not use outside knowledge, pretrained memory, assumptions about a famous source, or information from related documents that were not uploaded. Give a direct answer first, then list explicit evidence with source labels. Separate textual fact, reasonable inference, interpretation, and unknowns. Do not invent quotations, page numbers, names, dates, commands, clauses, or conclusions. If the retrieved evidence is insufficient, respond exactly: I could not establish this from the currently retrieved document evidence. Then state the specific file, section, page range, entity, or term needed to improve retrieval.">Strict evidence-grounded document Q&amp;A</button>
+<button class="example prompt-example" data-prompt="Perform a forensic quality review of the uploaded document extraction. Identify garbled characters, broken words, repeated headers and footers, missing punctuation, incorrect reading order, merged columns, lost tables, page-number drift, duplicated passages, image-only pages, and likely OCR substitutions. Cite representative source labels for every problem. Estimate which sections are reliable enough for factual analysis and which require manual verification. Produce a remediation plan covering re-OCR settings, page ranges to reprocess, preferred source formats, chapter-level splitting, and validation checks. Do not silently repair uncertain text or present a corrected passage as authoritative without marking it as a proposed reconstruction.">OCR and source-quality reliability audit</button>
+<button class="example prompt-example" data-prompt="Review the uploaded documents and the following proposed claims or draft answer: [PASTE CLAIMS OR ANSWER]. For each material claim, classify it as Directly supported, Partially supported, Contradicted, Ambiguous, or Not found. Provide the exact supporting or conflicting source labels and a concise explanation. Detect claims that rely on missing pages, external knowledge, implied causation, outdated versions, or unverified assumptions. Produce a traceability table, a list of evidence gaps, and a corrected evidence-only version. Do not reward plausible wording; require actual source support.">Unsupported-claim and evidence-gap detector</button>
+</div></details>
 <details class="prompt-subcategory">
-<summary>Extract &amp; transform</summary>
+<summary>Summarization &amp; synthesis</summary>
 <div class="prompt-list">
-<button class="example prompt-example" data-prompt="Convert the uploaded material into a production-ready standard operating procedure. Include purpose, scope, prerequisites, roles, step-by-step instructions, validation checks, rollback or recovery steps, troubleshooting, escalation criteria, and completion evidence. Preserve exact commands and warnings from the source, and cite the relevant source labels.">Create an SOP</button>
-<button class="example prompt-example" data-prompt="Extract all explicit and implied requirements, controls, dependencies, assumptions, risks, owners, deadlines, and acceptance criteria from the uploaded files. Present them in a structured table with source citations, then list conflicts, gaps, and questions that must be resolved before implementation.">Requirements and controls table</button>
-<button class="example prompt-example" data-prompt="Answer the following question using only the uploaded evidence:&#10;&#10;[Enter your question here]&#10;&#10;Cite source labels for every document-derived claim. Distinguish direct evidence, reasonable inference, and missing information. If the documents do not support a definitive answer, state exactly what is missing rather than guessing.">Evidence-based Q&amp;A</button>
-</div>
-</details>
-</div>
-</details>
+<button class="example prompt-example" data-prompt="Create an evidence-grounded executive summary of the uploaded material for [AUDIENCE]. First confirm extraction coverage and list any missing or unreliable sections. Preserve important names, dates, numbers, commitments, constraints, dependencies, and version information. Organize the result into Purpose, Current State, Key Findings, Decisions, Risks, Unresolved Questions, Dependencies, and Prioritized Actions with owners and dates where explicitly present. Cite source labels for every material claim. Distinguish source facts from inference, and do not convert an incomplete sample into a whole-document conclusion.">Executive summary with decisions, risks &amp; actions</button>
+<button class="example prompt-example" data-prompt="Produce a detailed section-by-section summary of the uploaded document. Detect the real structural hierarchy from headings and source evidence; do not invent chapter names. For each section report coverage status, purpose, principal facts or arguments, important entities, decisions, examples, constraints, risks, and open questions, with source labels. Maintain a coverage ledger showing Complete, Partial, Missing, or Unverified. Stop at a natural boundary if the answer approaches its output limit and end with an exact continuation prompt naming the next section. Do not claim complete coverage until every detected section is represented.">Detailed section-by-section summary</button>
+<button class="example prompt-example" data-prompt="Synthesize all uploaded documents into one evidence-grounded research brief about [TOPIC OR QUESTION]. Begin with a source inventory including date, version, authority, scope, and extraction quality. Group evidence by theme rather than summarizing files independently. Identify consensus, disagreement, changed assumptions, terminology differences, gaps, methodological limitations, and conflicts of interest. Weight claims by source quality and recency only when those attributes are present. Cite every material statement with one or more source labels. Finish with conclusions, confidence, unresolved questions, and a verification plan. Do not merge contradictory sources into a false consensus.">Multi-document research synthesis</button>
+<button class="example prompt-example" data-prompt="Create a reliable hierarchical summary for this long document or book without pretending the entire source fits in one context window. First build a coverage map. Summarize each retrieved section, then consolidate section summaries into part-level themes and a provisional whole-document synthesis. Maintain links from every higher-level claim back to original source labels. Explicitly list sections not yet reviewed. When coverage is incomplete, label the result Provisional and provide the exact next section or page range to process. Never use a handful of sampled passages as proof of full-document coverage.">Hierarchical long-document summary</button>
+</div></details>
+<details class="prompt-subcategory">
+<summary>Comparison &amp; reconciliation</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Compare the uploaded documents against the following decision objective: [OBJECTIVE]. Build a matrix covering scope, date/version, assumptions, terminology, requirements, architecture, responsibilities, controls, cost, risks, dependencies, deadlines, and acceptance criteria as applicable. Every cell must cite the supporting source label or say Not stated. Identify agreements, contradictions, superseded content, and missing evidence. Explain whether differences are true conflicts or merely differences in scope or terminology. Finish with a reconciled recommendation and the decisions that require owner confirmation.">Cross-document comparison matrix</button>
+<button class="example prompt-example" data-prompt="Treat the uploaded files as versions of the same document, configuration, policy, design, or specification. Determine the correct chronological order from explicit evidence. Produce a change log showing additions, removals, modifications, unchanged critical items, and likely breaking changes. Cite the old and new source labels for every change. Identify changed obligations, defaults, interfaces, limits, security controls, operational procedures, and acceptance criteria. Flag ambiguous rewording and content that disappeared without an explicit replacement. Finish with migration impact, required validation, rollback considerations, and questions for the document owner.">Version-to-version change analysis</button>
+<button class="example prompt-example" data-prompt="Find and reconcile contradictions across the uploaded evidence. Extract each conflicting statement verbatim only when a brief exact quote is necessary; otherwise paraphrase. Record source, date/version, subject, claim, conflict type, likely explanation, operational impact, and confidence. Distinguish direct contradiction from different scope, time period, environment, terminology, or authority. Do not decide which source is correct without evidence. Propose a resolution order based on explicit authority, recency, and scope, and list the human decisions or additional evidence required.">Contradiction and conflict reconciliation</button>
+<button class="example prompt-example" data-prompt="Map the uploaded sources into areas of strong consensus, qualified agreement, material disagreement, and insufficient evidence for [TOPIC]. For each theme, list participating sources, claims, supporting evidence, counterevidence, assumptions, and confidence. Identify where one document depends on another, where data is stale, and where absence of evidence is being mistaken for agreement. Produce a concise decision brief showing what can be acted on now, what needs validation, and what should remain undecided. Cite every substantive point.">Consensus, disagreement &amp; uncertainty map</button>
+</div></details>
+<details class="prompt-subcategory">
+<summary>Extraction &amp; knowledge transformation</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Extract all explicit and implied requirements from the uploaded files and create a production-grade traceability matrix. Assign stable IDs without pretending they existed in the source. For each requirement record source label, exact or faithful paraphrased statement, type, priority when stated, rationale, owner, dependency, constraint, acceptance criterion, verification method, conflict, and status. Separate mandatory language from recommendations and assumptions. Detect duplicates, contradictions, untestable requirements, missing owners, undefined terms, and absent acceptance evidence. Finish with questions that must be resolved before implementation.">Requirements and traceability matrix</button>
+<button class="example prompt-example" data-prompt="Convert the uploaded policy, standard, or guidance into an operational SOP without adding unsupported obligations. Include purpose, scope, roles, prerequisites, inputs, step-by-step procedure, decision points, evidence to retain, validation, exception handling, escalation, rollback or recovery, and completion criteria. Trace every procedural requirement to a source label. Clearly mark implementation choices that are not specified by the source and require owner approval. Preserve safety warnings and legal or compliance wording accurately. Add a control-to-step traceability table and a test checklist.">Policy-to-procedure / SOP conversion</button>
+<button class="example prompt-example" data-prompt="Transform the uploaded material into a searchable knowledge-base pack. Create a concise taxonomy, glossary, entity aliases, and a set of practical FAQs grouped by audience and task. Every answer must be grounded in source labels and must state when the documents are silent. Include troubleshooting questions, prerequisites, limits, exceptions, and escalation paths where supported. Avoid duplicate questions and avoid inventing a best practice that the source does not contain. Output an index, FAQ entries, tags, related articles, and unresolved knowledge gaps suitable for later import into a knowledge system.">FAQ and searchable knowledge-base generator</button>
+<button class="example prompt-example" data-prompt="Extract a structured knowledge graph from the uploaded documents. Identify people, organizations, systems, products, locations, projects, terms, aliases, dates, events, decisions, and relationships. For every entity and relationship include source labels, confidence, and temporal validity where available. Build a glossary, alias map, chronological timeline, relationship table, and unresolved-identity list. Do not merge similar names without evidence. Preserve historical changes rather than overwriting old facts. Highlight conflicting dates, roles, titles, or relationships and recommend validation steps.">Entity, glossary, timeline &amp; relationship extractor</button>
+</div></details>
+<details class="prompt-subcategory">
+<summary>Books &amp; personal knowledge</summary>
+<div class="prompt-list">
+<button class="example prompt-example" data-prompt="Act as a source-grounded book compiler for the uploaded long book. Do not attempt a confident whole-book summary from a few passages. First audit extraction coverage, detect real parts and chapters, and build a ledger with Complete, Partial, Missing, and Unverified status. Process only the first coherent supported section in this response. Track characters or concepts, aliases, relationships, locations, events, timeline anchors, themes, arguments, and unresolved questions with source labels. End with a complete continuation prompt naming the exact next chapter or page range. Never use outside knowledge of the book, series, adaptation, author, or reviews.">Progressive long-book compiler &amp; coverage ledger</button>
+<button class="example prompt-example" data-prompt="Using only the compiled book or document evidence, analyze [CHARACTER / CONCEPT / EVENT]. Trace its first supported appearance, aliases, relationships, motivations or definitions, major developments, contradictions, turning points, and final supported state. Separate narrator/source fact, participant belief, action, inference, and interpretation. Build a chronological evidence table with source labels. If the evidence spans multiple sections, identify gaps instead of filling them from memory. Finish with confidence and the exact missing chapters or sources needed for a complete analysis.">Character, concept, event &amp; timeline analysis</button>
+<button class="example prompt-example" data-prompt="Review the uploaded personal material and identify candidate long-term memories for the owner to approve. Do not save anything automatically. Extract only durable, useful facts such as stable preferences, current roles, projects, decisions, procedures, goals, relationships, and dated events. Exclude passwords, API keys, one-time codes, financial credentials, highly sensitive details not explicitly requested, speculative model conclusions, and temporary chatter. For each candidate provide proposed collection, title, concise memory, valid-from date, sensitivity, source label, confidence, possible conflicts, and whether it should supersede an older fact. Finish with Approve, Edit, or Reject recommendations.">Personal-memory candidate extraction for owner approval</button>
+<button class="example prompt-example" data-prompt="Perform an evidence-grounded historical Deep Scan for the following question across the selected Personal Knowledge &amp; Memory Vault collections: [QUESTION AND COLLECTIONS]. Search approved memories and compiled source evidence, reconcile aliases and dates, and build a chronological evidence set before answering. Distinguish current facts from superseded history, direct evidence from inference, and missing data from negative evidence. Cite every material claim with vault source labels. Identify conflicts and explain which record is current and why. When evidence is insufficient, state that clearly instead of guessing. Finish with direct answer, evidence timeline, confidence, conflicts, and recommended memory corrections.">Historical Deep Scan across vault collections</button>
+</div></details>
+</div></details>
 <details class="prompt-category">
 <summary>Architecture &amp; Planning</summary>
 <div class="prompt-category-body">
@@ -766,13 +796,30 @@
 </div>
 </details>
 </section>
-<section class="card" id="memoryCard">
-<div class="card-title"><span>Long-term memory</span></div>
-<div class="row">
-<button class="btn grow" id="viewMemoryBtn">View</button>
-<button class="btn btn-danger grow" id="clearMemoryBtn">Clear</button>
+<section class="card" id="memoryCard" hidden>
+<div class="card-title"><span>Personal Memory Vault</span><span class="scope-badge" id="accessScopeBadge">Owner</span></div>
+<label class="toggle"><input id="usePersonalMemory" type="checkbox" checked/> Use approved personal memory in this chat</label>
+<div class="row" style="margin-top:9px">
+<button class="btn grow" id="vaultStatusBtn">Vault status</button>
+<button class="btn grow" id="vaultInboxBtn">Inbox</button>
 </div>
-<div class="status-line" id="memoryStatus">Memory is maintained by the backend when enabled.</div>
+<button class="btn" id="vaultSuggestBtn" style="width:100%;margin-top:8px">Suggest memories from this chat</button>
+<div class="status-line" id="memoryStatus">Owner-only memory is loaded from Google Drive when available.</div>
+<div class="field">
+<label for="vaultSearch">Search approved memory and source evidence</label>
+<input id="vaultSearch" type="text" placeholder="Search projects, decisions, career, books..."/>
+</div>
+<button class="btn" id="vaultSearchBtn" style="width:100%;margin-top:8px">Search vault</button>
+<div class="vault-results" id="vaultResults"></div>
+<div class="field">
+<label for="vaultMemoryText">Remember an explicit fact or decision</label>
+<textarea id="vaultMemoryText" placeholder="Example: Use complete replacement files rather than partial patches."></textarea>
+</div>
+<div class="row" style="margin-top:8px">
+<input class="grow" id="vaultCollection" type="text" value="personal" aria-label="Memory collection"/>
+<button class="btn btn-primary" id="vaultRememberBtn">Remember</button>
+</div>
+<div class="service-note">Nothing is saved automatically. New memories require an explicit owner action and remain source-auditable.</div>
 </section>
 </aside>
 <main class="main">
@@ -837,7 +884,7 @@
 </div>
 </div>
 </section>
-<div class="footer"><a href="https://www.linkedin.com/in/rajmohanacharya/" target="_blank" rel="noopener noreferrer" aria-label="Visit Raj Mohan Acharya's LinkedIn profile">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v2.6.2</div>
+<div class="footer"><a href="https://www.linkedin.com/in/rajmohanacharya/" target="_blank" rel="noopener noreferrer" aria-label="Visit Raj Mohan Acharya's LinkedIn profile">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v2.8</div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -884,7 +931,8 @@
     let statusCheckPromise = null;
     let endpointContext = null;
     let manifestLoadPromise = null;
-    let capabilities = { chat: true, streaming: true, files: true, history: true, memory: false, delete_session: true };
+    let capabilities = { chat: true, streaming: true, files: true, history: true, memory: false, vault: false, delete_session: true };
+    let accessScope = "guest";
 
     const RAW_CONFIG = window.RAJAI_CONFIG || {};
     const CONFIG = Object.freeze({
@@ -1026,7 +1074,7 @@
     function applyCapabilities(next = {}) {
       capabilities = { ...capabilities, ...next };
       $("#fileIngestCard").hidden = !capabilities.files;
-      $("#memoryCard").hidden = !capabilities.memory;
+      $("#memoryCard").hidden = !capabilities.vault;
       $("#deleteSessionBtn").hidden = !capabilities.delete_session;
     }
 
@@ -1051,9 +1099,15 @@
       const backendRaw = normalizeBase(raw.backend_url);
       const issuedAt = Number.parseInt(String(raw.issued_at ?? ""), 10);
       const expires = Number.parseInt(String(raw.expires_at ?? ""), 10);
-      const signature = String(raw.signature || "").trim().toLowerCase();
+      const legacySignature = String(raw.signature || "").trim().toLowerCase();
+      const signatures = Array.isArray(raw.signatures)
+        ? raw.signatures.map((value) => String(value || "").trim().toLowerCase()).filter((value) => /^[a-f0-9]{64}$/.test(value))
+        : [];
+      if (/^[a-f0-9]{64}$/.test(legacySignature) && !signatures.includes(legacySignature)) {
+        signatures.unshift(legacySignature);
+      }
 
-      if (schemaVersion !== 1) {
+      if (![1, 2].includes(schemaVersion)) {
         throw new EndpointManifestError("This endpoint manifest version is not supported.");
       }
 
@@ -1063,13 +1117,14 @@
           backend: "",
           issuedAt: Number.isSafeInteger(issuedAt) ? issuedAt : 0,
           expires: Number.isSafeInteger(expires) ? expires : 0,
-          sig: signature,
+          sig: signatures[0] || legacySignature,
+          sigs: signatures,
           model: String(raw.model || "").trim(),
           updatedAt: String(raw.updated_at || "").trim()
         };
       }
 
-      if (!backendRaw || !Number.isSafeInteger(issuedAt) || !Number.isSafeInteger(expires) || !/^[a-f0-9]{64}$/.test(signature)) {
+      if (!backendRaw || !Number.isSafeInteger(issuedAt) || !Number.isSafeInteger(expires) || !signatures.length) {
         throw new EndpointManifestError("The published AI endpoint is incomplete.");
       }
 
@@ -1104,7 +1159,8 @@
         backend: parsed.origin,
         issuedAt,
         expires,
-        sig: signature,
+        sig: signatures[0] || legacySignature,
+          sigs: signatures,
         model: String(raw.model || "").trim(),
         updatedAt: String(raw.updated_at || "").trim()
       };
@@ -1171,6 +1227,7 @@
             previous.issuedAt !== next.issuedAt ||
             previous.expires !== next.expires ||
             previous.sig !== next.sig ||
+            JSON.stringify(previous.sigs || []) !== JSON.stringify(next.sigs || []) ||
             previous.online !== next.online;
 
           endpointContext = next;
@@ -1281,7 +1338,8 @@
       setConnectionState(false, "Verifying the current endpoint locally…", "", "Locked");
       try {
         const expected = await hmacSha256Hex(candidate, endpointSignatureMessage(endpointContext));
-        if (!constantTimeHexEqual(expected, endpointContext.sig)) {
+        const publishedSignatures = endpointContext.sigs?.length ? endpointContext.sigs : [endpointContext.sig];
+        if (!publishedSignatures.some((value) => constantTimeHexEqual(expected, value))) {
           clearStoredKeys();
           activeApiKey = "";
           signatureVerified = false;
@@ -1346,14 +1404,18 @@
         try {
           const response = await apiFetch("/api/status");
           const status = await response.json();
+          accessScope = String(status.access_scope || "guest");
           applyCapabilities({
             chat: true,
             streaming: true,
             files: true,
             history: true,
-            memory: Boolean(status.memory_enabled),
+            memory: Boolean(status.capabilities?.memory),
+            vault: Boolean(status.capabilities?.vault),
             delete_session: true
           });
+          $("#accessScopeBadge").textContent = accessScope === "owner" ? "Owner" : "Guest";
+          if (capabilities.vault) void loadVaultStatus(true);
           const wasConnected = connected;
           modelBadge.textContent = `Model: ${status.model || "unknown"}`;
           gpuBadge.textContent = status.gpu
@@ -1848,6 +1910,7 @@
         session_id: getSessionId(),
         question: questionInput.value.trim(),
         use_documents: GENERATION_DEFAULTS.useDocuments,
+        use_personal_memory: Boolean(capabilities.vault && $("#usePersonalMemory")?.checked),
         temperature: GENERATION_DEFAULTS.temperature,
         max_tokens: GENERATION_DEFAULTS.maxTokens
       };
@@ -2041,36 +2104,173 @@
       }
     }
 
-    async function viewMemory() {
-      if (!capabilities.memory) return;
-      if (!(await ensureAccess())) return;
-      if (!connected && !(await checkBackendStatus({ skipAccess: true }))) { showOfflineNotice(); return; }
-      try {
-        const response = await apiFetch("/api/memory");
-        const payload = await response.json();
-        const text = payload.summary || "No long-term profile has been created yet.";
-        $("#memoryStatus").textContent = text;
-        $("#memoryStatus").className = "status-line";
-      } catch (error) {
-        $("#memoryStatus").textContent = error.message;
-        $("#memoryStatus").className = "status-line err";
+    function renderVaultResults(results) {
+      const container = $("#vaultResults");
+      container.innerHTML = "";
+      if (!results?.length) {
+        container.innerHTML = '<div class="empty-mini">No matching approved memory or source evidence.</div>';
+        return;
+      }
+      for (const item of results) {
+        const card = document.createElement("div");
+        card.className = "vault-result";
+        const title = document.createElement("strong");
+        title.textContent = `${item.collection || "vault"} · ${item.title || item.filename || item.kind || "record"}`;
+        const content = document.createElement("div");
+        content.textContent = String(item.text || "").slice(0, 700);
+        const label = document.createElement("div");
+        label.textContent = item.label || "";
+        label.style.marginTop = "5px";
+        label.style.color = "var(--accent)";
+        card.append(title, content, label);
+        container.appendChild(card);
       }
     }
 
-    async function clearMemory() {
-      if (!capabilities.memory) return;
-      if (!(await ensureAccess())) return;
-      if (!connected && !(await checkBackendStatus({ skipAccess: true }))) { showOfflineNotice(); return; }
-      if (!confirm("Clear the assistant's long-term user profile?")) return;
+    async function loadVaultStatus(quiet = false) {
+      if (!capabilities.vault) return;
       try {
-        await apiFetch("/api/memory", { method: "DELETE" });
-        $("#memoryStatus").textContent = "Long-term memory cleared.";
+        const response = await apiFetch("/api/vault/status");
+        const payload = await response.json();
+        const manifest = payload.manifest || {};
+        $("#memoryStatus").textContent =
+          `Vault ready · ${manifest.approved_records || 0} approved memories · ${manifest.sources || 0} sources · ${manifest.chunks || 0} chunks`;
         $("#memoryStatus").className = "status-line ok";
       } catch (error) {
         $("#memoryStatus").textContent = error.message;
         $("#memoryStatus").className = "status-line err";
+        if (!quiet) showToast(error.message, true);
       }
     }
+
+    async function searchVault() {
+      if (!capabilities.vault) return;
+      const query = $("#vaultSearch").value.trim();
+      if (!query) {
+        showToast("Enter a vault search query.", true);
+        return;
+      }
+      try {
+        const response = await apiFetch(`/api/vault/search?q=${encodeURIComponent(query)}&limit=8`);
+        const payload = await response.json();
+        renderVaultResults(payload.results || []);
+      } catch (error) {
+        showToast(error.message, true);
+      }
+    }
+
+    async function rememberVaultMemory() {
+      if (!capabilities.vault) return;
+      const content = $("#vaultMemoryText").value.trim();
+      const collection = $("#vaultCollection").value.trim() || "personal";
+      if (!content) {
+        showToast("Enter the fact, preference, decision, or procedure to remember.", true);
+        return;
+      }
+      try {
+        const response = await apiFetch("/api/vault/remember", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ content, collection, sensitivity: "private" })
+        });
+        const payload = await response.json();
+        $("#vaultMemoryText").value = "";
+        showToast(`Memory saved: ${payload.record?.id || "approved"}`);
+        await loadVaultStatus(true);
+      } catch (error) {
+        showToast(error.message, true);
+      }
+    }
+
+    function renderVaultInbox(records) {
+      const container = $("#vaultResults");
+      container.innerHTML = "";
+      if (!records?.length) {
+        container.innerHTML = '<div class="empty-mini">The memory inbox is empty.</div>';
+        return;
+      }
+      for (const item of records) {
+        const card = document.createElement("div");
+        card.className = "vault-result";
+        const title = document.createElement("strong");
+        title.textContent = `${item.collection || "personal"} · ${item.title || "Suggested memory"}`;
+        const content = document.createElement("div");
+        content.textContent = String(item.content || item.text || "").slice(0, 900);
+        const meta = document.createElement("div");
+        meta.textContent = `[inbox:${item.id || "pending"}] · confidence ${Number(item.confidence || 0).toFixed(2)}`;
+        meta.style.marginTop = "5px";
+        meta.style.color = "var(--accent)";
+        const actions = document.createElement("div");
+        actions.className = "row";
+        actions.style.marginTop = "7px";
+        const approve = document.createElement("button");
+        approve.className = "btn btn-small";
+        approve.textContent = "Approve";
+        approve.addEventListener("click", () => decideVaultInbox(item.id, "approve"));
+        const reject = document.createElement("button");
+        reject.className = "btn btn-small btn-danger";
+        reject.textContent = "Reject";
+        reject.addEventListener("click", () => decideVaultInbox(item.id, "reject"));
+        actions.append(approve, reject);
+        card.append(title, content, meta, actions);
+        container.appendChild(card);
+      }
+    }
+
+    async function suggestVaultMemories() {
+      if (!capabilities.vault) return;
+      try {
+        $("#vaultSuggestBtn").disabled = true;
+        $("#memoryStatus").textContent = "Reviewing this chat for stable memory candidates…";
+        $("#memoryStatus").className = "status-line";
+        const response = await apiFetch("/api/vault/suggest", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ session_id: getSessionId(), max_items: 8 })
+        });
+        const payload = await response.json();
+        renderVaultInbox(payload.records || []);
+        $("#memoryStatus").textContent = `${payload.created || 0} candidate memory item(s) added for owner review.`;
+        $("#memoryStatus").className = "status-line ok";
+        await loadVaultStatus(true);
+      } catch (error) {
+        $("#memoryStatus").textContent = error.message;
+        $("#memoryStatus").className = "status-line err";
+        showToast(error.message, true);
+      } finally {
+        $("#vaultSuggestBtn").disabled = false;
+      }
+    }
+
+    async function decideVaultInbox(memoryId, action) {
+      if (!capabilities.vault || !memoryId) return;
+      try {
+        await apiFetch(`/api/vault/inbox/${encodeURIComponent(memoryId)}/${action}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: "{}"
+        });
+        showToast(action === "approve" ? "Memory approved." : "Memory rejected.");
+        await Promise.allSettled([loadVaultInbox(), loadVaultStatus(true)]);
+      } catch (error) {
+        showToast(error.message, true);
+      }
+    }
+
+    async function loadVaultInbox() {
+      if (!capabilities.vault) return;
+      try {
+        const response = await apiFetch("/api/vault/inbox");
+        const payload = await response.json();
+        const records = (payload.records || []).filter((item) => item.status === "pending");
+        renderVaultInbox(records);
+        $("#memoryStatus").textContent = `${records.length} pending memory inbox item(s). Nothing is approved automatically.`;
+        $("#memoryStatus").className = "status-line";
+      } catch (error) {
+        showToast(error.message, true);
+      }
+    }
+
 
 
     $("#unlockBtn").addEventListener("click", () => unlockAccess());
@@ -2107,8 +2307,17 @@
         $("#uploadStatus").className = "status-line";
       }
     });
-    $("#viewMemoryBtn").addEventListener("click", viewMemory);
-    $("#clearMemoryBtn").addEventListener("click", clearMemory);
+    $("#vaultStatusBtn").addEventListener("click", () => loadVaultStatus(false));
+    $("#vaultSuggestBtn").addEventListener("click", suggestVaultMemories);
+    $("#vaultSearchBtn").addEventListener("click", searchVault);
+    $("#vaultRememberBtn").addEventListener("click", rememberVaultMemory);
+    $("#vaultInboxBtn").addEventListener("click", loadVaultInbox);
+    $("#vaultSearch").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        searchVault();
+      }
+    });
     sendBtn.addEventListener("click", askAI);
     stopBtn.addEventListener("click", () => activeAbortController?.abort());
     questionInput.addEventListener("keydown", (event) => {
