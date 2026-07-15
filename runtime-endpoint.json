@@ -1,20 +1,20 @@
 {
   "app_version": "2.9.2-cli",
-  "backend_url": "https://viewed-tiffany-mercury-discuss.trycloudflare.com",
+  "backend_url": "",
   "compute_type": "gpu",
-  "expires_at": 1784171946,
-  "issued_at": 1784128746,
+  "expires_at": 1784149848,
+  "issued_at": 1784146248,
   "lifecycle_id": "6cfd454df3093d6a3c8c24bf92184751",
   "model": "qwen3:8b",
-  "online": true,
+  "online": false,
   "provider": "colab_gpu",
   "schema_version": 2,
-  "signature": "735a98d3120d03bf6cc66b514d86909513bafd84dfd682b3a3d39f8e81d38d62",
+  "signature": "476197850811ccf478f3e4323436d476c75e20d31a115030c60fa8098743fc24",
   "signatures": [
-    "735a98d3120d03bf6cc66b514d86909513bafd84dfd682b3a3d39f8e81d38d62",
-    "259cdbfd92fab04ce1578bf3cff3a184e3c2bc5d2315a8ba68f2c784a264a050"
+    "476197850811ccf478f3e4323436d476c75e20d31a115030c60fa8098743fc24",
+    "4cfcb874e6c76c9052ea97e3ba49f40b4d280167181c65c79c86e3ac0d70869b"
   ],
   "storage_mode": "drive",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-15T15:19:06.316379+00:00"
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-15T20:10:48.355334+00:00"
 }
