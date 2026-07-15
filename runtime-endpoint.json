@@ -1,20 +1,20 @@
 {
-  "app_version": "2.9.1-cli",
-  "backend_url": "https://since-mason-abstracts-tab.trycloudflare.com",
+  "app_version": "2.9.2-cli",
+  "backend_url": "",
   "compute_type": "gpu",
-  "expires_at": 1784162536,
-  "issued_at": 1784119336,
+  "expires_at": 1784127471,
+  "issued_at": 1784123871,
   "lifecycle_id": "40e2699a1d90f1acf9d2c1e44bf19bbd",
   "model": "qwen2.5-coder:7b",
-  "online": true,
+  "online": false,
   "provider": "colab_gpu",
   "schema_version": 2,
-  "signature": "b00301cb8ec3ecb1c74e687261d1e30ceb1ba4cf3cf74d7bf08fadf1fd07702d",
+  "signature": "25a421b9a1f569031863260e2b58ec6210f8d3a294618c891ba951b210696030",
   "signatures": [
-    "b00301cb8ec3ecb1c74e687261d1e30ceb1ba4cf3cf74d7bf08fadf1fd07702d",
-    "5e2d4cd91428fdfce3795705070cf8024d0055f930ab9d06d19cc4216da91f3e"
+    "25a421b9a1f569031863260e2b58ec6210f8d3a294618c891ba951b210696030",
+    "6e672488ebeb14a43aafc18d985d5fb2c6174d44c6318dd7f1f38568fcdeb074"
   ],
   "storage_mode": "drive",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-15T12:42:16.711333+00:00"
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-15T13:57:51.305077+00:00"
 }
