@@ -1,18 +1,20 @@
 {
   "app_version": "2.9.2-cli",
-  "backend_url": "",
-  "expires_at": 1784128994,
-  "issued_at": 1784125394,
-  "lifecycle_id": "c6dc007ad07343f4ecaa0b9699c3325f",
-  "model": "llama3.1:8b",
-  "online": false,
-  "provider": "starting",
+  "backend_url": "https://any-illustrated-involve-association.trycloudflare.com",
+  "compute_type": "gpu",
+  "expires_at": 1784169169,
+  "issued_at": 1784125969,
+  "lifecycle_id": "6cfd454df3093d6a3c8c24bf92184751",
+  "model": "qwen3:8b",
+  "online": true,
+  "provider": "colab_gpu",
   "schema_version": 2,
-  "signature": "bdbeee3dc7881b0307182c15bf88c3d0373a164118b5330d9624a6c87c641b2f",
+  "signature": "1d6d162791d6f324cedee5f86c10826b06e82778b0032f45b18a6bf6d6a3f985",
   "signatures": [
-    "bdbeee3dc7881b0307182c15bf88c3d0373a164118b5330d9624a6c87c641b2f",
-    "2a7d69aff223f036eadf1f05365b396dc32e361941615e372984b1f4c6485b2d"
+    "1d6d162791d6f324cedee5f86c10826b06e82778b0032f45b18a6bf6d6a3f985",
+    "869fb43f46d9535793d7230d63140594eab32b27698c734682239287dbd19b81"
   ],
-  "tunnel_mode": "offline",
-  "updated_at": "2026-07-15T14:23:14.395219+00:00"
+  "storage_mode": "drive",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-15T14:32:49.871606+00:00"
 }
