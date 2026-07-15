@@ -2,19 +2,19 @@
   "app_version": "2.9.1-cli",
   "backend_url": "",
   "compute_type": "gpu",
-  "expires_at": 1784127607,
-  "issued_at": 1784124007,
+  "expires_at": 1784127646,
+  "issued_at": 1784124046,
   "lifecycle_id": "40e2699a1d90f1acf9d2c1e44bf19bbd",
   "model": "qwen2.5-coder:7b",
   "online": false,
   "provider": "colab_gpu",
   "schema_version": 2,
-  "signature": "d23d38bd5ea1e60652fa994572ca072cb0d90d6ddfef0bb0ef0f31054f9bc8b1",
+  "signature": "b06b1efc6b174c92336e9f86ef097770a85c9f453ce0435e4291a5ee956f184d",
   "signatures": [
-    "d23d38bd5ea1e60652fa994572ca072cb0d90d6ddfef0bb0ef0f31054f9bc8b1",
-    "2b1b107c12f605527d1683933d5c6eaeeb33e5a168aa35a3677d0a3c52fa1762"
+    "b06b1efc6b174c92336e9f86ef097770a85c9f453ce0435e4291a5ee956f184d",
+    "d7a74192fd3f56f6b8bab6ff719550ba993dc963b54fd44d4da7b1e96d2d704b"
   ],
   "storage_mode": "drive",
   "tunnel_mode": "offline",
-  "updated_at": "2026-07-15T14:00:07.885863+00:00"
+  "updated_at": "2026-07-15T14:00:46.383845+00:00"
 }
