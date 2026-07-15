@@ -1,16 +1,20 @@
 {
+  "app_version": "2.9.1-cli",
+  "backend_url": "https://since-mason-abstracts-tab.trycloudflare.com",
+  "compute_type": "gpu",
+  "expires_at": 1784162536,
+  "issued_at": 1784119336,
+  "lifecycle_id": "40e2699a1d90f1acf9d2c1e44bf19bbd",
+  "model": "qwen2.5-coder:7b",
+  "online": true,
+  "provider": "colab_gpu",
   "schema_version": 2,
-  "online": false,
-  "backend_url": "",
-  "issued_at": 0,
-  "expires_at": 0,
-  "signatures": [],
-  "signature": "",
-  "model": "",
-  "provider": "offline",
-  "compute_type": "",
-  "storage_mode": "",
-  "tunnel_mode": "offline",
-  "updated_at": "",
-  "lifecycle_id": ""
+  "signature": "b00301cb8ec3ecb1c74e687261d1e30ceb1ba4cf3cf74d7bf08fadf1fd07702d",
+  "signatures": [
+    "b00301cb8ec3ecb1c74e687261d1e30ceb1ba4cf3cf74d7bf08fadf1fd07702d",
+    "5e2d4cd91428fdfce3795705070cf8024d0055f930ab9d06d19cc4216da91f3e"
+  ],
+  "storage_mode": "drive",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-15T12:42:16.711333+00:00"
 }
