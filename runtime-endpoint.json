@@ -1,20 +1,18 @@
 {
   "app_version": "2.9.2-cli",
   "backend_url": "",
-  "compute_type": "gpu",
-  "expires_at": 1784128219,
-  "issued_at": 1784124619,
-  "lifecycle_id": "40e2699a1d90f1acf9d2c1e44bf19bbd",
-  "model": "qwen2.5-coder:7b",
+  "expires_at": 1784128994,
+  "issued_at": 1784125394,
+  "lifecycle_id": "c6dc007ad07343f4ecaa0b9699c3325f",
+  "model": "llama3.1:8b",
   "online": false,
-  "provider": "colab_gpu",
+  "provider": "starting",
   "schema_version": 2,
-  "signature": "98de6bb0e86a6828003aeb2782bcb0df460d0cb2d13bb5742523b15a3ff51534",
+  "signature": "bdbeee3dc7881b0307182c15bf88c3d0373a164118b5330d9624a6c87c641b2f",
   "signatures": [
-    "98de6bb0e86a6828003aeb2782bcb0df460d0cb2d13bb5742523b15a3ff51534",
-    "d4159348c14d57dd175ea2be2b4388d35efa55384bf80b0951e8ef88bc4f5d05"
+    "bdbeee3dc7881b0307182c15bf88c3d0373a164118b5330d9624a6c87c641b2f",
+    "2a7d69aff223f036eadf1f05365b396dc32e361941615e372984b1f4c6485b2d"
   ],
-  "storage_mode": "drive",
   "tunnel_mode": "offline",
-  "updated_at": "2026-07-15T14:10:19.315617+00:00"
+  "updated_at": "2026-07-15T14:23:14.395219+00:00"
 }
