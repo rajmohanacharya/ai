@@ -2,19 +2,19 @@
   "app_version": "2.8.1-cli",
   "backend_url": "",
   "compute_type": "gpu",
-  "expires_at": 1784101879,
-  "issued_at": 1784098279,
+  "expires_at": 1784101918,
+  "issued_at": 1784098318,
   "lifecycle_id": "e221e1f1f1f6bf2cd4b9e7210c1c0ee8",
   "model": "deepseek-r1:8b",
   "online": false,
   "provider": "colab_gpu",
   "schema_version": 2,
-  "signature": "a12e513fb8a1b309177c4d7963f48f8dbb23f7b1af5a32235d8e098f9b513fde",
+  "signature": "86c73eedc422c640a9743c38ab88083ae941b7b31000762e2052cb77960fad04",
   "signatures": [
-    "a12e513fb8a1b309177c4d7963f48f8dbb23f7b1af5a32235d8e098f9b513fde",
-    "fc24bc08e055f671272127cabff9e1bf2229b083cf9c7649b2c0c80346d1400d"
+    "86c73eedc422c640a9743c38ab88083ae941b7b31000762e2052cb77960fad04",
+    "a990152cf5faebc3b44dc14296030cf5b7d9ad37c7ce4d3541085a2885924251"
   ],
   "storage_mode": "drive",
   "tunnel_mode": "offline",
-  "updated_at": "2026-07-15T06:51:19.196252+00:00"
+  "updated_at": "2026-07-15T06:51:58.236603+00:00"
 }
