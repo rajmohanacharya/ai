@@ -1,20 +1,16 @@
 {
-  "app_version": "2.8.1-cli",
-  "backend_url": "",
-  "compute_type": "gpu",
-  "expires_at": 1784101918,
-  "issued_at": 1784098318,
-  "lifecycle_id": "e221e1f1f1f6bf2cd4b9e7210c1c0ee8",
-  "model": "deepseek-r1:8b",
-  "online": false,
-  "provider": "colab_gpu",
   "schema_version": 2,
-  "signature": "86c73eedc422c640a9743c38ab88083ae941b7b31000762e2052cb77960fad04",
-  "signatures": [
-    "86c73eedc422c640a9743c38ab88083ae941b7b31000762e2052cb77960fad04",
-    "a990152cf5faebc3b44dc14296030cf5b7d9ad37c7ce4d3541085a2885924251"
-  ],
-  "storage_mode": "drive",
+  "online": false,
+  "backend_url": "",
+  "issued_at": 0,
+  "expires_at": 0,
+  "signatures": [],
+  "signature": "",
+  "model": "",
+  "provider": "offline",
+  "compute_type": "",
+  "storage_mode": "",
   "tunnel_mode": "offline",
-  "updated_at": "2026-07-15T06:51:58.236603+00:00"
+  "updated_at": "",
+  "lifecycle_id": ""
 }
