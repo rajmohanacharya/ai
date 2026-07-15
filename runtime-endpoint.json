@@ -1,20 +1,20 @@
 {
   "app_version": "2.8.1-cli",
-  "backend_url": "",
+  "backend_url": "https://dealtime-hiking-title-patent.trycloudflare.com",
   "compute_type": "gpu",
-  "expires_at": 1784061724,
-  "issued_at": 1784058124,
-  "lifecycle_id": "d173b7abfa4081b7516e1c76fee2168b",
-  "model": "qwen3:8b",
-  "online": false,
+  "expires_at": 1784132371,
+  "issued_at": 1784089171,
+  "lifecycle_id": "e221e1f1f1f6bf2cd4b9e7210c1c0ee8",
+  "model": "deepseek-r1:8b",
+  "online": true,
   "provider": "colab_gpu",
   "schema_version": 2,
-  "signature": "0361b52c5f17258200f72ddc16f3b66977b857129c2794b0b94d0efecd06c91e",
+  "signature": "87e8030ce63b7decba2b371336084b03f56fba4aad10ee15736273f6e6193d9e",
   "signatures": [
-    "0361b52c5f17258200f72ddc16f3b66977b857129c2794b0b94d0efecd06c91e",
-    "2110db4f34140549465da32dcbbfbeb16d4407ad9e2fc4a779bc45b9b8e022ee"
+    "87e8030ce63b7decba2b371336084b03f56fba4aad10ee15736273f6e6193d9e",
+    "847203b499eff9c85bf441232d1d2c30d9824c74e6cffbcaca4ed7dbddf53217"
   ],
   "storage_mode": "drive",
-  "tunnel_mode": "offline",
-  "updated_at": "2026-07-14T19:42:04.126590+00:00"
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-15T04:19:31.093871+00:00"
 }
