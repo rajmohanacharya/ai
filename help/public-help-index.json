@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "product": "RajAIAssist",
+  "guide_title": "RajAIAssist · User Guide",
+  "source": "docs/user-guide.md",
+  "entries": [
+    {
+      "id": "getting-started",
+      "title": "Getting started",
+      "keywords": [
+        "what is rajaiassist",
+        "getting started",
+        "unlock",
+        "access key",
+        "api key",
+        "online",
+        "offline"
+      ],
+      "text": "RajAIAssist is a text-based AI workspace that runs the selected language model in a temporary private cloud runtime controlled by Raj. The permanent web address is https://rajmohanacharya.github.io/ai/. Open the permanent RajAIAssist web address. Paste the current runtime access key shared by Raj. Select Unlock RajAIAssist. Confirm the service status shows the model as available. Start a new conversation or ingest files for the current browser session. A runtime access key is temporary. A key from an older runtime may no longer work. Keep the key private and use Remember key on this browser only on a trusted personal device."
+    },
+    {
+      "id": "availability",
+      "title": "Availability and offline messages",
+      "keywords": [
+        "offline",
+        "unavailable",
+        "ask raj",
+        "start ai",
+        "check ai status",
+        "runtime"
+      ],
+      "text": "The GitHub Pages interface remains available even when the AI runtime is stopped. When the backend, model, or tunnel is unavailable, RajAIAssist displays Ask Raj to start AI. Use Check AI status after Raj confirms the service has started. Refresh the page if the endpoint was recently republished. An online manifest means the browser has a current signed backend address; it does not guarantee that the temporary compute runtime will stay available for a fixed duration."
+    },
+    {
+      "id": "chat-sessions",
+      "title": "Conversations and session isolation",
+      "keywords": [
+        "new chat",
+        "session",
+        "history",
+        "delete chat",
+        "conversation"
+      ],
+      "text": "Each browser conversation has its own random session identifier, chat history, and ingested-file index. Use New when changing to a substantially different task. Deleting a conversation removes its server-side session history and current-session files. Guest access is limited to the selected model, public help, and files uploaded within the current session. Guest sessions do not use Raj's personal knowledge or administrative material."
+    },
+    {
+      "id": "file-ingest",
+      "title": "File Ingest",
+      "keywords": [
+        "upload",
+        "multiple files",
+        "file ingest",
+        "documents",
+        "pdf",
+        "docx",
+        "logs",
+        "code",
+        "screenshot"
+      ],
+      "text": "The file picker accepts multiple files in one selection. Upload only material needed for the current task and wait until each file is indexed before asking the question. RajAIAssist can extract text from common documents, spreadsheets, presentations, email, notebooks, source code, logs, archives, and images through OCR. Unsupported or opaque binary files may be stored as metadata-only records. Files are treated as untrusted reference data and are never executed. Mention important filenames in the prompt, for example: Compare application.log with config.yaml and identify the most likely root cause."
+    },
+    {
+      "id": "screenshots",
+      "title": "Screenshot paste and OCR",
+      "keywords": [
+        "screenshot",
+        "paste image",
+        "clipboard",
+        "ocr",
+        "image text"
+      ],
+      "text": "Use the screenshot paste area to add a clipboard image to the current session. The text model receives OCR text extracted from the image, not full visual understanding of every pixel. It may read visible text, but it may not reliably interpret colors, layout, arrows, faces, or graphical relationships. Do not upload image or video for editing or generation. RajAIAssist v3.1 is strictly a text-output AI."
+    },
+    {
+      "id": "response-controls",
+      "title": "Response controls",
+      "keywords": [
+        "balanced",
+        "conservative",
+        "output length",
+        "reliability",
+        "citations"
+      ],
+      "text": "Balanced is suitable for ordinary drafting, explanation, and brainstorming. Conservative asks the model to distinguish evidence, assumptions, and uncertainty more strictly. The output-length control sets a maximum; the model may finish earlier. Longer output is useful for complete scripts and detailed analysis, but it takes more time and uses more context. Always verify important facts, calculations, commands, and generated code."
+    },
+    {
+      "id": "prompt-formula",
+      "title": "Recommended prompt formula",
+      "keywords": [
+        "better prompt",
+        "advanced prompt",
+        "prompt help",
+        "write prompt",
+        "prompt formula"
+      ],
+      "text": "A strong prompt states five things: Task — what the AI must do. Input — which text or files to use. Context — why the task matters and relevant background. Constraints — rules, exclusions, assumptions, versions, and limits. Output — the exact structure, tone, format, and level of detail required. Example: Task: Analyze application.log and deployment.yaml to identify the most likely cause of the outage. Context: The error began immediately after release 2026.07.17. Constraints: Use only evidence in the uploaded files. Separate facts from hypotheses. Do not invent missing timestamps. Output: Timeline, ranked hypotheses, one verification command per hypothesis, remediation, and prevention actions."
+    },
+    {
+      "id": "advanced-prompts",
+      "title": "Advanced prompts",
+      "keywords": [
+        "advanced prompts",
+        "prompt library",
+        "prompt examples",
+        "templates"
+      ],
+      "text": "Use these editable templates as starting points. Replace generic wording with the exact task, filenames, constraints, versions, and output format that apply to your work. The templates do not auto-submit and do not override your request."
+    },
+    {
+      "id": "prompt-log-analysis",
+      "title": "Advanced prompt · Log and incident analysis",
+      "keywords": [
+        "logs",
+        "root cause",
+        "incident",
+        "troubleshooting",
+        "rca"
+      ],
+      "text": "Act as a senior site reliability engineer. Analyze the uploaded logs and configuration files. Build an evidence-based timeline, identify the first abnormal event, rank the three most likely root causes, and give a verification step for each. Separate observed facts from inference. Cite the source label for every material claim. Finish with immediate remediation, permanent corrective action, and monitoring improvements."
+    },
+    {
+      "id": "prompt-code-generation",
+      "title": "Advanced prompt · Complete code generation",
+      "keywords": [
+        "generate code",
+        "python script",
+        "complete script",
+        "executable"
+      ],
+      "text": "Create one complete executable implementation for the requested task. Output the complete code first inside one correctly labelled code block. Include every import, class, function, configuration option, validation path, error path, command-line entry point, and cleanup step. Do not use ellipses, TODOs, placeholders, or omitted sections. After the code, provide only prerequisites, one example command, verification steps, and material assumptions. Do not claim the code was executed unless it was actually executed."
+    },
+    {
+      "id": "prompt-code-review",
+      "title": "Advanced prompt · Code review and correction",
+      "keywords": [
+        "review code",
+        "fix code",
+        "security review",
+        "refactor"
+      ],
+      "text": "Review the uploaded code as a hostile production reviewer. Identify correctness, security, reliability, concurrency, performance, portability, and maintainability defects. Quote the relevant source location for each defect. Then provide one complete corrected replacement file, not a partial patch, and include tests or verification commands. Preserve intentional behavior unless a change is required to fix a documented defect."
+    },
+    {
+      "id": "prompt-document-analysis",
+      "title": "Advanced prompt · Document analysis",
+      "keywords": [
+        "summarize document",
+        "report",
+        "key findings",
+        "decisions",
+        "risks",
+        "action items"
+      ],
+      "text": "Analyze the uploaded documents and produce: 1) executive summary, 2) key findings, 3) decisions and commitments, 4) risks and unresolved questions, 5) action items with owner and due date when available, and 6) contradictions between sources. Use only supplied evidence and cite source labels for every substantive section."
+    },
+    {
+      "id": "prompt-business-writing",
+      "title": "Advanced prompt · Professional writing",
+      "keywords": [
+        "email",
+        "professional writing",
+        "rewrite",
+        "executive update"
+      ],
+      "text": "Draft a clear professional message for the stated audience and objective. Preserve verified facts, remove repetition, use a confident but courteous tone, and make requested actions explicit. Include a useful subject line. Do not invent names, dates, commitments, or approvals that were not provided."
+    },
+    {
+      "id": "prompt-implementation-plan",
+      "title": "Advanced prompt · Implementation plan",
+      "keywords": [
+        "implementation plan",
+        "roadmap",
+        "milestones",
+        "project plan"
+      ],
+      "text": "Create an operational implementation plan with scope, assumptions, prerequisites, phases, milestones, dependencies, owners, risks, mitigations, validation steps, rollback plan, acceptance criteria, and a concise first-week checklist. Distinguish required work from optional improvements."
+    },
+    {
+      "id": "prompt-learning",
+      "title": "Advanced prompt · Learn from first principles",
+      "keywords": [
+        "explain",
+        "learn",
+        "first principles",
+        "tutorial"
+      ],
+      "text": "Explain the topic from first principles for an intelligent beginner. Define essential terms, build the mental model step by step, show one practical example, identify common misconceptions, and finish with a short self-check exercise and answer key."
+    },
+    {
+      "id": "prompt-comparison",
+      "title": "Advanced prompt · Compare options",
+      "keywords": [
+        "compare",
+        "decision matrix",
+        "options",
+        "tradeoffs"
+      ],
+      "text": "Compare the proposed options using a decision matrix covering capability, quality, latency, cost, security, privacy, operational complexity, maintainability, failure modes, and migration effort. State assumptions, identify disqualifying constraints, and give a recommendation with conditions under which another option would be preferable."
+    },
+    {
+      "id": "prompt-data-extraction",
+      "title": "Advanced prompt · Structured extraction",
+      "keywords": [
+        "extract data",
+        "table",
+        "json",
+        "csv",
+        "structured output"
+      ],
+      "text": "Extract the requested fields from the uploaded evidence. Return valid JSON using the exact schema I provide. Use null for missing values, do not infer unsupported values, retain source labels in a source field, and list validation errors separately from the extracted records."
+    },
+    {
+      "id": "dos-donts",
+      "title": "Do's and don'ts",
+      "keywords": [
+        "dos and donts",
+        "safe use",
+        "best practices",
+        "restrictions"
+      ],
+      "text": "Do Use the access key generated for the current runtime and keep it private. State the objective, relevant input, constraints, and desired output. Name important uploaded files and wait until indexing completes. Start a new chat for a substantially different topic. Use Conservative mode for high-impact factual, technical, or operational work. Review and test important facts, math, commands, and code before relying on them. Remove secrets, personal identifiers, and unnecessary sensitive content before upload. Don't Do not share the runtime key publicly or store it on an untrusted device. Do not upload passwords, tokens, private keys, one-time codes, or confidential material without authorization. Do not upload irrelevant files merely because the picker accepts them. Do not assume OCR is equivalent to full image understanding. Do not upload image or video for editing or generation; this is strictly a text-based output AI. Do not treat generated code, medical guidance, legal guidance, financial guidance, or safety-critical instructions as verified without qualified review."
+    },
+    {
+      "id": "troubleshooting",
+      "title": "Troubleshooting",
+      "keywords": [
+        "error",
+        "failed",
+        "not working",
+        "invalid key",
+        "upload failed",
+        "response stopped",
+        "contact raj"
+      ],
+      "text": "| Symptom | What to do | |---|---| | Ask Raj to start AI. | Contact Raj, then refresh and select Check AI status. | | Current key is rejected. | Ask Raj for the key generated by the current runtime. | | File does not appear. | Re-select the file, wait for indexing, and confirm it is within the upload limit. | | Answer ignores a file. | Name the file explicitly and ask a focused question about its contents. | | OCR answer misses visual details. | Provide the relevant text directly or describe the visual relationship in the prompt. | | Response ends mid-answer. | Ask Continue exactly from where the previous response stopped or choose a larger output limit. | | A new or unexplained error appears. | If faced with a new error, reach out to Raj with the exact message, time, browser, and steps that produced it. |"
+    },
+    {
+      "id": "privacy",
+      "title": "Privacy and access boundaries",
+      "keywords": [
+        "privacy",
+        "security",
+        "guest",
+        "owner",
+        "personal data"
+      ],
+      "text": "The browser sends prompts and current-session files to the active RajAIAssist backend. Guest keys cannot access Raj's private owner context or the Administrator Manual. Owner-only capabilities are enforced by the backend and are not granted merely by changing browser fields or request parameters. Do not treat a public web address as proof that the AI is public. Access still requires a current signed endpoint and a valid runtime key."
+    },
+    {
+      "id": "limitations",
+      "title": "Important limitations",
+      "keywords": [
+        "limitations",
+        "text only",
+        "accuracy",
+        "temporary runtime"
+      ],
+      "text": "The compute runtime is temporary and may become unavailable without notice. Model quality, speed, and context capacity depend on the selected model and runtime. File extraction and OCR can omit formatting or content. RajAIAssist does not provide image or video generation/editing in v3.1. Answers can be incomplete or wrong. Verify high-impact output independently. For product-specific information not covered in this guide, reach out to Raj."
+    }
+  ]
+}
