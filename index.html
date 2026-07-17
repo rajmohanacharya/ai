@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" data-theme="classic">
+<html data-theme="garuda" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -8,81 +8,39 @@
 <meta content="no-referrer" name="referrer"/>
 <meta content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src https: http://localhost:* http://127.0.0.1:*; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'" http-equiv="Content-Security-Policy"/>
 <title>RajAIAssist</title>
-<meta name="description" content="Local AI with Unlimited Usage, Complete Privacy, and Full Control"/>
-<link rel="canonical" href="https://rajmohanacharya.github.io/ai/"/>
+<meta content="Local AI with Unlimited Usage, Complete Privacy, and Full Control" name="description"/>
+<link href="https://rajmohanacharya.github.io/ai/" rel="canonical"/>
 <!-- RajAIAssist browser-tab and device icons -->
-<meta name="application-name" content="RajAIAssist"/>
-<meta name="theme-color" content="#0b0d10"/>
-
+<meta content="RajAIAssist" name="application-name"/>
+<meta content="#0b0d10" name="theme-color"/>
 <!-- Legacy and compatibility fallback -->
-<link
-  rel="icon"
-  href="./favicon.ico?v=9"
-  type="image/x-icon"
-/>
-
+<link href="./favicon.ico?v=30" rel="icon" type="image/x-icon"/>
 <!-- Fixed-size browser-tab icons -->
-<link
-  rel="icon"
-  href="./favicon-16x16.png?v=9"
-  type="image/png"
-  sizes="16x16"
-/>
-
-<link
-  rel="icon"
-  href="./favicon-32x32.png?v=9"
-  type="image/png"
-  sizes="32x32"
-/>
-
-<link
-  rel="icon"
-  href="./favicon-48x48.png?v=9"
-  type="image/png"
-  sizes="48x48"
-/>
-
+<link href="./favicon-16x16.png?v=30" rel="icon" sizes="16x16" type="image/png"/>
+<link href="./favicon-32x32.png?v=30" rel="icon" sizes="32x32" type="image/png"/>
+<link href="./favicon-48x48.png?v=30" rel="icon" sizes="48x48" type="image/png"/>
 <!-- Preferred scalable Georgia-R icon for modern browsers -->
-<link
-  rel="icon"
-  href="./favicon.svg?v=9"
-  type="image/svg+xml"
-  sizes="any"
-/>
-
+<link href="./favicon.svg?v=30" rel="icon" sizes="any" type="image/svg+xml"/>
 <!-- iPhone and iPad home-screen icon -->
-<link
-  rel="apple-touch-icon"
-  href="./apple-touch-icon.png?v=9"
-  type="image/png"
-  sizes="180x180"
-/>
-
+<link href="./apple-touch-icon.png?v=30" rel="apple-touch-icon" sizes="180x180" type="image/png"/>
 <!-- Android and installed-app configuration -->
-<link
-  rel="manifest"
-  href="./site.webmanifest?v=9"
-/>
-  
-
+<link href="./site.webmanifest?v=30" rel="manifest"/>
 <!-- Open Graph metadata used by WhatsApp and other link previews -->
-<meta property="og:type" content="website"/>
-<meta property="og:site_name" content="RajAIAssist"/>
-<meta property="og:url" content="https://rajmohanacharya.github.io/ai/"/>
-<meta property="og:title" content="RajAIAssist"/>
-<meta property="og:description" content="Local AI with Unlimited Usage, Complete Privacy, and Full Control"/>
-<meta property="og:image" content="https://rajmohanacharya.github.io/ai/rajai-social-preview.webp"/>
-<meta property="og:image:type" content="image/webp"/>
-<meta property="og:image:width" content="192"/>
-<meta property="og:image:height" content="192"/>
-<meta property="og:image:alt" content="RajAIAssist — Local AI with Unlimited Usage, Complete Privacy, and Full Control"/>
-
+<meta content="website" property="og:type"/>
+<meta content="RajAIAssist" property="og:site_name"/>
+<meta content="https://rajmohanacharya.github.io/ai/" property="og:url"/>
+<meta content="RajAIAssist" property="og:title"/>
+<meta content="Local AI with Unlimited Usage, Complete Privacy, and Full Control" property="og:description"/>
+<meta content="https://rajmohanacharya.github.io/ai/rajai-social-preview.webp" property="og:image"/>
+<meta content="image/webp" property="og:image:type"/>
+<meta content="192" property="og:image:width"/>
+<meta content="192" property="og:image:height"/>
+<meta content="RajAIAssist — Local AI with Unlimited Usage, Complete Privacy, and Full Control" property="og:image:alt"/>
 <!-- Twitter/X card metadata -->
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Local AI with Unlimited Usage, Complete Privacy, and Full Control"/>
-<meta name="twitter:description" content="Local AI with Unlimited Usage, Complete Privacy, and Full Control"/>
-<meta name="twitter:image" content="https://rajmohanacharya.github.io/ai/rajai-social-preview.webp"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Local AI with Unlimited Usage, Complete Privacy, and Full Control" name="twitter:title"/>
+<meta content="Local AI with Unlimited Usage, Complete Privacy, and Full Control" name="twitter:description"/>
+<meta content="https://rajmohanacharya.github.io/ai/rajai-social-preview.webp" name="twitter:image"/>
 <style>
     :root {
       --bg: #090c10;
@@ -108,27 +66,6 @@
       --code-bg: #0d1117;
     }
 
-    html[data-theme="amd"] {
-      color-scheme: dark;
-      --bg: #080808; --panel: #141414; --panel-2: #1b1b1b; --panel-3: #0e0e0e;
-      --border: #3b2a2a; --border-soft: #2b2020; --text: #f7f4f2; --muted: #b8aaa5;
-      --accent: #f04438; --accent-2: #c92f28; --danger: #ff7676; --warning: #ffb35c;
-      --body-glow: rgba(240, 68, 56, .14); --topbar-bg: rgba(20, 20, 20, .92);
-      --sidebar-top: rgba(24, 18, 18, .98); --sidebar-bottom: rgba(10, 10, 10, .98);
-      --button-bg: #231b1b; --button-hover: #352323; --code-bg: #0a0909;
-    }
-
-    html[data-theme="oracle"] {
-      color-scheme: light;
-      --bg: #f4f1eb; --panel: #ffffff; --panel-2: #f7f4ef; --panel-3: #fbfaf7;
-      --border: #d7d0c7; --border-soft: #e4ddd5; --text: #231f20; --muted: #68615c;
-      --accent: #c74634; --accent-2: #a93628; --danger: #b42318; --warning: #946200;
-      --shadow: 0 14px 36px rgba(49, 42, 36, .12); --body-glow: rgba(199, 70, 52, .10);
-      --topbar-bg: rgba(255, 255, 255, .92); --sidebar-top: rgba(255, 255, 255, .98);
-      --sidebar-bottom: rgba(245, 241, 235, .98); --button-bg: #f1ece6;
-      --button-hover: #e9e1d8; --code-bg: #201d1d;
-    }
-
     html[data-theme="garuda"] {
       color-scheme: dark;
       --bg: #090818; --panel: #151329; --panel-2: #1d1937; --panel-3: #0e0c20;
@@ -138,6 +75,22 @@
       --sidebar-top: rgba(23, 19, 48, .98); --sidebar-bottom: rgba(9, 8, 24, .98);
       --button-bg: #211b43; --button-hover: #30245c; --code-bg: #080716;
     }
+
+    html[data-theme="apple"] {
+      color-scheme: light;
+      --bg: #f5f5f7; --panel: rgba(255,255,255,.92); --panel-2: #ffffff; --panel-3: #f9f9fb;
+      --border: #d2d2d7; --border-soft: #e5e5ea; --text: #1d1d1f; --muted: #6e6e73;
+      --accent: #0071e3; --accent-2: #005bb5; --danger: #d70015; --warning: #9a6700;
+      --shadow: 0 16px 44px rgba(0,0,0,.10); --body-glow: rgba(0,113,227,.10);
+      --topbar-bg: rgba(255,255,255,.82); --sidebar-top: rgba(255,255,255,.96);
+      --sidebar-bottom: rgba(245,245,247,.96); --button-bg: #f0f0f2;
+      --button-hover: #e4e4e8; --code-bg: #1d1d1f;
+    }
+
+    html[data-theme="apple"] .card,
+    html[data-theme="apple"] .chat,
+    html[data-theme="apple"] .composer,
+    html[data-theme="apple"] .topbar { backdrop-filter: saturate(180%) blur(18px); }
     * { box-sizing: border-box; }
     html, body { min-height: 100%; }
     body {
@@ -449,13 +402,7 @@
     .drop-active { border-color: var(--accent) !important; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent); }
     .runtime-note { color: var(--muted); font-size: .73rem; line-height: 1.45; margin-top: 7px; max-width: 850px; }
     .quality-note { color: var(--warning); }
-    html[data-theme="oracle"] .card, html[data-theme="oracle"] .chat, html[data-theme="oracle"] .composer, html[data-theme="oracle"] .message-box, html[data-theme="oracle"] .doc, html[data-theme="oracle"] .prompt-library-shell, html[data-theme="oracle"] .prompt-category, html[data-theme="oracle"] .prompt-subcategory { background: var(--panel); }
-    html[data-theme="oracle"] .message.user .message-box { background: #fff4f1; }
-    html[data-theme="oracle"] .message.assistant .message-box { background: #ffffff; }
-    html[data-theme="oracle"] .badge { background: #f7f4ef; }
-    html[data-theme="oracle"] pre, html[data-theme="oracle"] pre code, html[data-theme="oracle"] .code-wrap { color: #f8f5f2; background: var(--code-bg) !important; }
     html[data-theme="garuda"] .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #080716; }
-    html[data-theme="amd"] .btn-primary { background: linear-gradient(135deg, #ff5a4d, var(--accent-2)); color: #160403; }
     [hidden] { display: none !important; }
     @media (max-width: 980px) {
       .shell { grid-template-columns: 1fr; }
@@ -499,23 +446,30 @@
 <div class="service-note">Click the button above to check whether AI is currently running.</div>
 </section>
 <section class="card response-controls" id="responseControlsCard">
-<div class="card-title"><span>Response controls</span><span class="scope-badge">v2.9</span></div>
+<div class="card-title"><span>Response controls</span><span class="scope-badge">v3</span></div>
 <div class="control-grid">
 <label for="outputTokensSelect">Output length
 <select id="outputTokensSelect">
 <option value="1024">Concise · 1K</option>
 <option value="2048">Standard · 2K</option>
-<option value="4096" selected>Detailed · 4K</option>
+<option selected="" value="4096">Detailed · 4K</option>
 <option value="8192">Extended · 8K</option>
 </select></label>
 <label for="reliabilitySelect">Reliability
 <select id="reliabilitySelect">
 <option value="balanced">Balanced</option>
-<option value="conservative" selected>Conservative</option>
-<option value="evidence">Evidence only</option>
+<option selected="" value="conservative">Conservative</option>
+
 </select></label>
 </div>
-<div class="reliability-help" id="reliabilityHelp">Conservative mode states uncertainty and avoids invented specifics. Evidence-only mode requires retrieved file or owner-Vault sources and may abstain.</div>
+<div class="reliability-help" id="reliabilityHelp">Conservative mode states uncertainty and avoids invented specifics. Balanced mode is suitable for general discussion and creative work.</div>
+</section><section class="card" id="guidesCard">
+<div class="card-title"><span>Guides &amp; Advanced Prompts</span></div>
+<div class="sidebar-examples">
+<a class="btn" href="./howto/" style="text-align:center;text-decoration:none">User How-to Guide</a>
+<a class="btn" href="./howtoadmin/" style="text-align:center;text-decoration:none">Administrator Manual</a>
+</div>
+<div class="service-note">Open the user guide for advanced prompts, prompt etiquette, features, and safe-use guidance.</div>
 </section>
 <section class="card" id="currentChatCard">
 <div class="card-title"><span>Current chat</span><button class="btn btn-small" id="newChatBtn">New</button></div>
@@ -526,368 +480,25 @@
 </section>
 <section class="card" id="fileIngestCard">
 <div class="card-title"><span>File Ingest</span><button class="btn btn-small" id="refreshDocsBtn">Refresh</button></div>
-<input class="upload-input" id="fileInput" type="file" multiple/>
+<input class="upload-input" id="fileInput" multiple="" type="file"/>
 <p class="file-help">Choose one or more files in a single selection. Common documents, source code, archives, emails, spreadsheets, presentations, and images are processed locally.</p>
 <button class="btn btn-primary" id="uploadBtn" style="width:100%;margin-top:9px">Upload and ingest selected</button>
 <div class="status-line" id="uploadStatus"></div>
 <div class="documents" id="documents"><div class="empty-mini">No files loaded for this chat.</div></div>
 </section>
-<section class="card" id="promptLibraryCard">
-<div class="card-title"><span>Example Prompts</span></div>
-<details class="prompt-library-shell">
-<summary>Browse advanced prompt library</summary>
-<p class="prompt-library-help">Open a category and select a prompt. It will be copied into the question box for you to review and customize before sending.</p>
-<div class="prompt-library">
-<details class="prompt-category">
-<summary>Coding &amp; Automation</summary>
-<div class="prompt-category-body">
-<p class="prompt-safety-note"><strong>Accuracy-first templates:</strong> These 20 prompts are intentionally detailed. Replace every bracketed field, attach all relevant files, and review generated code before running it. The templates request complete artifacts, explicit assumptions, tests, and a silent self-review; they do not execute or validate code automatically.</p>
-<details class="prompt-subcategory">
-<summary>Build complete solutions</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Act as a principal Python engineer, software architect, reviewer, and test engineer. Build a production-ready Python 3.10+ solution for the following requirement:&#10;&#10;[Describe the business requirement, inputs, environment, constraints, and expected result.]&#10;&#10;Use all uploaded files as source evidence. First determine the actual requirements, interfaces, data formats, lifecycle events, and constraints. Do not invent fields, APIs, identifiers, schemas, filenames, commands, or platform behavior that are not present in the supplied material. If a missing detail would materially change correctness or safety, ask no more than three focused clarification questions before writing code; otherwise proceed with clearly stated assumptions.&#10;&#10;Deliver the smallest complete implementation that fully satisfies the requirement. Include every required import, class, function, configuration item, validation rule, error path, logging statement, timeout, retry policy, cleanup step, and executable entry point. Use type hints, docstrings, pathlib, explicit exceptions, secure defaults, deterministic behavior, and atomic file writes where relevant. Handle malformed input, empty input, duplicate or repeated events, interrupted execution, permission failures, network failures, partial output, and cleanup. Avoid global mutable state unless justified. Never use TODOs, ellipses, pseudo-code, omitted sections, or placeholders in the final code.&#10;&#10;Before responding, silently review the complete implementation for syntax errors, undefined names, scope mistakes, incorrect counters or averages, unsafe serialization, race conditions, resource leaks, missing return paths, and mismatch with the stated requirements.&#10;&#10;Output order:&#10;1. One complete code block per required file, with the intended filename as a heading.&#10;2. Exact installation and execution commands.&#10;3. A compact test plan with expected outcomes.&#10;4. Assumptions, limitations, and items requiring user verification.&#10;&#10;Do not claim the code was executed unless it was actually executed.">Production Python solution</button>
-<button class="example prompt-example" data-prompt="Design and implement a robust command-line utility for this task:&#10;&#10;[Describe the task, operating system, inputs, expected outputs, and examples.]&#10;&#10;Prioritize correctness and predictable operations over brevity. Use Python 3.10+ unless another language is explicitly required. Derive the input grammar and behavior from the uploaded files and examples; do not invent missing flags, fields, or identifiers. When ambiguity is non-blocking, state the assumption. When it is blocking, ask concise clarification questions before generating code.&#10;&#10;The utility must include complete argparse handling, useful --help text, validation, structured logging, quiet and verbose modes, meaningful exit codes, safe path handling, configurable timeouts, retries with bounded exponential backoff where appropriate, idempotency, and --dry-run for destructive or state-changing operations. Add signal handling and cleanup when relevant. Prevent partial or corrupt output through temporary files and atomic replacement. Protect against concurrent duplicate runs with an appropriate lock if the task needs it. Redact secrets from logs.&#10;&#10;Include an assertion-based --self-test or a complete automated test file covering success, invalid input, missing files, malformed data, repeated runs, partial failures, and recovery. The production path must not depend on synthetic sample data.&#10;&#10;Return complete executable code without TODOs, ellipses, pseudo-code, or omitted sections. Silently inspect the final code for parser errors, undefined variables, unreachable branches, incorrect exit-code precedence, and cleanup failures.&#10;&#10;Output the complete code first, followed only by exact setup commands, two realistic usage examples, exit-code meanings, and assumptions.">Production command-line utility</button>
-<button class="example prompt-example" data-prompt="Act as a senior backend architect and application-security engineer. Build or complete a production-ready REST API for the following requirement:&#10;&#10;[Describe the API, clients, data model, authentication method, deployment environment, and constraints.]&#10;&#10;Use the uploaded code and configuration as the source of truth. Preserve the existing framework and public interfaces unless I explicitly request a migration. If no framework is specified, choose a minimal well-supported option and explain the choice briefly. Do not invent database columns, request fields, external APIs, or authorization rules. Ask focused questions only when missing information blocks a safe implementation.&#10;&#10;Provide every required file in full: application entry point, routes, request and response models, service layer, persistence layer when needed, configuration, dependency list, tests, and deployment commands. Implement strict input validation, consistent JSON errors, authentication and authorization boundaries, safe CORS, request-size limits, timeouts, cancellation, pagination, idempotency where relevant, rate-limit strategy, health/readiness endpoints, structured logs with secret redaction, correlation IDs, graceful shutdown, and secure headers. Protect against injection, path traversal, SSRF, unsafe deserialization, insecure file handling, and accidental credential exposure.&#10;&#10;Include tests for authorized and unauthorized access, invalid payloads, edge cases, duplicate requests, upstream timeouts, partial failures, and health checks. Do not provide partial snippets, placeholder methods, or comments such as “implement here.”&#10;&#10;Before answering, silently check route wiring, imports, async/sync compatibility, status codes, exception propagation, transaction boundaries, and deployment configuration.&#10;&#10;Output complete files first, then exact install/run/test commands, API examples, assumptions, and a short production-readiness checklist.">Secure REST API or backend service</button>
-<button class="example prompt-example" data-prompt="Create a production-grade ETL or data-processing pipeline for this requirement:&#10;&#10;[Describe source data, sample files, schema, transformations, output destination, volume, schedule, and failure policy.]&#10;&#10;Act as a data engineer and reliability reviewer. Infer formats only from supplied files and examples. Do not invent columns, keys, encodings, delimiters, or business rules. Clearly distinguish verified rules from assumptions. Ask clarification questions before coding when an unknown rule could corrupt or misclassify data.&#10;&#10;The implementation must handle large inputs without loading everything into memory, invalid encodings, malformed records, schema drift, missing required fields, duplicates, repeated runs, partial files, interrupted execution, and output collisions. Include deterministic normalization, validation, deduplication, checkpoints or resumability when appropriate, idempotent writes, audit metrics, rejected-record output, and atomic finalization. Preserve source line or record identifiers for traceability. Use timezone-aware timestamps and decimal-safe handling for financial values when relevant.&#10;&#10;Provide one complete executable implementation with configuration, logging, command-line arguments, dry-run mode, clear exit codes, summary metrics, JSON or CSV reports, and tests using representative synthetic fixtures that reflect the observed schema. Never hide bad records silently. Do not use placeholders or abbreviated code.&#10;&#10;Silently verify record counts, aggregation logic, empty-input behavior, duplicate handling, checkpoint recovery, serialization, and cleanup before responding.&#10;&#10;Output complete files first, followed by execution examples, expected outputs, validation steps, assumptions, and operational limits.">Reliable ETL or data-processing pipeline</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Diagnose, repair &amp; refactor</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Act as a senior debugger. Diagnose and correct the uploaded code using the supplied error, stack trace, logs, inputs, and expected behavior.&#10;&#10;Problem statement:&#10;[Describe what fails, what should happen, environment and versions, and how to reproduce it.]&#10;&#10;Work from evidence. Reconstruct the execution path, identify the earliest incorrect state, separate root cause from downstream symptoms, and rank alternative hypotheses. Do not guess that a library, field, file, API, or runtime behavior exists without evidence. If reproduction details are insufficient, ask the minimum blocking questions.&#10;&#10;Then provide a complete corrected replacement for every affected file—not a patch and not isolated snippets. Preserve unrelated behavior and public interfaces unless a change is necessary, in which case explain the compatibility impact. Add input validation, explicit errors, timeouts, cleanup, and logging only where they improve correctness. Include regression tests that fail against the original defect and pass against the correction.&#10;&#10;Before responding, silently trace normal, boundary, failure, repeated-run, and concurrent execution paths. Check imports, variable scope, object lifetime, mutable state, exception propagation, serialization, and cleanup. Do not claim the fix was executed unless it was actually executed.&#10;&#10;Output order:&#10;1. Root cause and evidence in a concise table.&#10;2. Complete corrected files.&#10;3. Regression tests.&#10;4. Exact verification commands and expected results.&#10;5. Residual risks and assumptions.">Root-cause debugging + corrected replacement</button>
-<button class="example prompt-example" data-prompt="Perform a hostile production-readiness review of all uploaded code and configuration. Assume the software will receive malformed input, repeated requests, partial failures, slow dependencies, concurrent execution, restarts, low disk space, permission errors, and hostile users.&#10;&#10;Review correctness, security, reliability, observability, data integrity, concurrency, performance, maintainability, deployment, and operational recovery. Specifically inspect variable scope, state reuse, duplicate handling, counters and statistics, timestamp semantics, transactions, locking, retries, timeout coverage, serialization, atomic writes, resource cleanup, secret handling, logging, command-line behavior, error-code precedence, and test quality. Distinguish confirmed defects from risks and optional improvements. Cite the relevant function or construct for every finding.&#10;&#10;After the review, return complete corrected replacement files for all critical and high-severity defects. Do not provide only a patch. Do not omit unchanged parts of an affected file. Preserve documented behavior unless a correction requires a breaking change; clearly identify any breaking change. Add focused regression tests for each corrected defect.&#10;&#10;Before finalizing, silently perform a second review of your own replacement for syntax errors, undefined names, duplicate records, overwritten repeated runs, invalid JSON serialization, incorrect averages or medians, swallowed exceptions, unsafe defaults, and incomplete branches.&#10;&#10;Output: severity-ranked defect table, complete replacement files, test files, exact validation commands, deployment cautions, and remaining limitations. Never use TODOs, ellipses, or pseudo-code.">Hostile production-readiness review</button>
-<button class="example prompt-example" data-prompt="Refactor or migrate the uploaded legacy application to the following target while preserving verified behavior:&#10;&#10;Target language, framework, library, or version: [target]&#10;Compatibility requirements: [requirements]&#10;Known pain points: [details]&#10;&#10;First inventory the current entry points, interfaces, configuration, state, data formats, side effects, error behavior, and implicit assumptions. Build a compatibility matrix that distinguishes behavior that must remain unchanged from behavior that should be corrected. Do not invent undocumented requirements. Ask clarification questions if a proposed change could break consumers or data compatibility.&#10;&#10;Design an incremental migration with rollback points. Then provide complete production-ready replacement files for the agreed scope, including dependency updates, configuration migration, data migration when required, compatibility adapters, deprecation handling, tests, and exact rollout commands. Keep changes focused and explain unavoidable breaking changes. Ensure safe defaults, explicit errors, timeouts, resource cleanup, observability, and deterministic repeated runs.&#10;&#10;Include unit and integration tests demonstrating behavior parity for critical paths and correct handling of new edge cases. Provide a rollback procedure and a checklist for staging validation.&#10;&#10;Before answering, silently review imports, version-specific APIs, configuration names, serialization formats, database transactions, async behavior, and deployment assumptions.&#10;&#10;Output complete files first, then migration steps, test commands, compatibility notes, rollback instructions, and residual risks. No placeholders or omitted sections.">Legacy refactor or version migration</button>
-<button class="example prompt-example" data-prompt="Analyze the uploaded code for performance, memory, I/O, and concurrency problems and return a correct optimized implementation.&#10;&#10;Observed symptoms and constraints:&#10;[Provide latency, throughput, CPU, memory, dataset size, concurrency, platform, and target.]&#10;&#10;Do not optimize by intuition alone. Use the supplied code, logs, measurements, and workload description to identify likely bottlenecks. Separate measured evidence from hypotheses and provide a measurement or benchmark to validate each hypothesis. Preserve correctness, ordering, data integrity, and error behavior.&#10;&#10;Inspect algorithmic complexity, repeated parsing, unnecessary copies, blocking I/O, unbounded queues, thread/process safety, async misuse, lock contention, race conditions, deadlocks, connection pooling, file-descriptor leaks, cache growth, batching, backpressure, cancellation, timeouts, and shutdown behavior. Avoid unsafe parallelism and unbounded retries.&#10;&#10;Return complete optimized replacement files plus a reproducible benchmark or load-test script. Include correctness regression tests so performance changes cannot silently alter results. State expected improvements only as hypotheses unless measured. Provide safe configuration defaults and explain how to tune them.&#10;&#10;Before finalizing, silently trace concurrent and repeated execution, exception paths, cancellation, cleanup, and shared-state access.&#10;&#10;Output: evidence-based diagnosis, complete code, benchmark/test files, run commands, acceptance thresholds, rollback plan, assumptions, and remaining bottlenecks.">Performance, memory &amp; concurrency correction</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Test, validate &amp; secure</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Create a comprehensive, runnable automated test suite for the uploaded application.&#10;&#10;Testing goal and supported environment:&#10;[Describe framework, versions, operating system, databases/services, and critical behavior.]&#10;&#10;First map public interfaces, state transitions, dependencies, data formats, side effects, and known defects. Do not invent behavior that is absent from the code or requirements. Identify testability problems and propose the smallest safe seams or dependency injection changes.&#10;&#10;Provide complete test files and any minimal production-code changes required to make testing reliable. Cover happy paths, boundaries, invalid input, malformed files, empty data, duplicate and repeated operations, concurrency where relevant, timeouts, retries, partial failures, permission errors, serialization, cleanup, and every supplied bug report. Tests must be deterministic, isolated, repeatable, and safe to run. Use temporary directories, controlled clocks, seeded randomness, mocks/fakes only at external boundaries, and explicit assertions. Avoid tests that merely mirror implementation details.&#10;&#10;Include unit, integration, and regression coverage appropriate to the application. Add fixtures and a test-data strategy. Ensure test commands return nonzero on failure and can run in CI.&#10;&#10;Before answering, silently verify test imports, fixture scope, paths, asynchronous handling, expected exceptions, cleanup, and that each regression test would fail on the original defect.&#10;&#10;Output complete test and support files first, then exact setup/run commands, expected success criteria, coverage gaps, and assumptions.">Comprehensive regression test suite</button>
-<button class="example prompt-example" data-prompt="Implement the following feature using a test-driven approach:&#10;&#10;Feature: [describe feature]&#10;Existing code/files: [identify uploads]&#10;Acceptance criteria: [list measurable criteria]&#10;Compatibility constraints: [details]&#10;&#10;Translate the request into precise acceptance tests before implementation. Do not invent requirements or external interfaces. Ask focused questions if a missing rule changes observable behavior. Preserve existing public behavior unless the acceptance criteria explicitly change it.&#10;&#10;Provide complete failing-first test files followed by complete production implementation files. Cover normal behavior, boundaries, invalid input, repeated operations, failures of dependencies, concurrency where relevant, persistence/serialization, and rollback or cleanup. Make tests deterministic and isolated. Avoid superficial tests that only verify mocks were called.&#10;&#10;The implementation must include validation, explicit errors, logging where operationally useful, safe defaults, timeouts, and resource cleanup. No TODOs, pseudo-code, ellipses, or omitted methods.&#10;&#10;Before responding, silently check that the test expectations match the stated criteria, the production code satisfies every test, imports and fixtures are complete, and existing behavior is not accidentally broken.&#10;&#10;Output order: acceptance criteria, complete tests, complete implementation, exact test commands, expected results, assumptions, and any deliberate non-goals.">Test-driven feature implementation</button>
-<button class="example prompt-example" data-prompt="Act as an application-security engineer and senior developer. Threat-model and harden the uploaded code for this deployment context:&#10;&#10;[Describe users, trust boundaries, data sensitivity, network exposure, authentication, storage, and deployment.]&#10;&#10;Identify assets, entry points, trust boundaries, attackers, abuse cases, and failure consequences. Review authentication, authorization, session handling, secret storage, CORS, CSRF where relevant, injection, command execution, path traversal, unsafe uploads, archive bombs, SSRF, deserialization, dependency risks, logging of sensitive data, cryptography misuse, rate limiting, denial of service, insecure defaults, permissions, and error leakage. Rank findings by severity, likelihood, and impact; distinguish confirmed vulnerabilities from defense-in-depth recommendations.&#10;&#10;Return complete hardened replacement files for all critical/high findings, preserving required functionality. Use least privilege, allowlists, bounded resource usage, secure temporary files, constant-time secret comparison where appropriate, strict validation, safe headers, timeouts, and audit logging with redaction. Do not hard-code secrets or provide fake security controls.&#10;&#10;Add security-focused tests for unauthorized access, malformed input, traversal, oversized payloads, injection attempts, duplicate/replay behavior, and upstream failure.&#10;&#10;Before finalizing, silently review your fix for bypasses, unsafe fallbacks, accidental lockout, broken CORS/preflight, and sensitive error messages.&#10;&#10;Output: threat model, severity-ranked findings, complete hardened files, tests, verification commands, deployment steps, and residual risk. No partial patches or placeholders.">Security hardening + threat model</button>
-<button class="example prompt-example" data-prompt="Evaluate the uploaded project as if it is scheduled for a production release. Produce a release-readiness audit and the complete automation needed to verify it.&#10;&#10;Release environment and critical requirements:&#10;[Describe platform, users, dependencies, deployment method, availability, security, and rollback expectations.]&#10;&#10;Review build reproducibility, dependency pinning, configuration, secrets, migrations, backward compatibility, tests, static analysis, typing, security scanning, health/readiness, logging, metrics, timeouts, retries, backups, data retention, deployment permissions, rollback, and operator documentation. Identify blocking issues separately from recommended improvements. Do not claim a check passed unless evidence or an executable check is provided.&#10;&#10;Create complete verification scripts and/or CI jobs that run syntax checks, unit/integration tests, linting, type checking, dependency/security checks, configuration validation, smoke tests, and artifact integrity checks appropriate to the project. Commands must fail clearly and return nonzero on defects. Include safe pre-deployment, post-deployment, and rollback checks. Never expose secrets in logs.&#10;&#10;Where code changes are required to pass release gates, provide complete replacement files.&#10;&#10;Before responding, silently verify command availability, paths, shell quoting, exit-code propagation, CI syntax, artifact names, and cleanup.&#10;&#10;Output: release decision, blocker table, complete verification automation, exact run instructions, acceptance thresholds, deployment/rollback checklist, and unresolved risks.">Release-readiness audit + verification plan</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>DevOps &amp; systems automation</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Create one complete, production-safe Bash automation script for this requirement:&#10;&#10;[Describe the Linux task, supported distributions, privileges, inputs, files/services affected, and desired end state.]&#10;&#10;Target Bash 4+ unless another shell is required. Use set -Eeuo pipefail, strict quoting, arrays where appropriate, explicit dependency and privilege checks, safe temporary files, cleanup traps, clear structured logs, meaningful exit codes, --help, --version, and --dry-run for state-changing operations. Make the script idempotent so repeated execution is safe. Avoid parsing ls, unsafe eval, unquoted expansions, predictable temporary filenames, and broad process killing. Redact secrets.&#10;&#10;Handle missing commands, invalid arguments, interrupted execution, partial changes, permission failures, unavailable services, concurrent duplicate runs, and rollback of changes that can be reversed. Verify the desired end state rather than assuming a command succeeded. Support noninteractive operation when feasible.&#10;&#10;Provide an assertion-based test harness or a safe simulation strategy. Do not use TODOs, omitted branches, or environment-specific hard-coded secrets.&#10;&#10;Before answering, silently review quoting, globbing, word splitting, command substitutions, pipelines, traps, exit-code propagation, destructive commands, and rollback.&#10;&#10;Output the complete script first, followed by prerequisites, safe test commands, one real execution example, exit codes, rollback steps, and assumptions.">Safe Bash or Linux automation</button>
-<button class="example prompt-example" data-prompt="Package the following application or job as a reliable Linux systemd-managed service or scheduled timer:&#10;&#10;[Describe executable, user, directories, schedule, environment, network needs, and recovery behavior.]&#10;&#10;Provide every required file in full: systemd service unit, optional timer unit, environment-file template, installation script, uninstallation script, log/health-check script, and application changes if needed. Use a dedicated non-root user where possible, least privilege, secure file permissions, explicit working directory, bounded restart policy, startup/readiness checks, shutdown timeouts, resource limits, and dependency ordering. Do not embed credentials in unit files.&#10;&#10;Ensure install/uninstall operations are idempotent and support --dry-run where practical. Preserve user data on uninstall unless explicitly requested. Include safe directory creation, ownership, daemon-reload, enable/start, status verification, journal inspection, failure diagnosis, and rollback. Avoid restart loops and misleading success messages.&#10;&#10;Before responding, silently verify unit syntax, paths, quoting, environment expansion, User/Group permissions, restart semantics, timer persistence, cleanup, and commands across the specified distribution.&#10;&#10;Output complete files first, then exact installation, verification, troubleshooting, upgrade, rollback, and uninstall commands. State assumptions and platform limitations.">Systemd service, timer &amp; operations package</button>
-<button class="example prompt-example" data-prompt="Containerize the uploaded application for a secure, reproducible production deployment.&#10;&#10;Deployment target and constraints:&#10;[Describe architecture, ports, storage, external services, CPU/RAM limits, and orchestration environment.]&#10;&#10;Provide complete Dockerfile, .dockerignore, docker-compose.yml when appropriate, entrypoint/health scripts, environment template, and any required application changes. Use multi-stage builds, pinned base images where practical, a non-root runtime user, minimal packages, reproducible dependency installation, read-only filesystem where feasible, explicit volumes, health checks, graceful shutdown, resource limits, and secret injection rather than embedded credentials. Do not copy unnecessary source, caches, keys, or local data into the image.&#10;&#10;Validate ports, networking, DNS, file ownership, bind mounts, persistent data, startup ordering, health/readiness, logging, and signal propagation. Include development and production distinctions without duplicating unsafe configuration. Add build and smoke-test commands and explain how to update and roll back.&#10;&#10;Before responding, silently inspect layer caching, architecture compatibility, permissions, executable bits, shell form versus exec form, health-check dependencies, environment expansion, and potential secret leakage.&#10;&#10;Output complete files first, then build/run/test commands, expected health output, deployment notes, rollback, and assumptions. No placeholders or omitted sections.">Secure Docker and Compose deployment</button>
-<button class="example prompt-example" data-prompt="Design and implement a production CI/CD pipeline for the uploaded repository.&#10;&#10;Platform: [GitHub Actions, GitLab CI, Jenkins, or other]&#10;Deployment target: [target]&#10;Branch/release policy: [details]&#10;Required gates: [details]&#10;&#10;Use the actual project structure and commands; do not invent nonexistent scripts or environments. If required commands are missing, provide complete support files to add them. The pipeline must include deterministic dependency installation, caching with safe keys, syntax/lint/type checks, unit and integration tests, security/dependency checks, artifact creation, checksums, retention, environment-specific deployment, concurrency controls, cancellation of superseded runs where safe, protected approvals for production, post-deployment smoke checks, and rollback.&#10;&#10;Use least-privilege permissions and OIDC or secure secret injection where supported. Never print secrets. Pin third-party actions/plugins to trusted immutable versions when appropriate. Ensure failures propagate correctly and deployments are idempotent.&#10;&#10;Provide complete pipeline files and any helper scripts. Include separate pull-request, main-branch, and tagged-release behavior as required.&#10;&#10;Before finalizing, silently verify YAML syntax, indentation, expression syntax, paths, job dependencies, artifact names, permissions, matrix behavior, environment gates, and rollback commands.&#10;&#10;Output complete files first, then secret/permission setup, exact validation steps, release flow, rollback procedure, and assumptions.">Production CI/CD pipeline</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Integrations, data &amp; monitoring</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Build a resilient API integration or synchronization job for the following systems:&#10;&#10;Source API: [details]&#10;Destination: [details]&#10;Authentication: [method]&#10;Data volume and schedule: [details]&#10;Consistency and duplicate rules: [details]&#10;&#10;Use only documented fields and supplied examples. Do not invent endpoints, scopes, pagination behavior, schemas, or success criteria. Ask focused questions when API details are blocking. Provide a complete implementation with configuration through environment or a protected file, secret redaction, connection/read timeouts, pagination, bounded retries with exponential backoff and jitter, rate-limit handling, idempotency, checkpointing, deduplication, schema validation, partial-failure reporting, and resumability.&#10;&#10;Define exact behavior for create, update, delete, conflict, duplicate, missing-record, and replay scenarios. Protect against data loss: support dry-run, audit logs, before/after counts, rejected-record output, and atomic checkpoint writes. Use stable correlation IDs and avoid logging sensitive payloads.&#10;&#10;Include complete tests using mocked external boundaries and fixtures based on supplied examples. Test pagination, 429, 5xx, timeout, malformed response, duplicate event, interrupted run, resume, and destination failure.&#10;&#10;Before responding, silently check authentication headers, URL construction, pagination termination, retry safety, checkpoint consistency, and exit-code precedence.&#10;&#10;Output complete files first, then configuration, run/schedule examples, validation/reconciliation steps, exit codes, assumptions, and operational limits.">Resilient API integration or sync job</button>
-<button class="example prompt-example" data-prompt="Analyze all relevant uploaded log files and build one complete production-grade Python 3.10+ monitoring tool. Accuracy is more important than brevity.&#10;&#10;First infer the exact observed log grammar: outer and embedded timestamps, lifecycle markers, script/job names, execution IDs, process/thread IDs, start/end/error/no-result events, multiline records, and whether executions can overlap. Quote representative evidence. Do not invent correlation identifiers. If reliable concurrent correlation is impossible, state that clearly and implement the safest documented sequential fallback.&#10;&#10;The tool must read a real log file through argparse, keep every execution as a separate record, prevent repeated script IDs from overwriting prior runs, correlate events consistently, preserve source line numbers, handle malformed lines, invalid UTF-8, empty files, duplicate events, unmatched starts/ends, negative durations, partial writes, and interrupted runs. Compute total/completed/incomplete/failed counts plus minimum, maximum, median, percentile when useful, and average durations using completed runs only. Associate “no rows” or equivalent events with the correct run or mark them explicitly uncorrelated.&#10;&#10;Support readable terminal output plus valid JSON and CSV reports, atomic output writes, meaningful monitoring exit codes 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN, configurable thresholds, and assertion-based --self-test coverage. The self-test must not require a real --log-file and must verify expected counts and exit codes.&#10;&#10;Before responding, silently inspect identifier extraction for both start and end events, dictionary-key consistency, duplicate list insertion, dataclass/datetime JSON serialization, even-sample median calculation, infinity output, exception propagation, and cleanup.&#10;&#10;Output one complete executable script first, then one example command, exit-code meanings, evidence-based assumptions, and limitations. No TODOs, ellipses, hard-coded production sample logs, or silent except blocks.">Production log monitor from real logs</button>
-<button class="example prompt-example" data-prompt="Design and implement a safe database or SQL automation solution for this requirement:&#10;&#10;Database and version: [details]&#10;Schema or uploaded DDL: [details]&#10;Operation: [query, migration, cleanup, reconciliation, reporting, or synchronization]&#10;Data volume, downtime, and rollback constraints: [details]&#10;&#10;Use the actual schema and examples. Do not invent tables, columns, keys, constraints, indexes, or data semantics. Ask clarification questions when missing information risks data corruption. Use parameterized queries, explicit transactions, appropriate isolation, batching, bounded memory, timeout/cancellation, connection cleanup, and clear error handling. Avoid destructive operations without dry-run/preview, backup guidance, row-count safeguards, and explicit confirmation.&#10;&#10;For migrations, make forward and rollback paths complete, idempotent where possible, and safe under partial failure. Validate preconditions and postconditions, preserve referential integrity, and explain locking and performance impact. For data jobs, include reconciliation totals, duplicate handling, checkpoints, audit output, and restart behavior.&#10;&#10;Provide complete SQL and any required Python/Bash wrapper, configuration template, tests or validation queries, and execution commands. Redact credentials and use least-privilege permissions.&#10;&#10;Before finalizing, silently review transaction boundaries, NULL semantics, timezone and numeric handling, SQL injection, index use, batch pagination, deadlock/retry safety, row-count validation, and rollback.&#10;&#10;Output complete files first, then dry-run, execution, validation, rollback, assumptions, and production cautions.">Database or SQL automation</button>
-<button class="example prompt-example" data-prompt="Create a reliable scheduled workflow or job orchestrator for this requirement:&#10;&#10;Jobs and dependencies: [details]&#10;Schedule/timezone: [details]&#10;Inputs/outputs: [details]&#10;Failure, retry, and notification policy: [details]&#10;Runtime environment: [details]&#10;&#10;Model the workflow as explicit states and dependencies. Do not invent upstream/downstream contracts. Define idempotency keys, concurrency policy, missed-run behavior, catch-up policy, timeouts, retries with backoff, cancellation, locking, checkpoints, and recovery after process or machine restart. Prevent duplicate overlapping runs unless explicitly allowed. Use timezone-aware scheduling and handle daylight-saving changes when relevant.&#10;&#10;Provide a complete implementation using the specified scheduler or a minimal justified alternative. Include configuration, job definitions, state persistence, structured logs, health/status command, manual trigger, dry-run, safe shutdown, notifications without secrets, and meaningful exit codes. Add tests for dependency ordering, duplicate starts, retry exhaustion, timeout, restart/resume, missed schedule, and partial failure.&#10;&#10;Before responding, silently trace each state transition and failure path, verify lock lifetime, checkpoint atomicity, retry safety, timezone handling, and cleanup.&#10;&#10;Output complete files first, then install/configure/run commands, operational runbook, test commands, recovery procedure, assumptions, and known limitations. No placeholders or pseudo-code.">Scheduled workflow or job orchestrator</button>
-</div>
-</details>
-</div>
-</details>
-<details class="prompt-category">
-<summary>Logs, Incidents &amp; Observability</summary>
-<div class="prompt-category-body">
-<p class="prompt-safety-note"><strong>Evidence-first templates:</strong> These 20 prompts are intentionally detailed. Replace every bracketed field, upload representative telemetry covering the full incident window, preserve timestamps and identifiers, and review any commands or remediation before production use. The templates require the model to separate evidence, inference, and uncertainty; they do not execute queries, validate live systems, or replace incident-command approval.</p>
-<details class="prompt-subcategory">
-<summary>Incident investigation &amp; root-cause analysis</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Act as a principal site-reliability engineer and incident commander. Perform an evidence-driven root-cause analysis for the incident described below using all relevant uploaded logs, metrics, traces, configuration, deployment records, tickets, and timelines.&#10;&#10;Incident scope: [service, environment, region, users, and business impact]&#10;Time window and timezone: [details]&#10;Known changes or symptoms: [details]&#10;&#10;Accuracy is more important than speed. Begin by inventorying the available evidence and identifying missing or unreliable data. Normalize timestamps and explicitly account for timezone differences, clock skew, ingestion delay, duplicated events, sampling, and out-of-order records. Build a timestamped timeline from the earliest credible precursor through impact, detection, mitigation, recovery, and post-recovery validation. Cite source filenames, timestamps, trace or request IDs, hostnames, and representative messages for every material claim.&#10;&#10;Separate the analysis into verified facts, strong inferences, weak hypotheses, and unknowns. Identify the initiating trigger, proximate technical cause, deeper systemic root cause, contributing conditions, failure-propagation path, blast radius, detection gaps, response delays, and recovery mechanism. Do not treat correlation as causation. Rank alternative hypotheses by confidence and provide evidence for and against each one, plus the exact query, command, experiment, or telemetry needed to confirm or reject it.&#10;&#10;Output: executive summary; impact statement; evidence inventory; detailed timeline table; causal chain; ranked hypothesis matrix; immediate containment; safe remediation with rollback; durable preventive actions; monitoring improvements; and unresolved questions. Do not invent events, identifiers, metrics, changes, or conclusions absent from the evidence.">Evidence-driven incident RCA</button>
-<button class="example prompt-example" data-prompt="Correlate the uploaded application, API gateway, database, operating-system, container, Kubernetes, network, load-balancer, cloud, and dependency telemetry as a senior incident analyst. The goal is to reconstruct one defensible cross-layer causal timeline and quantify the blast radius.&#10;&#10;System context: [architecture and service relationships]&#10;Incident window and timezone: [details]&#10;Expected user journey or transaction: [details]&#10;&#10;First map every source to its component, host or pod, environment, timestamp format, timezone, and available correlation fields such as trace ID, request ID, session ID, job ID, process ID, thread ID, connection ID, or message key. Do not invent a correlation field. Correct for clock skew and ingestion delay before ordering events. Where direct IDs are absent, use only bounded time-and-attribute correlation, state the tolerance used, and label the result as heuristic.&#10;&#10;Identify the first abnormal event, downstream symptoms, retry storms, queue buildup, timeout propagation, duplicate work, circuit-breaker behavior, connection-pool pressure, resource saturation, and recovery sequence. Distinguish origin, amplifier, victim, and unrelated coincidental events. Quantify affected requests, users, tenants, hosts, pods, regions, duration, error rate, latency, and data-integrity risk only where the evidence supports it.&#10;&#10;Output a component/source inventory, normalized event timeline, transaction journey, causal dependency chain, blast-radius table, evidence-backed root-cause conclusion, confidence level, alternative explanations, verification queries, containment plan, rollback criteria, and missing telemetry. Cite the exact source label and timestamp for each major conclusion. Never fill evidence gaps with plausible but unsupported events.">Cross-layer causal timeline &amp; blast radius</button>
-<button class="example prompt-example" data-prompt="Investigate the uploaded incident evidence using a competing-hypotheses method rather than jumping to the first plausible explanation. Act as an experienced SRE, systems diagnostician, and skeptical reviewer.&#10;&#10;Observed symptoms: [details]&#10;Incident window: [details]&#10;Recent changes: [details]&#10;Known constraints: [details]&#10;&#10;Extract only verified observations from the supplied logs, metrics, traces, screenshots, configuration, and change records. Separate observations from interpretations. Propose no more than five materially different hypotheses that could explain the symptoms, including configuration change, dependency failure, resource exhaustion, concurrency defect, data problem, network issue, scheduled activity, and telemetry artifact only when evidence makes them plausible.&#10;&#10;For each hypothesis, provide: mechanism; expected observable evidence; supporting evidence actually present; contradicting evidence; evidence that is missing; confidence level; and the safest discriminating test, query, command, or experiment. Prefer tests that distinguish several hypotheses at once. Identify confirmation bias, misleading symptoms, and data-quality problems. Do not use certainty language unless the evidence is conclusive.&#10;&#10;Then rank the hypotheses, explain why the leading hypothesis is stronger than the alternatives, and state what would change the ranking. Produce a decision tree for the next diagnostic steps, with stop conditions and safe rollback guidance. End with immediate low-risk containment actions, permanent corrective options, and a concise list of additional telemetry required. Do not invent IDs, metrics, deployments, or causal links.">Competing-hypothesis investigation</button>
-<button class="example prompt-example" data-prompt="Analyze multiple uploaded incident windows to determine why an intermittent or recurring failure returns. Treat each occurrence as a separate event and compare them systematically.&#10;&#10;Service and environment: [details]&#10;Known occurrence windows: [list dates/times and timezones]&#10;User impact: [details]&#10;Relevant schedules, deployments, and dependencies: [details]&#10;&#10;Create a normalized incident table containing start, peak, recovery, duration, affected components, error signatures, load, resource state, deployments, configuration changes, scheduled jobs, dependency health, and recovery action for every occurrence. Preserve repeated events instead of collapsing them into one record. Identify common precursors, periodicity, seasonality, threshold crossings, resource leaks, cache or connection aging, cron or batch overlap, certificate or token expiry, autoscaling transitions, deployment cohorts, and external-dependency patterns only where supported.&#10;&#10;Cluster incidents by signature and explain whether there is one recurring mechanism or several distinct failure modes. Quantify recurrence interval, leading indicators, time-to-impact, time-to-detect, time-to-recover, and conditions present in successful periods. Distinguish a true causal factor from a correlated load or time pattern.&#10;&#10;Output: occurrence comparison matrix; recurring signature; likely trigger conditions; ranked causal hypotheses; confidence; evidence gaps; reproducible test plan; targeted instrumentation; early-warning signals; containment; durable fix options; and a validation period with success criteria. Do not fabricate missing incident data or extrapolate beyond the available sample without clearly stated assumptions.">Intermittent &amp; recurring incident analysis</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Log forensics &amp; event correlation</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Reverse-engineer the exact grammar of all uploaded logs before proposing code or conclusions. Act as a log-forensics engineer designing a parser and event-correlation specification that another engineer can implement without ambiguity.&#10;&#10;For every distinct source, identify: outer and embedded timestamps; timezone; precision; severity; component; logger; host or pod; process and thread; request, trace, session, job, script, connection, or message identifiers; delimiter and quoting rules; key-value fields; JSON or multiline records; stack traces; lifecycle markers; success, warning, failure, retry, timeout, and no-result events; and examples of malformed or partial lines. Quote representative source lines.&#10;&#10;Do not invent fields or assume that a script ID is also a unique execution ID. Determine whether repeated IDs can occur, whether executions overlap, whether start/end messages use identical identifier syntax, and how orphan, duplicate, out-of-order, and negative-duration events should be handled. Specify which timestamp controls ordering and duration, how clock skew is detected, and how multiline records attach to their parent event.&#10;&#10;Produce: source-by-source grammar table; canonical event schema; parsing precedence; exact regular expressions or parsing rules; normalization rules; correlation-key hierarchy; unique run-key strategy; state-machine transitions; ambiguity policy; malformed-record policy; concurrency limitations; sample parsed records; and a test matrix covering all observed variants. Clearly mark what cannot be inferred from the evidence. Do not generate production code unless explicitly requested after the specification is reviewed.">Exact log grammar &amp; correlation specification</button>
-<button class="example prompt-example" data-prompt="Reconstruct end-to-end request or transaction journeys across the uploaded distributed-system telemetry. Use trace IDs, span IDs, request IDs, session IDs, message keys, job IDs, connection IDs, user or tenant IDs, and timestamps only when they are actually present.&#10;&#10;Target journey: [API request, batch job, message, business transaction, or user action]&#10;Time window and timezone: [details]&#10;Expected service path: [details]&#10;&#10;Build a correlation-key inventory and assess uniqueness, reuse, missingness, and format consistency. Where a direct key is absent, use only a clearly bounded heuristic based on time, source/destination, operation, payload fingerprint, or sequence, and assign a confidence score. Account for retries, fan-out/fan-in, asynchronous queues, duplicate delivery, idempotency, redelivery, caching, connection reuse, and clock skew.&#10;&#10;For each reconstructed journey, calculate stage-by-stage timing, queue delay, service time, dependency time, retry overhead, and total latency when evidence permits. Identify where errors originate, where they are transformed or swallowed, and whether a downstream symptom is caused by an upstream failure. Detect incomplete journeys, duplicate processing, orphan responses, missing spans, and broken propagation.&#10;&#10;Output a correlation model, per-stage timeline, representative request-flow table, latency budget, failure-propagation map, confidence and ambiguity notes, missing-instrumentation list, and exact queries or fields needed to make future correlation deterministic. Do not invent service calls or infer a complete trace when evidence is incomplete.">Distributed request &amp; transaction correlation</button>
-<button class="example prompt-example" data-prompt="Infer the expected lifecycle or state machine from the uploaded logs, then identify sequence anomalies with evidence. Examples may include job start/end, request accepted/completed, connection opened/closed, deployment initiated/ready, leader elected/lost, transaction begun/committed/rolled back, or batch step transitions.&#10;&#10;First enumerate observed event types, identifiers, ordering rules, legal transitions, terminal states, retry transitions, and concurrency behavior. Do not assume that message wording is consistent; document each observed variant. Construct a canonical state machine only from evidence and clearly mark inferred transitions.&#10;&#10;Detect and quantify missing starts or ends, orphan terminal events, duplicate starts, duplicate completions, illegal transitions, repeated terminal states, events after completion, loops, timeout gaps, negative durations, out-of-order records, stuck states, retry storms, and executions that overlap under a reused identifier. Preserve every execution instance separately.&#10;&#10;For each anomaly class, provide count, affected identifiers, source lines, timestamps, likely operational meaning, possible benign explanations, severity, and the exact validation query or instrumentation needed. Distinguish parser ambiguity from a real application defect.&#10;&#10;Output: observed event catalog; canonical state model; anomaly summary; detailed anomaly table; duration distribution for completed lifecycles only; highest-risk examples; monitoring rules; and remediation options. Do not fabricate missing transitions or silently pair ambiguous events.">Lifecycle sequence &amp; state anomaly detection</button>
-<button class="example prompt-example" data-prompt="Audit the time semantics of all uploaded telemetry before any causal analysis. Act as a forensic time-correlation specialist.&#10;&#10;Identify every timestamp field, source clock, timezone, offset, daylight-saving behavior, precision, formatting rule, event time versus ingest time, and whether timestamps are generated by the application, host, container, database, agent, collector, or backend. Detect mixed local time and UTC, missing offsets, truncation, leap or DST anomalies, clock drift, NTP correction, batching delay, collector delay, and out-of-order delivery.&#10;&#10;Use shared events and correlation identifiers to estimate relative clock offsets between sources when possible. Show the evidence and confidence for each estimate. Do not force an offset when the data cannot support one. Define a canonical UTC normalization rule, ordering precedence, duration policy, tolerance window, and treatment of ambiguous or future timestamps. Identify where incorrect timestamp choice could produce negative durations, false causal ordering, or invalid alert windows.&#10;&#10;Output a source-clock inventory, detected anomalies, estimated offsets, normalized sample timeline, parsing and conversion rules, validation commands, recommended logging changes, and residual uncertainty. Include safe guidance for correcting host or container time without causing additional service impact. Do not rewrite history or claim exact ordering beyond the available precision.">Timestamp, timezone &amp; clock-skew audit</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Monitoring, SLIs, SLOs &amp; alert engineering</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Analyze all relevant uploaded log files and create one complete, production-grade Python 3.10+ monitoring tool. Accuracy and correct event correlation are more important than brevity.&#10;&#10;First infer and document the exact observed log grammar: outer and embedded timestamps, timezones, lifecycle markers, script or job names, execution IDs, process and thread IDs, start/end/error/no-result events, multiline records, repeated identifiers, and whether executions overlap. Quote representative evidence. Do not invent correlation identifiers. If reliable concurrent correlation is impossible, state that clearly and implement the safest documented sequential fallback.&#10;&#10;The tool must read real files through argparse, support one or more input paths, and keep every execution instance as a separate record. A reusable script ID must never overwrite an earlier run. Extract identifiers consistently from start, end, error, and no-result events. Handle invalid UTF-8, blank and malformed lines, partial writes, multiline stack traces, duplicate events, orphan starts/ends, out-of-order events, negative durations, log rotation, interrupted runs, and empty files. Preserve source filename and line number. Calculate totals plus minimum, maximum, median, percentiles when justified, and average durations using completed runs only. Never print infinity when no durations exist.&#10;&#10;Support readable terminal output, valid JSON, and CSV. Convert dataclasses and datetimes explicitly before JSON serialization. Use atomic report writes. Define monitoring exit codes 0=OK, 1=WARNING, 2=CRITICAL, 3=UNKNOWN, with clear precedence. Add configuration for thresholds and a real assertion-based --self-test that does not require --log-file and verifies expected counts, repeated IDs, no-result events, failures, malformed lines, serialization, and exit codes.&#10;&#10;Before responding, silently inspect start/end identifier extraction, dictionary-key consistency, duplicate record insertion, counter meaning, even-sample median, JSON validity, error propagation, cleanup, and every main path.&#10;&#10;Output one complete executable script first in exactly one Python code block. No TODOs, ellipses, hard-coded production sample logs, silent bare excepts, or omitted functions. After the code, provide only prerequisites, one example command, exit-code meanings, assumptions, and limitations.">Production log monitor from real logs</button>
-<button class="example prompt-example" data-prompt="Design an evidence-based SLI, SLO, error-budget, and alerting model for the service or user journey described below.&#10;&#10;Service and users: [details]&#10;Critical journeys: [details]&#10;Available telemetry: [metrics, logs, traces, synthetic checks]&#10;Current objectives or contracts: [details]&#10;&#10;Start by defining the service boundary, users, successful and failed events, valid population, exclusions, and data-quality constraints. Propose availability, latency, correctness, freshness, durability, throughput, or other SLIs only where they reflect user outcomes. For every SLI, specify numerator, denominator, unit, aggregation, labels, missing-data behavior, low-traffic handling, and exact source. Do not invent a metric that is not collected; identify instrumentation required.&#10;&#10;Recommend SLO values and windows with explicit rationale and mark them as provisional when historical evidence is insufficient. Calculate the error budget and define multi-window, multi-burn-rate alerts with severity, evaluation frequency, minimum-event safeguards, recovery conditions, and protection against flapping. Separate fast-burn paging from slow-burn ticketing. Explain how maintenance, planned downtime, retries, synthetic traffic, and partial failures affect the calculation.&#10;&#10;Output: service-level objective table; SLI formulas; provisional targets; error-budget policy; burn-rate alert matrix; example queries or recording rules using the specified platform; dashboard panels; rollout and backtesting plan; ownership; and review cadence. Include false-positive and false-negative risks. Do not present arbitrary thresholds as factual best practice.">SLI, SLO &amp; burn-rate alert design</button>
-<button class="example prompt-example" data-prompt="Design a transparent, testable anomaly-detection strategy for the uploaded telemetry or named service. Avoid black-box recommendations that cannot be explained or validated.&#10;&#10;Signals and dimensions: [details]&#10;History available: [duration and granularity]&#10;Traffic pattern and seasonality: [details]&#10;Known incidents and changes: [details]&#10;Response requirement: [page, ticket, dashboard, or investigation]&#10;&#10;Assess each signal for trend, daily or weekly seasonality, low volume, zero inflation, skew, heavy tails, step changes, missing data, cardinality, deployment effects, and known business events. Recommend the simplest effective method per signal: static threshold, rate-of-change, robust z-score using median/MAD, quantile band, forecast residual, change-point detection, peer-group comparison, or multivariate approach. Explain why and state assumptions.&#10;&#10;Define training and evaluation windows, warm-up, minimum sample size, seasonality handling, data-quality gates, sensitivity, persistence, recovery, suppression, and retraining policy. Prevent future-data leakage. Include a backtest against known incidents and normal periods, with precision, recall, alert volume, detection delay, and operator-review criteria. Explain how to avoid learning an incident as normal.&#10;&#10;Output a signal-by-signal design table, formulas or pseudocode, query examples for the specified platform, validation dataset plan, rollout stages, fallback static rules, monitoring of the detector itself, and limitations. Do not claim a model will work without representative historical validation.">Dynamic baseline &amp; anomaly-detection plan</button>
-<button class="example prompt-example" data-prompt="Design a production alert-lifecycle policy for the supplied monitoring estate. The objective is to reduce noise without hiding real incidents.&#10;&#10;Monitoring tools and sources: [details]&#10;Teams, services, and ownership: [details]&#10;Current alert problems: [duplicates, flapping, storms, poor routing, etc.]&#10;Escalation and support hours: [details]&#10;&#10;Inventory alert sources and define a stable fingerprint using service, environment, region, symptom, resource, and cause-oriented dimensions. Specify grouping windows, deduplication, inhibition, dependency-aware suppression, maintenance windows, deployment muting, flap detection, delayed escalation, and recovery notifications. Distinguish event suppression from data loss, and ensure suppressed alerts remain auditable. Do not group unrelated tenants or failures merely because they occur together.&#10;&#10;Define severity criteria based on user impact, urgency, scope, data risk, and error-budget consumption. Map each severity to notification channels, acknowledgement target, escalation chain, ownership, ticket creation, status communication, and runbook. Include rules for stale alerts, repeated incidents, auto-close, reopened conditions, and handover.&#10;&#10;Output an alert taxonomy, fingerprint specification, grouping and inhibition rules, routing matrix, notification templates, maintenance/deployment workflow, audit fields, test scenarios, rollout plan, and success metrics such as pages per on-call shift, actionable rate, duplicate rate, and missed-incident review. Identify failure modes where suppression could conceal an outage and add safeguards.">Alert deduplication, suppression &amp; routing policy</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Observability architecture &amp; instrumentation</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Design a production observability architecture for the system described below, using the actual environment and constraints rather than a generic tool list.&#10;&#10;Application and infrastructure: [details]&#10;Deployment model and scale: [details]&#10;Existing monitoring stack: [details]&#10;Security, compliance, residency, retention, and budget constraints: [details]&#10;Primary operational outcomes: [details]&#10;&#10;Cover metrics, logs, traces, profiles, synthetic monitoring, real-user monitoring, events, changes, and topology only where valuable. Define collection agents, SDKs, gateways, queues, processing, enrichment, routing, storage, indexing, retention tiers, sampling, aggregation, high availability, disaster recovery, and access control. Specify canonical resource attributes, service naming, environment and tenant boundaries, correlation fields, schema governance, cardinality controls, sensitive-data redaction, encryption, and auditability.&#10;&#10;Model failure modes of the observability pipeline itself: agent failure, backpressure, network partition, queue overflow, dropped data, clock skew, storage saturation, duplicate ingestion, and control-plane outage. Define health signals and operational runbooks for the telemetry platform. Estimate volume and cost using supplied scale data; do not invent numbers when inputs are missing.&#10;&#10;Output: current-state gaps; target architecture diagram in Mermaid; component and responsibility table; end-to-end data flows; sizing assumptions; retention and sampling policy; security model; failure-mode analysis; phased implementation plan; acceptance criteria; migration and rollback; and risks. Prefer interoperable standards and explain trade-offs rather than assuming one vendor.">End-to-end observability architecture</button>
-<button class="example prompt-example" data-prompt="Create a complete OpenTelemetry instrumentation blueprint for the specified application and runtime. Use the uploaded code, architecture, and deployment files as evidence.&#10;&#10;Language/framework and versions: [details]&#10;Services and dependencies: [details]&#10;Telemetry backend and collector topology: [details]&#10;Performance and data-governance constraints: [details]&#10;&#10;Define resource attributes and service naming, auto-instrumentation versus manual instrumentation, inbound and outbound spans, database and messaging spans, asynchronous context propagation, links, errors, status, events, and baggage. Use semantic conventions appropriate to the actual technologies and state the version assumptions. Do not put secrets, unbounded user input, SQL text, payloads, or high-cardinality IDs into metric labels or unrestricted span attributes.&#10;&#10;Specify RED and USE metrics, domain metrics, exemplars, structured log correlation, trace and request IDs, sampling strategy, tail-sampling rules, propagation formats, collector processors, memory limits, batching, retries, queues, redaction, routing, and exporter failure behavior. Include how to detect broken context propagation and missing spans.&#10;&#10;Provide complete configuration and code changes for the requested scope, plus tests proving propagation, attribute correctness, error capture, sampling, and acceptable overhead. Include a load-test method, baseline comparison, rollout stages, feature flags, rollback, and observability of the collector itself.&#10;&#10;Output files and snippets with filenames, then validation commands, expected telemetry examples, dashboard/query examples, data-risk review, assumptions, and limitations. Do not invent APIs or code paths absent from the uploaded application.">OpenTelemetry instrumentation blueprint</button>
-<button class="example prompt-example" data-prompt="Design an operational dashboard suite that helps executives, service owners, SREs, and responders answer concrete questions instead of displaying vanity metrics.&#10;&#10;Service and critical journeys: [details]&#10;Telemetry platform and query language: [details]&#10;SLOs and known failure modes: [details]&#10;Audience and refresh requirements: [details]&#10;&#10;Create a layered design: executive/service health; user journey and SLO; golden signals; dependencies; saturation and capacity; deployment/change overlays; and deep diagnostic views. For every panel specify title, operational question, source, exact metric or log definition, query or formula, unit, aggregation, dimensions, expected range, warning interpretation, drill-down link, owner, and action. Use consistent timezones and units.&#10;&#10;Include error-budget status, availability, latency distributions rather than averages alone, traffic, errors, saturation, queues, retries, timeouts, dependency health, resource pools, data freshness, telemetry quality, and active changes only when relevant. Control cardinality and avoid misleading mixed populations. Define dashboard variables, default time windows, annotations, and how to distinguish no traffic from no data.&#10;&#10;Output a dashboard hierarchy, detailed panel catalog, sample queries for the named platform, layout rationale, navigation and drill-down model, access controls, validation checklist, and maintenance ownership. Explain which panels support detection, triage, diagnosis, capacity, and review. Do not manufacture thresholds or metrics that are not available.">Service-health dashboards &amp; diagnostic views</button>
-<button class="example prompt-example" data-prompt="Audit the quality, completeness, reliability, and cost of the uploaded or described observability estate. Treat telemetry as a production data pipeline.&#10;&#10;Systems and tools in scope: [details]&#10;Known incidents or blind spots: [details]&#10;Retention and compliance requirements: [details]&#10;&#10;Assess service and dependency coverage, critical-user-journey coverage, resource attribution, naming consistency, label and attribute cardinality, timestamp accuracy, clock skew, missing series, scrape gaps, log parsing failures, dropped spans, sampling bias, duplicate ingestion, late arrival, schema drift, incorrect units, aggregation errors, trace continuity, log-trace correlation, sensitive-data leakage, retention, access control, and cost. Use source evidence and queries where available.&#10;&#10;Create measurable quality indicators such as telemetry availability, freshness, completeness, parse success, drop rate, unknown-service rate, orphan-span rate, context-propagation success, high-cardinality growth, and dashboard/alert dependency coverage. Define how each indicator is calculated and what evidence is needed. Do not invent quality scores from absent data.&#10;&#10;Output: evidence inventory; coverage matrix by service and journey; quality scorecard with confidence; critical blind spots; data-risk findings; cost and cardinality hotspots; prioritized remediation backlog; owners; validation queries; rollout order; and acceptance criteria. Include a recurring governance process for schema changes, new services, dashboards, alerts, and decommissioning.">Telemetry quality &amp; coverage audit</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Operations, collectors &amp; continuous improvement</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Design and implement a production-ready Oracle Enterprise Manager metric extension or equivalent external collector for the following monitoring requirement.&#10;&#10;Target type and versions: [host, database, WebLogic, application, or other]&#10;Observed source data or uploaded logs: [details]&#10;Metric objective and collection interval: [details]&#10;Warning and critical intent: [details]&#10;Execution user, platform, and permissions: [details]&#10;&#10;Infer fields and event semantics only from supplied evidence. Do not invent columns, script IDs, log formats, Oracle views, credentials, or target properties. Define stable key columns, metric columns, data types, units, timestamps, and uniqueness rules. Provide one complete Bash or Python collection script that is noninteractive, bounded by timeout, safe under repeated runs, resistant to partial files and log rotation, and emits deterministic delimiter-safe or key-value output accepted by the target collector. Redact secrets and write diagnostics to stderr without corrupting metric stdout.&#10;&#10;Handle no data, malformed data, duplicate events, stale data, missing files, permission errors, command failure, timeout, and concurrent execution. Define exit codes and distinguish collection failure from a valid zero/no-event state. Include state or checkpoint handling only if necessary, written atomically.&#10;&#10;Provide the full collector script, parameter and credential strategy, OEM metric and key definitions, collection schedule, warning/critical expressions, corrective action or runbook link, deployment steps, test inputs, expected stdout/stderr, privilege requirements, rollback, and validation procedure. Silently review parsing, identifier consistency, thresholds, stdout purity, exit-code precedence, permissions, and cleanup before responding. No TODOs or omitted sections.">Oracle OEM metric extension / collector</button>
-<button class="example prompt-example" data-prompt="Create an operator-ready incident runbook for the following alert or failure mode, with optional safe automation only where evidence and reversibility permit.&#10;&#10;Alert or symptom: [details]&#10;Service and architecture: [details]&#10;Known causes and constraints: [details]&#10;Allowed operator actions and approvals: [details]&#10;&#10;Start with purpose, trigger conditions, severity, ownership, prerequisites, access, and safety warnings. Provide a triage decision tree that moves from low-risk evidence collection to diagnosis, containment, remediation, validation, and escalation. Every command must state where it runs, required privileges, expected output, interpretation, timeout, side effects, and rollback. Do not include destructive commands without explicit backup, confirmation, and stop conditions.&#10;&#10;Define evidence to capture before changes, customer and stakeholder communication points, maintenance or change-control requirements, data-integrity checks, dependency checks, and criteria for declaring recovery. Include branches for false positive, partial outage, widespread outage, failed remediation, and recurrence.&#10;&#10;If automation is requested, automate only deterministic reversible steps. Include --dry-run, idempotency, locking, audit logs, secret redaction, bounded retries, validation after each action, rollback, and human approval gates for risky actions.&#10;&#10;Output the complete runbook, command reference, decision tree, optional automation files, testing method, tabletop scenarios, escalation matrix, recovery validation, and post-incident follow-up. Do not claim a command is safe without explaining its preconditions and blast radius.">Incident runbook &amp; safe remediation automation</button>
-<button class="example prompt-example" data-prompt="Analyze the uploaded metrics, logs, load-test results, and architecture to identify current bottlenecks and produce a defensible capacity plan.&#10;&#10;Services and resources: [details]&#10;Current and forecast workload: [requests, jobs, users, data volume, seasonality]&#10;SLOs and latency targets: [details]&#10;Scaling and budget constraints: [details]&#10;&#10;Normalize units and time windows. Separate demand, service rate, queueing, utilization, saturation, contention, and downstream dependency limits. Analyze CPU, memory, GC, disk latency and throughput, network, file descriptors, thread and connection pools, queues, locks, database sessions, cache, autoscaling, and rate limits only where data exists. Use percentiles and concurrency rather than averages alone. Identify the limiting resource and evidence for it; do not assume high utilization is the cause without latency or queue evidence.&#10;&#10;Estimate headroom and safe operating range. Where history supports it, forecast demand with explicit assumptions and confidence intervals. Use Little&#x27;s Law or queueing approximations only when assumptions are met and explain them. Model failure thresholds, scale-up lag, cold starts, dependency quotas, and single-point limits.&#10;&#10;Output: evidence and data-quality review; workload model; bottleneck ranking; saturation timeline; capacity table; headroom; forecast scenarios; scale triggers; configuration recommendations; cost/performance trade-offs; load-test design; monitoring panels; and validation criteria. Clearly identify missing measurements and avoid false numerical precision.">Capacity, saturation &amp; performance forecast</button>
-<button class="example prompt-example" data-prompt="Create a rigorous, blameless post-incident review from the uploaded timeline, logs, tickets, chat transcripts, changes, and recovery notes. Do not invent facts, owners, dates, or root causes.&#10;&#10;Organize the review into: incident summary; customer and business impact; scope and duration; detection; response; mitigation; recovery; verified timeline; technical causal chain; contributing technical, process, organizational, and environmental factors; and what worked or did not work. Distinguish the initiating trigger from the conditions that allowed impact. Avoid reducing a complex incident to one human error or an unsupported single “root cause.”&#10;&#10;Analyze detection latency, acknowledgement, diagnosis, mitigation, recovery, communication, handoffs, tooling, documentation, change safety, and observability gaps. Identify decision points and explain what information responders had at the time. Include evidence citations and confidence.&#10;&#10;Create a corrective and preventive action plan with unique action ID, problem addressed, action, type (containment/corrective/preventive/detection), owner placeholder, priority, due-date placeholder, dependency, validation method, success metric, and closure evidence. Actions must be specific and verifiable, not vague statements such as “monitor more” or “be careful.”&#10;&#10;Output an executive summary, detailed review, timeline, causal diagram, lessons, CAPA table, follow-up review schedule, and questions requiring confirmation. Include how to verify that fixes reduce recurrence without creating new risk.">Blameless post-incident review &amp; CAPA plan</button>
-</div>
-</details>
-</div>
-</details>
-<details class="prompt-category">
-<summary>Documents &amp; Knowledge</summary>
-<p class="prompt-safety-note"><strong>Accuracy-first document templates:</strong> These prompts require source citations, explicit coverage checks, and clear refusal when evidence is missing. For long books or large archives, use the Memory Vault compiler rather than assuming every chunk fits in one request.</p>
-<div class="prompt-category-body">
-<details class="prompt-subcategory">
-<summary>Evidence, extraction &amp; coverage</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Act as a source-integrity auditor. Examine all uploaded files before answering substantive questions. Determine which files, pages, sections, tables, appendices, images, and attachments were actually extracted and indexed. Report page count, pages with readable text, extraction warnings, OCR symptoms, duplicate or missing sections, out-of-order material, truncation, and whether the beginning and ending are present. Do not infer coverage from filename or file size. Build a coverage table with status Complete, Partial, Missing, Unreadable, or Unverified, cite source labels for every conclusion, and state whether the evidence is sufficient for full-document analysis. If coverage is incomplete, recommend the safest next action such as re-OCR, splitting by chapter, or uploading a cleaner source. Do not summarize content until the coverage gate is complete.">Document extraction &amp; coverage audit</button>
-<button class="example prompt-example" data-prompt="Answer the following question using only evidence retrieved from the uploaded files: [ENTER A COMPLETE SELF-CONTAINED QUESTION]. Do not use outside knowledge, pretrained memory, assumptions about a famous source, or information from related documents that were not uploaded. Give a direct answer first, then list explicit evidence with source labels. Separate textual fact, reasonable inference, interpretation, and unknowns. Do not invent quotations, page numbers, names, dates, commands, clauses, or conclusions. If the retrieved evidence is insufficient, respond exactly: I could not establish this from the currently retrieved document evidence. Then state the specific file, section, page range, entity, or term needed to improve retrieval.">Strict evidence-grounded document Q&amp;A</button>
-<button class="example prompt-example" data-prompt="Perform a forensic quality review of the uploaded document extraction. Identify garbled characters, broken words, repeated headers and footers, missing punctuation, incorrect reading order, merged columns, lost tables, page-number drift, duplicated passages, image-only pages, and likely OCR substitutions. Cite representative source labels for every problem. Estimate which sections are reliable enough for factual analysis and which require manual verification. Produce a remediation plan covering re-OCR settings, page ranges to reprocess, preferred source formats, chapter-level splitting, and validation checks. Do not silently repair uncertain text or present a corrected passage as authoritative without marking it as a proposed reconstruction.">OCR and source-quality reliability audit</button>
-<button class="example prompt-example" data-prompt="Review the uploaded documents and the following proposed claims or draft answer: [PASTE CLAIMS OR ANSWER]. For each material claim, classify it as Directly supported, Partially supported, Contradicted, Ambiguous, or Not found. Provide the exact supporting or conflicting source labels and a concise explanation. Detect claims that rely on missing pages, external knowledge, implied causation, outdated versions, or unverified assumptions. Produce a traceability table, a list of evidence gaps, and a corrected evidence-only version. Do not reward plausible wording; require actual source support.">Unsupported-claim and evidence-gap detector</button>
-</div></details>
-<details class="prompt-subcategory">
-<summary>Summarization &amp; synthesis</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Create an evidence-grounded executive summary of the uploaded material for [AUDIENCE]. First confirm extraction coverage and list any missing or unreliable sections. Preserve important names, dates, numbers, commitments, constraints, dependencies, and version information. Organize the result into Purpose, Current State, Key Findings, Decisions, Risks, Unresolved Questions, Dependencies, and Prioritized Actions with owners and dates where explicitly present. Cite source labels for every material claim. Distinguish source facts from inference, and do not convert an incomplete sample into a whole-document conclusion.">Executive summary with decisions, risks &amp; actions</button>
-<button class="example prompt-example" data-prompt="Produce a detailed section-by-section summary of the uploaded document. Detect the real structural hierarchy from headings and source evidence; do not invent chapter names. For each section report coverage status, purpose, principal facts or arguments, important entities, decisions, examples, constraints, risks, and open questions, with source labels. Maintain a coverage ledger showing Complete, Partial, Missing, or Unverified. Stop at a natural boundary if the answer approaches its output limit and end with an exact continuation prompt naming the next section. Do not claim complete coverage until every detected section is represented.">Detailed section-by-section summary</button>
-<button class="example prompt-example" data-prompt="Synthesize all uploaded documents into one evidence-grounded research brief about [TOPIC OR QUESTION]. Begin with a source inventory including date, version, authority, scope, and extraction quality. Group evidence by theme rather than summarizing files independently. Identify consensus, disagreement, changed assumptions, terminology differences, gaps, methodological limitations, and conflicts of interest. Weight claims by source quality and recency only when those attributes are present. Cite every material statement with one or more source labels. Finish with conclusions, confidence, unresolved questions, and a verification plan. Do not merge contradictory sources into a false consensus.">Multi-document research synthesis</button>
-<button class="example prompt-example" data-prompt="Create a reliable hierarchical summary for this long document or book without pretending the entire source fits in one context window. First build a coverage map. Summarize each retrieved section, then consolidate section summaries into part-level themes and a provisional whole-document synthesis. Maintain links from every higher-level claim back to original source labels. Explicitly list sections not yet reviewed. When coverage is incomplete, label the result Provisional and provide the exact next section or page range to process. Never use a handful of sampled passages as proof of full-document coverage.">Hierarchical long-document summary</button>
-</div></details>
-<details class="prompt-subcategory">
-<summary>Comparison &amp; reconciliation</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Compare the uploaded documents against the following decision objective: [OBJECTIVE]. Build a matrix covering scope, date/version, assumptions, terminology, requirements, architecture, responsibilities, controls, cost, risks, dependencies, deadlines, and acceptance criteria as applicable. Every cell must cite the supporting source label or say Not stated. Identify agreements, contradictions, superseded content, and missing evidence. Explain whether differences are true conflicts or merely differences in scope or terminology. Finish with a reconciled recommendation and the decisions that require owner confirmation.">Cross-document comparison matrix</button>
-<button class="example prompt-example" data-prompt="Treat the uploaded files as versions of the same document, configuration, policy, design, or specification. Determine the correct chronological order from explicit evidence. Produce a change log showing additions, removals, modifications, unchanged critical items, and likely breaking changes. Cite the old and new source labels for every change. Identify changed obligations, defaults, interfaces, limits, security controls, operational procedures, and acceptance criteria. Flag ambiguous rewording and content that disappeared without an explicit replacement. Finish with migration impact, required validation, rollback considerations, and questions for the document owner.">Version-to-version change analysis</button>
-<button class="example prompt-example" data-prompt="Find and reconcile contradictions across the uploaded evidence. Extract each conflicting statement verbatim only when a brief exact quote is necessary; otherwise paraphrase. Record source, date/version, subject, claim, conflict type, likely explanation, operational impact, and confidence. Distinguish direct contradiction from different scope, time period, environment, terminology, or authority. Do not decide which source is correct without evidence. Propose a resolution order based on explicit authority, recency, and scope, and list the human decisions or additional evidence required.">Contradiction and conflict reconciliation</button>
-<button class="example prompt-example" data-prompt="Map the uploaded sources into areas of strong consensus, qualified agreement, material disagreement, and insufficient evidence for [TOPIC]. For each theme, list participating sources, claims, supporting evidence, counterevidence, assumptions, and confidence. Identify where one document depends on another, where data is stale, and where absence of evidence is being mistaken for agreement. Produce a concise decision brief showing what can be acted on now, what needs validation, and what should remain undecided. Cite every substantive point.">Consensus, disagreement &amp; uncertainty map</button>
-</div></details>
-<details class="prompt-subcategory">
-<summary>Extraction &amp; knowledge transformation</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Extract all explicit and implied requirements from the uploaded files and create a production-grade traceability matrix. Assign stable IDs without pretending they existed in the source. For each requirement record source label, exact or faithful paraphrased statement, type, priority when stated, rationale, owner, dependency, constraint, acceptance criterion, verification method, conflict, and status. Separate mandatory language from recommendations and assumptions. Detect duplicates, contradictions, untestable requirements, missing owners, undefined terms, and absent acceptance evidence. Finish with questions that must be resolved before implementation.">Requirements and traceability matrix</button>
-<button class="example prompt-example" data-prompt="Convert the uploaded policy, standard, or guidance into an operational SOP without adding unsupported obligations. Include purpose, scope, roles, prerequisites, inputs, step-by-step procedure, decision points, evidence to retain, validation, exception handling, escalation, rollback or recovery, and completion criteria. Trace every procedural requirement to a source label. Clearly mark implementation choices that are not specified by the source and require owner approval. Preserve safety warnings and legal or compliance wording accurately. Add a control-to-step traceability table and a test checklist.">Policy-to-procedure / SOP conversion</button>
-<button class="example prompt-example" data-prompt="Transform the uploaded material into a searchable knowledge-base pack. Create a concise taxonomy, glossary, entity aliases, and a set of practical FAQs grouped by audience and task. Every answer must be grounded in source labels and must state when the documents are silent. Include troubleshooting questions, prerequisites, limits, exceptions, and escalation paths where supported. Avoid duplicate questions and avoid inventing a best practice that the source does not contain. Output an index, FAQ entries, tags, related articles, and unresolved knowledge gaps suitable for later import into a knowledge system.">FAQ and searchable knowledge-base generator</button>
-<button class="example prompt-example" data-prompt="Extract a structured knowledge graph from the uploaded documents. Identify people, organizations, systems, products, locations, projects, terms, aliases, dates, events, decisions, and relationships. For every entity and relationship include source labels, confidence, and temporal validity where available. Build a glossary, alias map, chronological timeline, relationship table, and unresolved-identity list. Do not merge similar names without evidence. Preserve historical changes rather than overwriting old facts. Highlight conflicting dates, roles, titles, or relationships and recommend validation steps.">Entity, glossary, timeline &amp; relationship extractor</button>
-</div></details>
-<details class="prompt-subcategory">
-<summary>Books &amp; personal knowledge</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Act as a source-grounded book compiler for the uploaded long book. Do not attempt a confident whole-book summary from a few passages. First audit extraction coverage, detect real parts and chapters, and build a ledger with Complete, Partial, Missing, and Unverified status. Process only the first coherent supported section in this response. Track characters or concepts, aliases, relationships, locations, events, timeline anchors, themes, arguments, and unresolved questions with source labels. End with a complete continuation prompt naming the exact next chapter or page range. Never use outside knowledge of the book, series, adaptation, author, or reviews.">Progressive long-book compiler &amp; coverage ledger</button>
-<button class="example prompt-example" data-prompt="Using only the compiled book or document evidence, analyze [CHARACTER / CONCEPT / EVENT]. Trace its first supported appearance, aliases, relationships, motivations or definitions, major developments, contradictions, turning points, and final supported state. Separate narrator/source fact, participant belief, action, inference, and interpretation. Build a chronological evidence table with source labels. If the evidence spans multiple sections, identify gaps instead of filling them from memory. Finish with confidence and the exact missing chapters or sources needed for a complete analysis.">Character, concept, event &amp; timeline analysis</button>
-<button class="example prompt-example" data-prompt="Review the uploaded personal material and identify candidate long-term memories for the owner to approve. Do not save anything automatically. Extract only durable, useful facts such as stable preferences, current roles, projects, decisions, procedures, goals, relationships, and dated events. Exclude passwords, API keys, one-time codes, financial credentials, highly sensitive details not explicitly requested, speculative model conclusions, and temporary chatter. For each candidate provide proposed collection, title, concise memory, valid-from date, sensitivity, source label, confidence, possible conflicts, and whether it should supersede an older fact. Finish with Approve, Edit, or Reject recommendations.">Personal-memory candidate extraction for owner approval</button>
-<button class="example prompt-example" data-prompt="Perform an evidence-grounded historical Deep Scan for the following question across the selected Personal Knowledge &amp; Memory Vault collections: [QUESTION AND COLLECTIONS]. Search approved memories and compiled source evidence, reconcile aliases and dates, and build a chronological evidence set before answering. Distinguish current facts from superseded history, direct evidence from inference, and missing data from negative evidence. Cite every material claim with vault source labels. Identify conflicts and explain which record is current and why. When evidence is insufficient, state that clearly instead of guessing. Finish with direct answer, evidence timeline, confidence, conflicts, and recommended memory corrections.">Historical Deep Scan across vault collections</button>
-</div></details>
-</div></details>
-<details class="prompt-category">
-<summary>Architecture &amp; Planning</summary>
-<div class="prompt-category-body">
-<details class="prompt-subcategory">
-<summary>Solution architecture</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Review the proposed architecture in the uploaded files. Evaluate functional fit, availability, scalability, performance, security, privacy, operability, observability, failure isolation, cost, and maintainability. Identify single points of failure and hidden dependencies. Provide prioritized recommendations, an improved target architecture, and a validation checklist.">Architecture review</button>
-<button class="example prompt-example" data-prompt="Create a detailed migration strategy from the current state described in the uploaded files to the target state. Include assumptions, discovery, dependencies, data migration, integration changes, security, testing, cutover, rollback, monitoring, communications, ownership, and measurable exit criteria for every phase.">Migration design</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Delivery planning</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Create an implementation plan for the following objective:&#10;&#10;[Describe the objective here]&#10;&#10;Include scope, assumptions, workstreams, milestones, dependencies, owners, sequencing, risks, mitigations, test strategy, rollout, rollback, observability, documentation, and acceptance criteria. Make the plan operational, with clear deliverables and decision gates.">Implementation plan</button>
-<button class="example prompt-example" data-prompt="Create a complete validation and acceptance plan for the uploaded solution. Cover functional, integration, performance, resilience, security, data quality, upgrade, rollback, monitoring, and operational-readiness testing. For each test, specify prerequisites, steps, expected result, evidence, owner, severity, and pass/fail criteria.">Test and acceptance plan</button>
-<button class="example prompt-example" data-prompt="Build a prioritized risk register for the uploaded project or design. Include risk statement, cause, consequence, likelihood, impact, score, early warning indicators, owner, preventive control, contingency, residual risk, and target review date. Highlight the top decisions that require stakeholder approval.">Risk register</button>
-</div>
-</details>
-</div>
-</details>
-<details class="prompt-category">
-<summary>Writing &amp; Communication</summary>
-<div class="prompt-category-body">
-<details class="prompt-subcategory">
-<summary>Email &amp; incident communication</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Draft a clear professional email for the following situation:&#10;&#10;[Describe the situation, audience, and desired outcome]&#10;&#10;Provide a concise subject line, an executive-friendly opening, the essential context, required actions with owners and dates, and a courteous close. Keep the tone confident, factual, and free of unnecessary jargon.">Professional email</button>
-<button class="example prompt-example" data-prompt="Using the uploaded incident evidence, draft a stakeholder update with: current status, customer or business impact, confirmed facts, actions completed, work in progress, risks, next update time, and owner contacts. Do not speculate or expose sensitive technical details. Provide an executive version first and a technical-operations version second.">Incident update</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Rewrite &amp; explain</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Rewrite the following content so it is concise, professional, clear, and action-oriented while preserving the original meaning:&#10;&#10;[Paste the content here]&#10;&#10;Remove repetition, clarify ownership and deadlines, retain important technical facts, and provide only the improved version unless a material ambiguity must be flagged.">Concise professional rewrite</button>
-<button class="example prompt-example" data-prompt="Translate the uploaded technical content into an executive explanation. Focus on business impact, risk, urgency, options, cost or effort, and the decision required. Avoid low-level jargon, but preserve critical facts and uncertainty. Finish with a one-paragraph recommendation.">Technical to executive</button>
-</div>
-</details>
-</div>
-</details>
 
-<details class="prompt-category">
-<summary>Shopping Ideas &amp; Buying Guides</summary>
-<div class="prompt-category-body">
-<details class="prompt-subcategory">
-<summary>Ideas, shortlist &amp; value</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Act as an independent buying advisor. Help me choose [product or category] for [primary use case]. My budget is [currency and range], location is [country or region], must-have features are [list], deal-breakers are [list], and options I am considering are [list]. Use only specifications, prices, reviews, links, or uploaded material I provide; clearly label assumptions and anything that needs current-market verification. Build a requirements table, explain the key trade-offs, recommend a good / better / best shortlist, and finish with a practical purchase checklist.">Personalized buying guide</button>
-<button class="example prompt-example" data-prompt="Generate thoughtful shopping ideas for [recipient, occasion, or personal need] within a budget of [amount and currency]. Consider interests, age range, location, practicality, sustainability, space, compatibility, and what the person may already own. Group the ideas into safe choice, personalized choice, experience, useful upgrade, and premium option. Explain why each idea fits, identify risks or compatibility questions, and list the questions that would narrow the shortlist. Do not invent current availability or prices.">Shopping and gift ideas</button>
-<button class="example prompt-example" data-prompt="Create a value-focused shortlist for [product category] across three price levels: budget, balanced, and premium. My use case is [describe it], expected usage period is [duration], and priorities are [ranked criteria]. Compare feature value, reliability, support, repairability, energy or operating cost, upgrade path, and likely total cost of ownership. Clearly distinguish facts I supplied from assumptions and identify what must be verified before purchase.">Budget vs premium shortlist</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Compare, inspect &amp; decide</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Compare the following options using a weighted decision matrix: [Option A], [Option B], and [Option C]. My priorities and weights are [criteria and percentages]. Use only the information I provide or upload. Score each option, explain every score, identify missing or uncertain data, compare total ownership cost, and recommend the best fit for my actual use case rather than the most expensive option.">Product comparison matrix</button>
-<button class="example prompt-example" data-prompt="Evaluate whether I should buy [item] new, used, refurbished, leased, or wait. Consider purchase price, warranty, expected life, repair risk, depreciation, availability of parts, financing, resale value, and urgency. Create a break-even comparison, a pre-purchase inspection checklist, questions for the seller, warning signs, and a final decision framework. Mark anything that requires current local verification.">New vs used vs refurbished</button>
-<button class="example prompt-example" data-prompt="Review the uploaded product specifications, quotation, warranty, and seller terms. Identify mismatches, missing accessories, hidden costs, weak warranty clauses, compatibility concerns, return-policy risks, and questions that must be answered before payment. Finish with a concise buy / negotiate / avoid recommendation and the exact negotiation points.">Review a quotation or offer</button>
-</div>
-</details>
-</div>
-</details>
-
-<details class="prompt-category">
-<summary>Health, Medical &amp; Wellness</summary>
-<p class="prompt-safety-note"><strong>Important:</strong> These templates support education and appointment preparation, not diagnosis or emergency care. For severe, sudden, or rapidly worsening symptoms, contact local emergency services or a licensed clinician.</p>
-<div class="prompt-category-body">
-<details class="prompt-subcategory">
-<summary>Symptoms &amp; consultation preparation</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Help me prepare for a medical consultation about the following symptoms: [describe symptoms]. Organize the information into onset, duration, severity, location, triggers, relieving factors, associated symptoms, recent changes, relevant history, medicines, allergies, and questions for the clinician. Do not diagnose. Explain which details are important, identify general red-flag symptoms that would warrant urgent local care, and finish with a concise appointment summary I can take to a licensed professional.">Prepare for a doctor consultation</button>
-<button class="example prompt-example" data-prompt="Create a structured symptom timeline from the information I provide. Separate confirmed facts from uncertainty, identify missing questions a clinician is likely to ask, and suggest what observations I should safely record before the appointment. Do not provide a diagnosis or recommend starting, stopping, or changing medication. Include a short section on urgent warning signs that require professional or emergency evaluation.">Build a symptom timeline</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Medicines, pharma &amp; treatment questions</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Explain the following medicine in plain language: [medicine name, strength, and form]. Cover its usual purpose, how it generally works, common side effects, serious warning signs, major interaction categories, storage, and questions to ask a doctor or pharmacist. Use reliable general medical knowledge, state uncertainty, and do not advise me to start, stop, combine, or change the dose. Remind me to follow the prescriber's and pharmacist's instructions.">Understand a medicine</button>
-<button class="example prompt-example" data-prompt="Help me prepare a medication review for a clinician or pharmacist. I will provide my medicines, supplements, doses, timing, and reasons for use. Organize them into a clear table, identify duplicate-purpose or interaction questions that should be professionally checked, list adherence or side-effect concerns to discuss, and create a concise consultation agenda. Do not recommend medication changes.">Medication review checklist</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Lab reports, scans &amp; test results</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Explain the uploaded laboratory report in plain language. For each result, show the value, reference range, whether it is flagged, what the test generally measures, common non-diagnostic reasons it may vary, and questions to discuss with a licensed clinician. Look for trends only when multiple dated results are available. Do not diagnose or prescribe, and clearly identify results that may require prompt professional review.">Explain a lab report</button>
-<button class="example prompt-example" data-prompt="Translate the uploaded scan or radiology report into plain language. Explain the findings and impression section term by term, distinguish normal, incidental, uncertain, and potentially important findings, and prepare questions for the ordering clinician. Do not infer findings that are not written in the report and do not diagnose from the text alone. Note any wording that the report itself indicates needs urgent follow-up.">Explain a scan or radiology report</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Wellness &amp; preventive habits</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Create a realistic wellness plan for [goal] based on my age range, current routine, work schedule, sleep, activity level, dietary preferences, health limitations, budget, and available time. Focus on sustainable sleep, movement, nutrition, stress management, and tracking habits. Avoid extreme diets or medical claims, identify when professional advice is appropriate, and provide a two-week starter plan with measurable but flexible targets.">Personal wellness plan</button>
-<button class="example prompt-example" data-prompt="Help me prepare for an annual health check-up. Based on the general information I provide, create a non-diagnostic checklist covering medical history updates, family history, medicines, vaccines, screening questions, lifestyle, sleep, mental well-being, dental and vision care, and concerns to raise. Do not recommend specific tests as mandatory; frame them as questions for a licensed clinician based on age, history, and local guidelines.">Annual check-up preparation</button>
-</div>
-</details>
-</div>
-</details>
-
-<details class="prompt-category">
-<summary>Psychology &amp; Art of Living</summary>
-<p class="prompt-safety-note"><strong>Important:</strong> These prompts support reflection and practical skills; they are not a diagnosis or a substitute for therapy. If there is immediate risk of harm, contact local emergency or crisis services.</p>
-<div class="prompt-category-body">
-<details class="prompt-subcategory">
-<summary>Self-reflection &amp; emotional skills</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Guide me through a structured reflection on this situation: [describe it]. Help me separate facts, interpretations, emotions, physical reactions, needs, and controllable actions. Ask compassionate but challenging questions, identify possible thinking traps without diagnosing me, and help me create one balanced perspective and three practical next steps.">Structured self-reflection</button>
-<button class="example prompt-example" data-prompt="Help me build a safe, practical coping plan for stress or anxiety related to [situation]. Include immediate grounding options, a 24-hour plan, a one-week routine, triggers to monitor, supportive people or services to contact, and signs that professional help would be appropriate. Avoid diagnosis and avoid presenting the plan as medical treatment.">Stress and anxiety coping plan</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Habits, values &amp; art of living</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Design a sustainable habit-change plan for [habit or goal]. Explore my motivation, values, current routine, triggers, friction, environment, likely setbacks, and available support. Break the change into a minimum viable habit, implementation intentions, weekly progression, tracking method, recovery plan after missed days, and a 30-day review. Keep the plan compassionate and realistic rather than perfectionistic.">Build a habit-change plan</button>
-<button class="example prompt-example" data-prompt="Facilitate a values and life-direction exercise. Help me reflect on what matters across health, relationships, work, learning, contribution, finances, creativity, rest, and spirituality or meaning. Identify tensions between values and current behavior, then help me choose three priorities, boundaries, and small actions for the next 90 days. Do not prescribe a single philosophy; present options and questions for reflection.">Values and life direction</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Relationships &amp; communication</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Help me prepare for a difficult conversation with [person or role] about [topic]. Separate facts from assumptions, clarify my goal and boundaries, anticipate their perspective, and draft an opening using respectful, non-accusatory language. Provide questions to listen better, phrases for de-escalation, and a plan if the discussion becomes unproductive or unsafe.">Prepare a difficult conversation</button>
-<button class="example prompt-example" data-prompt="Analyze the following relationship or workplace conflict without taking sides: [describe the situation]. Identify each person's likely interests, misunderstandings, communication patterns, power dynamics, and unresolved needs. Distinguish evidence from interpretation, suggest fair options, and draft a practical next-step conversation. Do not diagnose anyone's personality or mental health.">Reflect on a conflict</button>
-</div>
-</details>
-</div>
-</details>
-
-<details class="prompt-category">
-<summary>Career, CV, Job Search &amp; Freelance</summary>
-<div class="prompt-category-body">
-<details class="prompt-subcategory">
-<summary>CV, resume &amp; LinkedIn</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Act as an expert CV writer and recruiter for [target role and region]. Use my uploaded CV and the job description. Rewrite the CV for relevance and ATS readability without inventing employers, dates, skills, certifications, metrics, or achievements. Strengthen the summary and bullet points, map evidence to the role requirements, identify missing proof, and provide a concise change log plus questions needed to complete the final version.">ATS-focused CV rewrite</button>
-<button class="example prompt-example" data-prompt="Create or improve my LinkedIn profile for [target role or professional positioning] using the facts I provide. Produce a headline, About section, role descriptions, featured-content ideas, skills strategy, and a short networking message. Keep the voice credible and specific, avoid inflated claims, and identify which accomplishments need measurable evidence.">LinkedIn profile upgrade</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Job search &amp; interviews</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Build a focused job-search plan for [target roles, locations, industries, and timeline]. Assess my current experience, transferable skills, constraints, salary expectations, and network. Create a target-company strategy, weekly activity plan, application tracker fields, networking approach, recruiter message templates, interview preparation milestones, and measures for adjusting the strategy when results are weak.">Job-search strategy</button>
-<button class="example prompt-example" data-prompt="Prepare me for an interview for [role] at [company]. Use the job description, company material, and my CV. Identify likely technical, behavioral, leadership, and business questions; map each to evidence from my background; create STAR answer outlines without fabricating facts; suggest questions to ask the panel; and provide a 30 / 60 / 90-day discussion framework.">Interview preparation</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Job market &amp; company portfolio</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Assess my fit for the following job market or role family: [describe target]. Use the experience, skills, location, compensation expectations, and constraints I provide. Identify strong matches, gaps, adjacent roles, evidence I need to build, and a practical upskilling plan. Clearly mark any market claims that require current external verification rather than presenting them as live facts.">Role and market fit</button>
-<button class="example prompt-example" data-prompt="Create a company research brief for [company] using only the uploaded materials and facts I provide. Cover business model, products, customers, leadership themes, competitive position, recent initiatives, technology footprint, culture signals, risks, and why my profile may fit. Separate verified evidence from assumptions and list current information that must be checked before an interview or investment decision.">Company portfolio brief</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Freelance &amp; professional portfolio</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Design a clear freelance service offer based on my experience in [skills or domain] for [ideal client]. Define the client problem, deliverables, boundaries, process, timeline, pricing options, proof, risks, onboarding questions, and success measures. Create a one-page service description and three package levels without making unsupported claims.">Create a freelance offer</button>
-<button class="example prompt-example" data-prompt="Draft a tailored freelance proposal for the following client requirement: [paste requirement]. Use only my real capabilities and evidence. Include an understanding of the problem, proposed approach, deliverables, assumptions, exclusions, milestones, client responsibilities, risk controls, commercial options, and next steps. Keep it persuasive but specific and avoid guaranteeing outcomes outside my control.">Freelance proposal</button>
-<button class="example prompt-example" data-prompt="Plan a professional portfolio for [target role, service, or audience]. Recommend the best case studies, structure, evidence, screenshots, metrics, testimonials, and narrative. For each case study, provide a template covering context, challenge, constraints, actions, architecture or method, measurable result, lessons, and confidentiality-safe presentation. Do not invent outcomes.">Portfolio and case-study plan</button>
-</div>
-</details>
-</div>
-</details>
-
-<details class="prompt-category">
-<summary>Technology, Education &amp; Travel</summary>
-<div class="prompt-category-body">
-<details class="prompt-subcategory">
-<summary>Technology decisions &amp; digital skills</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Help me choose a technology, device, platform, or software approach for [goal]. My environment, budget, users, skills, integrations, security needs, and constraints are [details]. Build a requirements matrix, compare realistic options, explain trade-offs, identify lock-in and operating risks, and recommend a phased decision with a proof-of-concept checklist. Mark any product, price, or version information that needs current verification.">Technology selection guide</button>
-<button class="example prompt-example" data-prompt="Troubleshoot the following technology issue methodically: [describe symptoms, device or software, versions, recent changes, and error messages]. Start with the most likely and least disruptive checks, separate diagnosis from remediation, provide safe commands or settings with rollback steps, and explain what evidence each step gathers. Do not suggest destructive actions without a backup and explicit warning.">Technology troubleshooting</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Education, courses &amp; study plans</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Create a personalized learning plan for [subject or skill] at my current level [level]. My goal, deadline, weekly time, preferred learning style, available resources, and constraints are [details]. Break the plan into milestones, weekly topics, practice, projects, spaced review, assessment, and recovery options when I fall behind. Include measurable outcomes and a final capstone.">Personal learning plan</button>
-<button class="example prompt-example" data-prompt="Help me evaluate the following course, degree, certification, or training options: [list options]. Compare prerequisites, curriculum, depth, practical work, recognition, time, cost, opportunity cost, fit with my target role, and evidence of outcomes. Use only details I provide, identify what needs current verification, and finish with a decision matrix and questions to ask each provider.">Compare education options</button>
-<button class="example prompt-example" data-prompt="Teach me [topic] from first principles. Begin with the mental model and prerequisite concepts, then explain the topic in layers from beginner to advanced. Use one intuitive analogy, one worked example, common mistakes, five self-check questions with answers, and a small practical exercise. Adapt the explanation to my background: [describe background].">Learn a topic deeply</button>
-</div>
-</details>
-<details class="prompt-subcategory">
-<summary>Travel planning &amp; preparation</summary>
-<div class="prompt-list">
-<button class="example prompt-example" data-prompt="Create a practical travel itinerary for [destination] from [dates] for [number and type of travellers]. Budget, starting point, interests, pace, mobility needs, dietary needs, and must-do items are [details]. Build a day-by-day plan with logical routing, rest time, alternatives, approximate budget categories, booking priorities, packing considerations, and safety notes. Clearly mark visas, opening hours, prices, transport schedules, weather, and local rules that require current verification.">Personalized travel itinerary</button>
-<button class="example prompt-example" data-prompt="Build a travel budget and decision comparison for [destinations or itinerary options]. Include transport, accommodation, food, local travel, activities, insurance, connectivity, visas, contingency, exchange-rate sensitivity, and hidden costs. Use the values I provide, show assumptions, compare value and risk, and create a pre-booking checklist of information that must be verified live.">Travel budget comparison</button>
-<button class="example prompt-example" data-prompt="Create a complete travel-preparation checklist for [destination, dates, and travel style]. Cover documents, visas and entry rules to verify, insurance, health preparation, money, connectivity, transport, accommodation, weather, clothing, medicines, accessibility, emergency contacts, digital backups, home preparation, and a compact packing list. Distinguish universal guidance from destination-specific information that requires current confirmation.">Travel preparation checklist</button>
-</div>
-</details>
-</div>
-</details>
-</div>
-</details>
-</section>
-<section class="card" id="memoryCard" hidden>
+<section class="card" hidden="" id="memoryCard">
 <div class="card-title"><span>Personal Memory Vault</span><span class="scope-badge" id="accessScopeBadge">Owner</span></div>
-<label class="toggle"><input id="usePersonalMemory" type="checkbox" checked/> Use approved personal memory in this chat</label>
+<label class="toggle"><input checked="" id="usePersonalMemory" type="checkbox"/> Use approved personal memory in this chat</label>
 <div class="row" style="margin-top:9px">
 <button class="btn grow" id="vaultStatusBtn">Vault status</button>
 <button class="btn grow" id="vaultInboxBtn">Inbox</button>
 </div>
 <button class="btn" id="vaultSuggestBtn" style="width:100%;margin-top:8px">Suggest memories from this chat</button>
-<div class="status-line" id="memoryStatus">Owner-only memory is loaded from Google Drive when available.</div>
+<div class="status-line" id="memoryStatus">Owner-only memory is loaded from the canonical Local-First Vault on Zorin when available.</div>
 <div class="field">
 <label for="vaultSearch">Search approved memory and source evidence</label>
-<input id="vaultSearch" type="text" placeholder="Search projects, decisions, career, books..."/>
+<input id="vaultSearch" placeholder="Search projects, decisions, career, books..." type="text"/>
 </div>
 <button class="btn" id="vaultSearchBtn" style="width:100%;margin-top:8px">Search vault</button>
 <div class="vault-results" id="vaultResults"></div>
@@ -896,28 +507,24 @@
 <textarea id="vaultMemoryText" placeholder="Example: Use complete replacement files rather than partial patches."></textarea>
 </div>
 <div class="row" style="margin-top:8px">
-<input class="grow" id="vaultCollection" type="text" value="personal" aria-label="Memory collection"/>
+<input aria-label="Memory collection" class="grow" id="vaultCollection" type="text" value="personal"/>
 <button class="btn btn-primary" id="vaultRememberBtn">Remember</button>
 </div>
 <div class="service-note">Nothing is saved automatically. New memories require an explicit owner action and remain source-auditable.</div>
+<div class="service-note">Chat targeting: use <code>from vault: collection-name</code> to restrict retrieval to one collection, or cite an exact <code>[vault:...]</code> source label to load that evidence directly.</div>
 </section>
 </aside>
 <main class="main">
 <header class="topbar">
 <div>
-<h2>Your personal AI workspace</h2>
-<p>The interface connects to RajAIAssist running on an explicitly selected Colab runtime.</p>
+<h2>Your Local AI Engine</h2>
+<p>The interface connects seamlessly to RajAIAssist, running securely on a free tier private cloud.</p>
 <div class="runtime-note" id="runtimeNotice">Observed availability: T4 sessions often last around 1–2 hours; standard CPU sessions may last around 4–6 hours. Actual duration is not guaranteed.</div>
-<div class="runtime-note quality-note">Response quality and speed vary with the selected model, runtime type, prompt clarity, prompt complexity, available context, and source quality. Verify important facts, calculations, commands, and generated code.</div>
+<div class="runtime-note quality-note">How fast and well the AI answers depends on the model you use, how clear your question is, and the information it has. Always double-check important facts, math, commands, and code.</div>
 </div>
 <div class="topbar-controls">
 <label class="theme-control" for="themeSelect">Theme
-<select id="themeSelect">
-<option value="classic">RajAIAssist Classic</option>
-<option value="amd">AMD inspired</option>
-<option value="oracle">Oracle inspired</option>
-<option value="garuda">Garuda inspired</option>
-</select></label>
+<select id="themeSelect"><option value="garuda">Garuda inspired</option><option value="apple">Apple inspired</option></select></label>
 <div class="badges">
 <span class="badge" id="onlineBadge">Offline</span>
 <span class="badge" id="modelBadge">Model: unknown</span>
@@ -931,10 +538,10 @@
 </header>
 <section class="chat" id="chat">
 <div class="welcome" id="welcome">
-<h3>Start a new conversation.</h3>
+<h3>Start a new conversation.</h3><div class="welcome-guide-note">For stronger results, try the advanced prompts from the <a href="./howto/#advanced-prompts">How-to guide</a> in the left sidebar.</div>
 <div>Enter the API key shared by Raj, upload relevant files when needed, then ask a focused question.</div>
 <div>Local AI prioritizes privacy and control, but response quality, speed, and availability may vary compared to managed cloud AI providers.</div>
-<section class="prompt-formula" aria-labelledby="promptFormulaTitle">
+<section aria-labelledby="promptFormulaTitle" class="prompt-formula">
 <div class="prompt-formula-head">
 <span class="prompt-formula-kicker">First-time user guide</span>
 <h4 id="promptFormulaTitle">Recommended prompt formula</h4>
@@ -949,7 +556,7 @@
 <div class="prompt-formula-item"><span class="prompt-formula-label">Output</span>Choose the format: table, plan, script, email, summary, checklist, and so on.</div>
 <div class="prompt-formula-item"><span class="prompt-formula-label">Validation</span>Ask for assumptions, uncertainties, evidence, risks, and verification steps.</div>
 </div>
-<div class="prompt-formula-template" aria-label="Copy-ready prompt structure">
+<div aria-label="Copy-ready prompt structure" class="prompt-formula-template">
 <div><strong>Task:</strong> [What do you need?]</div>
 <div><strong>Files / Input:</strong> [What should be used?]</div>
 <div><strong>Context:</strong> [Audience, situation, purpose]</div>
@@ -969,17 +576,17 @@
 </section>
 <section class="composer" id="composer">
 <textarea id="question" placeholder="Ask anything, paste a screenshot with Ctrl+V, or ask a question about uploaded documents..."></textarea>
-<div class="attachment-strip" id="attachmentStrip" hidden></div>
+<div class="attachment-strip" hidden="" id="attachmentStrip"></div>
 <div class="composer-bottom">
 <div class="composer-note">Enter to send · Shift+Enter for a new line · Paste or drop screenshots to OCR and ingest them</div>
 <div class="row">
-<button class="btn" hidden id="continueBtn">Continue response</button>
+<button class="btn" hidden="" id="continueBtn">Continue response</button>
 <button class="btn" disabled="" id="stopBtn">Stop display</button>
 <button class="btn btn-primary" id="sendBtn">Ask AI</button>
 </div>
 </div>
 </section>
-<div class="footer"><a href="https://www.linkedin.com/in/rajmohanacharya/" target="_blank" rel="noopener noreferrer" aria-label="Visit Raj Mohan Acharya's LinkedIn profile">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v2.9</div>
+<div class="footer"><a aria-label="Visit Raj Mohan Acharya's LinkedIn profile" href="https://www.linkedin.com/in/rajmohanacharya/" rel="noopener noreferrer" target="_blank">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v3.0.0</div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -1086,12 +693,12 @@
       reliability: "rajai_reliability_mode"
     });
 
-    const THEME_NAMES = new Set(["classic", "amd", "oracle", "garuda"]);
+    const THEME_NAMES = new Set(["garuda", "apple"]);
 
     function applyTheme(value, persist = true) {
-      const theme = THEME_NAMES.has(value) ? value : "classic";
+      const theme = THEME_NAMES.has(value) ? value : "garuda";
       document.documentElement.dataset.theme = theme;
-      document.documentElement.style.colorScheme = theme === "oracle" ? "light" : "dark";
+      document.documentElement.style.colorScheme = theme === "apple" ? "light" : "dark";
       themeSelect.value = theme;
       if (persist) localStorage.setItem(STORAGE.theme, theme);
     }
@@ -1103,7 +710,7 @@
 
     function selectedReliabilityMode() {
       const value = String(reliabilitySelect.value || GENERATION_DEFAULTS.defaultReliability);
-      return ["balanced", "conservative", "evidence"].includes(value)
+      return ["balanced", "conservative"].includes(value)
         ? value
         : GENERATION_DEFAULTS.defaultReliability;
     }
@@ -1111,8 +718,7 @@
     function updateReliabilityHelp() {
       const messages = {
         balanced: "Balanced mode is suitable for general discussion, writing, and brainstorming.",
-        conservative: "Conservative mode states uncertainty, avoids invented specifics, and asks for clarification when needed.",
-        evidence: "Evidence-only mode answers from retrieved file or owner-Vault sources, requires citations, and abstains when evidence is insufficient."
+        conservative: "Conservative mode states uncertainty, avoids invented specifics, and asks for clarification when needed."
       };
       $("#reliabilityHelp").textContent = messages[selectedReliabilityMode()];
     }
@@ -1877,6 +1483,7 @@
       chat.innerHTML = `
         <div class="welcome" id="welcome">
           <h3>Start a new conversation.</h3>
+          <div class="welcome-guide-note">For stronger results, try the advanced prompts from the <a href="./howto/#advanced-prompts">How-to guide</a> in the left sidebar.</div>
           <div>Upload relevant files when needed, then ask a focused question. Your chat and document index are isolated by the current session ID.</div>
           <section class="prompt-formula" aria-labelledby="promptFormulaTitle">
 <div class="prompt-formula-head">
@@ -2654,11 +2261,11 @@
       });
     });
     async function initializeApp() {
-      applyTheme(localStorage.getItem(STORAGE.theme) || "classic", false);
+      applyTheme(localStorage.getItem(STORAGE.theme) || "garuda", false);
       const storedOutput = Number.parseInt(localStorage.getItem(STORAGE.outputTokens) || "4096", 10);
       if ([1024, 2048, 4096, 8192].includes(storedOutput)) outputTokensSelect.value = String(storedOutput);
       const storedReliability = localStorage.getItem(STORAGE.reliability) || GENERATION_DEFAULTS.defaultReliability;
-      if (["balanced", "conservative", "evidence"].includes(storedReliability)) reliabilitySelect.value = storedReliability;
+      if (["balanced", "conservative"].includes(storedReliability)) reliabilitySelect.value = storedReliability;
       updateReliabilityHelp();
       updateSessionLabel();
       applyCapabilities(capabilities);
