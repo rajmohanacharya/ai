@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="garuda">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="description" content="RajAIAssist user guide, features, prompt etiquette, advanced prompts, and safe-use guidance.">
+<title>RajAIAssist v3 · User How-to Guide</title>
+<link rel="icon" href="../favicon.svg?v=30" type="image/svg+xml" sizes="any">
+<style>
+:root{--bg:#090818;--panel:#151329;--panel2:#1d1937;--text:#f4f0ff;--muted:#aaa1c8;--line:#38305d;--accent:#35d8ff;--accent2:#b64cff;--danger:#ff6da8;--shadow:0 18px 55px rgba(0,0,0,.28)}
+html[data-theme="apple"]{color-scheme:light;--bg:#f5f5f7;--panel:rgba(255,255,255,.94);--panel2:#fff;--text:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--accent:#0071e3;--accent2:#005bb5;--danger:#d70015;--shadow:0 18px 55px rgba(0,0,0,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 8% -8%,color-mix(in srgb,var(--accent2) 18%,transparent),transparent 30rem),var(--bg);color:var(--text);font-family:Ubuntu,"Ubuntu Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.62}.wrap{width:min(1180px,100%);margin:auto;padding:22px}.top{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap;padding:13px 16px;background:color-mix(in srgb,var(--panel) 88%,transparent);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(18px);box-shadow:var(--shadow)}.brand{font-weight:800}.nav{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.nav a,.nav button,.copy{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:8px 11px;border-radius:10px;text-decoration:none;font-weight:700;cursor:pointer}.hero,.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.hero{margin-top:18px;padding:42px clamp(20px,5vw,58px)}.hero h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.02;margin:0 0 14px;letter-spacing:-.05em}.hero p{max-width:850px;color:var(--muted);font-size:1.06rem}.grid{display:grid;grid-template-columns:260px minmax(0,1fr);gap:18px;margin-top:18px}.toc{position:sticky;top:88px;align-self:start;padding:18px;max-height:calc(100vh - 110px);overflow:auto}.toc a{display:block;color:var(--muted);padding:6px 7px;text-decoration:none;border-radius:8px}.toc a:hover{color:var(--text);background:var(--panel2)}main{min-width:0}.card{padding:26px;margin-bottom:18px}h2{font-size:1.55rem;margin:0 0 12px}h3{margin:22px 0 8px;color:var(--accent)}p{margin:8px 0 13px}.note{border-left:4px solid var(--accent);padding:12px 15px;background:color-mix(in srgb,var(--accent) 8%,var(--panel2));border-radius:0 12px 12px 0}.warn{border-left-color:#f5b642}.steps{counter-reset:step;display:grid;gap:12px}.step{padding:14px 16px 14px 52px;background:var(--panel2);border:1px solid var(--line);border-radius:14px;position:relative}.step:before{counter-increment:step;content:counter(step);position:absolute;left:14px;top:13px;width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:var(--accent);color:#061016;font-weight:900}table{width:100%;border-collapse:collapse;display:block;overflow:auto}th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}th{background:var(--panel2)}code,pre{font-family:"Ubuntu Mono",ui-monospace,Consolas,monospace}code{background:var(--panel2);padding:.13rem .35rem;border-radius:6px}pre{white-space:pre-wrap;word-break:break-word;background:#0b0c13;color:#edf4ff;padding:15px;border-radius:12px;border:1px solid var(--line);overflow:auto}.prompt{margin:14px 0;border:1px solid var(--line);border-radius:15px;background:var(--panel2);overflow:hidden}.prompt summary{cursor:pointer;font-weight:800;padding:14px 16px}.prompt-body{padding:0 16px 16px}.prompt pre{margin:0}.prompt-actions{text-align:right;margin:8px 0 0}.dos{display:grid;grid-template-columns:1fr 1fr;gap:15px}.dos>div{padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--panel2)}.footer{text-align:center;color:var(--muted);padding:20px}@media(max-width:850px){.grid{grid-template-columns:1fr}.toc{position:static;max-height:none}.dos{grid-template-columns:1fr}.wrap{padding:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top"><div class="brand">RajAIAssist v3 · User Guide</div><nav class="nav"><a href="../">Open AI</a><a href="../howtoadmin/">Admin Manual</a><button id="themeBtn" type="button">Apple theme</button></nav></header>
+<section class="hero"><h1>Use RajAIAssist with clarity and confidence.</h1><p>This guide explains access, chat sessions, output controls, file and screenshot ingest, privacy, Personal Vault behaviour, prompt etiquette, advanced prompt templates, and troubleshooting.</p></section>
+<div class="grid">
+<aside class="card toc"><strong>Contents</strong><a href="#start">Getting started</a><a href="#features">Feature tour</a><a href="#controls">Response controls</a><a href="#files">Files & screenshots</a><a href="#vault">Personal Vault</a><a href="#sessions">Sessions & privacy</a><a href="#etiquette">Prompt etiquette</a><a href="#dos">Do's & don'ts</a><a href="#advanced-prompts">Advanced prompts</a><a href="#troubleshooting">Troubleshooting</a></aside>
+<main>
+<section class="card" id="start"><h2>Getting started</h2><div class="steps"><div class="step">Open <code>https://rajmohanacharya.github.io/ai/</code>.</div><div class="step">Paste the current guest or owner runtime key shared by Raj.</div><div class="step">Select an output length and reliability mode.</div><div class="step">Upload relevant files or paste a screenshot when needed.</div><div class="step">Ask one focused question, review sources, and verify important results.</div></div><div class="note">The guest key supports chat and current-session files. The private owner key additionally enables the Personal Knowledge Vault. Never share the owner key.</div></section>
+<section class="card" id="features"><h2>Feature tour</h2><table><thead><tr><th>Feature</th><th>What it does</th></tr></thead><tbody><tr><td>Chat</td><td>Streams answers from the selected model on the active Colab runtime.</td></tr><tr><td>File Ingest</td><td>Extracts and indexes documents, logs, code, spreadsheets, presentations, archives, email, and supported images.</td></tr><tr><td>Screenshot paste</td><td>Paste or drop screenshots; RajAIAssist uploads them and uses OCR text as evidence.</td></tr><tr><td>Output profiles</td><td>Choose 1K, 2K, 4K, or 8K maximum output tokens when supported by the runtime.</td></tr><tr><td>Conservative mode</td><td>Encourages uncertainty disclosure and discourages invented specifics.</td></tr><tr><td>Local-First Vault</td><td>Owner-only persistent knowledge stored canonically on Raj's Zorin machine and cached temporarily in Colab.</td></tr><tr><td>Source labels</td><td>Shows which uploaded document or Vault chunks were used.</td></tr></tbody></table></section>
+<section class="card" id="controls"><h2>Response controls</h2><h3>Output length</h3><table><tr><th>Profile</th><th>Use</th></tr><tr><td>Concise · 1K</td><td>Quick facts, rewrites, short explanations.</td></tr><tr><td>Standard · 2K</td><td>Normal questions and summaries.</td></tr><tr><td>Detailed · 4K</td><td>Plans, analysis, moderate code.</td></tr><tr><td>Extended · 8K</td><td>Long reports and complete scripts; slower and more context-intensive.</td></tr></table><h3>Reliability</h3><p><strong>Balanced</strong> is suitable for brainstorming and creative work. <strong>Conservative</strong> is the recommended default for factual, technical, and document questions.</p><div class="note warn">No language model can guarantee zero hallucinations. Check source labels and independently verify important facts, calculations, commands, health guidance, and generated code.</div></section>
+<section class="card" id="files"><h2>Files and screenshots</h2><ul><li>Select multiple files in one operation.</li><li>Wait until each file displays a chunk count before asking questions.</li><li>Name the exact file in the prompt when several files are attached.</li><li>Paste screenshots with <code>Ctrl+V</code> while the prompt box is focused.</li><li>OCR is text extraction, not complete visual understanding. Arrows, colour, spatial layout, faces, and chart geometry may be missed.</li><li>Large books and archives require structured compilation rather than one-shot summarization.</li></ul><pre>Using only application.log and deployment.yaml, identify the first failure, the likely cause, and the safest verification commands. Cite every conclusion.</pre></section>
+<section class="card" id="vault"><h2>Personal Knowledge Vault</h2><p>The owner Vault is canonical on Zorin OS. When Raj starts a runtime, the compiled Vault is uploaded to temporary Colab storage. Runtime-created memories, OCR results, and compiled data are periodically pulled back to Zorin.</p><ul><li>Guest users cannot access the Personal Vault.</li><li>Use <code>from vault: collection-name</code> to restrict retrieval.</li><li>Use an exact label such as <code>[vault:projects:file.pdf#c12 p8]</code> for precise evidence.</li><li>AI-suggested memories require owner approval.</li><li>Do not store passwords, tokens, private keys, OTPs, or banking credentials.</li></ul></section>
+<section class="card" id="sessions"><h2>Sessions and privacy</h2><p>Each browser profile receives a random session ID. Different devices or browser profiles normally have separate chat histories and session files, even when they use the same guest key. Two tabs in the same browser profile share the same session.</p><div class="note">The backend owner can access application data and Vault content. Do not upload sensitive or regulated data unless you are authorized to process it through this service.</div></section>
+<section class="card" id="etiquette"><h2>Prompt etiquette</h2><pre>Task: [exact outcome]
+Files / Input: [specific files, data, or examples]
+Context: [audience, situation, purpose]
+Requirements: [mandatory details]
+Constraints: [versions, budget, limits, exclusions]
+Output: [script, table, checklist, report, email, etc.]
+Validation: [assumptions, evidence, tests, risks]</pre><ul><li>Ask one focused question per request.</li><li>Use full names and exact identifiers instead of vague pronouns.</li><li>State whether outside knowledge is allowed.</li><li>For code, request complete files, tests, validation commands, and rollback.</li><li>For documents, request citations and an explicit abstention when evidence is insufficient.</li></ul></section>
+<section class="card" id="dos"><h2>Do's and don'ts</h2><div class="dos"><div><h3>Do</h3><ul><li>Keep runtime keys private.</li><li>Use Conservative mode for factual work.</li><li>Name relevant files and Vault collections.</li><li>Review citations.</li><li>Test generated code in a safe environment.</li><li>Start a new chat for an unrelated topic.</li><li>Remove unneeded session files.</li></ul></div><div><h3>Don't</h3><ul><li>Do not upload credentials or secret keys.</li><li>Do not blindly run shell, SQL, or infrastructure commands.</li><li>Do not assume confident wording means correctness.</li><li>Do not expect continuous 24/7 availability.</li><li>Do not use remembered keys on a shared browser.</li><li>Do not treat OCR as full image understanding.</li></ul></div></div></section>
+<section class="card" id="advanced-prompts"><h2>Advanced prompt library</h2><p>Select a template, copy it, replace every bracketed field, and keep only requirements that apply.</p>
+<details class="prompt"><summary>Production code generation</summary><div class="prompt-body"><pre>Act as a principal software engineer, security reviewer, and test engineer.
+
+Task: Build a complete production-ready [LANGUAGE/FRAMEWORK] solution for [REQUIREMENT].
+Files / Input: Use [FILES] as the source of truth.
+Environment: [OS, VERSIONS, DEPENDENCIES, DEPLOYMENT TARGET].
+Requirements: Include all imports, configuration, validation, timeouts, error paths, structured logging, safe cleanup, tests, and an executable entry point.
+Constraints: Do not invent fields or APIs absent from the evidence. Do not use TODOs, ellipses, pseudo-code, or omitted sections.
+Output: Complete files first, then exact install/run/test commands, expected results, rollback, assumptions, and limitations.
+Validation: Silently review syntax, undefined names, scope, counters, serialization, concurrency, security, and failure handling. Do not claim execution unless it occurred.</pre><div class="prompt-actions"><button class="copy">Copy prompt</button></div></div></details>
+<details class="prompt"><summary>Incident root-cause analysis</summary><div class="prompt-body"><pre>Act as a principal site-reliability engineer and incident commander. Use only the supplied logs, metrics, traces, configuration, deployment records, and tickets.
+
+Inventory evidence and gaps. Normalize timezones, clock skew, ingestion delay, duplicates, sampling, and out-of-order events. Build a timestamped timeline. Separate verified facts, strong inferences, weak hypotheses, and unknowns. Identify trigger, proximate cause, systemic root cause, contributing conditions, propagation path, blast radius, detection gaps, mitigation, recovery, and validation.
+
+Cite filenames, timestamps, IDs, hosts, and representative messages for every material claim. Rank hypotheses with evidence for and against each one and specify the exact test needed to confirm or reject it. Do not treat correlation as causation or invent evidence.
+
+Output: executive summary, impact, evidence inventory, timeline table, causal chain, hypothesis matrix, containment, remediation with rollback, prevention, monitoring improvements, and unresolved questions.</pre><div class="prompt-actions"><button class="copy">Copy prompt</button></div></div></details>
+<details class="prompt"><summary>Evidence-grounded document Q&amp;A</summary><div class="prompt-body"><pre>Use only the retrieved content from [FILE OR VAULT COLLECTION].
+
+Question: [SELF-CONTAINED QUESTION]
+
+Rules:
+1. Cite every material factual claim with the supplied source label.
+2. Separate explicit evidence, reasonable inference, interpretation, and unknowns.
+3. Do not use outside knowledge unless explicitly requested.
+4. Do not invent page numbers, quotations, identifiers, events, or missing content.
+5. When the evidence is insufficient, say: “I could not establish this from the available evidence.”
+6. Suggest a more specific follow-up using the filename, chapter, date, ID, event, or terminology that would improve retrieval.
+
+Output: direct answer, evidence, sources, inference, confidence, and missing evidence.</pre><div class="prompt-actions"><button class="copy">Copy prompt</button></div></div></details>
+<details class="prompt"><summary>Long book or research corpus</summary><div class="prompt-body"><pre>Act as a source-grounded long-form reading assistant for [BOOK/CORPUS]. Do not pretend the complete work fits in one request.
+
+First audit extraction coverage, chapter/section structure, missing pages, OCR quality, and available source labels. Process one coherent section at a time. Maintain a compact ledger containing section, status, summary, entities, timeline events, themes, and sources. Never mark a section complete without evidence.
+
+For follow-up questions, search the named character, event, chapter, concept, or source label. Do not use pretrained knowledge of the book or adaptations. If evidence is missing, abstain.
+
+End each response with an exact self-contained next prompt naming the next section. Produce a whole-work synthesis only after the ledger shows complete coverage.</pre><div class="prompt-actions"><button class="copy">Copy prompt</button></div></div></details>
+<details class="prompt"><summary>Shopping and buying guide</summary><div class="prompt-body"><pre>Create an evidence-based buying guide for [PRODUCT] in [COUNTRY/REGION].
+
+Budget: [AMOUNT]
+Use: [PRIMARY USE]
+Must-have features: [LIST]
+Avoid: [LIST]
+Time horizon: [WHEN BUYING]
+
+Separate timeless selection criteria from facts that require current verification such as price, availability, warranty, model revisions, safety notices, and reviews. Ask focused clarification questions when requirements conflict. Provide a comparison matrix, total cost of ownership, risks, shortlist by budget tier, what to verify before purchase, and a final recommendation with assumptions.</pre><div class="prompt-actions"><button class="copy">Copy prompt</button></div></div></details>
+<details class="prompt"><summary>Health consultation preparation</summary><div class="prompt-body"><pre>Help me prepare for a medical consultation; do not diagnose or replace a clinician.
+
+Symptoms: [DESCRIPTION]
+Start and progression: [TIMELINE]
+Severity and triggers: [DETAILS]
+Medicines, conditions, allergies: [DETAILS]
+Available reports/scans: [FILES]
+
+Organize a clear symptom timeline, relevant history, medication list, questions for the clinician, and information still missing. Explain report terminology cautiously using only supplied evidence. Identify emergency warning signs that warrant urgent professional care. Do not recommend starting, stopping, or changing prescription treatment without a qualified clinician.</pre><div class="prompt-actions"><button class="copy">Copy prompt</button></div></div></details>
+<details class="prompt"><summary>Career, CV, and interview</summary><div class="prompt-body"><pre>Act as a senior career strategist and ATS-aware CV editor.
+
+Target role: [ROLE]
+Location/market: [MARKET]
+Files: [CV, JOB DESCRIPTION, PORTFOLIO]
+Goals: [GOALS]
+
+Map each requirement to verified experience. Do not invent employers, skills, dates, certifications, metrics, or achievements. Identify gaps and ask for missing evidence. Produce: role-fit analysis, keyword matrix, rewritten CV sections, quantified bullet suggestions clearly marked when confirmation is needed, LinkedIn changes, interview questions, STAR story outlines, and a 30-day job-search plan. Separate current market facts that require live verification.</pre><div class="prompt-actions"><button class="copy">Copy prompt</button></div></div></details>
+<details class="prompt"><summary>Travel plan</summary><div class="prompt-body"><pre>Create a practical travel plan for [DESTINATION] from [ORIGIN].
+
+Dates: [DATES]
+Travellers: [DETAILS]
+Budget: [AMOUNT]
+Interests: [LIST]
+Mobility/diet/safety constraints: [DETAILS]
+
+Provide a day-by-day itinerary, realistic travel time, budget categories, packing and documentation checklist, contingency options, and what must be verified live. Clearly label facts likely to change: visa rules, transport schedules, prices, opening hours, weather, health requirements, and safety advisories. Avoid overpacking the itinerary.</pre><div class="prompt-actions"><button class="copy">Copy prompt</button></div></div></details>
+</section>
+<section class="card" id="troubleshooting"><h2>Troubleshooting</h2><table><tr><th>Symptom</th><th>Action</th></tr><tr><td>Page says offline</td><td>Ask Raj to start AI, then refresh the fixed page.</td></tr><tr><td>Key rejected</td><td>Request the current lifecycle guest key; old keys expire when the lifecycle changes.</td></tr><tr><td>No response</td><td>Wait for the active generation, avoid repeated clicks, then use Check AI status.</td></tr><tr><td>Answer uses unrelated Vault sources</td><td>Use <code>from vault: collection</code> or cite an exact <code>[vault:...]</code> label.</td></tr><tr><td>Answer stops</td><td>Select a longer output profile or use Continue response.</td></tr><tr><td>File answer is weak</td><td>Confirm extraction/chunk count, name the file, and ask a self-contained question with exact entities.</td></tr></table></section>
+</main></div>
+<footer class="footer">RajAIAssist v3 · Local AI with user-controlled access and a Zorin-canonical Personal Vault.</footer>
+</div>
+<script>
+const root=document.documentElement;const btn=document.getElementById('themeBtn');function applyTheme(t){root.dataset.theme=t;root.style.colorScheme=t==='apple'?'light':'dark';localStorage.setItem('rajai_guide_theme',t);btn.textContent=t==='apple'?'Garuda theme':'Apple theme'}applyTheme(localStorage.getItem('rajai_guide_theme')||'garuda');btn.addEventListener('click',()=>applyTheme(root.dataset.theme==='apple'?'garuda':'apple'));document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{const pre=b.closest('.prompt-body').querySelector('pre');await navigator.clipboard.writeText(pre.textContent.trim());const old=b.textContent;b.textContent='Copied';setTimeout(()=>b.textContent=old,1200)}));
+</script>
+</body></html>
