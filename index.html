@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html data-theme="garuda" lang="en">
+<html data-theme="lustro" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -12,19 +12,19 @@
 <link href="https://rajmohanacharya.github.io/ai/" rel="canonical"/>
 <!-- RajAIAssist browser-tab and device icons -->
 <meta content="RajAIAssist" name="application-name"/>
-<meta content="#0b0d10" name="theme-color"/>
+<meta content="#0a0e1a" name="theme-color"/>
 <!-- Legacy and compatibility fallback -->
-<link href="./favicon.ico?v=30" rel="icon" type="image/x-icon"/>
+<link href="./favicon.ico?v=311" rel="icon" type="image/x-icon"/>
 <!-- Fixed-size browser-tab icons -->
-<link href="./favicon-16x16.png?v=30" rel="icon" sizes="16x16" type="image/png"/>
-<link href="./favicon-32x32.png?v=30" rel="icon" sizes="32x32" type="image/png"/>
-<link href="./favicon-48x48.png?v=30" rel="icon" sizes="48x48" type="image/png"/>
+<link href="./favicon-16x16.png?v=311" rel="icon" sizes="16x16" type="image/png"/>
+<link href="./favicon-32x32.png?v=311" rel="icon" sizes="32x32" type="image/png"/>
+<link href="./favicon-48x48.png?v=311" rel="icon" sizes="48x48" type="image/png"/>
 <!-- Preferred scalable Georgia-R icon for modern browsers -->
-<link href="./favicon.svg?v=30" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="./favicon.svg?v=311" rel="icon" sizes="any" type="image/svg+xml"/>
 <!-- iPhone and iPad home-screen icon -->
-<link href="./apple-touch-icon.png?v=30" rel="apple-touch-icon" sizes="180x180" type="image/png"/>
+<link href="./apple-touch-icon.png?v=311" rel="apple-touch-icon" sizes="180x180" type="image/png"/>
 <!-- Android and installed-app configuration -->
-<link href="./site.webmanifest?v=30" rel="manifest"/>
+<link href="./site.webmanifest?v=311" rel="manifest"/>
 <!-- Open Graph metadata used by WhatsApp and other link previews -->
 <meta content="website" property="og:type"/>
 <meta content="RajAIAssist" property="og:site_name"/>
@@ -134,23 +134,50 @@
       --scroll-thumb: #46566a;
     }
 
-    html[data-theme="garuda"] {
+
+    html[data-theme="lustro"] {
       color-scheme: dark;
-      --bg: #090818; --panel: #151329; --panel-2: #1d1937; --panel-3: #0e0c20;
-      --border: #38305d; --border-soft: #2a2449; --text: #f4f0ff; --muted: #aaa1c8;
-      --accent: #35d8ff; --accent-2: #b64cff; --danger: #ff6da8; --warning: #ffd166;
-      --body-glow: rgba(182, 76, 255, .18); --topbar-bg: rgba(21, 19, 41, .90);
-      --sidebar-top: rgba(23, 19, 48, .98); --sidebar-bottom: rgba(9, 8, 24, .98);
-      --button-bg: #211b43; --button-hover: #30245c; --code-bg: #080716;
-      --card-bg: rgba(21, 19, 41, .94); --input-bg: #0e0c20;
-      --focus-border: rgba(53, 216, 255, .72); --focus-ring: rgba(53, 216, 255, .15);
-      --formula-border: rgba(53, 216, 255, .28);
-      --formula-bg: linear-gradient(180deg, rgba(53, 216, 255, .07), rgba(14, 12, 32, .94));
-      --formula-kicker-bg: rgba(53, 216, 255, .12); --formula-kicker-text: #8cecff;
-      --formula-kicker-border: rgba(53, 216, 255, .28);
-      --user-bubble: rgba(53, 216, 255, .07); --user-bubble-border: rgba(53, 216, 255, .24);
-      --online-border: rgba(53, 216, 255, .28); --online-bg: rgba(53, 216, 255, .08);
-      --brand-photo-border: rgba(53, 216, 255, .62); --brand-photo-shadow: rgba(182, 76, 255, .25);
+      --bg: #0a0e1a; --panel: rgba(18, 23, 42, .88); --panel-2: #151a2e; --panel-3: rgba(9, 13, 26, .84);
+      --border: rgba(255, 255, 255, .14); --border-soft: rgba(255, 255, 255, .08); --text: #ffffff; --muted: #b8bdd3;
+      --accent: #a5b4fc; --accent-2: #ec4899; --danger: #fb7185; --warning: #fbbf24;
+      --shadow: 0 28px 74px rgba(0, 0, 0, .44), 0 0 46px rgba(99, 102, 241, .10);
+      --body-glow: rgba(99, 102, 241, .22); --topbar-bg: rgba(15, 20, 38, .78);
+      --sidebar-top: rgba(19, 24, 45, .90); --sidebar-bottom: rgba(9, 13, 26, .94);
+      --button-bg: rgba(255, 255, 255, .065); --button-hover: rgba(255, 255, 255, .13); --code-bg: #070a13;
+      --card-bg: linear-gradient(135deg, rgba(255, 255, 255, .065), rgba(255, 255, 255, .025));
+      --input-bg: rgba(7, 11, 23, .74); --placeholder: #7f86a3;
+      --focus-border: rgba(165, 180, 252, .82); --focus-ring: rgba(99, 102, 241, .24);
+      --hover-border: rgba(165, 180, 252, .50); --primary-text: #ffffff; --danger-text: #fecdd3;
+      --success-text: #86efac; --error-text: #fda4af;
+      --badge-bg: rgba(255, 255, 255, .055); --online-text: #86efac;
+      --online-border: rgba(74, 222, 128, .30); --online-bg: rgba(74, 222, 128, .08);
+      --chat-bg: linear-gradient(180deg, rgba(16, 21, 39, .90), rgba(9, 13, 26, .90));
+      --example-bg: rgba(255, 255, 255, .045); --example-text: #e7e9f6;
+      --prompt-summary-text: #f1f2fb; --prompt-summary-muted: #c3c7dc; --prompt-example-bg: rgba(255, 255, 255, .04);
+      --warning-border: rgba(251, 191, 36, .32); --warning-bg: rgba(251, 191, 36, .07); --warning-text: #fde68a;
+      --formula-border: rgba(165, 180, 252, .28);
+      --formula-bg: linear-gradient(180deg, rgba(99, 102, 241, .10), rgba(10, 14, 26, .84));
+      --formula-inset: rgba(255, 255, 255, .025); --formula-kicker-bg: rgba(99, 102, 241, .16);
+      --formula-kicker-text: #c7d2fe; --formula-kicker-border: rgba(165, 180, 252, .30);
+      --formula-item-bg: rgba(7, 11, 23, .58); --formula-item-text: #cbd0e2;
+      --template-border: rgba(165, 180, 252, .35); --template-bg: rgba(7, 11, 23, .70);
+      --template-text: #c7cada; --template-strong: #ffffff;
+      --time-text: #8f96b2; --message-bg: rgba(12, 17, 32, .84);
+      --user-bubble: linear-gradient(135deg, rgba(99, 102, 241, .16), rgba(236, 72, 153, .075));
+      --user-bubble-border: rgba(165, 180, 252, .30);
+      --assistant-bubble: linear-gradient(135deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .022));
+      --quote-bg: rgba(99, 102, 241, .08); --quote-text: #d5d8e8; --table-header-bg: rgba(99, 102, 241, .13);
+      --inline-code-bg: rgba(255, 255, 255, .07); --inline-code-border: rgba(255, 255, 255, .12);
+      --code-border: rgba(165, 180, 252, .20); --code-toolbar-bg: rgba(17, 22, 41, .96);
+      --code-toolbar-border: rgba(255, 255, 255, .09); --code-text: #f8fafc;
+      --source-border: rgba(165, 180, 252, .22); --source-bg: rgba(99, 102, 241, .08); --source-text: #cbd5ff;
+      --stats-text: #9299b6; --composer-bg: rgba(14, 19, 36, .88); --file-button-bg: rgba(255, 255, 255, .07);
+      --footer-text: #8f96b2; --toast-bg: rgba(20, 25, 45, .96); --toast-error-text: #fecdd3;
+      --toast-error-border: rgba(251, 113, 133, .44); --modal-overlay: rgba(4, 7, 16, .76);
+      --modal-border: rgba(165, 180, 252, .28);
+      --modal-bg: linear-gradient(180deg, rgba(24, 29, 52, .98), rgba(11, 15, 30, .98)); --modal-text: #cbd0e2;
+      --brand-photo-bg: #0d1220; --brand-photo-border: rgba(165, 180, 252, .72);
+      --brand-photo-shadow: rgba(236, 72, 153, .24); --scroll-track: #090d19; --scroll-thumb: #6f72d7;
     }
 
     html[data-theme="apple"] {
@@ -192,6 +219,114 @@
     html[data-theme="apple"] .chat,
     html[data-theme="apple"] .composer,
     html[data-theme="apple"] .topbar { backdrop-filter: saturate(180%) blur(18px); }
+
+
+    @keyframes lustroAmbient {
+      from { opacity: .82; transform: scale(1); }
+      to { opacity: .62; transform: scale(1.045); }
+    }
+    html[data-theme="lustro"] body {
+      position: relative;
+      isolation: isolate;
+      background: var(--bg);
+    }
+    html[data-theme="lustro"] body::before,
+    html[data-theme="lustro"] body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    html[data-theme="lustro"] body::before {
+      background:
+        radial-gradient(circle at 15% 18%, rgba(99, 102, 241, .24) 0%, transparent 48%),
+        radial-gradient(circle at 86% 78%, rgba(236, 72, 153, .17) 0%, transparent 49%),
+        radial-gradient(circle at 52% 48%, rgba(34, 211, 238, .08) 0%, transparent 59%);
+      animation: lustroAmbient 14s ease-in-out infinite alternate;
+    }
+    html[data-theme="lustro"] body::after {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .024) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .024) 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 24%, transparent 82%);
+      mask-image: radial-gradient(ellipse at center, #000 24%, transparent 82%);
+    }
+    html[data-theme="lustro"] .shell { position: relative; z-index: 1; }
+    html[data-theme="lustro"] .sidebar,
+    html[data-theme="lustro"] .topbar,
+    html[data-theme="lustro"] .chat,
+    html[data-theme="lustro"] .composer,
+    html[data-theme="lustro"] .card,
+    html[data-theme="lustro"] .message-box,
+    html[data-theme="lustro"] .modal-card,
+    html[data-theme="lustro"] .toast {
+      -webkit-backdrop-filter: blur(28px) saturate(125%);
+      backdrop-filter: blur(28px) saturate(125%);
+    }
+    html[data-theme="lustro"] .sidebar,
+    html[data-theme="lustro"] .topbar,
+    html[data-theme="lustro"] .chat,
+    html[data-theme="lustro"] .composer {
+      box-shadow: var(--shadow);
+    }
+    html[data-theme="lustro"] .brand h1,
+    html[data-theme="lustro"] .welcome h3 {
+      background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 52%, #ec4899 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    html[data-theme="lustro"] .brand-photo {
+      box-shadow: 0 10px 34px rgba(99, 102, 241, .24), 0 0 28px rgba(236, 72, 153, .16);
+    }
+    html[data-theme="lustro"] .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      color: #ffffff;
+      box-shadow: 0 10px 28px rgba(99, 102, 241, .22);
+    }
+    html[data-theme="lustro"] .btn-primary:hover {
+      background: linear-gradient(135deg, #7c7ff5, #f05ba6);
+      box-shadow: 0 14px 34px rgba(236, 72, 153, .22);
+      transform: translateY(-1px);
+    }
+    html[data-theme="lustro"] .example:hover,
+    html[data-theme="lustro"] .prompt-example:hover,
+    html[data-theme="lustro"] .doc:hover,
+    html[data-theme="lustro"] .vault-result:hover {
+      border-color: rgba(165, 180, 252, .42);
+      background: linear-gradient(90deg, rgba(99, 102, 241, .12), rgba(236, 72, 153, .055));
+      transform: translateY(-1px);
+    }
+    html[data-theme="lustro"] .badge,
+    html[data-theme="lustro"] .source,
+    html[data-theme="lustro"] .scope-badge {
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+    }
+    html[data-theme="lustro"] .modal-backdrop {
+      -webkit-backdrop-filter: blur(9px);
+      backdrop-filter: blur(9px);
+    }
+    html[data-theme="lustro"] *::-webkit-scrollbar-track { background: transparent; }
+    html[data-theme="lustro"] *::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, rgba(165, 180, 252, .58), rgba(236, 72, 153, .46));
+      border-color: transparent;
+      background-clip: padding-box;
+    }
+    html[data-theme="lustro"] *::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, rgba(165, 180, 252, .82), rgba(236, 72, 153, .68));
+      background-clip: padding-box;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html[data-theme="lustro"] body::before { animation: none; }
+      html[data-theme="lustro"] .btn,
+      html[data-theme="lustro"] .example,
+      html[data-theme="lustro"] .prompt-example,
+      html[data-theme="lustro"] .doc,
+      html[data-theme="lustro"] .vault-result { transition: none; }
+    }
     * { box-sizing: border-box; scrollbar-color: var(--scroll-thumb) var(--scroll-track); }
     *::-webkit-scrollbar { width: 11px; height: 11px; }
     *::-webkit-scrollbar-track { background: var(--scroll-track); }
@@ -510,7 +645,7 @@
     .drop-active { border-color: var(--accent) !important; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent); }
     .runtime-note { color: var(--muted); font-size: .73rem; line-height: 1.45; margin-top: 7px; max-width: 850px; }
     .quality-note { color: var(--warning); }
-    html[data-theme="garuda"] .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #080716; }
+    html[data-theme="lustro"] .btn-primary { border-color: transparent; }
     [hidden] { display: none !important; }
     @media (max-width: 980px) {
       .shell { grid-template-columns: 1fr; }
@@ -631,7 +766,7 @@
 </div>
 <div class="topbar-controls">
 <label class="theme-control" for="themeSelect">Theme
-<select id="themeSelect"><option value="garuda">Garuda inspired</option><option value="apple">Apple inspired</option></select></label>
+<select id="themeSelect"><option value="lustro">Lustro inspired</option><option value="apple">Apple inspired</option></select></label>
 <div class="badges">
 <span class="badge" id="onlineBadge">Offline</span>
 <span class="badge" id="modelBadge">Model: unknown</span>
@@ -693,7 +828,7 @@
 </div>
 </div>
 </section>
-<div class="footer"><a aria-label="Visit Raj Mohan Acharya's LinkedIn profile" href="https://www.linkedin.com/in/rajmohanacharya/" rel="noopener noreferrer" target="_blank">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v3.1.0</div>
+<div class="footer"><a aria-label="Visit Raj Mohan Acharya's LinkedIn profile" href="https://www.linkedin.com/in/rajmohanacharya/" rel="noopener noreferrer" target="_blank">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v3.1.1 · Visual design adapted from <a aria-label="View the Lustro template by TemplateMo" href="https://templatemo.com/tm-624-lustro-slideshow" rel="nofollow noopener noreferrer" target="_blank">Lustro by TemplateMo</a></div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -809,14 +944,19 @@
       reliability: "rajai_reliability_mode"
     });
 
-    const THEME_NAMES = new Set(["garuda", "apple"]);
+    const THEME_NAMES = new Set(["lustro", "apple"]);
+
+    function normalizeTheme(value) {
+      if (value === "garuda") return "lustro";
+      return THEME_NAMES.has(value) ? value : "lustro";
+    }
 
     function applyTheme(value, persist = true) {
-      const theme = THEME_NAMES.has(value) ? value : "garuda";
+      const theme = normalizeTheme(value);
       document.documentElement.dataset.theme = theme;
       document.documentElement.style.colorScheme = theme === "apple" ? "light" : "dark";
       themeSelect.value = theme;
-      if (persist) localStorage.setItem(STORAGE.theme, theme);
+      if (persist || value === "garuda") localStorage.setItem(STORAGE.theme, theme);
     }
 
     function selectedOutputTokens() {
@@ -2399,7 +2539,7 @@
       });
     });
     async function initializeApp() {
-      applyTheme(localStorage.getItem(STORAGE.theme) || "garuda", false);
+      applyTheme(localStorage.getItem(STORAGE.theme) || "lustro", false);
       const storedOutput = Number.parseInt(localStorage.getItem(STORAGE.outputTokens) || "4096", 10);
       if ([1024, 2048, 4096, 8192].includes(storedOutput)) outputTokensSelect.value = String(storedOutput);
       const storedReliability = localStorage.getItem(STORAGE.reliability) || GENERATION_DEFAULTS.defaultReliability;

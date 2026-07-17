@@ -4,16 +4,16 @@
   "description": "Local AI with Unlimited Usage, Complete Privacy, and Full Control",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#090c10",
-  "theme_color": "#0b0d10",
+  "background_color": "#0a0e1a",
+  "theme_color": "#0a0e1a",
   "icons": [
     {
-      "src": "./android-chrome-192x192.png?v=9",
+      "src": "./android-chrome-192x192.png?v=311",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./favicon-512x512.png?v=9",
+      "src": "./favicon-512x512.png?v=311",
       "sizes": "512x512",
       "type": "image/png"
     }
