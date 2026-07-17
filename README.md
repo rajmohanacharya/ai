@@ -1,4 +1,4 @@
-# RajAIAssist GitHub Pages v3.1.1
+# RajAIAssist GitHub Pages v3.1.2
 
 Upload this directory's contents to the root of `rajmohanacharya/ai`.
 
@@ -11,9 +11,9 @@ Public routes:
 
 The GitHub Pages directory does not contain the Administrator Manual body. The actual manual is packaged inside the CLI wheel and served only by the owner-authenticated backend.
 
-v3.1.1 includes:
+v3.1.2 includes:
 
-- Lustro dark glass and fully light Apple themes;
+- Clearwave calm aqua and neutral Apple themes;
 - 1K/2K/4K/8K output selection;
 - Balanced and Conservative visible response controls;
 - runtime, context, output, elapsed, and compute badges;

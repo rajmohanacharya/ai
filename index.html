@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html data-theme="lustro" lang="en">
+<html data-theme="clearwave" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="dark light" name="color-scheme"/>
+<meta content="light" name="color-scheme"/>
 <meta content="no-referrer" name="referrer"/>
 <meta content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src https: http://localhost:* http://127.0.0.1:*; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'" http-equiv="Content-Security-Policy"/>
 <title>RajAIAssist</title>
@@ -12,19 +12,19 @@
 <link href="https://rajmohanacharya.github.io/ai/" rel="canonical"/>
 <!-- RajAIAssist browser-tab and device icons -->
 <meta content="RajAIAssist" name="application-name"/>
-<meta content="#0a0e1a" name="theme-color"/>
+<meta content="#E8F4F2" name="theme-color"/>
 <!-- Legacy and compatibility fallback -->
-<link href="./favicon.ico?v=311" rel="icon" type="image/x-icon"/>
+<link href="./favicon.ico?v=312" rel="icon" type="image/x-icon"/>
 <!-- Fixed-size browser-tab icons -->
-<link href="./favicon-16x16.png?v=311" rel="icon" sizes="16x16" type="image/png"/>
-<link href="./favicon-32x32.png?v=311" rel="icon" sizes="32x32" type="image/png"/>
-<link href="./favicon-48x48.png?v=311" rel="icon" sizes="48x48" type="image/png"/>
+<link href="./favicon-16x16.png?v=312" rel="icon" sizes="16x16" type="image/png"/>
+<link href="./favicon-32x32.png?v=312" rel="icon" sizes="32x32" type="image/png"/>
+<link href="./favicon-48x48.png?v=312" rel="icon" sizes="48x48" type="image/png"/>
 <!-- Preferred scalable Georgia-R icon for modern browsers -->
-<link href="./favicon.svg?v=311" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="./favicon.svg?v=312" rel="icon" sizes="any" type="image/svg+xml"/>
 <!-- iPhone and iPad home-screen icon -->
-<link href="./apple-touch-icon.png?v=311" rel="apple-touch-icon" sizes="180x180" type="image/png"/>
+<link href="./apple-touch-icon.png?v=312" rel="apple-touch-icon" sizes="180x180" type="image/png"/>
 <!-- Android and installed-app configuration -->
-<link href="./site.webmanifest?v=311" rel="manifest"/>
+<link href="./site.webmanifest?v=312" rel="manifest"/>
 <!-- Open Graph metadata used by WhatsApp and other link previews -->
 <meta content="website" property="og:type"/>
 <meta content="RajAIAssist" property="og:site_name"/>
@@ -135,49 +135,48 @@
     }
 
 
-    html[data-theme="lustro"] {
-      color-scheme: dark;
-      --bg: #0a0e1a; --panel: rgba(18, 23, 42, .88); --panel-2: #151a2e; --panel-3: rgba(9, 13, 26, .84);
-      --border: rgba(255, 255, 255, .14); --border-soft: rgba(255, 255, 255, .08); --text: #ffffff; --muted: #b8bdd3;
-      --accent: #a5b4fc; --accent-2: #ec4899; --danger: #fb7185; --warning: #fbbf24;
-      --shadow: 0 28px 74px rgba(0, 0, 0, .44), 0 0 46px rgba(99, 102, 241, .10);
-      --body-glow: rgba(99, 102, 241, .22); --topbar-bg: rgba(15, 20, 38, .78);
-      --sidebar-top: rgba(19, 24, 45, .90); --sidebar-bottom: rgba(9, 13, 26, .94);
-      --button-bg: rgba(255, 255, 255, .065); --button-hover: rgba(255, 255, 255, .13); --code-bg: #070a13;
-      --card-bg: linear-gradient(135deg, rgba(255, 255, 255, .065), rgba(255, 255, 255, .025));
-      --input-bg: rgba(7, 11, 23, .74); --placeholder: #7f86a3;
-      --focus-border: rgba(165, 180, 252, .82); --focus-ring: rgba(99, 102, 241, .24);
-      --hover-border: rgba(165, 180, 252, .50); --primary-text: #ffffff; --danger-text: #fecdd3;
-      --success-text: #86efac; --error-text: #fda4af;
-      --badge-bg: rgba(255, 255, 255, .055); --online-text: #86efac;
-      --online-border: rgba(74, 222, 128, .30); --online-bg: rgba(74, 222, 128, .08);
-      --chat-bg: linear-gradient(180deg, rgba(16, 21, 39, .90), rgba(9, 13, 26, .90));
-      --example-bg: rgba(255, 255, 255, .045); --example-text: #e7e9f6;
-      --prompt-summary-text: #f1f2fb; --prompt-summary-muted: #c3c7dc; --prompt-example-bg: rgba(255, 255, 255, .04);
-      --warning-border: rgba(251, 191, 36, .32); --warning-bg: rgba(251, 191, 36, .07); --warning-text: #fde68a;
-      --formula-border: rgba(165, 180, 252, .28);
-      --formula-bg: linear-gradient(180deg, rgba(99, 102, 241, .10), rgba(10, 14, 26, .84));
-      --formula-inset: rgba(255, 255, 255, .025); --formula-kicker-bg: rgba(99, 102, 241, .16);
-      --formula-kicker-text: #c7d2fe; --formula-kicker-border: rgba(165, 180, 252, .30);
-      --formula-item-bg: rgba(7, 11, 23, .58); --formula-item-text: #cbd0e2;
-      --template-border: rgba(165, 180, 252, .35); --template-bg: rgba(7, 11, 23, .70);
-      --template-text: #c7cada; --template-strong: #ffffff;
-      --time-text: #8f96b2; --message-bg: rgba(12, 17, 32, .84);
-      --user-bubble: linear-gradient(135deg, rgba(99, 102, 241, .16), rgba(236, 72, 153, .075));
-      --user-bubble-border: rgba(165, 180, 252, .30);
-      --assistant-bubble: linear-gradient(135deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .022));
-      --quote-bg: rgba(99, 102, 241, .08); --quote-text: #d5d8e8; --table-header-bg: rgba(99, 102, 241, .13);
-      --inline-code-bg: rgba(255, 255, 255, .07); --inline-code-border: rgba(255, 255, 255, .12);
-      --code-border: rgba(165, 180, 252, .20); --code-toolbar-bg: rgba(17, 22, 41, .96);
-      --code-toolbar-border: rgba(255, 255, 255, .09); --code-text: #f8fafc;
-      --source-border: rgba(165, 180, 252, .22); --source-bg: rgba(99, 102, 241, .08); --source-text: #cbd5ff;
-      --stats-text: #9299b6; --composer-bg: rgba(14, 19, 36, .88); --file-button-bg: rgba(255, 255, 255, .07);
-      --footer-text: #8f96b2; --toast-bg: rgba(20, 25, 45, .96); --toast-error-text: #fecdd3;
-      --toast-error-border: rgba(251, 113, 133, .44); --modal-overlay: rgba(4, 7, 16, .76);
-      --modal-border: rgba(165, 180, 252, .28);
-      --modal-bg: linear-gradient(180deg, rgba(24, 29, 52, .98), rgba(11, 15, 30, .98)); --modal-text: #cbd0e2;
-      --brand-photo-bg: #0d1220; --brand-photo-border: rgba(165, 180, 252, .72);
-      --brand-photo-shadow: rgba(236, 72, 153, .24); --scroll-track: #090d19; --scroll-thumb: #6f72d7;
+    html[data-theme="clearwave"] {
+      color-scheme: light;
+      --bg: #E8F4F2; --panel: rgba(244, 250, 250, .94); --panel-2: #FFFFFF; --panel-3: #DFF0EE;
+      --border: rgba(13, 30, 28, .13); --border-soft: rgba(13, 30, 28, .08); --text: #0D1E1C; --muted: #4B6A66;
+      --accent: #1A7A6E; --accent-2: #2A9D8F; --danger: #B42336; --warning: #8A5A00;
+      --shadow: 0 24px 64px rgba(13, 30, 28, .13), 0 2px 12px rgba(13, 30, 28, .06);
+      --body-glow: rgba(91, 191, 181, .20); --topbar-bg: rgba(244, 250, 250, .90);
+      --sidebar-top: rgba(244, 250, 250, .96); --sidebar-bottom: rgba(223, 240, 238, .94);
+      --button-bg: rgba(255, 255, 255, .72); --button-hover: #FFFFFF; --code-bg: #102421;
+      --card-bg: linear-gradient(145deg, rgba(255, 255, 255, .84), rgba(244, 250, 250, .72));
+      --input-bg: rgba(255, 255, 255, .88); --placeholder: #5F7D79;
+      --focus-border: #1A7A6E; --focus-ring: rgba(26, 122, 110, .18);
+      --hover-border: rgba(26, 122, 110, .46); --primary-text: #FFFFFF; --danger-text: #9F2538;
+      --success-text: #176B46; --error-text: #9F2538;
+      --badge-bg: rgba(26, 122, 110, .075); --online-text: #176B46;
+      --online-border: rgba(23, 107, 70, .28); --online-bg: rgba(38, 166, 91, .09);
+      --chat-bg: rgba(244, 250, 250, .92); --example-bg: rgba(255, 255, 255, .74); --example-text: #19302D;
+      --prompt-summary-text: #0D1E1C; --prompt-summary-muted: #3F5F5B; --prompt-example-bg: rgba(255, 255, 255, .74);
+      --warning-border: rgba(138, 90, 0, .30); --warning-bg: rgba(255, 244, 207, .76); --warning-text: #684400;
+      --formula-border: rgba(26, 122, 110, .23);
+      --formula-bg: linear-gradient(180deg, rgba(91, 191, 181, .12), rgba(255, 255, 255, .76));
+      --formula-inset: rgba(255, 255, 255, .72); --formula-kicker-bg: rgba(26, 122, 110, .10);
+      --formula-kicker-text: #145F56; --formula-kicker-border: rgba(26, 122, 110, .22);
+      --formula-item-bg: rgba(255, 255, 255, .72); --formula-item-text: #3A5C58;
+      --template-border: rgba(26, 122, 110, .28); --template-bg: rgba(255, 255, 255, .82);
+      --template-text: #3A5C58; --template-strong: #0D1E1C;
+      --time-text: #5A7874; --message-bg: rgba(255, 255, 255, .84);
+      --user-bubble: linear-gradient(135deg, rgba(42, 157, 143, .15), rgba(91, 191, 181, .075));
+      --user-bubble-border: rgba(26, 122, 110, .24);
+      --assistant-bubble: linear-gradient(145deg, rgba(255, 255, 255, .90), rgba(244, 250, 250, .76));
+      --quote-bg: rgba(26, 122, 110, .07); --quote-text: #365652; --table-header-bg: rgba(26, 122, 110, .09);
+      --inline-code-bg: rgba(26, 122, 110, .08); --inline-code-border: rgba(26, 122, 110, .15);
+      --code-border: rgba(13, 30, 28, .24); --code-toolbar-bg: #18332F;
+      --code-toolbar-border: rgba(255, 255, 255, .10); --code-text: #F4FAFA;
+      --source-border: rgba(26, 122, 110, .22); --source-bg: rgba(26, 122, 110, .07); --source-text: #31534F;
+      --stats-text: #5A7874; --composer-bg: rgba(244, 250, 250, .94); --file-button-bg: rgba(255, 255, 255, .78);
+      --footer-text: #587570; --toast-bg: rgba(255, 255, 255, .97); --toast-error-text: #9F2538;
+      --toast-error-border: rgba(180, 35, 54, .32); --modal-overlay: rgba(13, 30, 28, .36);
+      --modal-border: rgba(13, 30, 28, .13);
+      --modal-bg: linear-gradient(180deg, rgba(255, 255, 255, .99), rgba(244, 250, 250, .99)); --modal-text: #365652;
+      --brand-photo-bg: #FFFFFF; --brand-photo-border: rgba(26, 122, 110, .60);
+      --brand-photo-shadow: rgba(26, 122, 110, .20); --scroll-track: rgba(223, 240, 238, .82); --scroll-thumb: #5BBFB5;
     }
 
     html[data-theme="apple"] {
@@ -221,111 +220,130 @@
     html[data-theme="apple"] .topbar { backdrop-filter: saturate(180%) blur(18px); }
 
 
-    @keyframes lustroAmbient {
-      from { opacity: .82; transform: scale(1); }
-      to { opacity: .62; transform: scale(1.045); }
+    @keyframes clearwaveDrift {
+      from { opacity: .72; transform: translate3d(0, 0, 0) scale(1); }
+      to { opacity: .94; transform: translate3d(0, -8px, 0) scale(1.025); }
     }
-    html[data-theme="lustro"] body {
+    html[data-theme="clearwave"] body {
       position: relative;
       isolation: isolate;
       background: var(--bg);
     }
-    html[data-theme="lustro"] body::before,
-    html[data-theme="lustro"] body::after {
+    html[data-theme="clearwave"] body::before,
+    html[data-theme="clearwave"] body::after {
       content: "";
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
     }
-    html[data-theme="lustro"] body::before {
+    html[data-theme="clearwave"] body::before {
+      opacity: .022;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 128px 128px;
+    }
+    html[data-theme="clearwave"] body::after {
       background:
-        radial-gradient(circle at 15% 18%, rgba(99, 102, 241, .24) 0%, transparent 48%),
-        radial-gradient(circle at 86% 78%, rgba(236, 72, 153, .17) 0%, transparent 49%),
-        radial-gradient(circle at 52% 48%, rgba(34, 211, 238, .08) 0%, transparent 59%);
-      animation: lustroAmbient 14s ease-in-out infinite alternate;
+        radial-gradient(ellipse at 12% 8%, rgba(91, 191, 181, .22) 0%, transparent 39%),
+        radial-gradient(ellipse at 92% 88%, rgba(42, 157, 143, .13) 0%, transparent 43%),
+        radial-gradient(ellipse at 52% 44%, rgba(255, 255, 255, .52) 0%, transparent 58%);
+      animation: clearwaveDrift 12s cubic-bezier(.16, 1, .3, 1) infinite alternate;
     }
-    html[data-theme="lustro"] body::after {
-      background-image:
-        linear-gradient(rgba(255, 255, 255, .024) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, .024) 1px, transparent 1px);
-      background-size: 64px 64px;
-      -webkit-mask-image: radial-gradient(ellipse at center, #000 24%, transparent 82%);
-      mask-image: radial-gradient(ellipse at center, #000 24%, transparent 82%);
+    html[data-theme="clearwave"] .shell { position: relative; z-index: 1; }
+    html[data-theme="clearwave"] .sidebar,
+    html[data-theme="clearwave"] .topbar,
+    html[data-theme="clearwave"] .chat,
+    html[data-theme="clearwave"] .composer,
+    html[data-theme="clearwave"] .card,
+    html[data-theme="clearwave"] .message-box,
+    html[data-theme="clearwave"] .modal-card,
+    html[data-theme="clearwave"] .toast {
+      -webkit-backdrop-filter: blur(18px) saturate(125%);
+      backdrop-filter: blur(18px) saturate(125%);
     }
-    html[data-theme="lustro"] .shell { position: relative; z-index: 1; }
-    html[data-theme="lustro"] .sidebar,
-    html[data-theme="lustro"] .topbar,
-    html[data-theme="lustro"] .chat,
-    html[data-theme="lustro"] .composer,
-    html[data-theme="lustro"] .card,
-    html[data-theme="lustro"] .message-box,
-    html[data-theme="lustro"] .modal-card,
-    html[data-theme="lustro"] .toast {
-      -webkit-backdrop-filter: blur(28px) saturate(125%);
-      backdrop-filter: blur(28px) saturate(125%);
-    }
-    html[data-theme="lustro"] .sidebar,
-    html[data-theme="lustro"] .topbar,
-    html[data-theme="lustro"] .chat,
-    html[data-theme="lustro"] .composer {
+    html[data-theme="clearwave"] .sidebar,
+    html[data-theme="clearwave"] .topbar,
+    html[data-theme="clearwave"] .chat,
+    html[data-theme="clearwave"] .composer {
       box-shadow: var(--shadow);
     }
-    html[data-theme="lustro"] .brand h1,
-    html[data-theme="lustro"] .welcome h3 {
-      background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 52%, #ec4899 100%);
+    html[data-theme="clearwave"] .brand h1,
+    html[data-theme="clearwave"] .welcome h3 {
+      background: linear-gradient(125deg, #0D1E1C 0%, #1A7A6E 72%, #2A9D8F 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    html[data-theme="lustro"] .brand-photo {
-      box-shadow: 0 10px 34px rgba(99, 102, 241, .24), 0 0 28px rgba(236, 72, 153, .16);
+    html[data-theme="clearwave"] .card-title::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(26, 122, 110, .08);
     }
-    html[data-theme="lustro"] .btn-primary {
-      background: linear-gradient(135deg, #6366f1, #ec4899);
-      color: #ffffff;
-      box-shadow: 0 10px 28px rgba(99, 102, 241, .22);
+    html[data-theme="clearwave"] .card-title { justify-content: flex-start; }
+    html[data-theme="clearwave"] .card-title > button,
+    html[data-theme="clearwave"] .card-title > a,
+    html[data-theme="clearwave"] .card-title > .btn { margin-left: auto; }
+    html[data-theme="clearwave"] .brand-photo {
+      box-shadow: 0 10px 30px rgba(26, 122, 110, .20), 0 0 0 5px rgba(255, 255, 255, .48);
     }
-    html[data-theme="lustro"] .btn-primary:hover {
-      background: linear-gradient(135deg, #7c7ff5, #f05ba6);
-      box-shadow: 0 14px 34px rgba(236, 72, 153, .22);
+    html[data-theme="clearwave"] .btn-primary {
+      background: var(--accent);
+      color: #FFFFFF;
+      border-color: transparent;
+      box-shadow: 0 6px 22px rgba(26, 122, 110, .28);
+    }
+    html[data-theme="clearwave"] .btn-primary:hover {
+      background: var(--accent-2);
+      box-shadow: 0 9px 28px rgba(26, 122, 110, .34);
       transform: translateY(-1px);
     }
-    html[data-theme="lustro"] .example:hover,
-    html[data-theme="lustro"] .prompt-example:hover,
-    html[data-theme="lustro"] .doc:hover,
-    html[data-theme="lustro"] .vault-result:hover {
-      border-color: rgba(165, 180, 252, .42);
-      background: linear-gradient(90deg, rgba(99, 102, 241, .12), rgba(236, 72, 153, .055));
-      transform: translateY(-1px);
+    html[data-theme="clearwave"] .btn,
+    html[data-theme="clearwave"] .example,
+    html[data-theme="clearwave"] .prompt-example,
+    html[data-theme="clearwave"] .doc,
+    html[data-theme="clearwave"] .vault-result {
+      transition: transform .4s cubic-bezier(.16, 1, .3, 1), box-shadow .4s cubic-bezier(.16, 1, .3, 1), border-color .4s cubic-bezier(.16, 1, .3, 1), background .4s cubic-bezier(.16, 1, .3, 1);
     }
-    html[data-theme="lustro"] .badge,
-    html[data-theme="lustro"] .source,
-    html[data-theme="lustro"] .scope-badge {
-      -webkit-backdrop-filter: blur(16px);
-      backdrop-filter: blur(16px);
+    html[data-theme="clearwave"] .example:hover,
+    html[data-theme="clearwave"] .prompt-example:hover,
+    html[data-theme="clearwave"] .doc:hover,
+    html[data-theme="clearwave"] .vault-result:hover {
+      border-color: rgba(26, 122, 110, .34);
+      background: linear-gradient(90deg, rgba(91, 191, 181, .12), rgba(255, 255, 255, .86));
+      box-shadow: 0 8px 24px rgba(13, 30, 28, .08);
+      transform: translateY(-2px);
     }
-    html[data-theme="lustro"] .modal-backdrop {
+    html[data-theme="clearwave"] .badge,
+    html[data-theme="clearwave"] .source,
+    html[data-theme="clearwave"] .scope-badge {
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+    html[data-theme="clearwave"] .modal-backdrop {
       -webkit-backdrop-filter: blur(9px);
       backdrop-filter: blur(9px);
     }
-    html[data-theme="lustro"] *::-webkit-scrollbar-track { background: transparent; }
-    html[data-theme="lustro"] *::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, rgba(165, 180, 252, .58), rgba(236, 72, 153, .46));
+    html[data-theme="clearwave"] *::-webkit-scrollbar-track { background: transparent; }
+    html[data-theme="clearwave"] *::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #5BBFB5, #2A9D8F);
       border-color: transparent;
       background-clip: padding-box;
     }
-    html[data-theme="lustro"] *::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, rgba(165, 180, 252, .82), rgba(236, 72, 153, .68));
+    html[data-theme="clearwave"] *::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #2A9D8F, #1A7A6E);
       background-clip: padding-box;
     }
     @media (prefers-reduced-motion: reduce) {
-      html[data-theme="lustro"] body::before { animation: none; }
-      html[data-theme="lustro"] .btn,
-      html[data-theme="lustro"] .example,
-      html[data-theme="lustro"] .prompt-example,
-      html[data-theme="lustro"] .doc,
-      html[data-theme="lustro"] .vault-result { transition: none; }
+      html[data-theme="clearwave"] body::after { animation: none; }
+      html[data-theme="clearwave"] .btn,
+      html[data-theme="clearwave"] .example,
+      html[data-theme="clearwave"] .prompt-example,
+      html[data-theme="clearwave"] .doc,
+      html[data-theme="clearwave"] .vault-result { transition: none; }
     }
     * { box-sizing: border-box; scrollbar-color: var(--scroll-thumb) var(--scroll-track); }
     *::-webkit-scrollbar { width: 11px; height: 11px; }
@@ -645,7 +663,7 @@
     .drop-active { border-color: var(--accent) !important; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent); }
     .runtime-note { color: var(--muted); font-size: .73rem; line-height: 1.45; margin-top: 7px; max-width: 850px; }
     .quality-note { color: var(--warning); }
-    html[data-theme="lustro"] .btn-primary { border-color: transparent; }
+    html[data-theme="clearwave"] .btn-primary { border-color: transparent; }
     [hidden] { display: none !important; }
     @media (max-width: 980px) {
       .shell { grid-template-columns: 1fr; }
@@ -766,7 +784,7 @@
 </div>
 <div class="topbar-controls">
 <label class="theme-control" for="themeSelect">Theme
-<select id="themeSelect"><option value="lustro">Lustro inspired</option><option value="apple">Apple inspired</option></select></label>
+<select id="themeSelect"><option value="clearwave">Clearwave inspired</option><option value="apple">Apple inspired</option></select></label>
 <div class="badges">
 <span class="badge" id="onlineBadge">Offline</span>
 <span class="badge" id="modelBadge">Model: unknown</span>
@@ -828,7 +846,7 @@
 </div>
 </div>
 </section>
-<div class="footer"><a aria-label="Visit Raj Mohan Acharya's LinkedIn profile" href="https://www.linkedin.com/in/rajmohanacharya/" rel="noopener noreferrer" target="_blank">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v3.1.1 · Visual design adapted from <a aria-label="View the Lustro template by TemplateMo" href="https://templatemo.com/tm-624-lustro-slideshow" rel="nofollow noopener noreferrer" target="_blank">Lustro by TemplateMo</a></div>
+<div class="footer"><a aria-label="Visit Raj Mohan Acharya's LinkedIn profile" href="https://www.linkedin.com/in/rajmohanacharya/" rel="noopener noreferrer" target="_blank">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v3.1.2 · Visual design adapted from <a aria-label="View the Clearwave template by TemplateMo" href="https://templatemo.com/tm-622-clearwave" rel="nofollow noopener noreferrer" target="_blank">Clearwave by TemplateMo</a></div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -944,19 +962,20 @@
       reliability: "rajai_reliability_mode"
     });
 
-    const THEME_NAMES = new Set(["lustro", "apple"]);
+    const THEME_NAMES = new Set(["clearwave", "apple"]);
 
     function normalizeTheme(value) {
-      if (value === "garuda") return "lustro";
-      return THEME_NAMES.has(value) ? value : "lustro";
+      if (value === "garuda" || value === "lustro") return "clearwave";
+      return THEME_NAMES.has(value) ? value : "clearwave";
     }
 
     function applyTheme(value, persist = true) {
       const theme = normalizeTheme(value);
       document.documentElement.dataset.theme = theme;
-      document.documentElement.style.colorScheme = theme === "apple" ? "light" : "dark";
+      document.documentElement.style.colorScheme = "light";
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "apple" ? "#f5f5f7" : "#E8F4F2");
       themeSelect.value = theme;
-      if (persist || value === "garuda") localStorage.setItem(STORAGE.theme, theme);
+      if (persist || value === "garuda" || value === "lustro") localStorage.setItem(STORAGE.theme, theme);
     }
 
     function selectedOutputTokens() {
@@ -2539,7 +2558,7 @@
       });
     });
     async function initializeApp() {
-      applyTheme(localStorage.getItem(STORAGE.theme) || "lustro", false);
+      applyTheme(localStorage.getItem(STORAGE.theme) || "clearwave", false);
       const storedOutput = Number.parseInt(localStorage.getItem(STORAGE.outputTokens) || "4096", 10);
       if ([1024, 2048, 4096, 8192].includes(storedOutput)) outputTokensSelect.value = String(storedOutput);
       const storedReliability = localStorage.getItem(STORAGE.reliability) || GENERATION_DEFAULTS.defaultReliability;
