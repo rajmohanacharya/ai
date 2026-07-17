@@ -1,20 +1,20 @@
 {
   "app_version": "3.1.0-cli",
-  "backend_url": "https://boring-indoor-fair-forth.trycloudflare.com",
+  "backend_url": "",
   "compute_type": "gpu",
-  "expires_at": 1784341515,
-  "issued_at": 1784298315,
+  "expires_at": 1784309328,
+  "issued_at": 1784305728,
   "lifecycle_id": "2055885bc5f2f4dbe7b94e9b9d1a80b5",
   "model": "qwen3:8b",
-  "online": true,
+  "online": false,
   "provider": "colab_gpu",
   "schema_version": 2,
-  "signature": "a42afd274e2b148b6f525469c6692f1eb044e2012eab8b71e3cc87e899ac611e",
+  "signature": "fa6f9d247052770844c7d74ce14fbd4f8dd34eb47ccb4ee4f27334a029e75f85",
   "signatures": [
-    "a42afd274e2b148b6f525469c6692f1eb044e2012eab8b71e3cc87e899ac611e",
-    "ea385588e9c19f469a4d484fae8086ff215c48abf00c8a3064fd315ffcc035e4"
+    "fa6f9d247052770844c7d74ce14fbd4f8dd34eb47ccb4ee4f27334a029e75f85",
+    "0f3deb3826569de938c390c45ec9148e248dc9e0db488c7dd527d9e56cd8cbfe"
   ],
   "storage_mode": "drive",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-17T14:25:15.832591+00:00"
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-17T16:28:48.038092+00:00"
 }
