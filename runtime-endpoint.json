@@ -1,16 +1,20 @@
 {
+  "app_version": "3.0.0-cli",
+  "backend_url": "https://reuters-costs-quantities-novel.trycloudflare.com",
+  "compute_type": "gpu",
+  "expires_at": 1784302047,
+  "issued_at": 1784258847,
+  "lifecycle_id": "ec8b8e9215c0532407977e0a1159bfb5",
+  "model": "qwen3:8b",
+  "online": true,
+  "provider": "colab_gpu",
   "schema_version": 2,
-  "online": false,
-  "backend_url": "",
-  "issued_at": 0,
-  "expires_at": 0,
-  "signatures": [],
-  "signature": "",
-  "model": "",
-  "provider": "offline",
-  "compute_type": "",
-  "storage_mode": "",
-  "tunnel_mode": "offline",
-  "updated_at": "",
-  "lifecycle_id": ""
+  "signature": "bd06fbf8997c117e885a0145bd992d1169c9bc51a55db4452af9c1e93783351c",
+  "signatures": [
+    "bd06fbf8997c117e885a0145bd992d1169c9bc51a55db4452af9c1e93783351c",
+    "3cd6324534ea91876bacf91f802b65ec83df3a56d561f7ce44098454fa6fd85c"
+  ],
+  "storage_mode": "temporary",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-17T03:27:27.379934+00:00"
 }
