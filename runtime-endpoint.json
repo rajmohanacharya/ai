@@ -1,16 +1,20 @@
 {
+  "app_version": "3.1.0-cli",
+  "backend_url": "https://boring-indoor-fair-forth.trycloudflare.com",
+  "compute_type": "gpu",
+  "expires_at": 1784341515,
+  "issued_at": 1784298315,
+  "lifecycle_id": "2055885bc5f2f4dbe7b94e9b9d1a80b5",
+  "model": "qwen3:8b",
+  "online": true,
+  "provider": "colab_gpu",
   "schema_version": 2,
-  "online": false,
-  "backend_url": "",
-  "issued_at": 0,
-  "expires_at": 0,
-  "signatures": [],
-  "signature": "",
-  "model": "",
-  "provider": "offline",
-  "compute_type": "",
-  "storage_mode": "",
-  "tunnel_mode": "offline",
-  "updated_at": "",
-  "lifecycle_id": ""
+  "signature": "a42afd274e2b148b6f525469c6692f1eb044e2012eab8b71e3cc87e899ac611e",
+  "signatures": [
+    "a42afd274e2b148b6f525469c6692f1eb044e2012eab8b71e3cc87e899ac611e",
+    "ea385588e9c19f469a4d484fae8086ff215c48abf00c8a3064fd315ffcc035e4"
+  ],
+  "storage_mode": "drive",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-17T14:25:15.832591+00:00"
 }
