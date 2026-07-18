@@ -1,16 +1,18 @@
 {
-  "schema_version": 2,
-  "online": false,
+  "app_version": "3.2.0-cli",
   "backend_url": "",
-  "issued_at": 0,
-  "expires_at": 0,
-  "signatures": [],
-  "signature": "",
-  "model": "",
-  "provider": "offline",
-  "compute_type": "",
-  "storage_mode": "",
+  "expires_at": 1784364407,
+  "issued_at": 1784360807,
+  "lifecycle_id": "51b09e34f75a042beb8af81d5ca77500",
+  "model": "starcoder2:7b",
+  "online": false,
+  "provider": "starting",
+  "schema_version": 2,
+  "signature": "99de0419eff0a43b506d9f09ccaba88fba26ad27056da48e5a88edba59b406f3",
+  "signatures": [
+    "99de0419eff0a43b506d9f09ccaba88fba26ad27056da48e5a88edba59b406f3",
+    "0b48a9fc5b210ccede7959eb258e09f333af43187ccc5b212fb2ad459e7bdfa1"
+  ],
   "tunnel_mode": "offline",
-  "updated_at": "",
-  "lifecycle_id": ""
+  "updated_at": "2026-07-18T07:46:47.542938+00:00"
 }
