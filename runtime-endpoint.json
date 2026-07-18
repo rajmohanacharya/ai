@@ -1,20 +1,20 @@
 {
   "app_version": "3.2.1-cli",
-  "backend_url": "",
+  "backend_url": "https://regardless-back-hopkins-musicians.trycloudflare.com",
   "compute_type": "gpu",
-  "expires_at": 1784392381,
-  "issued_at": 1784388781,
-  "lifecycle_id": "609b37fcb9e8e03ef5ff9c1432c0b0b1",
+  "expires_at": 1784432741,
+  "issued_at": 1784389541,
+  "lifecycle_id": "bcc402b1af452037a9bba21c1efbebaa",
   "model": "qwen3:4b-instruct",
-  "online": false,
+  "online": true,
   "provider": "colab_gpu",
   "schema_version": 2,
-  "signature": "2123f81ca88d85cd338fd37221cac5d21f6b907df4cd87e39732309db2bd779a",
+  "signature": "d3882f75de06cba4806b49c819f1de98f71a4479653a92ee3f6b149672f23c7f",
   "signatures": [
-    "2123f81ca88d85cd338fd37221cac5d21f6b907df4cd87e39732309db2bd779a",
-    "340ee5cb392be34a150469f269f05aef5aca542dc11af6b528ff8b2909a42e6f"
+    "d3882f75de06cba4806b49c819f1de98f71a4479653a92ee3f6b149672f23c7f",
+    "3f3028b0a3d7c1797524c57d8e9ad9f2d672a0b115efb618db9ce6b0438c72ba"
   ],
-  "storage_mode": "temporary",
-  "tunnel_mode": "offline",
-  "updated_at": "2026-07-18T15:33:01.362894+00:00"
+  "storage_mode": "drive",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-18T15:45:41.985198+00:00"
 }
