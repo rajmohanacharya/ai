@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
-<html data-theme="clearwave" lang="en">
+<html data-theme="glass-admin" lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="light" name="color-scheme"/>
+<meta content="dark" name="color-scheme"/>
 <meta content="no-referrer" name="referrer"/>
 <meta content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src https: http://localhost:* http://127.0.0.1:*; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'" http-equiv="Content-Security-Policy"/>
 <title>RajAIAssist</title>
@@ -12,19 +12,19 @@
 <link href="https://rajmohanacharya.github.io/ai/" rel="canonical"/>
 <!-- RajAIAssist browser-tab and device icons -->
 <meta content="RajAIAssist" name="application-name"/>
-<meta content="#E8F4F2" name="theme-color"/>
+<meta content="#0a0f0d" name="theme-color"/>
 <!-- Legacy and compatibility fallback -->
-<link href="./favicon.ico?v=312" rel="icon" type="image/x-icon"/>
+<link href="./favicon.ico?v=313" rel="icon" type="image/x-icon"/>
 <!-- Fixed-size browser-tab icons -->
-<link href="./favicon-16x16.png?v=312" rel="icon" sizes="16x16" type="image/png"/>
-<link href="./favicon-32x32.png?v=312" rel="icon" sizes="32x32" type="image/png"/>
-<link href="./favicon-48x48.png?v=312" rel="icon" sizes="48x48" type="image/png"/>
+<link href="./favicon-16x16.png?v=313" rel="icon" sizes="16x16" type="image/png"/>
+<link href="./favicon-32x32.png?v=313" rel="icon" sizes="32x32" type="image/png"/>
+<link href="./favicon-48x48.png?v=313" rel="icon" sizes="48x48" type="image/png"/>
 <!-- Preferred scalable Georgia-R icon for modern browsers -->
-<link href="./favicon.svg?v=312" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="./favicon.svg?v=313" rel="icon" sizes="any" type="image/svg+xml"/>
 <!-- iPhone and iPad home-screen icon -->
-<link href="./apple-touch-icon.png?v=312" rel="apple-touch-icon" sizes="180x180" type="image/png"/>
+<link href="./apple-touch-icon.png?v=313" rel="apple-touch-icon" sizes="180x180" type="image/png"/>
 <!-- Android and installed-app configuration -->
-<link href="./site.webmanifest?v=312" rel="manifest"/>
+<link href="./site.webmanifest?v=313" rel="manifest"/>
 <!-- Open Graph metadata used by WhatsApp and other link previews -->
 <meta content="website" property="og:type"/>
 <meta content="RajAIAssist" property="og:site_name"/>
@@ -135,215 +135,253 @@
     }
 
 
-    html[data-theme="clearwave"] {
-      color-scheme: light;
-      --bg: #E8F4F2; --panel: rgba(244, 250, 250, .94); --panel-2: #FFFFFF; --panel-3: #DFF0EE;
-      --border: rgba(13, 30, 28, .13); --border-soft: rgba(13, 30, 28, .08); --text: #0D1E1C; --muted: #4B6A66;
-      --accent: #1A7A6E; --accent-2: #2A9D8F; --danger: #B42336; --warning: #8A5A00;
-      --shadow: 0 24px 64px rgba(13, 30, 28, .13), 0 2px 12px rgba(13, 30, 28, .06);
-      --body-glow: rgba(91, 191, 181, .20); --topbar-bg: rgba(244, 250, 250, .90);
-      --sidebar-top: rgba(244, 250, 250, .96); --sidebar-bottom: rgba(223, 240, 238, .94);
-      --button-bg: rgba(255, 255, 255, .72); --button-hover: #FFFFFF; --code-bg: #102421;
-      --card-bg: linear-gradient(145deg, rgba(255, 255, 255, .84), rgba(244, 250, 250, .72));
-      --input-bg: rgba(255, 255, 255, .88); --placeholder: #5F7D79;
-      --focus-border: #1A7A6E; --focus-ring: rgba(26, 122, 110, .18);
-      --hover-border: rgba(26, 122, 110, .46); --primary-text: #FFFFFF; --danger-text: #9F2538;
-      --success-text: #176B46; --error-text: #9F2538;
-      --badge-bg: rgba(26, 122, 110, .075); --online-text: #176B46;
-      --online-border: rgba(23, 107, 70, .28); --online-bg: rgba(38, 166, 91, .09);
-      --chat-bg: rgba(244, 250, 250, .92); --example-bg: rgba(255, 255, 255, .74); --example-text: #19302D;
-      --prompt-summary-text: #0D1E1C; --prompt-summary-muted: #3F5F5B; --prompt-example-bg: rgba(255, 255, 255, .74);
-      --warning-border: rgba(138, 90, 0, .30); --warning-bg: rgba(255, 244, 207, .76); --warning-text: #684400;
-      --formula-border: rgba(26, 122, 110, .23);
-      --formula-bg: linear-gradient(180deg, rgba(91, 191, 181, .12), rgba(255, 255, 255, .76));
-      --formula-inset: rgba(255, 255, 255, .72); --formula-kicker-bg: rgba(26, 122, 110, .10);
-      --formula-kicker-text: #145F56; --formula-kicker-border: rgba(26, 122, 110, .22);
-      --formula-item-bg: rgba(255, 255, 255, .72); --formula-item-text: #3A5C58;
-      --template-border: rgba(26, 122, 110, .28); --template-bg: rgba(255, 255, 255, .82);
-      --template-text: #3A5C58; --template-strong: #0D1E1C;
-      --time-text: #5A7874; --message-bg: rgba(255, 255, 255, .84);
-      --user-bubble: linear-gradient(135deg, rgba(42, 157, 143, .15), rgba(91, 191, 181, .075));
-      --user-bubble-border: rgba(26, 122, 110, .24);
-      --assistant-bubble: linear-gradient(145deg, rgba(255, 255, 255, .90), rgba(244, 250, 250, .76));
-      --quote-bg: rgba(26, 122, 110, .07); --quote-text: #365652; --table-header-bg: rgba(26, 122, 110, .09);
-      --inline-code-bg: rgba(26, 122, 110, .08); --inline-code-border: rgba(26, 122, 110, .15);
-      --code-border: rgba(13, 30, 28, .24); --code-toolbar-bg: #18332F;
-      --code-toolbar-border: rgba(255, 255, 255, .10); --code-text: #F4FAFA;
-      --source-border: rgba(26, 122, 110, .22); --source-bg: rgba(26, 122, 110, .07); --source-text: #31534F;
-      --stats-text: #5A7874; --composer-bg: rgba(244, 250, 250, .94); --file-button-bg: rgba(255, 255, 255, .78);
-      --footer-text: #587570; --toast-bg: rgba(255, 255, 255, .97); --toast-error-text: #9F2538;
-      --toast-error-border: rgba(180, 35, 54, .32); --modal-overlay: rgba(13, 30, 28, .36);
-      --modal-border: rgba(13, 30, 28, .13);
-      --modal-bg: linear-gradient(180deg, rgba(255, 255, 255, .99), rgba(244, 250, 250, .99)); --modal-text: #365652;
-      --brand-photo-bg: #FFFFFF; --brand-photo-border: rgba(26, 122, 110, .60);
-      --brand-photo-shadow: rgba(26, 122, 110, .20); --scroll-track: rgba(223, 240, 238, .82); --scroll-thumb: #5BBFB5;
+    html[data-theme="glass-admin"] {
+      color-scheme: dark;
+      --bg: #0a0f0d; --panel: rgba(255,255,255,.055); --panel-2: rgba(255,255,255,.075); --panel-3: rgba(4,12,9,.82);
+      --border: rgba(255,255,255,.12); --border-soft: rgba(255,255,255,.075); --text: #f5f5f4; --muted: rgba(245,245,244,.68);
+      --accent: #34d399; --accent-2: #d4a574; --danger: #fb7185; --warning: #facc15;
+      --shadow: 0 28px 78px rgba(0,0,0,.45), 0 8px 28px rgba(5,150,105,.10); --body-glow: rgba(5,150,105,.20);
+      --topbar-bg: rgba(10,15,13,.76); --sidebar-top: rgba(15,29,22,.82); --sidebar-bottom: rgba(7,13,10,.90);
+      --button-bg: rgba(255,255,255,.06); --button-hover: rgba(255,255,255,.105); --code-bg: #050907;
+      --card-bg: linear-gradient(145deg, rgba(255,255,255,.072), rgba(255,255,255,.025));
+      --input-bg: rgba(3,10,7,.72); --placeholder: rgba(245,245,244,.42);
+      --focus-border: rgba(52,211,153,.84); --focus-ring: rgba(52,211,153,.24); --hover-border: rgba(212,165,116,.48);
+      --primary-text: #04110b; --danger-text: #fecdd3; --success-text: #86efac; --error-text: #fda4af;
+      --badge-bg: rgba(255,255,255,.055); --online-text: #86efac; --online-border: rgba(34,197,94,.32); --online-bg: rgba(34,197,94,.09);
+      --chat-bg: linear-gradient(180deg, rgba(12,21,16,.86), rgba(5,12,9,.90)); --example-bg: rgba(255,255,255,.045); --example-text: #ece9e3;
+      --prompt-summary-text: #f5f5f4; --prompt-summary-muted: #c7c8c2; --prompt-example-bg: rgba(255,255,255,.042);
+      --warning-border: rgba(250,204,21,.30); --warning-bg: rgba(250,204,21,.07); --warning-text: #fde68a;
+      --formula-border: rgba(52,211,153,.26); --formula-bg: linear-gradient(180deg, rgba(5,150,105,.11), rgba(5,12,9,.78));
+      --formula-inset: rgba(255,255,255,.025); --formula-kicker-bg: rgba(52,211,153,.14); --formula-kicker-text: #a7f3d0;
+      --formula-kicker-border: rgba(52,211,153,.28); --formula-item-bg: rgba(3,10,7,.56); --formula-item-text: #d4d7d2;
+      --template-border: rgba(212,165,116,.38); --template-bg: rgba(4,11,8,.72); --template-text: #d1d5cf; --template-strong: #fff7ed;
+      --time-text: rgba(245,245,244,.46); --message-bg: rgba(8,17,12,.76);
+      --user-bubble: linear-gradient(135deg, rgba(5,150,105,.18), rgba(212,165,116,.08)); --user-bubble-border: rgba(52,211,153,.28);
+      --assistant-bubble: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+      --quote-bg: rgba(52,211,153,.075); --quote-text: #d9ddd8; --table-header-bg: rgba(5,150,105,.13);
+      --inline-code-bg: rgba(255,255,255,.07); --inline-code-border: rgba(255,255,255,.12);
+      --code-border: rgba(212,165,116,.22); --code-toolbar-bg: rgba(10,18,14,.96); --code-toolbar-border: rgba(255,255,255,.09); --code-text: #f8fafc;
+      --source-border: rgba(52,211,153,.24); --source-bg: rgba(5,150,105,.10); --source-text: #b7f7da;
+      --stats-text: rgba(245,245,244,.48); --composer-bg: rgba(8,16,12,.86); --file-button-bg: rgba(255,255,255,.07);
+      --footer-text: rgba(245,245,244,.48); --toast-bg: rgba(12,22,17,.97); --toast-error-text: #fecdd3; --toast-error-border: rgba(251,113,133,.44);
+      --modal-overlay: rgba(1,5,3,.78); --modal-border: rgba(52,211,153,.28); --modal-bg: linear-gradient(180deg, rgba(18,31,24,.98), rgba(6,13,9,.98)); --modal-text: #d6dad5;
+      --brand-photo-bg: #07100b; --brand-photo-border: rgba(52,211,153,.72); --brand-photo-shadow: rgba(212,165,116,.24);
+      --scroll-track: #070c09; --scroll-thumb: #2d7657;
     }
 
-    html[data-theme="apple"] {
-      color-scheme: light;
-      --bg: #f5f5f7; --panel: rgba(255,255,255,.92); --panel-2: #ffffff; --panel-3: #f9f9fb;
-      --border: #d2d2d7; --border-soft: #e5e5ea; --text: #1d1d1f; --muted: #6e6e73;
-      --accent: #0071e3; --accent-2: #005bb5; --danger: #d70015; --warning: #9a6700;
-      --shadow: 0 16px 44px rgba(0,0,0,.10); --body-glow: rgba(0,113,227,.10);
-      --topbar-bg: rgba(255,255,255,.82); --sidebar-top: rgba(255,255,255,.96);
-      --sidebar-bottom: rgba(245,245,247,.96); --button-bg: #f0f0f2;
-      --button-hover: #e4e4e8; --code-bg: #1d1d1f;
-      --card-bg: #ffffff; --input-bg: #ffffff; --placeholder: #6e6e73;
-      --focus-border: #0071e3; --focus-ring: rgba(0, 113, 227, .18);
-      --hover-border: #86868b; --primary-text: #ffffff; --danger-text: #b42318;
-      --success-text: #248a3d; --error-text: #b42318;
-      --badge-bg: #f2f2f7; --online-text: #1f7a35; --online-border: #a7d7b0; --online-bg: #eaf7ed;
-      --chat-bg: #ffffff; --example-bg: #ffffff; --example-text: #1d1d1f;
-      --prompt-summary-text: #1d1d1f; --prompt-summary-muted: #424245; --prompt-example-bg: #ffffff;
-      --warning-border: #d6b85e; --warning-bg: #fff8df; --warning-text: #6f4b00;
-      --formula-border: #b8d8f7; --formula-bg: linear-gradient(180deg, #f5faff, #ffffff);
-      --formula-inset: rgba(255, 255, 255, .9); --formula-kicker-bg: #eaf4ff;
-      --formula-kicker-text: #005bb5; --formula-kicker-border: #b8d8f7;
-      --formula-item-bg: #ffffff; --formula-item-text: #424245;
-      --template-border: #a1a1a6; --template-bg: #f2f2f7; --template-text: #424245; --template-strong: #1d1d1f;
-      --time-text: #6e6e73; --message-bg: #ffffff; --user-bubble: #eaf4ff;
-      --user-bubble-border: #b8d8f7; --assistant-bubble: #ffffff;
-      --quote-bg: #f2f2f7; --quote-text: #424245; --table-header-bg: #f2f2f7;
-      --inline-code-bg: #f2f2f7; --inline-code-border: #d2d2d7;
-      --code-border: #3a3a3c; --code-toolbar-bg: #2c2c2e; --code-toolbar-border: #48484a; --code-text: #f5f5f7;
-      --source-border: #d2d2d7; --source-bg: #f2f2f7; --source-text: #424245;
-      --stats-text: #6e6e73; --composer-bg: #ffffff; --file-button-bg: #f2f2f7;
-      --footer-text: #6e6e73; --toast-bg: #ffffff; --toast-error-text: #b42318; --toast-error-border: #e3a6a0;
-      --modal-overlay: rgba(29, 29, 31, .36); --modal-border: #d2d2d7; --modal-bg: #ffffff; --modal-text: #424245;
-      --brand-photo-bg: #ffffff; --brand-photo-border: #7ab8f5; --brand-photo-shadow: rgba(0, 113, 227, .18);
-      --scroll-track: #f2f2f7; --scroll-thumb: #a1a1a6;
+    html[data-theme="lustro"] {
+      color-scheme: dark;
+      --bg: #0a0e1a; --panel: rgba(18, 23, 42, .88); --panel-2: #151a2e; --panel-3: rgba(9, 13, 26, .84);
+      --border: rgba(255, 255, 255, .14); --border-soft: rgba(255, 255, 255, .08); --text: #ffffff; --muted: #b8bdd3;
+      --accent: #a5b4fc; --accent-2: #ec4899; --danger: #fb7185; --warning: #fbbf24;
+      --shadow: 0 28px 74px rgba(0, 0, 0, .44), 0 0 46px rgba(99, 102, 241, .10);
+      --body-glow: rgba(99, 102, 241, .22); --topbar-bg: rgba(15, 20, 38, .78);
+      --sidebar-top: rgba(19, 24, 45, .90); --sidebar-bottom: rgba(9, 13, 26, .94);
+      --button-bg: rgba(255, 255, 255, .065); --button-hover: rgba(255, 255, 255, .13); --code-bg: #070a13;
+      --card-bg: linear-gradient(135deg, rgba(255, 255, 255, .065), rgba(255, 255, 255, .025));
+      --input-bg: rgba(7, 11, 23, .74); --placeholder: #7f86a3;
+      --focus-border: rgba(165, 180, 252, .82); --focus-ring: rgba(99, 102, 241, .24);
+      --hover-border: rgba(165, 180, 252, .50); --primary-text: #ffffff; --danger-text: #fecdd3;
+      --success-text: #86efac; --error-text: #fda4af;
+      --badge-bg: rgba(255, 255, 255, .055); --online-text: #86efac;
+      --online-border: rgba(74, 222, 128, .30); --online-bg: rgba(74, 222, 128, .08);
+      --chat-bg: linear-gradient(180deg, rgba(16, 21, 39, .90), rgba(9, 13, 26, .90));
+      --example-bg: rgba(255, 255, 255, .045); --example-text: #e7e9f6;
+      --prompt-summary-text: #f1f2fb; --prompt-summary-muted: #c3c7dc; --prompt-example-bg: rgba(255, 255, 255, .04);
+      --warning-border: rgba(251, 191, 36, .32); --warning-bg: rgba(251, 191, 36, .07); --warning-text: #fde68a;
+      --formula-border: rgba(165, 180, 252, .28);
+      --formula-bg: linear-gradient(180deg, rgba(99, 102, 241, .10), rgba(10, 14, 26, .84));
+      --formula-inset: rgba(255, 255, 255, .025); --formula-kicker-bg: rgba(99, 102, 241, .16);
+      --formula-kicker-text: #c7d2fe; --formula-kicker-border: rgba(165, 180, 252, .30);
+      --formula-item-bg: rgba(7, 11, 23, .58); --formula-item-text: #cbd0e2;
+      --template-border: rgba(165, 180, 252, .35); --template-bg: rgba(7, 11, 23, .70);
+      --template-text: #c7cada; --template-strong: #ffffff;
+      --time-text: #8f96b2; --message-bg: rgba(12, 17, 32, .84);
+      --user-bubble: linear-gradient(135deg, rgba(99, 102, 241, .16), rgba(236, 72, 153, .075));
+      --user-bubble-border: rgba(165, 180, 252, .30);
+      --assistant-bubble: linear-gradient(135deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .022));
+      --quote-bg: rgba(99, 102, 241, .08); --quote-text: #d5d8e8; --table-header-bg: rgba(99, 102, 241, .13);
+      --inline-code-bg: rgba(255, 255, 255, .07); --inline-code-border: rgba(255, 255, 255, .12);
+      --code-border: rgba(165, 180, 252, .20); --code-toolbar-bg: rgba(17, 22, 41, .96);
+      --code-toolbar-border: rgba(255, 255, 255, .09); --code-text: #f8fafc;
+      --source-border: rgba(165, 180, 252, .22); --source-bg: rgba(99, 102, 241, .08); --source-text: #cbd5ff;
+      --stats-text: #9299b6; --composer-bg: rgba(14, 19, 36, .88); --file-button-bg: rgba(255, 255, 255, .07);
+      --footer-text: #8f96b2; --toast-bg: rgba(20, 25, 45, .96); --toast-error-text: #fecdd3;
+      --toast-error-border: rgba(251, 113, 133, .44); --modal-overlay: rgba(4, 7, 16, .76);
+      --modal-border: rgba(165, 180, 252, .28);
+      --modal-bg: linear-gradient(180deg, rgba(24, 29, 52, .98), rgba(11, 15, 30, .98)); --modal-text: #cbd0e2;
+      --brand-photo-bg: #0d1220; --brand-photo-border: rgba(165, 180, 252, .72);
+      --brand-photo-shadow: rgba(236, 72, 153, .24); --scroll-track: #090d19; --scroll-thumb: #6f72d7;
     }
 
-    html[data-theme="apple"] .card,
-    html[data-theme="apple"] .chat,
-    html[data-theme="apple"] .composer,
-    html[data-theme="apple"] .topbar { backdrop-filter: saturate(180%) blur(18px); }
-
-
-    @keyframes clearwaveDrift {
-      from { opacity: .72; transform: translate3d(0, 0, 0) scale(1); }
-      to { opacity: .94; transform: translate3d(0, -8px, 0) scale(1.025); }
+    @keyframes glassOrbDrift {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      35% { transform: translate3d(28px, -22px, 0) scale(1.06); }
+      70% { transform: translate3d(-20px, 18px, 0) scale(.96); }
     }
-    html[data-theme="clearwave"] body {
+    html[data-theme="glass-admin"] body { position: relative; isolation: isolate; background: var(--bg); }
+    html[data-theme="glass-admin"] body::before,
+    html[data-theme="glass-admin"] body::after {
+      content: ""; position: fixed; pointer-events: none; z-index: -1; border-radius: 50%; filter: blur(82px); opacity: .34;
+    }
+    html[data-theme="glass-admin"] body::before {
+      width: 430px; height: 430px; left: 4vw; top: 5vh; background: #059669; animation: glassOrbDrift 19s ease-in-out infinite;
+    }
+    html[data-theme="glass-admin"] body::after {
+      width: 390px; height: 390px; right: 3vw; bottom: 2vh; background: linear-gradient(135deg,#d4a574,#e07a5f); animation: glassOrbDrift 23s ease-in-out infinite reverse;
+    }
+    html[data-theme="glass-admin"] .shell { position: relative; z-index: 1; perspective: 1600px; }
+    html[data-theme="glass-admin"] .sidebar,
+    html[data-theme="glass-admin"] .topbar,
+    html[data-theme="glass-admin"] .chat,
+    html[data-theme="glass-admin"] .composer,
+    html[data-theme="glass-admin"] .card,
+    html[data-theme="glass-admin"] .message-box,
+    html[data-theme="glass-admin"] .modal-card,
+    html[data-theme="glass-admin"] .toast {
+      -webkit-backdrop-filter: blur(22px) saturate(132%); backdrop-filter: blur(22px) saturate(132%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.07), var(--shadow);
+    }
+    html[data-theme="glass-admin"] .brand h1,
+    html[data-theme="glass-admin"] .welcome h3 {
+      background: linear-gradient(135deg,#34d399 0%,#d4a574 72%,#e8c9a0 100%); -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    html[data-theme="glass-admin"] .card-title::before { content:""; width:7px; height:7px; border-radius:50%; background:linear-gradient(135deg,#34d399,#d4a574); box-shadow:0 0 13px rgba(52,211,153,.55); flex:0 0 auto; }
+    html[data-theme="glass-admin"] .card-title { justify-content:flex-start; }
+    html[data-theme="glass-admin"] .card-title > button,
+    html[data-theme="glass-admin"] .card-title > a,
+    html[data-theme="glass-admin"] .card-title > .btn { margin-left:auto; }
+    html[data-theme="glass-admin"] .brand-photo { box-shadow:0 14px 36px rgba(0,0,0,.36),0 0 0 3px rgba(52,211,153,.11),0 0 34px var(--brand-photo-shadow); }
+    html[data-theme="glass-admin"] .btn-primary { background:linear-gradient(135deg,#059669 0%,#34d399 54%,#d4a574 100%); box-shadow:0 10px 30px rgba(5,150,105,.28); border-color:transparent; }
+    html[data-theme="glass-admin"] .btn-primary:hover { background:linear-gradient(135deg,#047857 0%,#34d399 48%,#e8c9a0 100%); transform:translateY(-2px); box-shadow:0 15px 38px rgba(5,150,105,.34); }
+    html[data-theme="glass-admin"] .btn,
+    html[data-theme="glass-admin"] .example,
+    html[data-theme="glass-admin"] .prompt-example,
+    html[data-theme="glass-admin"] .doc,
+    html[data-theme="glass-admin"] .vault-result,
+    html[data-theme="glass-admin"] .message-box { transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease,background .32s ease; }
+    html[data-theme="glass-admin"] .example:hover,
+    html[data-theme="glass-admin"] .prompt-example:hover,
+    html[data-theme="glass-admin"] .doc:hover,
+    html[data-theme="glass-admin"] .vault-result:hover { transform:translateY(-3px) rotateX(.35deg); border-color:rgba(212,165,116,.42); box-shadow:0 16px 38px rgba(0,0,0,.24); background:rgba(255,255,255,.075); }
+    html[data-theme="glass-admin"] .badge,
+    html[data-theme="glass-admin"] .source,
+    html[data-theme="glass-admin"] .scope-badge { -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); }
+    html[data-theme="glass-admin"] .modal-backdrop { -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); }
+    html[data-theme="glass-admin"] *::-webkit-scrollbar-track { background:transparent; }
+    html[data-theme="glass-admin"] *::-webkit-scrollbar-thumb { background:linear-gradient(180deg,#34d399,#d4a574); border-color:transparent; background-clip:padding-box; }
+    html[data-theme="glass-admin"] *::-webkit-scrollbar-thumb:hover { background:linear-gradient(180deg,#6ee7b7,#e8c9a0); background-clip:padding-box; }
+    @media (prefers-reduced-motion: reduce) {
+      html[data-theme="glass-admin"] body::before, html[data-theme="glass-admin"] body::after { animation:none; }
+      html[data-theme="glass-admin"] .btn, html[data-theme="glass-admin"] .example, html[data-theme="glass-admin"] .prompt-example,
+      html[data-theme="glass-admin"] .doc, html[data-theme="glass-admin"] .vault-result, html[data-theme="glass-admin"] .message-box { transition:none; }
+    }
+
+    @keyframes lustroAmbient {
+      from { opacity: .82; transform: scale(1); }
+      to { opacity: .62; transform: scale(1.045); }
+    }
+    html[data-theme="lustro"] body {
       position: relative;
       isolation: isolate;
       background: var(--bg);
     }
-    html[data-theme="clearwave"] body::before,
-    html[data-theme="clearwave"] body::after {
+    html[data-theme="lustro"] body::before,
+    html[data-theme="lustro"] body::after {
       content: "";
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
     }
-    html[data-theme="clearwave"] body::before {
-      opacity: .022;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitchTiles'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 128px 128px;
-    }
-    html[data-theme="clearwave"] body::after {
+    html[data-theme="lustro"] body::before {
       background:
-        radial-gradient(ellipse at 12% 8%, rgba(91, 191, 181, .22) 0%, transparent 39%),
-        radial-gradient(ellipse at 92% 88%, rgba(42, 157, 143, .13) 0%, transparent 43%),
-        radial-gradient(ellipse at 52% 44%, rgba(255, 255, 255, .52) 0%, transparent 58%);
-      animation: clearwaveDrift 12s cubic-bezier(.16, 1, .3, 1) infinite alternate;
+        radial-gradient(circle at 15% 18%, rgba(99, 102, 241, .24) 0%, transparent 48%),
+        radial-gradient(circle at 86% 78%, rgba(236, 72, 153, .17) 0%, transparent 49%),
+        radial-gradient(circle at 52% 48%, rgba(34, 211, 238, .08) 0%, transparent 59%);
+      animation: lustroAmbient 14s ease-in-out infinite alternate;
     }
-    html[data-theme="clearwave"] .shell { position: relative; z-index: 1; }
-    html[data-theme="clearwave"] .sidebar,
-    html[data-theme="clearwave"] .topbar,
-    html[data-theme="clearwave"] .chat,
-    html[data-theme="clearwave"] .composer,
-    html[data-theme="clearwave"] .card,
-    html[data-theme="clearwave"] .message-box,
-    html[data-theme="clearwave"] .modal-card,
-    html[data-theme="clearwave"] .toast {
-      -webkit-backdrop-filter: blur(18px) saturate(125%);
-      backdrop-filter: blur(18px) saturate(125%);
+    html[data-theme="lustro"] body::after {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .024) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .024) 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 24%, transparent 82%);
+      mask-image: radial-gradient(ellipse at center, #000 24%, transparent 82%);
     }
-    html[data-theme="clearwave"] .sidebar,
-    html[data-theme="clearwave"] .topbar,
-    html[data-theme="clearwave"] .chat,
-    html[data-theme="clearwave"] .composer {
+    html[data-theme="lustro"] .shell { position: relative; z-index: 1; }
+    html[data-theme="lustro"] .sidebar,
+    html[data-theme="lustro"] .topbar,
+    html[data-theme="lustro"] .chat,
+    html[data-theme="lustro"] .composer,
+    html[data-theme="lustro"] .card,
+    html[data-theme="lustro"] .message-box,
+    html[data-theme="lustro"] .modal-card,
+    html[data-theme="lustro"] .toast {
+      -webkit-backdrop-filter: blur(28px) saturate(125%);
+      backdrop-filter: blur(28px) saturate(125%);
+    }
+    html[data-theme="lustro"] .sidebar,
+    html[data-theme="lustro"] .topbar,
+    html[data-theme="lustro"] .chat,
+    html[data-theme="lustro"] .composer {
       box-shadow: var(--shadow);
     }
-    html[data-theme="clearwave"] .brand h1,
-    html[data-theme="clearwave"] .welcome h3 {
-      background: linear-gradient(125deg, #0D1E1C 0%, #1A7A6E 72%, #2A9D8F 100%);
+    html[data-theme="lustro"] .brand h1,
+    html[data-theme="lustro"] .welcome h3 {
+      background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 52%, #ec4899 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
-    html[data-theme="clearwave"] .card-title::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      flex: 0 0 7px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 5px rgba(26, 122, 110, .08);
+    html[data-theme="lustro"] .brand-photo {
+      box-shadow: 0 10px 34px rgba(99, 102, 241, .24), 0 0 28px rgba(236, 72, 153, .16);
     }
-    html[data-theme="clearwave"] .card-title { justify-content: flex-start; }
-    html[data-theme="clearwave"] .card-title > button,
-    html[data-theme="clearwave"] .card-title > a,
-    html[data-theme="clearwave"] .card-title > .btn { margin-left: auto; }
-    html[data-theme="clearwave"] .brand-photo {
-      box-shadow: 0 10px 30px rgba(26, 122, 110, .20), 0 0 0 5px rgba(255, 255, 255, .48);
+    html[data-theme="lustro"] .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      color: #ffffff;
+      box-shadow: 0 10px 28px rgba(99, 102, 241, .22);
     }
-    html[data-theme="clearwave"] .btn-primary {
-      background: var(--accent);
-      color: #FFFFFF;
-      border-color: transparent;
-      box-shadow: 0 6px 22px rgba(26, 122, 110, .28);
-    }
-    html[data-theme="clearwave"] .btn-primary:hover {
-      background: var(--accent-2);
-      box-shadow: 0 9px 28px rgba(26, 122, 110, .34);
+    html[data-theme="lustro"] .btn-primary:hover {
+      background: linear-gradient(135deg, #7c7ff5, #f05ba6);
+      box-shadow: 0 14px 34px rgba(236, 72, 153, .22);
       transform: translateY(-1px);
     }
-    html[data-theme="clearwave"] .btn,
-    html[data-theme="clearwave"] .example,
-    html[data-theme="clearwave"] .prompt-example,
-    html[data-theme="clearwave"] .doc,
-    html[data-theme="clearwave"] .vault-result {
-      transition: transform .4s cubic-bezier(.16, 1, .3, 1), box-shadow .4s cubic-bezier(.16, 1, .3, 1), border-color .4s cubic-bezier(.16, 1, .3, 1), background .4s cubic-bezier(.16, 1, .3, 1);
+    html[data-theme="lustro"] .example:hover,
+    html[data-theme="lustro"] .prompt-example:hover,
+    html[data-theme="lustro"] .doc:hover,
+    html[data-theme="lustro"] .vault-result:hover {
+      border-color: rgba(165, 180, 252, .42);
+      background: linear-gradient(90deg, rgba(99, 102, 241, .12), rgba(236, 72, 153, .055));
+      transform: translateY(-1px);
     }
-    html[data-theme="clearwave"] .example:hover,
-    html[data-theme="clearwave"] .prompt-example:hover,
-    html[data-theme="clearwave"] .doc:hover,
-    html[data-theme="clearwave"] .vault-result:hover {
-      border-color: rgba(26, 122, 110, .34);
-      background: linear-gradient(90deg, rgba(91, 191, 181, .12), rgba(255, 255, 255, .86));
-      box-shadow: 0 8px 24px rgba(13, 30, 28, .08);
-      transform: translateY(-2px);
+    html[data-theme="lustro"] .badge,
+    html[data-theme="lustro"] .source,
+    html[data-theme="lustro"] .scope-badge {
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
     }
-    html[data-theme="clearwave"] .badge,
-    html[data-theme="clearwave"] .source,
-    html[data-theme="clearwave"] .scope-badge {
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-    }
-    html[data-theme="clearwave"] .modal-backdrop {
+    html[data-theme="lustro"] .modal-backdrop {
       -webkit-backdrop-filter: blur(9px);
       backdrop-filter: blur(9px);
     }
-    html[data-theme="clearwave"] *::-webkit-scrollbar-track { background: transparent; }
-    html[data-theme="clearwave"] *::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #5BBFB5, #2A9D8F);
+    html[data-theme="lustro"] *::-webkit-scrollbar-track { background: transparent; }
+    html[data-theme="lustro"] *::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, rgba(165, 180, 252, .58), rgba(236, 72, 153, .46));
       border-color: transparent;
       background-clip: padding-box;
     }
-    html[data-theme="clearwave"] *::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(180deg, #2A9D8F, #1A7A6E);
+    html[data-theme="lustro"] *::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, rgba(165, 180, 252, .82), rgba(236, 72, 153, .68));
       background-clip: padding-box;
     }
     @media (prefers-reduced-motion: reduce) {
-      html[data-theme="clearwave"] body::after { animation: none; }
-      html[data-theme="clearwave"] .btn,
-      html[data-theme="clearwave"] .example,
-      html[data-theme="clearwave"] .prompt-example,
-      html[data-theme="clearwave"] .doc,
-      html[data-theme="clearwave"] .vault-result { transition: none; }
+      html[data-theme="lustro"] body::before { animation: none; }
+      html[data-theme="lustro"] .btn,
+      html[data-theme="lustro"] .example,
+      html[data-theme="lustro"] .prompt-example,
+      html[data-theme="lustro"] .doc,
+      html[data-theme="lustro"] .vault-result { transition: none; }
     }
     * { box-sizing: border-box; scrollbar-color: var(--scroll-thumb) var(--scroll-track); }
     *::-webkit-scrollbar { width: 11px; height: 11px; }
@@ -573,7 +611,11 @@
     .prompt-formula-template div + div { margin-top: 3px; }
     .file-help { color: var(--muted); font-size: .72rem; line-height: 1.45; margin: 8px 0 0; }
     .message { max-width: 980px; margin: 0 auto 22px; }
-    .message-head { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
+    .message-head { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 7px; align-items: center; }
+    .message-head-actions { display: inline-flex; align-items: center; justify-content: flex-end; gap: 7px; flex-wrap: wrap; }
+    .artifact-export { display: inline-flex; align-items: center; gap: 6px; }
+    .artifact-format { min-width: 92px; max-width: 118px; padding: 5px 7px; border-radius: 9px; border: 1px solid var(--border); background: var(--panel-3); color: var(--text); font-size: .67rem; }
+    .artifact-download { padding: 5px 8px; font-size: .67rem; }
     .role { color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .09em; font-weight: 800; }
     .message-time { color: var(--time-text); font-size: .68rem; }
     .message-box {
@@ -663,7 +705,7 @@
     .drop-active { border-color: var(--accent) !important; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent); }
     .runtime-note { color: var(--muted); font-size: .73rem; line-height: 1.45; margin-top: 7px; max-width: 850px; }
     .quality-note { color: var(--warning); }
-    html[data-theme="clearwave"] .btn-primary { border-color: transparent; }
+    html[data-theme="glass-admin"] .btn-primary, html[data-theme="lustro"] .btn-primary { border-color: transparent; }
     [hidden] { display: none !important; }
     @media (max-width: 980px) {
       .shell { grid-template-columns: 1fr; }
@@ -707,14 +749,14 @@
 <div class="service-note">Click the button above to check whether AI is currently running.</div>
 </section>
 <section class="card response-controls" id="responseControlsCard">
-<div class="card-title"><span>Response controls</span><span class="scope-badge">v3.1</span></div>
+<div class="card-title"><span>Response controls</span><span class="scope-badge">v3.1.3</span></div>
 <div class="control-grid">
 <label for="outputTokensSelect">Output length
 <select id="outputTokensSelect">
-<option value="1024">Concise · 1K</option>
 <option value="2048">Standard · 2K</option>
-<option selected="" value="4096">Detailed · 4K</option>
-<option value="8192">Extended · 8K</option>
+<option value="4096">Detailed · 4K</option>
+<option selected="" value="8192">Extended · 8K</option>
+<option value="16384">Maximum · 16K</option>
 </select></label>
 <label for="reliabilitySelect">Reliability
 <select id="reliabilitySelect">
@@ -784,7 +826,7 @@
 </div>
 <div class="topbar-controls">
 <label class="theme-control" for="themeSelect">Theme
-<select id="themeSelect"><option value="clearwave">Clearwave inspired</option><option value="apple">Apple inspired</option></select></label>
+<select id="themeSelect"><option value="glass-admin">Glass Admin inspired</option><option value="lustro">Lustro inspired</option></select></label>
 <div class="badges">
 <span class="badge" id="onlineBadge">Offline</span>
 <span class="badge" id="modelBadge">Model: unknown</span>
@@ -846,7 +888,7 @@
 </div>
 </div>
 </section>
-<div class="footer"><a aria-label="Visit Raj Mohan Acharya's LinkedIn profile" href="https://www.linkedin.com/in/rajmohanacharya/" rel="noopener noreferrer" target="_blank">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v3.1.2 · Visual design adapted from <a aria-label="View the Clearwave template by TemplateMo" href="https://templatemo.com/tm-622-clearwave" rel="nofollow noopener noreferrer" target="_blank">Clearwave by TemplateMo</a></div>
+<div class="footer"><a aria-label="Visit Raj Mohan Acharya's LinkedIn profile" href="https://www.linkedin.com/in/rajmohanacharya/" rel="noopener noreferrer" target="_blank">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v3.1.3 · Visual design adapted from <a aria-label="View the Glass Admin template by TemplateMo" href="https://templatemo.com/tm-607-glass-admin" rel="nofollow noopener noreferrer" target="_blank">Glass Admin by TemplateMo</a> and <a aria-label="View the Lustro template by TemplateMo" href="https://templatemo.com/tm-624-lustro" rel="nofollow noopener noreferrer" target="_blank">Lustro by TemplateMo</a></div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -903,6 +945,7 @@
       chat: true,
       streaming: true,
       files: true,
+      artifacts: true,
       history: true,
       memory: false,
       vault: false,
@@ -911,7 +954,7 @@
     };
     let accessScope = "guest";
     let pendingClipboardFiles = [];
-    let backendMaxOutputTokens = 8192;
+    let backendMaxOutputTokens = 16384;
     let lastResponseNeedsContinuation = false;
 
     const RAW_CONFIG = window.RAJAI_CONFIG || {};
@@ -949,8 +992,8 @@
       useDocuments: true,
       useStreaming: true,
       temperature: 0.35,
-      defaultTokens: 4096,
-      maxTokens: 8192,
+      defaultTokens: 8192,
+      maxTokens: 16384,
       defaultReliability: "conservative"
     });
 
@@ -962,20 +1005,21 @@
       reliability: "rajai_reliability_mode"
     });
 
-    const THEME_NAMES = new Set(["clearwave", "apple"]);
+    const THEME_NAMES = new Set(["glass-admin", "lustro"]);
 
     function normalizeTheme(value) {
-      if (value === "garuda" || value === "lustro") return "clearwave";
-      return THEME_NAMES.has(value) ? value : "clearwave";
+      if (value === "clearwave" || value === "garuda") return "glass-admin";
+      if (value === "apple") return "lustro";
+      return THEME_NAMES.has(value) ? value : "glass-admin";
     }
 
     function applyTheme(value, persist = true) {
       const theme = normalizeTheme(value);
       document.documentElement.dataset.theme = theme;
-      document.documentElement.style.colorScheme = "light";
-      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "apple" ? "#f5f5f7" : "#E8F4F2");
+      document.documentElement.style.colorScheme = "dark";
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "lustro" ? "#0a0e1a" : "#0a0f0d");
       themeSelect.value = theme;
-      if (persist || value === "garuda" || value === "lustro") localStorage.setItem(STORAGE.theme, theme);
+      if (persist || ["clearwave", "apple", "garuda"].includes(value)) localStorage.setItem(STORAGE.theme, theme);
     }
 
     function selectedOutputTokens() {
@@ -1810,12 +1854,74 @@
         </div>`;
     }
 
+    function responseFilenameFromDisposition(value, fallback) {
+      const header = String(value || "");
+      const encoded = header.match(/filename\*=UTF-8''([^;]+)/i);
+      if (encoded) {
+        try { return decodeURIComponent(encoded[1]); } catch (_) { /* fall through */ }
+      }
+      const simple = header.match(/filename="?([^";]+)"?/i);
+      return simple ? simple[1].trim() : fallback;
+    }
+
+    function triggerBlobDownload(blob, filename) {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+    }
+
+    async function downloadResponseArtifact(article, format, button) {
+      const content = String(article?._rajaiRawContent || "");
+      if (!content.trim()) return;
+      if (!(await ensureAccess())) return;
+      const original = button.textContent;
+      button.disabled = true;
+      button.textContent = "Building…";
+      try {
+        const response = await apiFetch("/api/artifacts/export", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            session_id: getSessionId(),
+            content,
+            format
+          })
+        });
+        const blob = await response.blob();
+        const fallback = `RajAIAssist-response.${format}`;
+        const filename = responseFilenameFromDisposition(response.headers.get("Content-Disposition"), fallback);
+        triggerBlobDownload(blob, filename);
+        showToast(`Downloaded ${filename}`);
+      } catch (error) {
+        showToast(`Download failed: ${error.message}`, true);
+      } finally {
+        button.disabled = false;
+        button.textContent = original;
+      }
+    }
+
+    function refreshMessageExportControls(article) {
+      const button = article?.querySelector(".artifact-download");
+      const select = article?.querySelector(".artifact-format");
+      if (!button || !select) return;
+      const ready = Boolean(String(article._rajaiRawContent || "").trim()) && !article.classList.contains("pending");
+      const available = capabilities.artifacts !== false;
+      button.disabled = !ready || !available;
+      select.disabled = !ready || !available;
+    }
+
     function addMessage(role, content, options = {}) {
       const welcome = $("#welcome");
       if (welcome) welcome.remove();
       const article = document.createElement("article");
       article.className = `message ${role} ${options.pending ? "pending" : ""}`;
       article.dataset.messageId = options.id || "";
+      article._rajaiRawContent = String(content || "");
       const head = document.createElement("div");
       head.className = "message-head";
       const roleLabel = document.createElement("span");
@@ -1824,7 +1930,33 @@
       const time = document.createElement("span");
       time.className = "message-time";
       time.textContent = formatTime(options.createdAt || new Date().toISOString());
-      head.append(roleLabel, time);
+      const headActions = document.createElement("span");
+      headActions.className = "message-head-actions";
+      headActions.appendChild(time);
+      if (role === "assistant") {
+        const exportWrap = document.createElement("span");
+        exportWrap.className = "artifact-export";
+        const exportSelect = document.createElement("select");
+        exportSelect.className = "artifact-format";
+        exportSelect.setAttribute("aria-label", "Download response format");
+        for (const [value, label] of [
+          ["zip", "ZIP + files"], ["docx", "DOCX"], ["png", "PNG image"],
+          ["md", "Markdown"], ["html", "HTML"], ["txt", "Text"]
+        ]) {
+          const option = document.createElement("option");
+          option.value = value;
+          option.textContent = label;
+          exportSelect.appendChild(option);
+        }
+        const exportButton = document.createElement("button");
+        exportButton.type = "button";
+        exportButton.className = "btn artifact-download";
+        exportButton.textContent = "Download";
+        exportButton.addEventListener("click", () => downloadResponseArtifact(article, exportSelect.value, exportButton));
+        exportWrap.append(exportSelect, exportButton);
+        headActions.appendChild(exportWrap);
+      }
+      head.append(roleLabel, headActions);
 
       const box = document.createElement("div");
       box.className = "message-box";
@@ -1847,12 +1979,15 @@
       chat.appendChild(article);
       chat.scrollTop = chat.scrollHeight;
       updateMessageMeta(article, options.sources || [], options.stats || null);
+      refreshMessageExportControls(article);
       return { article, body, sources, stats };
     }
 
     function updateAssistantBody(message, text) {
+      message.article._rajaiRawContent = String(text || "");
       message.body.innerHTML = renderMarkdown(text || "");
       enhanceCodeBlocks(message.body);
+      refreshMessageExportControls(message.article);
       chat.scrollTop = chat.scrollHeight;
     }
 
@@ -2265,6 +2400,7 @@
         }
       } finally {
         assistantMessage.article.classList.remove("pending");
+        refreshMessageExportControls(assistantMessage.article);
         sendBtn.disabled = false;
         stopBtn.disabled = true;
         activeAbortController = null;
@@ -2558,9 +2694,9 @@
       });
     });
     async function initializeApp() {
-      applyTheme(localStorage.getItem(STORAGE.theme) || "clearwave", false);
-      const storedOutput = Number.parseInt(localStorage.getItem(STORAGE.outputTokens) || "4096", 10);
-      if ([1024, 2048, 4096, 8192].includes(storedOutput)) outputTokensSelect.value = String(storedOutput);
+      applyTheme(localStorage.getItem(STORAGE.theme) || "glass-admin", false);
+      const storedOutput = Number.parseInt(localStorage.getItem(STORAGE.outputTokens) || "8192", 10);
+      if ([2048, 4096, 8192, 16384].includes(storedOutput)) outputTokensSelect.value = String(storedOutput);
       const storedReliability = localStorage.getItem(STORAGE.reliability) || GENERATION_DEFAULTS.defaultReliability;
       if (["balanced", "conservative"].includes(storedReliability)) reliabilitySelect.value = storedReliability;
       updateReliabilityHelp();

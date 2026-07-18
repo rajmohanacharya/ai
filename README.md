@@ -1,27 +1,7 @@
-# RajAIAssist GitHub Pages v3.1.2
+# RajAIAssist GitHub Pages v3.1.3
 
-Upload this directory's contents to the root of `rajmohanacharya/ai`.
+Deploy this directory at the root of `rajmohanacharya/ai`.
 
-Public routes:
+The public package contains the application shell, User Guide, owner-authentication shell, endpoint manifest placeholder, icons, and configuration. It does **not** contain the private Administrator Manual body, API keys, GitHub token, Vault content, or model data.
 
-- `/ai/` — main RajAIAssist workspace.
-- `/ai/howto/` — generated public User Guide and advanced prompt library.
-- `/ai/howtoadmin/` — owner-authentication shell only.
-- `/ai/help/public-help-index.json` — generated public help retrieval index.
-
-The GitHub Pages directory does not contain the Administrator Manual body. The actual manual is packaged inside the CLI wheel and served only by the owner-authenticated backend.
-
-v3.1.2 includes:
-
-- Clearwave calm aqua and neutral Apple themes;
-- 1K/2K/4K/8K output selection;
-- Balanced and Conservative visible response controls;
-- runtime, context, output, elapsed, and compute badges;
-- clipboard screenshot OCR and multiple-file ingest;
-- Continue response action;
-- strict owner/guest capability rendering;
-- owner-only Local-First Vault controls;
-- role-aware Guides card;
-- public help index and protected admin shell.
-
-When a runtime is online, preserve its current `runtime-endpoint.json` or run `rajai-colab repair` immediately after deployment.
+v3.1.3 adds Glass Admin/Lustro themes, 8K/16K response choices, and authenticated response downloads. Preserve a live `runtime-endpoint.json` when deploying during an active runtime, or run `rajai-colab repair` afterward.
