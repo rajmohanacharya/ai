@@ -14,17 +14,17 @@
 <meta content="RajAIAssist" name="application-name"/>
 <meta content="#0a0f0d" name="theme-color"/>
 <!-- Legacy and compatibility fallback -->
-<link href="./favicon.ico?v=313" rel="icon" type="image/x-icon"/>
+<link href="./favicon.ico?v=320" rel="icon" type="image/x-icon"/>
 <!-- Fixed-size browser-tab icons -->
-<link href="./favicon-16x16.png?v=313" rel="icon" sizes="16x16" type="image/png"/>
-<link href="./favicon-32x32.png?v=313" rel="icon" sizes="32x32" type="image/png"/>
-<link href="./favicon-48x48.png?v=313" rel="icon" sizes="48x48" type="image/png"/>
+<link href="./favicon-16x16.png?v=320" rel="icon" sizes="16x16" type="image/png"/>
+<link href="./favicon-32x32.png?v=320" rel="icon" sizes="32x32" type="image/png"/>
+<link href="./favicon-48x48.png?v=320" rel="icon" sizes="48x48" type="image/png"/>
 <!-- Preferred scalable Georgia-R icon for modern browsers -->
-<link href="./favicon.svg?v=313" rel="icon" sizes="any" type="image/svg+xml"/>
+<link href="./favicon.svg?v=320" rel="icon" sizes="any" type="image/svg+xml"/>
 <!-- iPhone and iPad home-screen icon -->
-<link href="./apple-touch-icon.png?v=313" rel="apple-touch-icon" sizes="180x180" type="image/png"/>
+<link href="./apple-touch-icon.png?v=320" rel="apple-touch-icon" sizes="180x180" type="image/png"/>
 <!-- Android and installed-app configuration -->
-<link href="./site.webmanifest?v=313" rel="manifest"/>
+<link href="./site.webmanifest?v=320" rel="manifest"/>
 <!-- Open Graph metadata used by WhatsApp and other link previews -->
 <meta content="website" property="og:type"/>
 <meta content="RajAIAssist" property="og:site_name"/>
@@ -706,6 +706,10 @@
     .runtime-note { color: var(--muted); font-size: .73rem; line-height: 1.45; margin-top: 7px; max-width: 850px; }
     .quality-note { color: var(--warning); }
     html[data-theme="glass-admin"] .btn-primary, html[data-theme="lustro"] .btn-primary { border-color: transparent; }
+    .pairing-result { margin-top: 9px; padding: 10px; border: 1px dashed var(--border); border-radius: 11px; background: var(--panel-3); overflow-wrap: anywhere; }
+    .pairing-code { font: 700 .72rem/1.45 var(--font-mono); color: var(--accent); user-select: all; }
+    .pairing-uri { margin-top: 6px; font: .62rem/1.35 var(--font-mono); color: var(--muted); max-height: 84px; overflow: auto; }
+    .interview-warning { color: var(--warning); }
     [hidden] { display: none !important; }
     @media (max-width: 980px) {
       .shell { grid-template-columns: 1fr; }
@@ -749,7 +753,7 @@
 <div class="service-note">Click the button above to check whether AI is currently running.</div>
 </section>
 <section class="card response-controls" id="responseControlsCard">
-<div class="card-title"><span>Response controls</span><span class="scope-badge">v3.1.3</span></div>
+<div class="card-title"><span>Response controls</span><span class="scope-badge">v3.2.0</span></div>
 <div class="control-grid">
 <label for="outputTokensSelect">Output length
 <select id="outputTokensSelect">
@@ -762,7 +766,6 @@
 <select id="reliabilitySelect">
 <option value="balanced">Balanced</option>
 <option selected="" value="conservative">Conservative</option>
-
 </select></label>
 </div>
 <div class="reliability-help" id="reliabilityHelp">Conservative mode states uncertainty and avoids invented specifics. Balanced mode is suitable for general discussion and creative work.</div>
@@ -773,6 +776,7 @@
 </div>
 <div class="service-note">Open the user guide for advanced prompts, prompt etiquette, features, and safe-use guidance.</div>
 </section>
+
 <section class="card" id="currentChatCard">
 <div class="card-title"><span>Current chat</span><button class="btn btn-small" id="newChatBtn">New</button></div>
 <div class="status-line" id="sessionLabel"></div>
@@ -788,7 +792,6 @@
 <div class="status-line" id="uploadStatus"></div>
 <div class="documents" id="documents"><div class="empty-mini">No files loaded for this chat.</div></div>
 </section>
-
 <section class="card" hidden="" id="memoryCard">
 <div class="card-title"><span>Personal Memory Vault</span><span class="scope-badge" id="accessScopeBadge">Owner</span></div>
 <label class="toggle"><input checked="" id="usePersonalMemory" type="checkbox"/> Use approved personal memory in this chat</label>
@@ -814,6 +817,24 @@
 </div>
 <div class="service-note">Nothing is saved automatically. New memories require an explicit owner action and remain source-auditable.</div>
 <div class="service-note">Chat targeting: use <code>from vault: collection-name</code> to restrict retrieval to one collection, or cite an exact <code>[vault:...]</code> source label to load that evidence directly.</div>
+</section>
+<section class="card" hidden="" id="interviewExtensionCard">
+<div class="card-title"><span>Live Interview Assistant</span><span class="scope-badge">Owner</span></div>
+<div class="service-note">Create a five-minute, one-time pairing URI for the local Chrome extension. The owner key is never copied into the extension.</div>
+<div class="field"><label for="interviewRole">Target role</label><input id="interviewRole" placeholder="Enterprise Observability Architect" type="text"/></div>
+<div class="field"><label for="interviewCompany">Company</label><input id="interviewCompany" placeholder="Optional company name" type="text"/></div>
+<div class="field"><label for="interviewType">Interview type</label><select id="interviewType"><option value="general">General</option><option value="technical">Technical</option><option value="architecture">Architecture</option><option value="behavioral">Behavioral</option><option value="coding">Coding</option></select></div>
+<div class="field"><label for="interviewContextBrief">Approved context brief</label><textarea id="interviewContextBrief" placeholder="Only facts Raj is permitted to use during this session."></textarea></div>
+<div class="field"><label for="interviewJobDescription">Job description</label><textarea id="interviewJobDescription" placeholder="Paste the relevant role description or requirements."></textarea></div>
+<div class="field"><label for="interviewVaultCollections">Approved Vault collections</label><input id="interviewVaultCollections" placeholder="career, projects, interview" type="text"/></div>
+<button class="btn btn-primary" id="createInterviewPairingBtn" style="width:100%;margin-top:8px">Create extension pairing</button>
+<div class="status-line" id="interviewPairingStatus">The extension starts capture only after a visible user action.</div>
+<div class="pairing-result" hidden="" id="interviewPairingResult">
+<div class="pairing-code" id="interviewPairingCode"></div>
+<div class="pairing-uri" id="interviewPairingUri"></div>
+<button class="btn btn-small" id="copyInterviewPairingBtn" style="width:100%;margin-top:8px">Copy pairing URI</button>
+</div>
+<div class="service-note interview-warning">Use only for permitted or disclosed assistance. Raw audio is not retained, and the extension has no administrator or Vault-management scope.</div>
 </section>
 </aside>
 <main class="main">
@@ -888,7 +909,7 @@
 </div>
 </div>
 </section>
-<div class="footer"><a aria-label="Visit Raj Mohan Acharya's LinkedIn profile" href="https://www.linkedin.com/in/rajmohanacharya/" rel="noopener noreferrer" target="_blank">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v3.1.3 · Visual design adapted from <a aria-label="View the Glass Admin template by TemplateMo" href="https://templatemo.com/tm-607-glass-admin" rel="nofollow noopener noreferrer" target="_blank">Glass Admin by TemplateMo</a> and <a aria-label="View the Lustro template by TemplateMo" href="https://templatemo.com/tm-624-lustro" rel="nofollow noopener noreferrer" target="_blank">Lustro by TemplateMo</a></div>
+<div class="footer"><a aria-label="Visit Raj Mohan Acharya's LinkedIn profile" href="https://www.linkedin.com/in/rajmohanacharya/" rel="noopener noreferrer" target="_blank">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect</a> · RajAIAssist v3.2.0 · Visual design adapted from <a aria-label="View the Glass Admin template by TemplateMo" href="https://templatemo.com/tm-607-glass-admin" rel="nofollow noopener noreferrer" target="_blank">Glass Admin by TemplateMo</a> and <a aria-label="View the Lustro template by TemplateMo" href="https://templatemo.com/tm-624-lustro" rel="nofollow noopener noreferrer" target="_blank">Lustro by TemplateMo</a></div>
 </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -950,6 +971,7 @@
       memory: false,
       vault: false,
       admin_manual: false,
+      extension_pairing: false,
       delete_session: true
     };
     let accessScope = "guest";
@@ -1243,8 +1265,56 @@
       capabilities = { ...capabilities, ...next };
       $("#fileIngestCard").hidden = !capabilities.files;
       $("#memoryCard").hidden = !capabilities.vault;
+      $("#interviewExtensionCard").hidden = !capabilities.extension_pairing;
       $("#deleteSessionBtn").hidden = !capabilities.delete_session;
       updateGuideLinks();
+    }
+
+    function parseInterviewCollections(value) {
+      return String(value || "").split(",").map((item) => item.trim().toLowerCase()).filter(Boolean).slice(0, 4);
+    }
+
+    async function createInterviewPairing() {
+      if (!connected || accessScope !== "owner" || !capabilities.extension_pairing) {
+        showToast("Owner access and an online interview-enabled runtime are required.", true);
+        return;
+      }
+      const button = $("#createInterviewPairingBtn");
+      button.disabled = true;
+      $("#interviewPairingStatus").textContent = "Preparing approved context and one-time pairing…";
+      $("#interviewPairingResult").hidden = true;
+      try {
+        const response = await apiFetch("/api/extension/pair", {
+          method: "POST",
+          body: JSON.stringify({
+            role: $("#interviewRole").value.trim(),
+            company: $("#interviewCompany").value.trim(),
+            interview_type: $("#interviewType").value,
+            context_brief: $("#interviewContextBrief").value.trim(),
+            job_description: $("#interviewJobDescription").value.trim(),
+            vault_collections: parseInterviewCollections($("#interviewVaultCollections").value)
+          })
+        });
+        const payload = await response.json();
+        $("#interviewPairingCode").textContent = `Code: ${payload.pairing_code}`;
+        $("#interviewPairingUri").textContent = payload.pairing_uri || payload.pairing_code || "";
+        $("#interviewPairingResult").hidden = false;
+        const sourceCount = Array.isArray(payload.context_sources) ? payload.context_sources.length : 0;
+        const warningCount = Array.isArray(payload.warnings) ? payload.warnings.length : 0;
+        $("#interviewPairingStatus").textContent = `Pairing expires in 5 minutes · ${sourceCount} approved Vault source(s) · ${warningCount} warning(s).`;
+      } catch (error) {
+        $("#interviewPairingStatus").textContent = error.message || String(error);
+        showToast("Could not create extension pairing.", true);
+      } finally {
+        button.disabled = false;
+      }
+    }
+
+    async function copyInterviewPairing() {
+      const value = $("#interviewPairingUri").textContent.trim();
+      if (!value) return;
+      await navigator.clipboard.writeText(value);
+      showToast("Pairing URI copied. Paste it into the local Chrome extension.");
     }
 
     function endpointSignatureMessage(context) {
@@ -1582,9 +1652,11 @@
             memory: Boolean(status.capabilities?.memory),
             vault: Boolean(status.capabilities?.vault),
             admin_manual: Boolean(status.capabilities?.admin_manual),
+            extension_pairing: Boolean(status.capabilities?.extension_pairing),
             delete_session: true
           });
           $("#accessScopeBadge").textContent = accessScope === "owner" ? "Owner" : "Guest";
+          applyCapabilities(capabilities);
           if (capabilities.vault) void loadVaultStatus(true);
           const wasConnected = connected;
           modelBadge.textContent = `Model: ${status.model || "unknown"}`;
@@ -2640,6 +2712,8 @@
         searchVault();
       }
     });
+    $("#createInterviewPairingBtn").addEventListener("click", createInterviewPairing);
+    $("#copyInterviewPairingBtn").addEventListener("click", copyInterviewPairing);
     sendBtn.addEventListener("click", () => askAI());
     continueBtn.addEventListener("click", () => {
       if (!lastResponseNeedsContinuation) return;
