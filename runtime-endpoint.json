@@ -1,18 +1,16 @@
 {
-  "app_version": "3.2.0-cli",
-  "backend_url": "",
-  "expires_at": 1784369872,
-  "issued_at": 1784366272,
-  "lifecycle_id": "bca61699139e2481b3dfec9a3b6a35c8",
-  "model": "qwen3:4b-instruct",
-  "online": false,
-  "provider": "starting",
   "schema_version": 2,
-  "signature": "0a54fa0313673e68aae4dc211521970b578f9e074a693759c7038520e72f6f91",
-  "signatures": [
-    "0a54fa0313673e68aae4dc211521970b578f9e074a693759c7038520e72f6f91",
-    "68fa5548e938726a03a375a433ae79a1010ad0e556a5b60df4cd45e60f580a02"
-  ],
+  "online": false,
+  "backend_url": "",
+  "issued_at": 0,
+  "expires_at": 0,
+  "signatures": [],
+  "signature": "",
+  "model": "",
+  "provider": "offline",
+  "compute_type": "",
+  "storage_mode": "",
   "tunnel_mode": "offline",
-  "updated_at": "2026-07-18T09:17:52.714788+00:00"
+  "updated_at": "",
+  "lifecycle_id": ""
 }
