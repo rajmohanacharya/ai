@@ -1,18 +1,18 @@
 {
   "app_version": "3.2.0-cli",
   "backend_url": "",
-  "expires_at": 1784364407,
-  "issued_at": 1784360807,
-  "lifecycle_id": "51b09e34f75a042beb8af81d5ca77500",
-  "model": "starcoder2:7b",
+  "expires_at": 1784369872,
+  "issued_at": 1784366272,
+  "lifecycle_id": "bca61699139e2481b3dfec9a3b6a35c8",
+  "model": "qwen3:4b-instruct",
   "online": false,
   "provider": "starting",
   "schema_version": 2,
-  "signature": "99de0419eff0a43b506d9f09ccaba88fba26ad27056da48e5a88edba59b406f3",
+  "signature": "0a54fa0313673e68aae4dc211521970b578f9e074a693759c7038520e72f6f91",
   "signatures": [
-    "99de0419eff0a43b506d9f09ccaba88fba26ad27056da48e5a88edba59b406f3",
-    "0b48a9fc5b210ccede7959eb258e09f333af43187ccc5b212fb2ad459e7bdfa1"
+    "0a54fa0313673e68aae4dc211521970b578f9e074a693759c7038520e72f6f91",
+    "68fa5548e938726a03a375a433ae79a1010ad0e556a5b60df4cd45e60f580a02"
   ],
   "tunnel_mode": "offline",
-  "updated_at": "2026-07-18T07:46:47.542938+00:00"
+  "updated_at": "2026-07-18T09:17:52.714788+00:00"
 }
