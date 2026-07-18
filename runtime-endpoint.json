@@ -1,20 +1,20 @@
 {
   "app_version": "3.2.1-cli",
-  "backend_url": "https://opt-heavy-mixing-farmer.trycloudflare.com",
+  "backend_url": "",
   "compute_type": "gpu",
-  "expires_at": 1784415316,
-  "issued_at": 1784372116,
+  "expires_at": 1784392381,
+  "issued_at": 1784388781,
   "lifecycle_id": "609b37fcb9e8e03ef5ff9c1432c0b0b1",
   "model": "qwen3:4b-instruct",
-  "online": true,
+  "online": false,
   "provider": "colab_gpu",
   "schema_version": 2,
-  "signature": "cff2210618cdfba42b581d951da1083699df575f1e92fdea0891cff3ed0ab807",
+  "signature": "2123f81ca88d85cd338fd37221cac5d21f6b907df4cd87e39732309db2bd779a",
   "signatures": [
-    "cff2210618cdfba42b581d951da1083699df575f1e92fdea0891cff3ed0ab807",
-    "5a84084110e921e49efda806c3e670415f652c600e6aaede76fbf716c89ba311"
+    "2123f81ca88d85cd338fd37221cac5d21f6b907df4cd87e39732309db2bd779a",
+    "340ee5cb392be34a150469f269f05aef5aca542dc11af6b528ff8b2909a42e6f"
   ],
   "storage_mode": "temporary",
-  "tunnel_mode": "quick",
-  "updated_at": "2026-07-18T10:55:16.688237+00:00"
+  "tunnel_mode": "offline",
+  "updated_at": "2026-07-18T15:33:01.362894+00:00"
 }
