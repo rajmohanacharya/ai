@@ -69,7 +69,7 @@
         "ocr",
         "image text"
       ],
-      "text": "Use the screenshot paste area to add a clipboard image to the current session. The text model receives OCR text extracted from the image, not full visual understanding of every pixel. It may read visible text, but it may not reliably interpret colors, layout, arrows, faces, or graphical relationships. Do not upload image or video for editing or generation. RajAIAssist v3.1 is strictly a text-output AI."
+      "text": "Use the screenshot paste area to add a clipboard image to the current session. The text model receives OCR text extracted from the image, not full visual understanding of every pixel. It may read visible text, but it may not reliably interpret colors, layout, arrows, faces, or graphical relationships. Do not upload image or video for editing or generation. RajAIAssist v3.2 remains a text-output AI; Live Interview Assistant adds audio transcription and text suggestions, not audio recording archives or image generation."
     },
     {
       "id": "response-controls",
@@ -82,6 +82,73 @@
         "citations"
       ],
       "text": "Balanced is suitable for ordinary drafting, explanation, and brainstorming. Conservative asks the model to distinguish evidence, assumptions, and uncertainty more strictly. The output-length control sets a maximum; the model may finish earlier. The interface offers 2K, 4K, 8K, and 16K choices. 8K is the default. After connection, RajAIAssist disables choices above the active model/context ceiling. Models with a 16K total context, including the added DeepSeek Coder 6.7B and StarCoder2 7B profiles, expose at most 8K output so enough room remains for the request, chat history, system instructions, and retrieved evidence. Each completed assistant response also has a Download control. Export the response as ZIP, DOCX, PNG, Markdown, HTML, or text. ZIP includes the complete response and separately extracted fenced-code files where possible. Downloads do not execute model-generated code. Longer output is useful for complete scripts and detailed analysis, but it takes more time and uses more context. Always verify important facts, calculations, commands, and generated code."
+    },
+    {
+      "id": "live-interview",
+      "title": "Live Interview Assistant",
+      "keywords": [
+        "live interview",
+        "chrome extension",
+        "interview assistant",
+        "microphone",
+        "speaker",
+        "meeting tab",
+        "jabra",
+        "transcription"
+      ],
+      "text": "RajAIAssist v3.2 includes a local unpacked Chrome extension for visible, user-initiated interview coaching. Use it only for mock interviews, disclosed assistance, accessibility support, or other situations in which live assistance is permitted. The extension treats its selected sources as authoritative speaker labels: Raj microphone -> RAJ Meeting tab, system audio, monitor input, or second microphone -> INTERVIEWER Raj's speech updates the recent conversation but does not trigger an answer. A complete interviewer question or request triggers a concise streaming suggestion. The recommended runtime is: rajai-colab start --runtime t4 --model interview-fast The owner installs and pairs the extension. A guest key cannot generate a pairing code or access owner-approved interview context."
+    },
+    {
+      "id": "live-interview-install",
+      "title": "Install and pair the interview extension",
+      "keywords": [
+        "install extension",
+        "load unpacked",
+        "chrome extensions",
+        "pairing code"
+      ],
+      "text": "Run rajai-colab interview install-extension on Zorin. Open chrome://extensions in Chrome. Enable Developer mode and select Load unpacked. Select ~/.local/share/rajai-colab/chrome-extension. Start RajAIAssist with the recommended interview model. Generate a five-minute one-time pairing code from the owner-only RajAIAssist card or rajai-colab interview pair. Paste the complete pairing URI when available, or use the plain code. The URI carries the current HTTPS runtime origin and the extension verifies that origin against the current published endpoint. The extension receives a short-lived interview-only token. It never receives the owner lifecycle key."
+    },
+    {
+      "id": "live-interview-audio",
+      "title": "Select interview audio",
+      "keywords": [
+        "select microphone",
+        "current tab audio",
+        "system audio",
+        "speaker",
+        "output device",
+        "monitor source",
+        "pipewire",
+        "pulseaudio"
+      ],
+      "text": "Choose Raj's built-in, Jabra, USB, or Bluetooth microphone as Raj microphone. For the interviewer, use: Current meeting tab audio for Google Meet, Teams Web, and other browser calls. Choose screen/window/system audio when Chrome and the operating system expose the required source. Second microphone or Linux monitor input for a physical interviewer or native application playback. A speaker is an output device, not an input source. The playback-output selector controls where captured meeting audio is heard; it does not capture that output by itself. Confirm that the Raj and Interviewer level meters move independently before beginning."
+    },
+    {
+      "id": "live-interview-controls",
+      "title": "Live interview controls and privacy",
+      "keywords": [
+        "start interview",
+        "pause",
+        "stop",
+        "shorter",
+        "alternative",
+        "privacy",
+        "consent"
+      ],
+      "text": "Capture begins only after pairing, source selection, consent confirmation, and Start interview. A visible listening badge remains active while audio is processed. Pause disables the audio tracks. Stop ends the tracks, closes the backend interview session, revokes the scoped token, and clears in-memory session state. Shorter asks for a more compact answer. Alternative asks for a different accurate answer. Manual fallback accepts a typed question when transcription misses a turn. Raw-audio retention is disabled. The primary extension path sends separately labelled PCM16 frames through an authenticated WebSocket and holds only the active utterance in memory. The REST compatibility path deletes its temporary decoder file immediately. Persistent transcript retention is disabled by default. Suggested answers may still be incomplete or wrong; Raj remains responsible for what is said."
+    },
+    {
+      "id": "live-interview-context",
+      "title": "Approved interview context",
+      "keywords": [
+        "interview brief",
+        "job description",
+        "resume",
+        "vault collections",
+        "approved context"
+      ],
+      "text": "The owner can prepare a bounded context pack containing the role, company, interview type, truthful context brief, job description, and up to four approved Personal Vault collections. Relevant collections synchronize at the pairing boundary rather than during every spoken question. The model is instructed not to invent Raj's employers, qualifications, achievements, responsibilities, dates, metrics, or experience. When evidence is insufficient, it should provide a generic framework and identify the missing personal detail."
     },
     {
       "id": "prompt-formula",
@@ -255,7 +322,7 @@
         "accuracy",
         "temporary runtime"
       ],
-      "text": "The compute runtime is temporary and may become unavailable without notice. Model quality, speed, and context capacity depend on the selected model and runtime. File extraction and OCR can omit formatting or content. RajAIAssist does not provide image or video generation/editing in v3.1. Answers can be incomplete or wrong. Verify high-impact output independently. For product-specific information not covered in this guide, reach out to Raj."
+      "text": "The compute runtime is temporary and may become unavailable without notice. Model quality, speed, and context capacity depend on the selected model and runtime. File extraction and OCR can omit formatting or content. RajAIAssist does not provide image or video generation/editing in v3.2. Answers can be incomplete or wrong. Verify high-impact output independently. For product-specific information not covered in this guide, reach out to Raj."
     }
   ]
 }
