@@ -1,16 +1,20 @@
 {
+  "app_version": "3.2.1-cli",
+  "backend_url": "https://revisions-sense-tries-knee.trycloudflare.com",
+  "compute_type": "gpu",
+  "expires_at": 1784413137,
+  "issued_at": 1784369937,
+  "lifecycle_id": "609b37fcb9e8e03ef5ff9c1432c0b0b1",
+  "model": "qwen3:4b-instruct",
+  "online": true,
+  "provider": "colab_gpu",
   "schema_version": 2,
-  "online": false,
-  "backend_url": "",
-  "issued_at": 0,
-  "expires_at": 0,
-  "signatures": [],
-  "signature": "",
-  "model": "",
-  "provider": "offline",
-  "compute_type": "",
-  "storage_mode": "",
-  "tunnel_mode": "offline",
-  "updated_at": "",
-  "lifecycle_id": ""
+  "signature": "691ffe090d49e2eef3ba976679a1f491307032712b80015e40431f99f8da588a",
+  "signatures": [
+    "691ffe090d49e2eef3ba976679a1f491307032712b80015e40431f99f8da588a",
+    "39a0f0cc1537177f604f36f83665ee6504ca11af1dd7e36402ff06242cd9f298"
+  ],
+  "storage_mode": "drive",
+  "tunnel_mode": "quick",
+  "updated_at": "2026-07-18T10:18:57.691153+00:00"
 }
