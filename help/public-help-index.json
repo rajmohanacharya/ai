@@ -81,7 +81,7 @@
         "reliability",
         "citations"
       ],
-      "text": "Balanced is suitable for ordinary drafting, explanation, and brainstorming. Conservative asks the model to distinguish evidence, assumptions, and uncertainty more strictly. The output-length control sets a maximum; the model may finish earlier. Longer output is useful for complete scripts and detailed analysis, but it takes more time and uses more context. Always verify important facts, calculations, commands, and generated code."
+      "text": "Balanced is suitable for ordinary drafting, explanation, and brainstorming. Conservative asks the model to distinguish evidence, assumptions, and uncertainty more strictly. The output-length control sets a maximum; the model may finish earlier. The interface offers 2K, 4K, 8K, and 16K choices. 8K is the default. After connection, RajAIAssist disables choices above the active model/context ceiling. Models with a 16K total context, including the added DeepSeek Coder 6.7B and StarCoder2 7B profiles, expose at most 8K output so enough room remains for the request, chat history, system instructions, and retrieved evidence. Each completed assistant response also has a Download control. Export the response as ZIP, DOCX, PNG, Markdown, HTML, or text. ZIP includes the complete response and separately extracted fenced-code files where possible. Downloads do not execute model-generated code. Longer output is useful for complete scripts and detailed analysis, but it takes more time and uses more context. Always verify important facts, calculations, commands, and generated code."
     },
     {
       "id": "prompt-formula",
