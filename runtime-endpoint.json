@@ -1,12 +1,11 @@
 {
-  "schema_version": 1,
-  "online": false,
-  "backend_url": "",
+  "backend_url": "https://terrorist-paso-filing-vol.trycloudflare.com",
+  "expires_at": 1784571685,
+  "issued_at": 1784535685,
+  "model": "gemini-3.5-flash",
+  "online": true,
   "provider": "kaggle",
-  "model": "",
-  "version": "1.0.0",
-  "issued_at": 0,
-  "expires_at": 0,
-  "signature": "",
-  "message": "RajAIAssist Kaggle Edition is offline. Start the Kaggle notebook."
+  "schema_version": 1,
+  "signature": "5279297020738a97fb7a8d84ebce749d4e1494a332f3e9655c65e36457082a11",
+  "version": "1.0.0"
 }
