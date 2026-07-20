@@ -1,20 +1,12 @@
 {
-  "app_version": "3.2.1-cli",
-  "backend_url": "",
-  "compute_type": "gpu",
-  "expires_at": 1784394411,
-  "issued_at": 1784390811,
-  "lifecycle_id": "bcc402b1af452037a9bba21c1efbebaa",
-  "model": "qwen3:4b-instruct",
+  "schema_version": 1,
   "online": false,
-  "provider": "colab_gpu",
-  "schema_version": 2,
-  "signature": "b5845c6ebfbc4c3b5433051fa1e152710196ab8d3582111c17e75d98e9011719",
-  "signatures": [
-    "b5845c6ebfbc4c3b5433051fa1e152710196ab8d3582111c17e75d98e9011719",
-    "9983886f9753f765632dce0162057ab57594f3862379d63d92e453a4dc29b0dd"
-  ],
-  "storage_mode": "drive",
-  "tunnel_mode": "offline",
-  "updated_at": "2026-07-18T16:06:51.101717+00:00"
+  "backend_url": "",
+  "provider": "kaggle",
+  "model": "",
+  "version": "1.0.0",
+  "issued_at": 0,
+  "expires_at": 0,
+  "signature": "",
+  "message": "RajAIAssist Kaggle Edition is offline. Start the Kaggle notebook."
 }
