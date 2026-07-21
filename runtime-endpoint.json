@@ -1,11 +1,11 @@
 {
-  "backend_url": "https://terrorist-paso-filing-vol.trycloudflare.com",
-  "expires_at": 1784571685,
-  "issued_at": 1784535685,
+  "backend_url": "https://jet-mixer-badge-historical.trycloudflare.com",
+  "expires_at": 1784641170,
+  "issued_at": 1784605170,
   "model": "gemini-3.5-flash",
   "online": true,
   "provider": "kaggle",
   "schema_version": 1,
-  "signature": "5279297020738a97fb7a8d84ebce749d4e1494a332f3e9655c65e36457082a11",
+  "signature": "b979df1ccf6b35f1337d75c755f0025453e1e8792a4e766ad742ac34b313573f",
   "version": "1.0.0"
 }
