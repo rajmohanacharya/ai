@@ -1,11 +1,11 @@
 {
-  "backend_url": "https://jet-mixer-badge-historical.trycloudflare.com",
-  "expires_at": 1784659193,
-  "issued_at": 1784623193,
+  "backend_url": "https://hospitality-improvement-strictly-supports.trycloudflare.com",
+  "expires_at": 1785024545,
+  "issued_at": 1784988545,
   "model": "gemini-3.5-flash",
   "online": true,
   "provider": "kaggle",
   "schema_version": 1,
-  "signature": "18f65ae4bcbc7c5f5288237dddbcd5ed6384846e9eb2a2245906550dff8dbec8",
+  "signature": "79bf5d128c9ca5e26735ef3453045ddbf4b94c0d99b42cf402c6c6af4e353e81",
   "version": "1.0.0"
 }
