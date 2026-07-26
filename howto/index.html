@@ -1,187 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" data-theme="glass-admin">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="color-scheme" content="dark">
-<title>RajAIAssist · User Guide</title>
-<meta name="description" content="RajAIAssist user guide, prompt templates, file-ingest instructions, privacy boundaries, and troubleshooting.">
-<meta name="theme-color" content="#0a0f0d">
-<link rel="icon" href="../favicon.svg?v=320" type="image/svg+xml" sizes="any">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="referrer" content="no-referrer" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'none'" />
+<title>RajAIAssist · How to use</title>
+<meta name="description" content="How to use RajAIAssist Local Unified Studio." />
+<link rel="icon" href="../favicon.svg?v=l201" type="image/svg+xml" />
 <style>
-:root{--bg:#0a0f0d;--surface:rgba(255,255,255,.06);--surface2:rgba(255,255,255,.08);--text:#f5f5f4;--muted:rgba(245,245,244,.68);--border:rgba(255,255,255,.12);--accent:#34d399;--accent2:#d4a574;--accent-text:#04110b;--code:#050907;--shadow:0 28px 78px rgba(0,0,0,.45),0 8px 28px rgba(5,150,105,.10);--scroll:#2d7657;--glass:blur(24px) saturate(125%)}
-html[data-theme="lustro"]{--bg:#0a0e1a;--surface:rgba(18,23,42,.88);--surface2:rgba(255,255,255,.07);--text:#fff;--muted:#b8bdd3;--border:rgba(255,255,255,.14);--accent:#a5b4fc;--accent2:#ec4899;--accent-text:#080b17;--code:#070a13;--shadow:0 28px 74px rgba(0,0,0,.44),0 0 46px rgba(99,102,241,.10);--scroll:#6f72d7;--glass:blur(22px) saturate(125%)}
-*{box-sizing:border-box;scrollbar-color:var(--scroll) transparent}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font:16px/1.62 Ubuntu,"Ubuntu Sans",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;position:relative;isolation:isolate}body::before,body::after{content:"";position:fixed;pointer-events:none;z-index:-1;border-radius:50%;filter:blur(2px)}body::before{width:43vw;height:43vw;min-width:420px;min-height:420px;left:-13vw;top:-18vw;background:radial-gradient(circle,rgba(52,211,153,.23),rgba(212,165,116,.08) 48%,transparent 72%);animation:ambient 15s ease-in-out infinite alternate}body::after{width:38vw;height:38vw;min-width:360px;min-height:360px;right:-13vw;bottom:-17vw;background:radial-gradient(circle,rgba(212,165,116,.20),rgba(5,150,105,.08) 50%,transparent 72%);animation:ambient 18s ease-in-out infinite alternate-reverse}html[data-theme="lustro"] body::before{background:radial-gradient(circle,rgba(99,102,241,.29),rgba(6,182,212,.08) 48%,transparent 72%)}html[data-theme="lustro"] body::after{background:radial-gradient(circle,rgba(236,72,153,.23),rgba(99,102,241,.08) 50%,transparent 72%)}@keyframes ambient{to{transform:translate3d(4vw,3vw,0) scale(1.08)}}a{color:var(--accent)}.top{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:14px clamp(16px,4vw,48px);background:color-mix(in srgb,var(--surface) 88%,transparent);border-bottom:1px solid var(--border);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass)}.brand{font-weight:850;background:linear-gradient(120deg,var(--text),var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}.top nav{display:flex;gap:10px;align-items:center}.button{border:1px solid var(--border);background:var(--surface2);color:var(--text);border-radius:999px;padding:8px 13px;text-decoration:none;cursor:pointer;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.button:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 10px 28px rgba(0,0,0,.25)}.layout{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,920px);gap:24px;max-width:1280px;margin:0 auto;padding:28px clamp(16px,4vw,48px) 64px}.toc,main{background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass)}.toc{position:sticky;top:82px;align-self:start;max-height:calc(100vh - 105px);overflow:auto;border-radius:24px;padding:16px}.toc strong{display:block;margin-bottom:10px}.toc a{display:block;color:var(--muted);text-decoration:none;padding:6px 8px;border-radius:999px}.toc a:hover{color:var(--text);background:var(--surface2)}main{border-radius:28px;padding:clamp(22px,5vw,54px);min-width:0}h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.04;margin:0 0 12px;background:linear-gradient(120deg,var(--text),var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}h2{margin-top:48px;padding-top:10px;border-top:1px solid var(--border);font-size:1.55rem}h3{margin-top:28px}p,li{color:var(--text)}code{font-family:"Ubuntu Mono",ui-monospace,SFMono-Regular,Consolas,monospace}p code,li code,td code{background:var(--surface2);border:1px solid var(--border);padding:2px 5px;border-radius:6px}pre{background:var(--code);color:#f5f7f8;border:1px solid var(--border);border-radius:16px;padding:18px;overflow:auto;white-space:pre-wrap}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;margin:18px 0}th,td{border:1px solid var(--border);padding:10px;text-align:left;vertical-align:top}th{background:color-mix(in srgb,var(--accent) 12%,transparent)}.footer{text-align:center;color:var(--muted);padding:28px}.footer a{color:inherit}@media(max-width:850px){.layout{grid-template-columns:1fr}.toc{position:static;max-height:none}.top{align-items:flex-start;flex-direction:column}}@media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}
+:root{--bg:#0a0f0d;--panel:rgba(255,255,255,.06);--border:rgba(255,255,255,.13);--text:#f5f5f4;--muted:rgba(245,245,244,.68);--accent:#34d399;--accent2:#d4a574;--code:#050907}
+html[data-theme="lustro"]{--bg:#0a0e1a;--panel:rgba(18,23,42,.88);--border:rgba(255,255,255,.14);--text:#fff;--muted:#b8bdd3;--accent:#a5b4fc;--accent2:#ec4899;--code:#070a13}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Ubuntu,"Segoe UI",system-ui,sans-serif;line-height:1.62}body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 8% 5%,rgba(52,211,153,.14),transparent 28%),radial-gradient(circle at 92% 9%,rgba(212,165,116,.10),transparent 26%)}
+a{color:var(--accent)}.shell{position:relative;max-width:1100px;margin:auto;padding:28px 22px 80px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:12px}.mark{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06110c;font:800 1.35rem Georgia,serif}.brand h1{margin:0;font:700 1.22rem Georgia,serif}.brand p{margin:2px 0 0;color:var(--muted);font-size:.78rem}.button,select{border:1px solid var(--border);background:var(--panel);color:var(--text);padding:9px 12px;border-radius:11px;text-decoration:none}.hero,.card{border:1px solid var(--border);background:var(--panel);border-radius:18px;padding:22px;backdrop-filter:blur(16px)}.hero h2{font:700 clamp(2rem,5vw,3.7rem) Georgia,serif;line-height:1.08;margin:0 0 12px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:transparent;background-clip:text}.hero p{color:var(--muted);max-width:820px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}.card h3{font-family:Georgia,serif;margin-top:0}.card p,.card li{color:var(--muted)}code,pre{font-family:"Ubuntu Mono",ui-monospace,monospace;background:var(--code)}code{padding:2px 5px;border-radius:5px}pre{padding:13px;border-radius:12px;overflow:auto;border:1px solid var(--border)}.callout{border-left:3px solid var(--accent);padding:10px 14px;background:var(--panel);margin:14px 0;border-radius:0 12px 12px 0}.footer{text-align:center;color:var(--muted);font-size:.75rem;margin-top:26px}@media(max-width:760px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
-<header class="top"><div class="brand">RajAIAssist · User Guide</div><nav><a class="button" href="../">Open AI</a><button class="button" id="themeButton" type="button">Lustro theme</button></nav></header>
-<div class="layout"><aside class="toc"><strong>On this page</strong><a href="#getting-started">Getting started</a><a href="#availability-and-offline-messages">Availability and offline messages</a><a href="#conversations-and-session-isolation">Conversations and session isolation</a><a href="#file-ingest">File Ingest</a><a href="#screenshot-paste-and-ocr">Screenshot paste and OCR</a><a href="#response-controls">Response controls</a><a href="#live-interview-assistant">Live Interview Assistant</a><a href="#install-and-pair-the-interview-extension">Install and pair the interview extension</a><a href="#select-interview-audio">Select interview audio</a><a href="#live-interview-controls-and-privacy">Live interview controls and privacy</a><a href="#approved-interview-context">Approved interview context</a><a href="#recommended-prompt-formula">Recommended prompt formula</a><a href="#advanced-prompts">Advanced prompts</a><a href="#advanced-prompt-log-and-incident-analysis">Advanced prompt · Log and incident analysis</a><a href="#advanced-prompt-complete-code-generation">Advanced prompt · Complete code generation</a><a href="#advanced-prompt-code-review-and-correction">Advanced prompt · Code review and correction</a><a href="#advanced-prompt-document-analysis">Advanced prompt · Document analysis</a><a href="#advanced-prompt-professional-writing">Advanced prompt · Professional writing</a><a href="#advanced-prompt-implementation-plan">Advanced prompt · Implementation plan</a><a href="#advanced-prompt-learn-from-first-principles">Advanced prompt · Learn from first principles</a><a href="#advanced-prompt-compare-options">Advanced prompt · Compare options</a><a href="#advanced-prompt-structured-extraction">Advanced prompt · Structured extraction</a><a href="#do-s-and-don-ts">Do&#x27;s and don&#x27;ts</a><a href="#troubleshooting">Troubleshooting</a><a href="#privacy-and-access-boundaries">Privacy and access boundaries</a><a href="#important-limitations">Important limitations</a></aside><main><h1 id="rajaiassist-user-guide">RajAIAssist · User Guide</h1>
-<p>Local AI with Unlimited Usage, Complete Privacy, and Full Control</p>
-<h2 id="getting-started">Getting started</h2>
-<p>RajAIAssist is a text-based AI workspace that runs the selected language model in a temporary private cloud runtime controlled by Raj. The permanent web address is <code>https://rajmohanacharya.github.io/ai/</code>.</p>
-<ol>
-<li>Open the permanent RajAIAssist web address.</li>
-<li>Paste the current runtime access key shared by Raj.</li>
-<li>Select <strong>Unlock RajAIAssist</strong>.</li>
-<li>Confirm the service status shows the model as available.</li>
-<li>Start a new conversation or ingest files for the current browser session.</li>
-</ol>
-<p>A runtime access key is temporary. A key from an older runtime may no longer work. Keep the key private and use <strong>Remember key on this browser</strong> only on a trusted personal device.</p>
-<h2 id="availability-and-offline-messages">Availability and offline messages</h2>
-<p>The GitHub Pages interface remains available even when the AI runtime is stopped. When the backend, model, or tunnel is unavailable, RajAIAssist displays <strong>Ask Raj to start AI.</strong></p>
-<p>Use <strong>Check AI status</strong> after Raj confirms the service has started. Refresh the page if the endpoint was recently republished. An online manifest means the browser has a current signed backend address; it does not guarantee that the temporary compute runtime will stay available for a fixed duration.</p>
-<h2 id="conversations-and-session-isolation">Conversations and session isolation</h2>
-<p>Each browser conversation has its own random session identifier, chat history, and ingested-file index. Use <strong>New</strong> when changing to a substantially different task. Deleting a conversation removes its server-side session history and current-session files.</p>
-<p>Guest access is limited to the selected model, public help, and files uploaded within the current session. Guest sessions do not use Raj's personal knowledge or administrative material.</p>
-<h2 id="file-ingest">File Ingest</h2>
-<p>The file picker accepts multiple files in one selection. Upload only material needed for the current task and wait until each file is indexed before asking the question.</p>
-<p>RajAIAssist can extract text from common documents, spreadsheets, presentations, email, notebooks, source code, logs, archives, and images through OCR. Unsupported or opaque binary files may be stored as metadata-only records. Files are treated as untrusted reference data and are never executed.</p>
-<p>Mention important filenames in the prompt, for example: <code>Compare application.log with config.yaml and identify the most likely root cause.</code></p>
-<h2 id="screenshot-paste-and-ocr">Screenshot paste and OCR</h2>
-<p>Use the screenshot paste area to add a clipboard image to the current session. The text model receives OCR text extracted from the image, not full visual understanding of every pixel. It may read visible text, but it may not reliably interpret colors, layout, arrows, faces, or graphical relationships.</p>
-<p>Do not upload image or video for editing or generation. RajAIAssist v3.2 remains a text-output AI; Live Interview Assistant adds audio transcription and text suggestions, not audio recording archives or image generation.</p>
-<h2 id="response-controls">Response controls</h2>
-<p><strong>Balanced</strong> is suitable for ordinary drafting, explanation, and brainstorming. <strong>Conservative</strong> asks the model to distinguish evidence, assumptions, and uncertainty more strictly. The output-length control sets a maximum; the model may finish earlier.</p>
-<p>The interface offers 2K, 4K, 8K, and 16K choices. 8K is the default. After connection, RajAIAssist disables choices above the active model/context ceiling. Models with a 16K total context, including the added DeepSeek Coder 6.7B and StarCoder2 7B profiles, expose at most 8K output so enough room remains for the request, chat history, system instructions, and retrieved evidence.</p>
-<p>Each completed assistant response also has a <strong>Download</strong> control. Export the response as ZIP, DOCX, PNG, Markdown, HTML, or text. ZIP includes the complete response and separately extracted fenced-code files where possible. Downloads do not execute model-generated code.</p>
-<p>Longer output is useful for complete scripts and detailed analysis, but it takes more time and uses more context. Always verify important facts, calculations, commands, and generated code.</p>
-<h2 id="live-interview-assistant">Live Interview Assistant</h2>
-<p>RajAIAssist v3.2 includes a local unpacked Chrome extension for visible, user-initiated interview coaching. Use it only for mock interviews, disclosed assistance, accessibility support, or other situations in which live assistance is permitted.</p>
-<p>The extension treats its selected sources as authoritative speaker labels:</p>
-<pre><code class="language-text">Raj microphone -&gt; RAJ
-Meeting tab, system audio, monitor input, or second microphone -&gt; INTERVIEWER</code></pre>
-<p>Raj's speech updates the recent conversation but does not trigger an answer. A complete interviewer question or request triggers a concise streaming suggestion.</p>
-<p>The recommended runtime is:</p>
-<pre><code class="language-bash">rajai-colab start --runtime t4 --model interview-fast</code></pre>
-<p>The owner installs and pairs the extension. A guest key cannot generate a pairing code or access owner-approved interview context.</p>
-<h2 id="install-and-pair-the-interview-extension">Install and pair the interview extension</h2>
-<ol>
-<li>Run <code>rajai-colab interview install-extension</code> on Zorin.</li>
-<li>Open <code>chrome://extensions</code> in Chrome.</li>
-<li>Enable Developer mode and select <strong>Load unpacked</strong>.</li>
-<li>Select <code>~/.local/share/rajai-colab/chrome-extension</code>.</li>
-<li>Start RajAIAssist with the recommended interview model.</li>
-<li>Generate a five-minute one-time pairing code from the owner-only RajAIAssist card or <code>rajai-colab interview pair</code>.</li>
-<li>Paste the complete pairing URI when available, or use the plain code. The URI carries the current HTTPS runtime origin and the extension verifies that origin against the current published endpoint.</li>
-</ol>
-<p>The extension receives a short-lived interview-only token. It never receives the owner lifecycle key.</p>
-<h2 id="select-interview-audio">Select interview audio</h2>
-<p>Choose Raj's built-in, Jabra, USB, or Bluetooth microphone as <strong>Raj microphone</strong>.</p>
-<p>For the interviewer, use:</p>
-<ul>
-<li><strong>Current meeting tab audio</strong> for Google Meet, Teams Web, and other browser calls.</li>
-<li><strong>Choose screen/window/system audio</strong> when Chrome and the operating system expose the required source.</li>
-<li><strong>Second microphone or Linux monitor input</strong> for a physical interviewer or native application playback.</li>
-</ul>
-<p>A speaker is an output device, not an input source. The playback-output selector controls where captured meeting audio is heard; it does not capture that output by itself.</p>
-<p>Confirm that the Raj and Interviewer level meters move independently before beginning.</p>
-<h2 id="live-interview-controls-and-privacy">Live interview controls and privacy</h2>
-<p>Capture begins only after pairing, source selection, consent confirmation, and <strong>Start interview</strong>. A visible listening badge remains active while audio is processed.</p>
-<ul>
-<li><strong>Pause</strong> disables the audio tracks.</li>
-<li><strong>Stop</strong> ends the tracks, closes the backend interview session, revokes the scoped token, and clears in-memory session state.</li>
-<li><strong>Shorter</strong> asks for a more compact answer.</li>
-<li><strong>Alternative</strong> asks for a different accurate answer.</li>
-<li><strong>Manual fallback</strong> accepts a typed question when transcription misses a turn.</li>
-</ul>
-<p>Raw-audio retention is disabled. The primary extension path sends separately labelled PCM16 frames through an authenticated WebSocket and holds only the active utterance in memory. The REST compatibility path deletes its temporary decoder file immediately. Persistent transcript retention is disabled by default. Suggested answers may still be incomplete or wrong; Raj remains responsible for what is said.</p>
-<h2 id="approved-interview-context">Approved interview context</h2>
-<p>The owner can prepare a bounded context pack containing the role, company, interview type, truthful context brief, job description, and up to four approved Personal Vault collections. Relevant collections synchronize at the pairing boundary rather than during every spoken question.</p>
-<p>The model is instructed not to invent Raj's employers, qualifications, achievements, responsibilities, dates, metrics, or experience. When evidence is insufficient, it should provide a generic framework and identify the missing personal detail.</p>
-<h2 id="recommended-prompt-formula">Recommended prompt formula</h2>
-<p>A strong prompt states five things:</p>
-<ol>
-<li><strong>Task</strong> — what the AI must do.</li>
-<li><strong>Input</strong> — which text or files to use.</li>
-<li><strong>Context</strong> — why the task matters and relevant background.</li>
-<li><strong>Constraints</strong> — rules, exclusions, assumptions, versions, and limits.</li>
-<li><strong>Output</strong> — the exact structure, tone, format, and level of detail required.</li>
-</ol>
-<p>Example:</p>
-<pre><code class="language-text">Task: Analyze application.log and deployment.yaml to identify the most likely cause of the outage.
-Context: The error began immediately after release 2026.07.17.
-Constraints: Use only evidence in the uploaded files. Separate facts from hypotheses. Do not invent missing timestamps.
-Output: Timeline, ranked hypotheses, one verification command per hypothesis, remediation, and prevention actions.</code></pre>
-<h2 id="advanced-prompts">Advanced prompts</h2>
-<p>Use these editable templates as starting points. Replace generic wording with the exact task, filenames, constraints, versions, and output format that apply to your work. The templates do not auto-submit and do not override your request.</p>
-<h2 id="advanced-prompt-log-and-incident-analysis">Advanced prompt · Log and incident analysis</h2>
-<pre><code class="language-text">Act as a senior site reliability engineer. Analyze the uploaded logs and configuration files. Build an evidence-based timeline, identify the first abnormal event, rank the three most likely root causes, and give a verification step for each. Separate observed facts from inference. Cite the source label for every material claim. Finish with immediate remediation, permanent corrective action, and monitoring improvements.</code></pre>
-<h2 id="advanced-prompt-complete-code-generation">Advanced prompt · Complete code generation</h2>
-<pre><code class="language-text">Create one complete executable implementation for the requested task. Output the complete code first inside one correctly labelled code block. Include every import, class, function, configuration option, validation path, error path, command-line entry point, and cleanup step. Do not use ellipses, TODOs, placeholders, or omitted sections. After the code, provide only prerequisites, one example command, verification steps, and material assumptions. Do not claim the code was executed unless it was actually executed.</code></pre>
-<h2 id="advanced-prompt-code-review-and-correction">Advanced prompt · Code review and correction</h2>
-<pre><code class="language-text">Review the uploaded code as a hostile production reviewer. Identify correctness, security, reliability, concurrency, performance, portability, and maintainability defects. Quote the relevant source location for each defect. Then provide one complete corrected replacement file, not a partial patch, and include tests or verification commands. Preserve intentional behavior unless a change is required to fix a documented defect.</code></pre>
-<h2 id="advanced-prompt-document-analysis">Advanced prompt · Document analysis</h2>
-<pre><code class="language-text">Analyze the uploaded documents and produce: 1) executive summary, 2) key findings, 3) decisions and commitments, 4) risks and unresolved questions, 5) action items with owner and due date when available, and 6) contradictions between sources. Use only supplied evidence and cite source labels for every substantive section.</code></pre>
-<h2 id="advanced-prompt-professional-writing">Advanced prompt · Professional writing</h2>
-<pre><code class="language-text">Draft a clear professional message for the stated audience and objective. Preserve verified facts, remove repetition, use a confident but courteous tone, and make requested actions explicit. Include a useful subject line. Do not invent names, dates, commitments, or approvals that were not provided.</code></pre>
-<h2 id="advanced-prompt-implementation-plan">Advanced prompt · Implementation plan</h2>
-<pre><code class="language-text">Create an operational implementation plan with scope, assumptions, prerequisites, phases, milestones, dependencies, owners, risks, mitigations, validation steps, rollback plan, acceptance criteria, and a concise first-week checklist. Distinguish required work from optional improvements.</code></pre>
-<h2 id="advanced-prompt-learn-from-first-principles">Advanced prompt · Learn from first principles</h2>
-<pre><code class="language-text">Explain the topic from first principles for an intelligent beginner. Define essential terms, build the mental model step by step, show one practical example, identify common misconceptions, and finish with a short self-check exercise and answer key.</code></pre>
-<h2 id="advanced-prompt-compare-options">Advanced prompt · Compare options</h2>
-<pre><code class="language-text">Compare the proposed options using a decision matrix covering capability, quality, latency, cost, security, privacy, operational complexity, maintainability, failure modes, and migration effort. State assumptions, identify disqualifying constraints, and give a recommendation with conditions under which another option would be preferable.</code></pre>
-<h2 id="advanced-prompt-structured-extraction">Advanced prompt · Structured extraction</h2>
-<pre><code class="language-text">Extract the requested fields from the uploaded evidence. Return valid JSON using the exact schema I provide. Use null for missing values, do not infer unsupported values, retain source labels in a source field, and list validation errors separately from the extracted records.</code></pre>
-<h2 id="do-s-and-don-ts">Do's and don'ts</h2>
-<h3 id="do">Do</h3>
-<ul>
-<li>Use the access key generated for the current runtime and keep it private.</li>
-<li>State the objective, relevant input, constraints, and desired output.</li>
-<li>Name important uploaded files and wait until indexing completes.</li>
-<li>Start a new chat for a substantially different topic.</li>
-<li>Use Conservative mode for high-impact factual, technical, or operational work.</li>
-<li>Review and test important facts, math, commands, and code before relying on them.</li>
-<li>Remove secrets, personal identifiers, and unnecessary sensitive content before upload.</li>
-</ul>
-<h3 id="don-t">Don't</h3>
-<ul>
-<li>Do not share the runtime key publicly or store it on an untrusted device.</li>
-<li>Do not upload passwords, tokens, private keys, one-time codes, or confidential material without authorization.</li>
-<li>Do not upload irrelevant files merely because the picker accepts them.</li>
-<li>Do not assume OCR is equivalent to full image understanding.</li>
-<li>Do not upload image or video for editing or generation; this is strictly a text-based output AI.</li>
-<li>Do not treat generated code, medical guidance, legal guidance, financial guidance, or safety-critical instructions as verified without qualified review.</li>
-</ul>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<div class="table-wrap"><table><thead><tr><th>Symptom</th><th>What to do</th></tr></thead><tbody>
-<tr><td>Ask Raj to start AI.</td><td>Contact Raj, then refresh and select Check AI status.</td></tr>
-<tr><td>Current key is rejected.</td><td>Ask Raj for the key generated by the current runtime.</td></tr>
-<tr><td>File does not appear.</td><td>Re-select the file, wait for indexing, and confirm it is within the upload limit.</td></tr>
-<tr><td>Answer ignores a file.</td><td>Name the file explicitly and ask a focused question about its contents.</td></tr>
-<tr><td>OCR answer misses visual details.</td><td>Provide the relevant text directly or describe the visual relationship in the prompt.</td></tr>
-<tr><td>Response ends mid-answer.</td><td>Ask <code>Continue exactly from where the previous response stopped</code> or choose a larger output limit.</td></tr>
-<tr><td>A new or unexplained error appears.</td><td>If faced with a new error, reach out to Raj with the exact message, time, browser, and steps that produced it.</td></tr>
-</tbody></table></div>
-<h2 id="privacy-and-access-boundaries">Privacy and access boundaries</h2>
-<p>The browser sends prompts and current-session files to the active RajAIAssist backend. Guest keys cannot access Raj's private owner context or the Administrator Manual. Owner-only capabilities are enforced by the backend and are not granted merely by changing browser fields or request parameters.</p>
-<p>Do not treat a public web address as proof that the AI is public. Access still requires a current signed endpoint and a valid runtime key.</p>
-<h2 id="important-limitations">Important limitations</h2>
-<ul>
-<li>The compute runtime is temporary and may become unavailable without notice.</li>
-<li>Model quality, speed, and context capacity depend on the selected model and runtime.</li>
-<li>File extraction and OCR can omit formatting or content.</li>
-<li>RajAIAssist does not provide image or video generation/editing in v3.2.</li>
-<li>Answers can be incomplete or wrong. Verify high-impact output independently.</li>
-</ul>
-<p>For product-specific information not covered in this guide, reach out to Raj.</p></main></div>
-<footer class="footer">RajAIAssist v3.2.1 · User Guide · Generated from docs/user-guide.md</footer>
+<main class="shell">
+<header class="top">
+  <div class="brand"><div class="mark">R</div><div><h1>RajAIAssist</h1><p>Local AI with Unlimited Token, Full Privacy, No Censorship</p></div></div>
+  <div><a class="button" href="../">Open workspace</a> <select id="theme"><option value="glass-admin">Glass Admin inspired</option><option value="lustro">Lustro inspired</option></select></div>
+</header>
+<section class="hero">
+  <h2>How to use RajAIAssist</h2>
+  <p>RajAIAssist connects the public interface to a temporary notebook runtime that hosts local models. The model request and private workspace stay inside that runtime; the public page contains no model weights, private files or runtime keys.</p>
+  <div class="callout"><strong>Important:</strong> “Unlimited Token” describes segmented long-form continuation and persistent history. Each local model still has a finite context window, output limit, memory requirement and runtime-session limit.</div>
+</section>
+<div class="grid">
+<section class="card"><h3>1. Start the runtime</h3><p>Run the supplied notebook from top to bottom. The final cell starts the local model server, application backend and temporary secure endpoint. Keep that final cell running.</p><p>The output prints two separate keys:</p><pre>Owner runtime key: ...
+Guest runtime key: ...</pre><p>Never share the private master secret or repository update token.</p></section>
+<section class="card"><h3>2. Choose the correct key</h3><p><strong>Owner key</strong> unlocks persistent threads, private datasets, private uploaded files, artifacts, Code Studio, Research, Media Studio and snapshots.</p><p><strong>Guest key</strong> unlocks temporary model chat only. Guest messages are not written to the server and guests cannot access private threads, files, datasets, summaries or artifacts.</p></section>
+<section class="card"><h3>3. Persistent owner threads</h3><p>Create one thread per project. Use pinned context for permanent rules and the durable summary for current decisions and progress. Uploaded documents and generated artifacts remain linked to the selected thread.</p><p>The runtime retrieves only relevant excerpts plus recent conversation instead of putting the complete lifetime history in every prompt.</p></section>
+<section class="card"><h3>4. Model profiles</h3><ul><li><strong>Smart:</strong> Qwen3 8B for everyday assistance and planning.</li><li><strong>Coding:</strong> Qwen2.5-Coder 7B for software work.</li><li><strong>Fast:</strong> Qwen3 4B Instruct for lower latency.</li><li><strong>Quality / Reasoning / Coding Pro:</strong> optional larger models; the backend falls back to an installed baseline when unavailable.</li></ul></section>
+<section class="card"><h3>5. Private Research</h3><p>Research mode searches documents and datasets attached to the current owner thread. It does not browse the live web. Ask for citations and verify that claims include the supplied source labels.</p></section>
+<section class="card"><h3>6. Code Studio</h3><p>Ask for complete files using filename-labelled code fences. Generated files become thread artifacts. The coding agent can write to the isolated project workspace and optionally run the restricted validation commands shown in the interface.</p><p>Review generated code before deployment.</p></section>
+<section class="card"><h3>7. Media Studio</h3><p>Image generation uses a local SDXL pipeline. Video generation uses a local Wan text-to-video pipeline. Narration uses local Kokoro speech synthesis. Editing, PDF compression and movie assembly use local media tools.</p><p>Large video or image jobs can exceed the allocated GPU, memory, disk or session duration. Generate short test assets before full-resolution production.</p></section>
+<section class="card"><h3>8. Long-form output</h3><p>Select 2K, 4K, 8K or 16K as the requested per-segment output ceiling. Enable long-form continuation for multiple segments. The selected model may stop earlier, use a smaller supported limit or require a continuation segment.</p></section>
+<section class="card"><h3>9. Save and restore</h3><p>Use <strong>Save workspace now</strong> before ending a session. The runtime creates a private snapshot containing threads, messages, documents and artifacts, while excluding runtime keys, tunnel data and logs. Configure private persistent workspace credentials when automatic versioning is desired.</p></section>
+<section class="card"><h3>10. Troubleshooting</h3><ul><li><strong>Key rejected:</strong> refresh the page and use the newest key printed by the active runtime.</li><li><strong>Optional model missing:</strong> select Smart, Coding or Fast, or let the automatic fallback apply.</li><li><strong>Runtime offline:</strong> restart the notebook and wait for the endpoint publication message.</li><li><strong>Media model error:</strong> confirm model files are cached or allow the setup run to download them.</li><li><strong>Guest cannot see files:</strong> this is expected and enforced by the backend.</li></ul></section>
+</div>
+<p class="footer">Raj Mohan Acharya · Enterprise Observability &amp; AIOps Architect · RajAIAssist v2.0.1</p>
+</main>
 <script>
-(() => {
-  const key = "rajai_theme";
-  const root = document.documentElement;
-  const button = document.getElementById("themeButton");
-  const normalize = value => {
-    if (value === "apple") return "lustro";
-    if (value === "clearwave" || value === "garuda") return "glass-admin";
-    return value === "lustro" || value === "glass-admin" ? value : "glass-admin";
-  };
-  const saved = localStorage.getItem(key);
-  root.dataset.theme = normalize(saved);
-  if (saved && saved !== root.dataset.theme) localStorage.setItem(key, root.dataset.theme);
-  const refresh = () => button.textContent = root.dataset.theme === "lustro" ? "Glass Admin theme" : "Lustro theme";
-  button.addEventListener("click", () => { root.dataset.theme = root.dataset.theme === "lustro" ? "glass-admin" : "lustro"; localStorage.setItem(key, root.dataset.theme); refresh(); });
-  refresh();
-})();
+const select=document.getElementById("theme");
+function apply(value){const chosen=["glass-admin","lustro"].includes(value)?value:"glass-admin";document.documentElement.dataset.theme=chosen;select.value=chosen;try{localStorage.setItem("rajai_howto_theme",chosen)}catch{}}
+let initial="glass-admin";try{initial=localStorage.getItem("rajai_howto_theme")||initial}catch{}
+apply(initial);select.addEventListener("change",event=>apply(event.target.value));
 </script>
-</body></html>
+</body>
+</html>
