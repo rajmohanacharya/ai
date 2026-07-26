@@ -1,12 +1,11 @@
 {
-  "schema_version": 1,
-  "online": false,
-  "backend_url": "",
-  "issued_at": 0,
-  "expires_at": 0,
-  "signature": "",
-  "provider": "kaggle",
+  "backend_url": "https://feeds-measurement-puzzles-fossil.trycloudflare.com",
+  "expires_at": 1785080134,
+  "issued_at": 1785044134,
   "model": "gemini-3.5-flash",
-  "version": "2.0.0",
-  "message": "Start the RajAIAssist Kaggle notebook."
+  "online": true,
+  "provider": "kaggle",
+  "schema_version": 1,
+  "signature": "18166b65616364ac16ef994882a95de472b62e98e5bf6396e41c4a2207e9536c",
+  "version": "2.0.0"
 }
