@@ -1,14 +1,13 @@
 {
-  "schema_version": 2,
-  "online": false,
-  "backend_url": "",
-  "issued_at": 0,
-  "expires_at": 0,
-  "signature": "",
-  "owner_signature": "",
-  "guest_signature": "",
+  "backend_url": "https://onto-wan-expired-sim.trycloudflare.com",
+  "expires_at": 1785089941,
+  "guest_signature": "196fb84858f6656e67a89fffbb8fd714e9e93cfcdcf519face620b09c0cbc4bd",
+  "issued_at": 1785053941,
+  "model": "qwen3:8b",
+  "online": true,
+  "owner_signature": "a0565203961b24bdb0db60bd74c4e7545615d7fd6b97be006a9e6ee3a7c05214",
   "provider": "local",
-  "model": "",
-  "version": "2.0.1",
-  "message": "Start the RajAIAssist local-model notebook runtime."
+  "schema_version": 2,
+  "signature": "a0565203961b24bdb0db60bd74c4e7545615d7fd6b97be006a9e6ee3a7c05214",
+  "version": "2.0.1"
 }
