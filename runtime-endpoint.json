@@ -1,11 +1,12 @@
 {
-  "backend_url": "https://hospitality-improvement-strictly-supports.trycloudflare.com",
-  "expires_at": 1785024545,
-  "issued_at": 1784988545,
-  "model": "gemini-3.5-flash",
-  "online": true,
-  "provider": "kaggle",
   "schema_version": 1,
-  "signature": "79bf5d128c9ca5e26735ef3453045ddbf4b94c0d99b42cf402c6c6af4e353e81",
-  "version": "1.0.0"
+  "online": false,
+  "backend_url": "",
+  "issued_at": 0,
+  "expires_at": 0,
+  "signature": "",
+  "provider": "kaggle",
+  "model": "gemini-3.5-flash",
+  "version": "2.0.0",
+  "message": "Start the RajAIAssist Kaggle notebook."
 }

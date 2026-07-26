@@ -1,19 +1,19 @@
 {
   "name": "RajAIAssist",
   "short_name": "RajAI",
-  "description": "Persistent AI workspace for coding, research, thread memory and media production",
+  "description": "Unified Kaggle AI workspace for coding, research, persistent threads and media production",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0a0f0d",
   "theme_color": "#34d399",
   "icons": [
     {
-      "src": "./android-chrome-192x192.png?v=k1",
+      "src": "./android-chrome-192x192.png?v=k2",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./favicon-512x512.png?v=k1",
+      "src": "./favicon-512x512.png?v=k2",
       "sizes": "512x512",
       "type": "image/png"
     }

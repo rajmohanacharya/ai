@@ -1,4 +1,5 @@
-# RajAIAssist Kaggle Edition GitHub Pages
+# RajAIAssist Kaggle Unified Studio v2.0.0
 
-Upload this directory to the root of the existing `rajmohanacharya/ai` project site.
-The Kaggle launcher updates only `runtime-endpoint.json` when the runtime starts or stops.
+Upload the contents of this directory to the root of `rajmohanacharya/ai`.
+
+The Kaggle notebook updates only `runtime-endpoint.json` during each live session. Keep the Gemini API key, RajAIAssist master key, GitHub token and Kaggle API credentials in Kaggle Secrets, never in this repository.
