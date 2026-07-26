@@ -6,8 +6,8 @@
 <meta name="referrer" content="no-referrer" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src https: http://localhost:* http://127.0.0.1:*; img-src 'self' data: blob: https:; media-src blob: https:; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'" />
 <title>RajAIAssist</title>
-<meta name="description" content="Unified Kaggle AI workspace for coding, research, persistent thread memory and media production." />
-<meta name="rajai-build" content="kaggle-v1-ui-hotfix-1" />
+<meta name="description" content="Private local-model workspace for coding, research, persistent thread memory and media production." />
+<meta name="rajai-build" content="local-unified-v2.0.1" />
 <link rel="canonical" href="https://rajmohanacharya.github.io/ai/" />
 <meta name="application-name" content="RajAIAssist" />
 <meta name="theme-color" content="#0a0f0d" />
@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="RajAIAssist" />
 <meta property="og:url" content="https://rajmohanacharya.github.io/ai/" />
 <meta property="og:title" content="RajAIAssist" />
-<meta property="og:description" content="Unified Kaggle AI workspace for coding, research, persistent thread memory and media production." />
+<meta property="og:description" content="Private local-model workspace for coding, research, persistent thread memory and media production." />
 <meta property="og:image" content="https://rajmohanacharya.github.io/ai/rajai-social-preview.webp" />
 <script src="./config.js"></script>
 <style>
@@ -82,29 +82,35 @@ label{display:block;font-size:.72rem;color:var(--muted);margin:8px 0 5px}.input,
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:20;display:grid;place-items:center;padding:20px}.modal-card{width:min(620px,100%);max-height:85vh;overflow:auto;background:var(--panel3);border:1px solid var(--border);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
 .toast{position:fixed;right:18px;bottom:18px;z-index:30;max-width:420px;background:var(--panel3);border:1px solid var(--border);border-radius:13px;padding:12px 14px;box-shadow:var(--shadow);font-size:.74rem}.toast.error{border-color:var(--danger)}
 ::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:rgba(0,0,0,.14)}::-webkit-scrollbar-thumb{background:var(--scroll);border-radius:9px}
+
+.owner-only.hidden{display:none!important}
+.app.guest-layout{grid-template-columns:310px minmax(0,1fr)}
+.app.guest-layout .main{grid-column:2}
+.app.guest-layout .rightbar{display:none}
 @media(max-width:1100px){.app{grid-template-columns:280px minmax(0,1fr)}.rightbar{display:none}.main{grid-column:2}.brand{min-width:255px}}
 @media(max-width:760px){body{overflow:auto}.app{display:block;height:auto;min-height:100%}.topbar{position:sticky;top:0}.brand{min-width:0}.brand small,.top-title{display:none}.sidebar,.rightbar{border:0}.sidebar{max-height:none}.main{min-height:70vh}.messages{padding:18px 12px}.examples{grid-template-columns:1fr}.top-actions .chip{display:none}.rightbar.mobile-open{display:block}.composer{position:sticky;bottom:0}.app{padding-bottom:0}}
 </style>
 </head>
 <body>
-<div class="app">
+<div class="app" id="appRoot">
 <header class="topbar">
   <div class="brand">
     <img src="./rajai-social-preview.webp" alt="RajAIAssist" />
-    <div><h1>RajAIAssist</h1><small>Kaggle Unified Studio · Code, Research, Memory & Media</small></div>
+    <div><h1>RajAIAssist</h1><small>Local AI with Unlimited Token, Full Privacy, No Censorship</small></div>
   </div>
   <div class="top-title"><h2 id="currentThreadTitle">No thread selected</h2><p id="currentThreadMeta">Persistent project context and artifacts</p></div>
   <div class="top-actions">
     <span id="runtimeStatus" class="status-pill"><span class="status-dot"></span><span>Offline</span></span>
-    <span id="providerBadge" class="chip">Kaggle · Gemini</span>
+    <span id="providerBadge" class="chip">Local models</span>
     <select id="themeSelect" aria-label="Theme"><option value="glass-admin">Glass Admin inspired</option><option value="lustro">Lustro inspired</option></select>
+    <a class="btn small" href="./howto/" target="_blank" rel="noopener noreferrer">How to</a>
     <button id="mobileTools" class="btn small">Tools</button>
   </div>
 </header>
 <aside class="sidebar">
   <section class="card" id="accessCard">
     <div class="card-title"><span>Secure access</span><button class="btn small" id="checkStatus">Check</button></div>
-    <label for="apiKey">Current Kaggle runtime key</label>
+    <label for="apiKey">Current runtime key</label>
     <div class="row"><input class="input grow" id="apiKey" type="password" autocomplete="off" placeholder="Paste the key printed by the notebook"/><button class="btn small" id="showKey">Show</button></div>
     <button class="btn primary" id="unlockBtn" style="width:100%;margin-top:9px">Unlock RajAIAssist</button>
     <div id="endpointInfo" class="notice" style="margin-top:9px">Loading signed runtime endpoint…</div>
@@ -113,42 +119,42 @@ label{display:block;font-size:.72rem;color:var(--muted);margin:8px 0 5px}.input,
     <div class="card-title"><span>Work mode</span></div>
     <div class="mode-grid" id="modeGrid">
       <button class="btn mode active" data-mode="chat"><strong>Chat</strong><span>General assistant</span></button>
-      <button class="btn mode" data-mode="code"><strong>Code Studio</strong><span>Apps & software</span></button>
-      <button class="btn mode" data-mode="research"><strong>Research</strong><span>Live web grounding</span></button>
-      <button class="btn mode" data-mode="media"><strong>Media Studio</strong><span>Images & movies</span></button>
+      <button class="btn mode owner-only" data-mode="code"><strong>Code Studio</strong><span>Apps & software</span></button>
+      <button class="btn mode owner-only" data-mode="research"><strong>Research</strong><span>Private files and datasets</span></button>
+      <button class="btn mode owner-only" data-mode="media"><strong>Media Studio</strong><span>Images & movies</span></button>
     </div>
     <label for="modelSelect">Model profile</label>
-    <select id="modelSelect"><option value="smart">Smart · Gemini 3.5 Flash</option><option value="coding">Coding · Gemini 3.5 Flash</option><option value="coding-pro">Coding Pro · Gemini 2.5 Pro</option><option value="reasoning">Reasoning · Gemini 2.5 Pro</option><option value="fast">Fast · Gemini 3.1 Flash-Lite</option></select>
+    <select id="modelSelect"><option value="smart">Smart · Qwen3 8B</option><option value="coding">Coding · Qwen2.5-Coder 7B</option><option value="fast">Fast · Qwen3 4B Instruct</option></select>
     <label for="outputSelect">Output ceiling</label>
-    <select id="outputSelect"><option value="4096">4K</option><option value="8192" selected>8K</option><option value="16384">16K</option><option value="32768">32K</option></select>
-    <div class="toggle-row"><span>Ground with Google Search</span><input id="webSearchToggle" type="checkbox" /></div>
+    <select id="outputSelect"><option value="2048">2K</option><option value="4096">4K</option><option value="8192" selected>8K</option><option value="16384">16K</option></select>
+    <div class="toggle-row owner-only"><span>Use private uploaded evidence</span><input id="privateEvidenceToggle" type="checkbox" checked /></div>
     <div class="toggle-row"><span>Verified answer (strict second pass)</span><input id="verifiedToggle" type="checkbox" checked /></div>
     <div class="toggle-row"><span>Long-form continuation</span><input id="longFormToggle" type="checkbox" /></div>
     <label for="segmentSelect">Maximum long-form segments</label>
     <select id="segmentSelect"><option>2</option><option selected>4</option><option>6</option><option>8</option></select>
   </section>
-  <section class="card locked-content hidden">
+  <section class="card locked-content owner-only hidden">
     <div class="card-title"><span>Project threads</span><span class="row"><button class="btn small" id="renameThread">Rename</button><button class="btn small danger" id="deleteThread">Delete</button><button class="btn small" id="newThread">New</button></span></div>
     <div class="thread-toolbar"><input class="input thread-search grow" id="threadSearch" placeholder="Filter threads"/><button class="btn small" id="refreshThreads">↻</button></div>
     <div class="threads" id="threadList"></div>
   </section>
-  <section class="card locked-content hidden">
+  <section class="card locked-content owner-only hidden">
     <div class="card-title"><span>Thread memory</span></div>
     <label for="pinnedContext">Pinned context</label><textarea id="pinnedContext" placeholder="Goals, constraints, brand rules, recurring facts…"></textarea>
     <label for="threadSummary">Durable summary</label><textarea id="threadSummary" placeholder="Automatically maintained project memory"></textarea>
     <button class="btn" id="saveMemory" style="width:100%;margin-top:8px">Save thread memory</button>
   </section>
-  <div class="footer"><a href="https://www.linkedin.com/in/rajmohanacharya/" target="_blank" rel="noopener noreferrer">Raj Mohan Acharya · Enterprise Observability & AIOps Architect</a><br/>RajAIAssist Kaggle Unified Studio v2.0.0</div>
+  <div class="footer"><a href="https://www.linkedin.com/in/rajmohanacharya/" target="_blank" rel="noopener noreferrer">Raj Mohan Acharya · Enterprise Observability & AIOps Architect</a><br/>RajAIAssist Local Unified Studio v2.0.1</div>
 </aside>
 <main class="main">
   <div class="messages" id="messages">
     <div class="welcome" id="welcome">
       <h2>Continue projects, not prompts</h2>
-      <p>Each thread remembers its history, decisions, uploaded files and generated artifacts. Use Code Studio for apps and maintenance, Research for current evidence, and Media Studio for creator workflows.</p>
+      <p>Owner threads remember history, decisions, private files and generated artifacts. Guest access provides temporary local-model chat without private workspace access.</p>
       <div class="examples">
         <button class="btn example" data-mode="code" data-prompt="Create a production-ready web application for the following requirement. First propose the architecture and file tree, then generate every required file with filename-labelled code fences, tests, setup instructions, and a validation checklist:"><strong>Build an application</strong><br/><span>Architecture, files, tests and artifacts</span></button>
         <button class="btn example" data-mode="code" data-prompt="Review the current thread workspace and uploaded source files. Identify correctness, security, performance and maintainability issues, then provide a complete remediation plan and corrected files:"><strong>Maintain existing software</strong><br/><span>Review, repair and enhance</span></button>
-        <button class="btn example" data-mode="research" data-prompt="Research the following topic using current authoritative sources. Distinguish facts, inference and uncertainty, cite every time-sensitive claim, and finish with actionable recommendations:"><strong>Research with live sources</strong><br/><span>Fresh web-grounded answers</span></button>
+        <button class="btn example" data-mode="research" data-prompt="Research the following topic using only the private files and dataset evidence attached to this thread. Distinguish evidence, inference and uncertainty, cite source labels, and state when evidence is insufficient:"><strong>Research private evidence</strong><br/><span>Grounded in uploaded sources</span></button>
         <button class="btn example" data-mode="media" data-prompt="Develop a historically responsible YouTube movie concept on the following topic. Produce a logline, research questions, scene-by-scene storyboard, narration, visual prompts, camera direction, thumbnail prompt, title options and production checklist:"><strong>Create an AI movie plan</strong><br/><span>History and mythology creator workflow</span></button>
       </div>
     </div>
@@ -157,8 +163,8 @@ label{display:block;font-size:.72rem;color:var(--muted);margin:8px 0 5px}.input,
     <div class="composer-inner">
       <textarea id="question" placeholder="Ask RajAIAssist… Shift+Enter for a new line"></textarea>
       <div class="composer-actions">
-        <label class="file-label">Attach files<input id="fileInput" type="file" multiple /></label>
-        <span class="hint" id="uploadHint">Files become part of the current thread's historical context.</span>
+        <label class="file-label owner-only">Attach files<input id="fileInput" type="file" multiple /></label>
+        <span class="hint" id="composerHint">Attachments become part of the selected private thread.</span>
         <button class="btn" id="clearComposer">Clear</button>
         <button class="btn primary" id="sendBtn">Ask AI</button>
       </div>
@@ -166,7 +172,7 @@ label{display:block;font-size:.72rem;color:var(--muted);margin:8px 0 5px}.input,
     </div>
   </section>
 </main>
-<aside class="rightbar" id="rightbar">
+<aside class="rightbar owner-only" id="rightbar">
   <section class="card locked-content hidden">
     <div class="tabs"><button class="btn tab active" data-tab="artifacts">Artifacts</button><button class="btn tab" data-tab="documents">Files</button><button class="btn tab" data-tab="studio">Studio</button></div>
     <div class="panel-section active" id="panel-artifacts">
@@ -188,9 +194,7 @@ label{display:block;font-size:.72rem;color:var(--muted);margin:8px 0 5px}.input,
         <div id="workspaceFiles" class="list" style="margin-top:9px"></div>
       </div>
       <div id="researchTools" class="tool-box hidden">
-        <label for="fetchUrl">Fetch a public URL</label><input class="input" id="fetchUrl" placeholder="https://example.com/article" />
-        <button class="btn" id="fetchUrlBtn" style="width:100%;margin-top:8px">Fetch into composer</button>
-        <div class="notice" style="margin-top:8px">Private, loopback and reserved network targets are blocked. robots.txt is respected by default.</div>
+        <div class="notice">Research mode searches the selected thread's private uploaded files and persistent dataset context. Live web retrieval is disabled.</div>
       </div>
       <div id="mediaTools" class="tool-box hidden">
         <label for="mediaPrompt">Media prompt</label><textarea id="mediaPrompt" placeholder="Describe the image, video or movie topic…"></textarea>
@@ -210,16 +214,16 @@ label{display:block;font-size:.72rem;color:var(--muted);margin:8px 0 5px}.input,
         <div class="row" style="margin-top:7px"><select class="grow" id="pdfProfile"><option value="screen">PDF screen</option><option value="ebook" selected>PDF ebook</option><option value="printer">PDF printer</option><option value="prepress">PDF prepress</option></select><button class="btn grow" id="compressSelectedPdf">Compress selected PDF</button></div>
         <div class="row" style="margin-top:7px"><input class="input grow" id="mediaStart" type="number" min="0" step="0.1" value="0" placeholder="Start seconds"/><input class="input grow" id="mediaDuration" type="number" min="0" step="0.1" placeholder="Duration seconds"/></div>
         <div class="row" style="margin-top:7px"><button class="btn grow" id="cleanSelectedAudio">Clean selected audio</button><input class="input grow" id="videoSpeed" type="number" min="0.25" max="4" step="0.05" value="1" aria-label="Video speed"/><button class="btn grow" id="editSelectedVideo">Edit selected video</button></div>
-        <div class="notice" style="margin-top:8px">Generation uses the Gemini API; local edit, compression and movie assembly run inside Kaggle. Model access, quotas and billing depend on the Google API project.</div>
+        <div class="notice" style="margin-top:8px">Generation and editing use local models and local media tools. Large image and video pipelines depend on the available runtime GPU, memory, disk and session duration.</div>
       </div>
-      <div id="chatTools" class="tool-box"><div class="notice">Use pinned context and the durable summary to make this thread resume accurately across Kaggle sessions.</div></div>
+      <div id="chatTools" class="tool-box"><div class="notice">Use pinned context and the durable summary to resume this private thread accurately across runtime sessions.</div></div>
     </div>
   </section>
   <section class="card locked-content hidden">
     <div class="card-title"><span>Persistence</span></div>
-    <div class="toggle-row"><span>Publish snapshot to private Kaggle Workspace Dataset</span><input id="publishSnapshot" type="checkbox" checked /></div>
+    <div class="toggle-row"><span>Publish snapshot to private persistent workspace</span><input id="publishSnapshot" type="checkbox" checked /></div>
     <button class="btn" id="createSnapshot" style="width:100%">Save workspace now</button>
-    <p style="font-size:.65rem;color:var(--muted);line-height:1.45">The notebook can restore and version the private workspace Dataset automatically. A ZIP copy is also written to Kaggle Output.</p>
+    <p style="font-size:.65rem;color:var(--muted);line-height:1.45">The runtime can restore and version a private workspace snapshot automatically. A ZIP copy is also written to runtime output.</p>
   </section>
 </aside>
 </div>
@@ -227,61 +231,988 @@ label{display:block;font-size:.72rem;color:var(--muted);margin:8px 0 5px}.input,
 <div id="toast" class="toast hidden"></div>
 <script>
 "use strict";
-const CFG=window.RAJAI_CONFIG||{version:"2.0.0",endpointManifest:"./runtime-endpoint.json",endpointRefreshMs:45000};
-const state={manifest:null,backend:"",apiKey:"",unlocked:false,threads:[],thread:null,messages:[],artifacts:[],documents:[],mode:"chat",busy:false,selectedArtifacts:new Set()};
-const $=id=>document.getElementById(id); const qsa=s=>Array.from(document.querySelectorAll(s)); const WELCOME_HTML=$("welcome").outerHTML;
-function escapeHtml(v){return String(v??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));}
-function toast(message,type=""){const box=$("toast");box.textContent=message;box.className="toast"+(type?" "+type:"");box.classList.remove("hidden");clearTimeout(toast.timer);toast.timer=setTimeout(()=>box.classList.add("hidden"),5000)}
-function modal(title,html){$("modalTitle").textContent=title;$("modalBody").innerHTML=html;$("modal").classList.remove("hidden")}
-function fmtBytes(n){n=Number(n||0);if(n<1024)return n+" B";if(n<1048576)return(n/1024).toFixed(1)+" KB";if(n<1073741824)return(n/1048576).toFixed(1)+" MB";return(n/1073741824).toFixed(1)+" GB"}
-function fmtDate(v){try{return new Date(v).toLocaleString()}catch{return String(v||"")}}
-function setStatus(label,online=false){const el=$("runtimeStatus");el.classList.toggle("online",online);el.querySelector("span:last-child").textContent=label}
-function safeStorageGet(key,fallback=""){try{const value=window.localStorage.getItem(key);return value===null?fallback:value}catch(error){console.warn("Browser storage is unavailable; continuing without saved preferences.",error);return fallback}}
-function safeStorageSet(key,value){try{window.localStorage.setItem(key,value)}catch(error){console.warn("Browser storage is unavailable; preference was not saved.",error)}}
-function themeApply(value){const v=["glass-admin","lustro"].includes(value)?value:"glass-admin";document.documentElement.dataset.theme=v;$("themeSelect").value=v;safeStorageSet("rajai_kaggle_theme",v)}
-async function shaHmac(key,text){const enc=new TextEncoder();const cryptoKey=await crypto.subtle.importKey("raw",enc.encode(key),{name:"HMAC",hash:"SHA-256"},false,["sign"]);const sig=await crypto.subtle.sign("HMAC",cryptoKey,enc.encode(text));return Array.from(new Uint8Array(sig)).map(b=>b.toString(16).padStart(2,"0")).join("")}
-async function loadManifest(){try{const r=await fetch(`${CFG.endpointManifest}?t=${Date.now()}`,{cache:"no-store"});if(!r.ok)throw new Error(`HTTP ${r.status}`);state.manifest=await r.json();const m=state.manifest;if(!m.online||!m.backend_url||Date.now()/1000>=Number(m.expires_at||0)){state.backend="";setStatus("Offline",false);$("endpointInfo").className="notice error";$("endpointInfo").textContent=m.message||"RajAIAssist Kaggle Unified Studio is offline. Start the Kaggle notebook.";return false}state.backend=String(m.backend_url).replace(/\/$/,"");setStatus("Endpoint available",true);$("endpointInfo").className="notice success";$("endpointInfo").textContent=`Kaggle endpoint published ${fmtDate(Number(m.issued_at)*1000)} · valid until ${fmtDate(Number(m.expires_at)*1000)}`;return true}catch(e){state.backend="";setStatus("Manifest unavailable",false);$("endpointInfo").className="notice error";$("endpointInfo").textContent=`Could not load runtime endpoint: ${e.message}`;return false}}
-async function verifyManifestKey(key){const m=state.manifest;if(!m?.online)return false;const msg=`${String(m.backend_url).replace(/\/$/,"")}|${Number(m.issued_at)}|${Number(m.expires_at)}|${m.version}`;return(await shaHmac(key,msg))===String(m.signature||"")}
-async function api(path,options={}){if(!state.backend)throw new Error("RajAIAssist is offline");const headers=new Headers(options.headers||{});headers.set("Authorization",`Bearer ${state.apiKey}`);if(options.body&&!(options.body instanceof FormData)&&!headers.has("Content-Type"))headers.set("Content-Type","application/json");const r=await fetch(state.backend+path,{...options,headers});if(r.status===401)throw new Error("Runtime key rejected");if(!r.ok){let body;try{body=await r.json()}catch{body={detail:await r.text()}}throw new Error(body.detail||body.error||`HTTP ${r.status}`)}return r}
-async function apiJson(path,options={}){return(await api(path,options)).json()}
-function lockUi(unlocked){state.unlocked=unlocked;qsa(".locked-content").forEach(el=>el.classList.toggle("hidden",!unlocked));$("unlockBtn").textContent=unlocked?"Unlocked":"Unlock RajAIAssist";$("apiKey").disabled=unlocked;$("showKey").disabled=unlocked}
-function renderMarkdown(text){const code=[];let work=escapeHtml(text).replace(/```([^\n]*)\n([\s\S]*?)```/g,(_,meta,body)=>{const i=code.length;code.push(`<pre><code data-meta="${escapeHtml(meta.trim())}">${body}</code></pre>`);return `@@CODE${i}@@`});work=work.replace(/^### (.*)$/gm,"<h3>$1</h3>").replace(/^## (.*)$/gm,"<h2>$1</h2>").replace(/^# (.*)$/gm,"<h1>$1</h1>").replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>").replace(/`([^`]+)`/g,"<code>$1</code>").replace(/^[-*] (.*)$/gm,"<li>$1</li>").replace(/(<li>[\s\S]*?<\/li>)(?:\n|$)/g,"<ul>$1</ul>").replace(/\n{2,}/g,"</p><p>").replace(/\n/g,"<br/>");work=`<p>${work}</p>`;code.forEach((block,i)=>work=work.replace(`@@CODE${i}@@`,block));return work}
-function renderMessages(){const box=$("messages");if(!state.messages.length){box.innerHTML=WELCOME_HTML;return}box.innerHTML=state.messages.map(m=>{const sources=(m.sources||[]).map(s=>`<span class="source">${escapeHtml(s.label||s.url||"source")}</span>`).join("");const artifacts=(m.artifacts||[]).map(a=>`<button class="artifact-chip" data-artifact="${escapeHtml(a.id)}">${escapeHtml(a.filename)}</button>`).join("");return `<article class="message ${m.role==='user'?'user':'assistant'}"><div class="message-head"><span>${m.role==='user'?'Raj':'RajAIAssist'}</span><span>${escapeHtml(fmtDate(m.created_at))}</span></div><div class="bubble">${renderMarkdown(m.content)}${sources?`<div class="source-row">${sources}</div>`:""}${artifacts?`<div class="artifact-row">${artifacts}</div>`:""}</div></article>`}).join("");qsa("[data-artifact]").forEach(b=>b.onclick=()=>downloadArtifact(b.dataset.artifact));box.scrollTop=box.scrollHeight}
-function renderThreads(){const filter=$("threadSearch").value.toLowerCase();$("threadList").innerHTML=state.threads.filter(t=>!filter||t.title.toLowerCase().includes(filter)).map(t=>`<button class="thread ${state.thread?.id===t.id?'active':''}" data-thread="${t.id}"><strong>${escapeHtml(t.title)}</strong><span>${escapeHtml(t.mode)} · ${fmtDate(t.updated_at)}</span></button>`).join("")||`<div class="notice">No threads yet.</div>`;qsa("[data-thread]").forEach(b=>b.onclick=()=>selectThread(b.dataset.thread))}
-function setMode(mode,save=true){state.mode=mode;qsa(".mode").forEach(b=>b.classList.toggle("active",b.dataset.mode===mode));["chat","code","research","media"].forEach(name=>$(name+"Tools").classList.toggle("hidden",name!==mode));$("webSearchToggle").checked=mode==="research"||$("webSearchToggle").checked;if(save&&state.thread)updateThread({mode}).catch(e=>toast(e.message,"error"))}
-async function refreshThreads(){const data=await apiJson("/api/threads");state.threads=data.threads;renderThreads();if(!state.thread&&state.threads.length)await selectThread(state.threads[0].id)}
-async function selectThread(id){const data=await apiJson(`/api/threads/${id}`);state.thread=data.thread;state.mode=state.thread.mode;$("currentThreadTitle").textContent=state.thread.title;$("currentThreadMeta").textContent=`${state.thread.mode} · ${state.thread.model} · updated ${fmtDate(state.thread.updated_at)}`;$("modelSelect").value=state.thread.model||"smart";$("pinnedContext").value=state.thread.pinned_context||"";$("threadSummary").value=state.thread.summary||"";setMode(state.thread.mode,false);renderThreads();await Promise.all([loadMessages(),refreshArtifacts(),refreshDocuments(),refreshWorkspace()])}
-async function loadMessages(){if(!state.thread)return;state.messages=(await apiJson(`/api/threads/${state.thread.id}/messages?limit=600`)).messages;renderMessages()}
-async function newThread(){const title=prompt("Thread name","New project");if(title===null)return;const data=await apiJson("/api/threads",{method:"POST",body:JSON.stringify({title:title||"New project",mode:state.mode,model:$("modelSelect").value})});state.threads.unshift(data.thread);await selectThread(data.thread.id)}
-async function updateThread(changes){if(!state.thread)return;const data=await apiJson(`/api/threads/${state.thread.id}`,{method:"PATCH",body:JSON.stringify(changes)});state.thread=data.thread;const i=state.threads.findIndex(t=>t.id===state.thread.id);if(i>=0)state.threads[i]=state.thread;renderThreads();return state.thread}
-async function unlock(){if(!await loadManifest())return toast("Start the Kaggle notebook first.","error");const key=$("apiKey").value.trim();if(!key)return toast("Enter the runtime key.","error");if(!await verifyManifestKey(key))return toast("This key does not match the current Kaggle runtime.","error");state.apiKey=key;try{const status=await apiJson("/api/status");lockUi(true);setStatus("Online",true);$("providerBadge").textContent=`Kaggle · ${status.provider||'Gemini'}`;await refreshThreads();if(!state.threads.length)await newThread();toast("RajAIAssist unlocked","success")}catch(e){toast(e.message,"error")}}
-async function sendMessage(){if(state.busy||!state.thread)return;const question=$("question").value.trim();if(!question)return;state.busy=true;$("sendBtn").disabled=true;$("responseProgress").classList.remove("hidden");$("responseProgress").firstElementChild.style.width="18%";const optimistic={role:"user",content:question,created_at:new Date().toISOString(),sources:[],artifacts:[]};state.messages.push(optimistic);renderMessages();$("question").value="";const payload={thread_id:state.thread.id,question,mode:state.mode,model:$("modelSelect").value,web_search:$("webSearchToggle").checked,url_context:state.mode==="research",include_documents:true,output_tokens:Number($("outputSelect").value),long_form:$("longFormToggle").checked,long_form_segments:Number($("segmentSelect").value),temperature:state.mode==="code"?.12:.25,verified:$("verifiedToggle").checked};try{const r=await api("/api/chat/stream",{method:"POST",body:JSON.stringify(payload)});const reader=r.body.getReader();const decoder=new TextDecoder();let buffer="",assistant=null;while(true){const {done,value}=await reader.read();if(done)break;buffer+=decoder.decode(value,{stream:true});const blocks=buffer.split("\n\n");buffer=blocks.pop();for(const block of blocks){const lines=block.split("\n");const event=(lines.find(l=>l.startsWith("event:"))||"").slice(6).trim();const dataLine=lines.find(l=>l.startsWith("data:"));if(!dataLine)continue;const data=JSON.parse(dataLine.slice(5));if(event==="progress"){$("uploadHint").textContent=`Generating… ${data.elapsed_seconds||0}s`;$("responseProgress").firstElementChild.style.width="45%"}else if(event==="token"){if(!assistant){assistant={role:"assistant",content:"",created_at:new Date().toISOString(),sources:[],artifacts:[]};state.messages.push(assistant)}assistant.content+=data.text;renderMessages();$("responseProgress").firstElementChild.style.width="78%"}else if(event==="done"){if(assistant){assistant.sources=data.sources||[];assistant.artifacts=data.artifacts||[]}else state.messages.push(data.message);$("responseProgress").firstElementChild.style.width="100%"}else if(event==="error")throw new Error(data.error||"Generation failed")}}await refreshThreads();await refreshArtifacts()}catch(e){toast(e.message,"error");await loadMessages().catch(()=>{})}finally{state.busy=false;$("sendBtn").disabled=false;$("responseProgress").classList.add("hidden");$("responseProgress").firstElementChild.style.width="0";$("uploadHint").textContent="Files become part of the current thread's historical context."}}
-async function uploadFiles(files){if(!state.thread||!files.length)return;const form=new FormData();form.append("thread_id",state.thread.id);Array.from(files).forEach(f=>form.append("files",f));$("uploadHint").textContent=`Uploading ${files.length} file(s)…`;try{const data=await(await api("/api/upload",{method:"POST",body:form})).json();toast(`${data.successful} file(s) ingested${data.failed?`, ${data.failed} failed`:""}`,data.failed?"error":"success");await Promise.all([refreshDocuments(),refreshArtifacts()])}catch(e){toast(e.message,"error")}finally{$("fileInput").value="";$("uploadHint").textContent="Files become part of the current thread's historical context."}}
-function updateMediaSelectionInfo(){const selected=state.artifacts.filter(a=>state.selectedArtifacts.has(a.id));const names=selected.slice(0,4).map(a=>a.filename).join(", ");$("mediaSelectionInfo").textContent=selected.length?`${selected.length} selected: ${names}${selected.length>4?" …":""}`:"Select image, video or audio artifacts from the Artifacts tab to use as references or edit inputs."}
-async function refreshArtifacts(){if(!state.thread)return;state.artifacts=(await apiJson(`/api/threads/${state.thread.id}/artifacts`)).artifacts;const valid=new Set(state.artifacts.map(a=>a.id));state.selectedArtifacts=new Set(Array.from(state.selectedArtifacts).filter(id=>valid.has(id)));$("artifactList").innerHTML=state.artifacts.map(a=>`<div class="list-item"><input type="checkbox" data-select-artifact="${a.id}" ${state.selectedArtifacts.has(a.id)?"checked":""} aria-label="Select ${escapeHtml(a.filename)} as media input"/><div class="meta"><strong>${escapeHtml(a.filename)}</strong><span>${escapeHtml(a.kind)} · ${escapeHtml(a.mime_type)} · ${fmtBytes(a.size_bytes)}</span></div><button class="btn small" data-download="${a.id}">Download</button></div>`).join("")||`<div class="notice">No generated artifacts yet.</div>`;qsa("[data-download]").forEach(b=>b.onclick=()=>downloadArtifact(b.dataset.download));qsa("[data-select-artifact]").forEach(c=>c.onchange=()=>{c.checked?state.selectedArtifacts.add(c.dataset.selectArtifact):state.selectedArtifacts.delete(c.dataset.selectArtifact);updateMediaSelectionInfo()});updateMediaSelectionInfo()}
-async function refreshDocuments(){if(!state.thread)return;state.documents=(await apiJson(`/api/threads/${state.thread.id}/documents`)).documents;$("documentList").innerHTML=state.documents.map(d=>`<div class="list-item"><div class="meta"><strong>${escapeHtml(d.filename)}</strong><span>${escapeHtml(d.extraction_status)} · ${fmtBytes(d.size_bytes)}</span></div></div>`).join("")||`<div class="notice">No files attached to this thread.</div>`}
-async function downloadArtifact(id){try{const r=await api(`/api/artifacts/${id}/download`);const blob=await r.blob();const disposition=r.headers.get("content-disposition")||"";const match=disposition.match(/filename="?([^";]+)"?/i);downloadBlob(blob,match?match[1]:"artifact.bin")}catch(e){toast(e.message,"error")}}
-function downloadBlob(blob,filename){const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)}
-async function downloadThread(){if(!state.thread)return;try{const r=await api(`/api/threads/${state.thread.id}/download.zip`);downloadBlob(await r.blob(),`${state.thread.title.replace(/[^a-z0-9]+/gi,"-").toLowerCase()}.zip`)}catch(e){toast(e.message,"error")}}
-async function refreshWorkspace(){if(!state.thread)return;try{const data=await apiJson(`/api/code/${state.thread.id}/files`);$("workspaceFiles").innerHTML=data.files.slice(0,100).map(f=>`<div class="list-item"><div class="meta"><strong>${escapeHtml(f.path)}</strong><span>${fmtBytes(f.size_bytes)}</span></div></div>`).join("")||`<div class="notice">Workspace is empty.</div>`}catch{$("workspaceFiles").innerHTML=""}}
-async function runAgent(){if(!state.thread)return;const task=$("agentTask").value.trim()||$("question").value.trim();if(!task)return toast("Enter an agent task.","error");state.busy=true;$("runAgent").disabled=true;try{const data=await apiJson("/api/code/agent",{method:"POST",body:JSON.stringify({thread_id:state.thread.id,task,model:$("modelSelect").value,execute_actions:$("executeActions").checked,max_output_tokens:Number($("outputSelect").value)})});modal("Coding agent result",`<div class="bubble">${renderMarkdown(data.review||data.plan?.final_message||"Completed")}</div><pre>${escapeHtml(JSON.stringify(data.execution_results,null,2))}</pre>`);await refreshWorkspace()}catch(e){toast(e.message,"error")}finally{state.busy=false;$("runAgent").disabled=false}}
-async function fetchUrl(){const url=$("fetchUrl").value.trim();if(!url)return;try{const data=await apiJson("/api/research/fetch",{method:"POST",body:JSON.stringify({url,respect_robots:true})});$("question").value=`Use the following fetched source as evidence. Summarize it, evaluate credibility, and answer my question with clear source attribution.\n\nURL: ${data.result.final_url}\nTitle: ${data.result.title}\n\n${data.result.text.slice(0,50000)}\n\nQuestion: `;toast("Source added to composer","success")}catch(e){toast(e.message,"error")}}
-async function mediaCall(kind){if(!state.thread)return;const promptText=$("mediaPrompt").value.trim();if(kind!=="slideshow"&&!promptText)return toast("Enter a media prompt.","error");const aspect=$("aspectRatio").value;const selected=state.artifacts.filter(a=>state.selectedArtifacts.has(a.id));try{let data;if(kind==="image"){const refs=selected.filter(a=>a.mime_type.startsWith("image/")).map(a=>a.id);data=await apiJson("/api/media/image",{method:"POST",body:JSON.stringify({thread_id:state.thread.id,prompt:promptText,model:"image",filename:`image-${Date.now()}.png`,aspect_ratio:aspect,image_size:$("imageSize").value,reference_artifact_ids:refs,web_search:$("webSearchToggle").checked})})}else if(kind==="video"){const refs=selected.filter(a=>a.mime_type.startsWith("image/")||a.mime_type.startsWith("video/")).map(a=>a.id);data=await apiJson("/api/media/video",{method:"POST",body:JSON.stringify({thread_id:state.thread.id,prompt:promptText,model:"video",filename:`video-${Date.now()}.mp4`,aspect_ratio:aspect,reference_artifact_ids:refs})})}else if(kind==="narration"){data=await apiJson("/api/media/narration",{method:"POST",body:JSON.stringify({thread_id:state.thread.id,text:promptText,model:"tts",voice:$("voiceSelect").value,filename:`narration-${Date.now()}.wav`})})}else if(kind==="plan")data=await apiJson("/api/media/movie-plan",{method:"POST",body:JSON.stringify({thread_id:state.thread.id,topic:promptText,model:"smart",duration_seconds:180,aspect_ratio:aspect,web_search:true})});else if(kind==="slideshow"){const images=selected.filter(a=>a.mime_type.startsWith("image/")).map(a=>a.id);const audio=selected.find(a=>a.mime_type.startsWith("audio/"));if(!images.length)return toast("Select one or more image artifacts first.","error");data=await apiJson("/api/media/slideshow",{method:"POST",body:JSON.stringify({thread_id:state.thread.id,image_artifact_ids:images,audio_artifact_id:audio?.id||null,filename:`slideshow-${Date.now()}.mp4`,width:1920,height:1080,fps:30})})}else data=await apiJson("/api/media/title-card",{method:"POST",body:JSON.stringify({thread_id:state.thread.id,title:promptText,subtitle:"Created with RajAIAssist",filename:`title-card-${Date.now()}.png`})});toast(`${kind} created`,`success`);await refreshArtifacts();if(data.plan)modal("Movie plan",`<pre>${escapeHtml(JSON.stringify(data.plan,null,2))}</pre>`)}catch(e){toast(e.message,"error")}}
-function selectedArtifactByPrefix(prefix){return state.artifacts.find(a=>state.selectedArtifacts.has(a.id)&&a.mime_type.startsWith(prefix))||null}
-async function localMediaCall(kind){if(!state.thread)return;try{let endpoint="",payload={thread_id:state.thread.id};if(kind==="image-edit"){const a=selectedArtifactByPrefix("image/");if(!a)return toast("Select one image artifact first.","error");endpoint="/api/media/image-edit";payload={...payload,artifact_id:a.id,filename:`edited-${Date.now()}.png`,width:Number($("editWidth").value)||null,height:Number($("editHeight").value)||null,brightness:Number($("editBrightness").value)||1,contrast:Number($("editContrast").value)||1,saturation:1,output_format:"PNG"}}else if(kind==="pdf-compress"){const a=state.artifacts.find(x=>state.selectedArtifacts.has(x.id)&&x.mime_type==="application/pdf");if(!a)return toast("Select one PDF artifact first.","error");endpoint="/api/media/pdf-compress";payload={...payload,artifact_id:a.id,filename:`compressed-${Date.now()}.pdf`,profile:$("pdfProfile").value}}else if(kind==="audio-edit"){const a=selectedArtifactByPrefix("audio/");if(!a)return toast("Select one audio artifact first.","error");endpoint="/api/media/audio-edit";payload={...payload,artifact_id:a.id,filename:`edited-audio-${Date.now()}.wav`,start_seconds:Number($("mediaStart").value)||0,duration_seconds:Number($("mediaDuration").value)||null,normalize:true,denoise:true}}else if(kind==="video-edit"){const a=selectedArtifactByPrefix("video/");if(!a)return toast("Select one video artifact first.","error");endpoint="/api/media/video-edit";payload={...payload,artifact_id:a.id,filename:`edited-video-${Date.now()}.mp4`,start_seconds:Number($("mediaStart").value)||0,duration_seconds:Number($("mediaDuration").value)||null,width:Number($("editWidth").value)||null,height:Number($("editHeight").value)||null,speed:Number($("videoSpeed").value)||1,mute:false}}const data=await apiJson(endpoint,{method:"POST",body:JSON.stringify(payload)});toast(`${kind} completed`,"success");await refreshArtifacts();if(data.artifact)modal("Artifact created",`<div class="notice success">${escapeHtml(data.artifact.filename)}<br/>${fmtBytes(data.artifact.size_bytes)}</div>`)}catch(e){toast(e.message,"error")}}
-async function createSnapshot(){try{const publish=$("publishSnapshot").checked;const data=await apiJson("/api/storage/snapshot",{method:"POST",body:JSON.stringify({publish_to_kaggle:publish,create_dataset_if_missing:true,message:"Manual RajAIAssist workspace save"})});modal("Workspace saved",`<div class="notice success">${escapeHtml(data.snapshot.path)}<br/>${fmtBytes(data.snapshot.size_bytes)}</div><p>${data.publication?"Published to the private Kaggle Workspace Dataset.":"Saved to Kaggle Output. Configure the workspace Dataset in the notebook for automatic versioning."}</p>`)}catch(e){toast(e.message,"error")}}
-async function renameCurrentThread(){if(!state.thread)return;const title=prompt("New thread name",state.thread.title);if(title===null||!title.trim())return;await updateThread({title:title.trim()});await refreshThreads();toast("Thread renamed","success")}
-async function deleteCurrentThread(){if(!state.thread)return;if(!confirm(`Delete thread \"${state.thread.title}\" and its stored files/artifacts?`))return;await apiJson(`/api/threads/${state.thread.id}`,{method:"DELETE"});state.thread=null;state.messages=[];state.selectedArtifacts.clear();await refreshThreads();if(state.threads.length)await selectThread(state.threads[0].id);else renderMessages();toast("Thread deleted","success")}
-function setupEvents(){themeApply(safeStorageGet("rajai_kaggle_theme","glass-admin"));$("themeSelect").onchange=e=>themeApply(e.target.value);$("showKey").onclick=()=>{$("apiKey").type=$("apiKey").type==="password"?"text":"password";$("showKey").textContent=$("apiKey").type==="password"?"Show":"Hide"};$("unlockBtn").onclick=unlock;$("checkStatus").onclick=loadManifest;$("newThread").onclick=newThread;$("renameThread").onclick=renameCurrentThread;$("deleteThread").onclick=deleteCurrentThread;$("refreshThreads").onclick=refreshThreads;$("threadSearch").oninput=renderThreads;qsa(".mode").forEach(b=>b.onclick=()=>setMode(b.dataset.mode));$("modelSelect").onchange=()=>state.thread&&updateThread({model:$("modelSelect").value});$("saveMemory").onclick=async()=>{await updateThread({pinned_context:$("pinnedContext").value,summary:$("threadSummary").value});toast("Thread memory saved","success")};$("sendBtn").onclick=sendMessage;$("question").onkeydown=e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMessage()}};$("clearComposer").onclick=()=>$("question").value="";$("fileInput").onchange=e=>uploadFiles(e.target.files);$("messages").onclick=e=>{const b=e.target.closest(".example");if(b){setMode(b.dataset.mode);$("question").value=b.dataset.prompt;$("question").focus()}};qsa(".tab").forEach(b=>b.onclick=()=>{qsa(".tab").forEach(x=>x.classList.toggle("active",x===b));qsa(".panel-section").forEach(x=>x.classList.toggle("active",x.id===`panel-${b.dataset.tab}`))});$("refreshArtifacts").onclick=refreshArtifacts;$("refreshDocuments").onclick=refreshDocuments;$("downloadThread").onclick=downloadThread;$("runAgent").onclick=runAgent;$("fetchUrlBtn").onclick=fetchUrl;$("generateImage").onclick=()=>mediaCall("image");$("generateVideo").onclick=()=>mediaCall("video");$("generateMoviePlan").onclick=()=>mediaCall("plan");$("generateNarration").onclick=()=>mediaCall("narration");$("createTitleCard").onclick=()=>mediaCall("title");$("renderSlideshow").onclick=()=>mediaCall("slideshow");$("clearMediaSelection").onclick=()=>{state.selectedArtifacts.clear();refreshArtifacts()};$("editSelectedImage").onclick=()=>localMediaCall("image-edit");$("compressSelectedPdf").onclick=()=>localMediaCall("pdf-compress");$("cleanSelectedAudio").onclick=()=>localMediaCall("audio-edit");$("editSelectedVideo").onclick=()=>localMediaCall("video-edit");$("createSnapshot").onclick=createSnapshot;$("modalClose").onclick=()=>$("modal").classList.add("hidden");$("modal").onclick=e=>{if(e.target===$("modal"))$("modal").classList.add("hidden")};$("mobileTools").onclick=()=>$("rightbar").classList.toggle("mobile-open")}
-try{
+const CFG = window.RAJAI_CONFIG || {
+  version: "2.0.1",
+  endpointManifest: "./runtime-endpoint.json",
+  endpointRefreshMs: 45000,
+};
+const state = {
+  manifest: null,
+  backend: "",
+  apiKey: "",
+  role: "",
+  unlocked: false,
+  threads: [],
+  thread: null,
+  messages: [],
+  artifacts: [],
+  documents: [],
+  mode: "chat",
+  busy: false,
+  selectedArtifacts: new Set(),
+};
+const $ = (id) => document.getElementById(id);
+const qsa = (selector) => Array.from(document.querySelectorAll(selector));
+const WELCOME_HTML = $("welcome").outerHTML;
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>'"]/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "'": "&#39;",
+    '"': "&quot;",
+  })[character]);
+}
+function toast(message, type = "") {
+  const box = $("toast");
+  box.textContent = message;
+  box.className = "toast" + (type ? " " + type : "");
+  box.classList.remove("hidden");
+  clearTimeout(toast.timer);
+  toast.timer = setTimeout(() => box.classList.add("hidden"), 5000);
+}
+function modal(title, html) {
+  $("modalTitle").textContent = title;
+  $("modalBody").innerHTML = html;
+  $("modal").classList.remove("hidden");
+}
+function fmtBytes(value) {
+  const n = Number(value || 0);
+  if (n < 1024) return n + " B";
+  if (n < 1048576) return (n / 1024).toFixed(1) + " KB";
+  if (n < 1073741824) return (n / 1048576).toFixed(1) + " MB";
+  return (n / 1073741824).toFixed(1) + " GB";
+}
+function fmtDate(value) {
+  try {
+    return new Date(value).toLocaleString();
+  } catch {
+    return String(value || "");
+  }
+}
+function setStatus(label, online = false) {
+  const element = $("runtimeStatus");
+  element.classList.toggle("online", online);
+  element.querySelector("span:last-child").textContent = label;
+}
+function safeStorageGet(key, fallback = "") {
+  try {
+    const value = window.localStorage.getItem(key);
+    return value === null ? fallback : value;
+  } catch (error) {
+    console.warn("Browser storage is unavailable; continuing without saved preferences.", error);
+    return fallback;
+  }
+}
+function safeStorageSet(key, value) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch (error) {
+    console.warn("Browser storage is unavailable; preference was not saved.", error);
+  }
+}
+function themeApply(value) {
+  const selected = ["glass-admin", "lustro"].includes(value) ? value : "glass-admin";
+  document.documentElement.dataset.theme = selected;
+  $("themeSelect").value = selected;
+  safeStorageSet("rajai_local_theme", selected);
+}
+async function shaHmac(key, text) {
+  const encoder = new TextEncoder();
+  const cryptoKey = await crypto.subtle.importKey(
+    "raw",
+    encoder.encode(key),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const signature = await crypto.subtle.sign("HMAC", cryptoKey, encoder.encode(text));
+  return Array.from(new Uint8Array(signature))
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+}
+async function loadManifest() {
+  try {
+    const response = await fetch(`${CFG.endpointManifest}?t=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    state.manifest = await response.json();
+    const manifest = state.manifest;
+    if (
+      !manifest.online ||
+      !manifest.backend_url ||
+      Date.now() / 1000 >= Number(manifest.expires_at || 0)
+    ) {
+      state.backend = "";
+      setStatus("Offline", false);
+      $("endpointInfo").className = "notice error";
+      $("endpointInfo").textContent =
+        manifest.message || "RajAIAssist is offline. Start the local-model notebook runtime.";
+      return false;
+    }
+    state.backend = String(manifest.backend_url).replace(/\/$/, "");
+    setStatus("Endpoint available", true);
+    $("endpointInfo").className = "notice success";
+    $("endpointInfo").textContent =
+      `Local endpoint published ${fmtDate(Number(manifest.issued_at) * 1000)} · ` +
+      `valid until ${fmtDate(Number(manifest.expires_at) * 1000)}`;
+    return true;
+  } catch (error) {
+    state.backend = "";
+    setStatus("Manifest unavailable", false);
+    $("endpointInfo").className = "notice error";
+    $("endpointInfo").textContent = `Could not load runtime endpoint: ${error.message}`;
+    return false;
+  }
+}
+async function identifyManifestRole(key) {
+  const manifest = state.manifest;
+  if (!manifest?.online) return "";
+  const message = `${String(manifest.backend_url).replace(/\/$/, "")}|${Number(
+    manifest.issued_at,
+  )}|${Number(manifest.expires_at)}|${manifest.version}`;
+  const calculated = await shaHmac(key, message);
+  const ownerSignature = String(manifest.owner_signature || manifest.signature || "");
+  const guestSignature = String(manifest.guest_signature || "");
+  if (ownerSignature && calculated === ownerSignature) return "owner";
+  if (guestSignature && calculated === guestSignature) return "guest";
+  return "";
+}
+async function api(path, options = {}) {
+  if (!state.backend) throw new Error("RajAIAssist is offline");
+  const headers = new Headers(options.headers || {});
+  headers.set("Authorization", `Bearer ${state.apiKey}`);
+  if (options.body && !(options.body instanceof FormData) && !headers.has("Content-Type")) {
+    headers.set("Content-Type", "application/json");
+  }
+  const response = await fetch(state.backend + path, { ...options, headers });
+  if (response.status === 401) throw new Error("Runtime key rejected");
+  if (response.status === 403) throw new Error("This action requires the owner runtime key");
+  if (!response.ok) {
+    let body;
+    try {
+      body = await response.json();
+    } catch {
+      body = { detail: await response.text() };
+    }
+    throw new Error(body.detail || body.error || `HTTP ${response.status}`);
+  }
+  return response;
+}
+async function apiJson(path, options = {}) {
+  return (await api(path, options)).json();
+}
+function applyRole(role) {
+  state.role = role;
+  const owner = role === "owner";
+  qsa(".owner-only").forEach((element) => element.classList.toggle("hidden", !owner));
+  $("appRoot").classList.toggle("guest-layout", !owner);
+  $("providerBadge").textContent = `Local models · ${owner ? "Owner" : "Guest"}`;
+  if (!owner) {
+    state.mode = "chat";
+    state.thread = null;
+    state.threads = [];
+    state.artifacts = [];
+    state.documents = [];
+    $("currentThreadTitle").textContent = "Guest session";
+    $("currentThreadMeta").textContent = "Temporary conversation · private project data unavailable";
+    setMode("chat", false);
+  }
+}
+function lockUi(unlocked, role = "") {
+  state.unlocked = unlocked;
+  qsa(".locked-content").forEach((element) => element.classList.toggle("hidden", !unlocked));
+  $("unlockBtn").textContent = unlocked ? `Unlocked · ${role || state.role}` : "Unlock RajAIAssist";
+  $("apiKey").disabled = unlocked;
+  $("showKey").disabled = unlocked;
+  if (unlocked) applyRole(role || state.role);
+}
+function renderMarkdown(text) {
+  const codeBlocks = [];
+  let work = escapeHtml(text).replace(/```([^\n]*)\n([\s\S]*?)```/g, (_, meta, body) => {
+    const index = codeBlocks.length;
+    codeBlocks.push(
+      `<pre><code data-meta="${escapeHtml(meta.trim())}">${body}</code></pre>`,
+    );
+    return `@@CODE${index}@@`;
+  });
+  work = work
+    .replace(/^### (.*)$/gm, "<h3>$1</h3>")
+    .replace(/^## (.*)$/gm, "<h2>$1</h2>")
+    .replace(/^# (.*)$/gm, "<h1>$1</h1>")
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/^[-*] (.*)$/gm, "<li>$1</li>")
+    .replace(/(<li>[\s\S]*?<\/li>)(?:\n|$)/g, "<ul>$1</ul>")
+    .replace(/\n{2,}/g, "</p><p>")
+    .replace(/\n/g, "<br/>");
+  work = `<p>${work}</p>`;
+  codeBlocks.forEach((block, index) => {
+    work = work.replace(`@@CODE${index}@@`, block);
+  });
+  return work;
+}
+function renderMessages() {
+  const box = $("messages");
+  if (!state.messages.length) {
+    box.innerHTML = WELCOME_HTML;
+    return;
+  }
+  box.innerHTML = state.messages
+    .map((message) => {
+      const sources = (message.sources || [])
+        .map((source) => `<span class="source">${escapeHtml(source.label || "source")}</span>`)
+        .join("");
+      const artifacts = (message.artifacts || [])
+        .map(
+          (artifact) =>
+            `<button class="artifact-chip" data-artifact="${escapeHtml(artifact.id)}">` +
+            `${escapeHtml(artifact.filename)}</button>`,
+        )
+        .join("");
+      return `<article class="message ${message.role === "user" ? "user" : "assistant"}">
+        <div class="message-head"><span>${message.role === "user" ? "Raj" : "RajAIAssist"}</span>
+        <span>${escapeHtml(fmtDate(message.created_at))}</span></div>
+        <div class="bubble">${renderMarkdown(message.content)}
+        ${sources ? `<div class="source-row">${sources}</div>` : ""}
+        ${artifacts ? `<div class="artifact-row">${artifacts}</div>` : ""}</div>
+      </article>`;
+    })
+    .join("");
+  qsa("[data-artifact]").forEach((button) => {
+    button.onclick = () => downloadArtifact(button.dataset.artifact);
+  });
+  box.scrollTop = box.scrollHeight;
+}
+function renderThreads() {
+  if (state.role !== "owner") return;
+  const filter = $("threadSearch").value.toLowerCase();
+  $("threadList").innerHTML =
+    state.threads
+      .filter((thread) => !filter || thread.title.toLowerCase().includes(filter))
+      .map(
+        (thread) =>
+          `<button class="thread ${state.thread?.id === thread.id ? "active" : ""}" ` +
+          `data-thread="${thread.id}"><strong>${escapeHtml(thread.title)}</strong>` +
+          `<span>${escapeHtml(thread.mode)} · ${fmtDate(thread.updated_at)}</span></button>`,
+      )
+      .join("") || `<div class="notice">No threads yet.</div>`;
+  qsa("[data-thread]").forEach((button) => {
+    button.onclick = () => selectThread(button.dataset.thread);
+  });
+}
+function setMode(mode, save = true) {
+  if (state.role === "guest") mode = "chat";
+  state.mode = mode;
+  qsa(".mode").forEach((button) => {
+    button.classList.toggle("active", button.dataset.mode === mode);
+  });
+  ["chat", "code", "research", "media"].forEach((name) => {
+    const element = $(name + "Tools");
+    if (element) element.classList.toggle("hidden", name !== mode);
+  });
+  if (save && state.thread && state.role === "owner") {
+    updateThread({ mode }).catch((error) => toast(error.message, "error"));
+  }
+}
+function populateModelProfiles(status) {
+  const aliases = status?.config?.models || {};
+  const installed = new Set(status?.installed_models || []);
+  const labels = {
+    smart: "Smart · Qwen3 8B",
+    quality: "Quality · Qwen3 14B (optional)",
+    coding: "Coding · Qwen2.5-Coder 7B",
+    "coding-pro": "Coding Pro · Qwen2.5-Coder 14B (optional)",
+    research: "Private Research · Qwen3 8B",
+    reasoning: "Reasoning · Qwen3 14B (optional)",
+    fast: "Fast · Qwen3 4B Instruct",
+    media: "Media Planner · Qwen3 8B",
+  };
+  const preferredOrder = ["smart", "quality", "coding", "coding-pro", "research", "reasoning", "fast", "media"];
+  $("modelSelect").innerHTML = preferredOrder
+    .filter((alias) => aliases[alias])
+    .map((alias) => {
+      const exact = installed.has(aliases[alias]);
+      const suffix = exact ? "" : " · fallback if unavailable";
+      return `<option value="${escapeHtml(alias)}">${escapeHtml(labels[alias] || alias)}${suffix}</option>`;
+    })
+    .join("");
+}
+async function refreshThreads() {
+  if (state.role !== "owner") return;
+  const data = await apiJson("/api/threads");
+  state.threads = data.threads;
+  renderThreads();
+  if (!state.thread && state.threads.length) await selectThread(state.threads[0].id);
+}
+async function selectThread(id) {
+  if (state.role !== "owner") return;
+  const data = await apiJson(`/api/threads/${id}`);
+  state.thread = data.thread;
+  state.mode = state.thread.mode;
+  $("currentThreadTitle").textContent = state.thread.title;
+  $("currentThreadMeta").textContent =
+    `${state.thread.mode} · ${state.thread.model} · updated ${fmtDate(state.thread.updated_at)}`;
+  $("modelSelect").value = state.thread.model || "smart";
+  $("pinnedContext").value = state.thread.pinned_context || "";
+  $("threadSummary").value = state.thread.summary || "";
+  setMode(state.thread.mode, false);
+  renderThreads();
+  await Promise.all([loadMessages(), refreshArtifacts(), refreshDocuments(), refreshWorkspace()]);
+}
+async function loadMessages() {
+  if (state.role !== "owner" || !state.thread) return;
+  state.messages = (
+    await apiJson(`/api/threads/${state.thread.id}/messages?limit=600`)
+  ).messages;
+  renderMessages();
+}
+async function newThread() {
+  if (state.role === "guest") {
+    state.messages = [];
+    renderMessages();
+    toast("New temporary guest conversation started", "success");
+    return;
+  }
+  const title = prompt("Thread name", "New project");
+  if (title === null) return;
+  const data = await apiJson("/api/threads", {
+    method: "POST",
+    body: JSON.stringify({
+      title: title || "New project",
+      mode: state.mode,
+      provider: "local",
+      model: $("modelSelect").value,
+    }),
+  });
+  state.threads.unshift(data.thread);
+  await selectThread(data.thread.id);
+}
+async function updateThread(changes) {
+  if (state.role !== "owner" || !state.thread) return null;
+  const data = await apiJson(`/api/threads/${state.thread.id}`, {
+    method: "PATCH",
+    body: JSON.stringify(changes),
+  });
+  state.thread = data.thread;
+  const index = state.threads.findIndex((thread) => thread.id === state.thread.id);
+  if (index >= 0) state.threads[index] = state.thread;
+  renderThreads();
+  return state.thread;
+}
+async function unlock() {
+  if (!(await loadManifest())) return toast("Start the local-model notebook runtime first.", "error");
+  const key = $("apiKey").value.trim();
+  if (!key) return toast("Enter a runtime key.", "error");
+  const role = await identifyManifestRole(key);
+  if (!role) return toast("This key does not match the current runtime.", "error");
+  state.apiKey = key;
+  state.role = role;
+  try {
+    const status = await apiJson("/api/status");
+    if (status.role !== role) throw new Error("Runtime role verification failed");
+    populateModelProfiles(status);
+    lockUi(true, role);
+    setStatus("Online", true);
+    if (role === "owner") {
+      await refreshThreads();
+      if (!state.threads.length) await newThread();
+      toast("Owner workspace unlocked", "success");
+    } else {
+      state.messages = [];
+      renderMessages();
+      toast("Guest chat unlocked · private data remains unavailable", "success");
+    }
+  } catch (error) {
+    state.apiKey = "";
+    state.role = "";
+    toast(error.message, "error");
+  }
+}
+async function sendMessage() {
+  if (state.busy) return;
+  if (state.role === "owner" && !state.thread) return toast("Select a thread first.", "error");
+  const question = $("question").value.trim();
+  if (!question) return;
+  state.busy = true;
+  $("sendBtn").disabled = true;
+  $("responseProgress").classList.remove("hidden");
+  $("responseProgress").firstElementChild.style.width = "18%";
+  const previousGuestHistory =
+    state.role === "guest"
+      ? state.messages
+          .slice(-12)
+          .filter((message) => ["user", "assistant"].includes(message.role))
+          .map((message) => ({ role: message.role, content: message.content }))
+      : [];
+  const optimistic = {
+    role: "user",
+    content: question,
+    created_at: new Date().toISOString(),
+    sources: [],
+    artifacts: [],
+  };
+  state.messages.push(optimistic);
+  renderMessages();
+  $("question").value = "";
+  const payload = {
+    thread_id: state.role === "owner" ? state.thread.id : "",
+    question,
+    mode: state.role === "owner" ? state.mode : "chat",
+    model: $("modelSelect").value || "smart",
+    web_search: false,
+    url_context: false,
+    include_documents: state.role === "owner" && $("privateEvidenceToggle").checked,
+    output_tokens: Number($("outputSelect").value),
+    long_form: $("longFormToggle").checked,
+    long_form_segments: Number($("segmentSelect").value),
+    temperature: state.role === "owner" && state.mode === "code" ? 0.12 : 0.25,
+    verified: $("verifiedToggle").checked,
+    guest_history: previousGuestHistory,
+  };
+  try {
+    const response = await api("/api/chat/stream", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let assistant = null;
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const blocks = buffer.split("\n\n");
+      buffer = blocks.pop();
+      for (const block of blocks) {
+        const lines = block.split("\n");
+        const event = (lines.find((line) => line.startsWith("event:")) || "").slice(6).trim();
+        const dataLine = lines.find((line) => line.startsWith("data:"));
+        if (!dataLine) continue;
+        const data = JSON.parse(dataLine.slice(5));
+        if (event === "progress") {
+          $("composerHint").textContent = `Generating locally… ${data.elapsed_seconds || 0}s`;
+          $("responseProgress").firstElementChild.style.width = "45%";
+        } else if (event === "token") {
+          if (!assistant) {
+            assistant = {
+              role: "assistant",
+              content: "",
+              created_at: new Date().toISOString(),
+              sources: [],
+              artifacts: [],
+            };
+            state.messages.push(assistant);
+          }
+          assistant.content += data.text;
+          renderMessages();
+          $("responseProgress").firstElementChild.style.width = "78%";
+        } else if (event === "done") {
+          if (assistant) {
+            assistant.sources = data.sources || [];
+            assistant.artifacts = data.artifacts || [];
+          } else {
+            state.messages.push(data.message);
+          }
+          $("responseProgress").firstElementChild.style.width = "100%";
+        } else if (event === "error") {
+          throw new Error(data.error || "Generation failed");
+        }
+      }
+    }
+    if (state.role === "owner") {
+      await refreshThreads();
+      await refreshArtifacts();
+    }
+  } catch (error) {
+    toast(error.message, "error");
+    if (state.role === "owner") await loadMessages().catch(() => {});
+  } finally {
+    state.busy = false;
+    $("sendBtn").disabled = false;
+    $("responseProgress").classList.add("hidden");
+    $("responseProgress").firstElementChild.style.width = "0";
+    $("composerHint").textContent =
+      state.role === "owner"
+        ? "Attachments and private evidence remain inside your owner workspace."
+        : "Guest messages are temporary and are not stored on the server.";
+  }
+}
+async function uploadFiles(files) {
+  if (state.role !== "owner" || !state.thread || !files.length) return;
+  const form = new FormData();
+  form.append("thread_id", state.thread.id);
+  Array.from(files).forEach((file) => form.append("files", file));
+  $("composerHint").textContent = `Uploading ${files.length} file(s)…`;
+  try {
+    const data = await (
+      await api("/api/upload", { method: "POST", body: form })
+    ).json();
+    toast(
+      `${data.successful} file(s) ingested${data.failed ? `, ${data.failed} failed` : ""}`,
+      data.failed ? "error" : "success",
+    );
+    await Promise.all([refreshDocuments(), refreshArtifacts()]);
+  } catch (error) {
+    toast(error.message, "error");
+  } finally {
+    $("fileInput").value = "";
+    $("composerHint").textContent = "Attachments become part of the selected private thread.";
+  }
+}
+function updateMediaSelectionInfo() {
+  const selected = state.artifacts.filter((artifact) => state.selectedArtifacts.has(artifact.id));
+  const names = selected.slice(0, 4).map((artifact) => artifact.filename).join(", ");
+  $("mediaSelectionInfo").textContent = selected.length
+    ? `${selected.length} selected: ${names}${selected.length > 4 ? " …" : ""}`
+    : "Select image, video or audio artifacts from the Artifacts tab to use as inputs.";
+}
+async function refreshArtifacts() {
+  if (state.role !== "owner" || !state.thread) return;
+  state.artifacts = (
+    await apiJson(`/api/threads/${state.thread.id}/artifacts`)
+  ).artifacts;
+  const valid = new Set(state.artifacts.map((artifact) => artifact.id));
+  state.selectedArtifacts = new Set(
+    Array.from(state.selectedArtifacts).filter((id) => valid.has(id)),
+  );
+  $("artifactList").innerHTML =
+    state.artifacts
+      .map(
+        (artifact) =>
+          `<div class="list-item"><input type="checkbox" data-select-artifact="${artifact.id}" ` +
+          `${state.selectedArtifacts.has(artifact.id) ? "checked" : ""} ` +
+          `aria-label="Select ${escapeHtml(artifact.filename)}"/><div class="meta">` +
+          `<strong>${escapeHtml(artifact.filename)}</strong><span>${escapeHtml(artifact.kind)} · ` +
+          `${escapeHtml(artifact.mime_type)} · ${fmtBytes(artifact.size_bytes)}</span></div>` +
+          `<button class="btn small" data-download="${artifact.id}">Download</button></div>`,
+      )
+      .join("") || `<div class="notice">No generated artifacts yet.</div>`;
+  qsa("[data-download]").forEach((button) => {
+    button.onclick = () => downloadArtifact(button.dataset.download);
+  });
+  qsa("[data-select-artifact]").forEach((checkbox) => {
+    checkbox.onchange = () => {
+      checkbox.checked
+        ? state.selectedArtifacts.add(checkbox.dataset.selectArtifact)
+        : state.selectedArtifacts.delete(checkbox.dataset.selectArtifact);
+      updateMediaSelectionInfo();
+    };
+  });
+  updateMediaSelectionInfo();
+}
+async function refreshDocuments() {
+  if (state.role !== "owner" || !state.thread) return;
+  state.documents = (
+    await apiJson(`/api/threads/${state.thread.id}/documents`)
+  ).documents;
+  $("documentList").innerHTML =
+    state.documents
+      .map(
+        (document) =>
+          `<div class="list-item"><div class="meta"><strong>${escapeHtml(document.filename)}</strong>` +
+          `<span>${escapeHtml(document.extraction_status)} · ${fmtBytes(document.size_bytes)}</span>` +
+          `</div></div>`,
+      )
+      .join("") || `<div class="notice">No files attached to this thread.</div>`;
+}
+async function downloadArtifact(id) {
+  if (state.role !== "owner") return toast("Private artifacts require the owner key.", "error");
+  try {
+    const response = await api(`/api/artifacts/${id}/download`);
+    const blob = await response.blob();
+    const disposition = response.headers.get("content-disposition") || "";
+    const match = disposition.match(/filename="?([^";]+)"?/i);
+    downloadBlob(blob, match ? match[1] : "artifact.bin");
+  } catch (error) {
+    toast(error.message, "error");
+  }
+}
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+}
+async function downloadThread() {
+  if (state.role !== "owner" || !state.thread) return;
+  try {
+    const response = await api(`/api/threads/${state.thread.id}/download.zip`);
+    downloadBlob(
+      await response.blob(),
+      `${state.thread.title.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}.zip`,
+    );
+  } catch (error) {
+    toast(error.message, "error");
+  }
+}
+async function refreshWorkspace() {
+  if (state.role !== "owner" || !state.thread) return;
+  try {
+    const data = await apiJson(`/api/code/${state.thread.id}/files`);
+    $("workspaceFiles").innerHTML =
+      data.files
+        .slice(0, 100)
+        .map(
+          (file) =>
+            `<div class="list-item"><div class="meta"><strong>${escapeHtml(file.path)}</strong>` +
+            `<span>${fmtBytes(file.size_bytes)}</span></div></div>`,
+        )
+        .join("") || `<div class="notice">Workspace is empty.</div>`;
+  } catch {
+    $("workspaceFiles").innerHTML = "";
+  }
+}
+async function runAgent() {
+  if (state.role !== "owner" || !state.thread) return;
+  const task = $("agentTask").value.trim() || $("question").value.trim();
+  if (!task) return toast("Enter an agent task.", "error");
+  state.busy = true;
+  $("runAgent").disabled = true;
+  try {
+    const data = await apiJson("/api/code/agent", {
+      method: "POST",
+      body: JSON.stringify({
+        thread_id: state.thread.id,
+        task,
+        model: $("modelSelect").value,
+        execute_actions: $("executeActions").checked,
+        max_output_tokens: Number($("outputSelect").value),
+      }),
+    });
+    modal(
+      "Coding agent result",
+      `<div class="bubble">${renderMarkdown(
+        data.review || data.plan?.final_message || "Completed",
+      )}</div><pre>${escapeHtml(JSON.stringify(data.execution_results, null, 2))}</pre>`,
+    );
+    await refreshWorkspace();
+  } catch (error) {
+    toast(error.message, "error");
+  } finally {
+    state.busy = false;
+    $("runAgent").disabled = false;
+  }
+}
+async function mediaCall(kind) {
+  if (state.role !== "owner" || !state.thread) return;
+  const promptText = $("mediaPrompt").value.trim();
+  if (kind !== "slideshow" && !promptText) return toast("Enter a media prompt.", "error");
+  const aspect = $("aspectRatio").value;
+  const selected = state.artifacts.filter((artifact) => state.selectedArtifacts.has(artifact.id));
+  try {
+    let data;
+    if (kind === "image") {
+      const refs = selected
+        .filter((artifact) => artifact.mime_type.startsWith("image/"))
+        .map((artifact) => artifact.id);
+      data = await apiJson("/api/media/image", {
+        method: "POST",
+        body: JSON.stringify({
+          thread_id: state.thread.id,
+          prompt: promptText,
+          model: "image",
+          filename: `image-${Date.now()}.png`,
+          aspect_ratio: aspect,
+          image_size: $("imageSize").value,
+          reference_artifact_ids: refs,
+          web_search: false,
+        }),
+      });
+    } else if (kind === "video") {
+      data = await apiJson("/api/media/video", {
+        method: "POST",
+        body: JSON.stringify({
+          thread_id: state.thread.id,
+          prompt: promptText,
+          model: "video",
+          filename: `video-${Date.now()}.mp4`,
+          aspect_ratio: aspect,
+          reference_artifact_ids: [],
+        }),
+      });
+    } else if (kind === "narration") {
+      data = await apiJson("/api/media/narration", {
+        method: "POST",
+        body: JSON.stringify({
+          thread_id: state.thread.id,
+          text: promptText,
+          model: "tts",
+          voice: $("voiceSelect").value,
+          filename: `narration-${Date.now()}.wav`,
+        }),
+      });
+    } else if (kind === "plan") {
+      data = await apiJson("/api/media/movie-plan", {
+        method: "POST",
+        body: JSON.stringify({
+          thread_id: state.thread.id,
+          topic: promptText,
+          model: "media",
+          duration_seconds: 180,
+          aspect_ratio: aspect,
+          web_search: false,
+        }),
+      });
+    } else if (kind === "slideshow") {
+      const images = selected
+        .filter((artifact) => artifact.mime_type.startsWith("image/"))
+        .map((artifact) => artifact.id);
+      const audio = selected.find((artifact) => artifact.mime_type.startsWith("audio/"));
+      if (!images.length) return toast("Select one or more image artifacts first.", "error");
+      data = await apiJson("/api/media/slideshow", {
+        method: "POST",
+        body: JSON.stringify({
+          thread_id: state.thread.id,
+          image_artifact_ids: images,
+          audio_artifact_id: audio?.id || null,
+          filename: `slideshow-${Date.now()}.mp4`,
+          width: 1920,
+          height: 1080,
+          fps: 30,
+        }),
+      });
+    } else {
+      data = await apiJson("/api/media/title-card", {
+        method: "POST",
+        body: JSON.stringify({
+          thread_id: state.thread.id,
+          title: promptText,
+          subtitle: "Created with RajAIAssist",
+          filename: `title-card-${Date.now()}.png`,
+        }),
+      });
+    }
+    toast(`${kind} created`, "success");
+    await refreshArtifacts();
+    if (data.plan) modal("Movie plan", `<pre>${escapeHtml(JSON.stringify(data.plan, null, 2))}</pre>`);
+  } catch (error) {
+    toast(error.message, "error");
+  }
+}
+function selectedArtifactByPrefix(prefix) {
+  return (
+    state.artifacts.find(
+      (artifact) =>
+        state.selectedArtifacts.has(artifact.id) && artifact.mime_type.startsWith(prefix),
+    ) || null
+  );
+}
+async function localMediaCall(kind) {
+  if (state.role !== "owner" || !state.thread) return;
+  try {
+    let endpoint = "";
+    let payload = { thread_id: state.thread.id };
+    if (kind === "image-edit") {
+      const artifact = selectedArtifactByPrefix("image/");
+      if (!artifact) return toast("Select one image artifact first.", "error");
+      endpoint = "/api/media/image-edit";
+      payload = {
+        ...payload,
+        artifact_id: artifact.id,
+        filename: `edited-${Date.now()}.png`,
+        width: Number($("editWidth").value) || null,
+        height: Number($("editHeight").value) || null,
+        brightness: Number($("editBrightness").value) || 1,
+        contrast: Number($("editContrast").value) || 1,
+        saturation: 1,
+        output_format: "PNG",
+      };
+    } else if (kind === "pdf-compress") {
+      const artifact = state.artifacts.find(
+        (item) => state.selectedArtifacts.has(item.id) && item.mime_type === "application/pdf",
+      );
+      if (!artifact) return toast("Select one PDF artifact first.", "error");
+      endpoint = "/api/media/pdf-compress";
+      payload = {
+        ...payload,
+        artifact_id: artifact.id,
+        filename: `compressed-${Date.now()}.pdf`,
+        profile: $("pdfProfile").value,
+      };
+    } else if (kind === "audio-edit") {
+      const artifact = selectedArtifactByPrefix("audio/");
+      if (!artifact) return toast("Select one audio artifact first.", "error");
+      endpoint = "/api/media/audio-edit";
+      payload = {
+        ...payload,
+        artifact_id: artifact.id,
+        filename: `edited-audio-${Date.now()}.wav`,
+        start_seconds: Number($("mediaStart").value) || 0,
+        duration_seconds: Number($("mediaDuration").value) || null,
+        normalize: true,
+        denoise: true,
+      };
+    } else if (kind === "video-edit") {
+      const artifact = selectedArtifactByPrefix("video/");
+      if (!artifact) return toast("Select one video artifact first.", "error");
+      endpoint = "/api/media/video-edit";
+      payload = {
+        ...payload,
+        artifact_id: artifact.id,
+        filename: `edited-video-${Date.now()}.mp4`,
+        start_seconds: Number($("mediaStart").value) || 0,
+        duration_seconds: Number($("mediaDuration").value) || null,
+        width: Number($("editWidth").value) || null,
+        height: Number($("editHeight").value) || null,
+        speed: Number($("videoSpeed").value) || 1,
+        mute: false,
+      };
+    }
+    const data = await apiJson(endpoint, { method: "POST", body: JSON.stringify(payload) });
+    toast(`${kind} completed`, "success");
+    await refreshArtifacts();
+    if (data.artifact) {
+      modal(
+        "Artifact created",
+        `<div class="notice success">${escapeHtml(data.artifact.filename)}<br/>` +
+          `${fmtBytes(data.artifact.size_bytes)}</div>`,
+      );
+    }
+  } catch (error) {
+    toast(error.message, "error");
+  }
+}
+async function createSnapshot() {
+  if (state.role !== "owner") return;
+  try {
+    const publish = $("publishSnapshot").checked;
+    const data = await apiJson("/api/storage/snapshot", {
+      method: "POST",
+      body: JSON.stringify({
+        publish_to_workspace: publish,
+        create_dataset_if_missing: true,
+        message: "Manual RajAIAssist workspace save",
+      }),
+    });
+    modal(
+      "Workspace saved",
+      `<div class="notice success">${escapeHtml(data.snapshot.path)}<br/>` +
+        `${fmtBytes(data.snapshot.size_bytes)}</div><p>` +
+        `${data.publication ? "Published to the private persistent workspace." : "Saved as a private runtime output snapshot."}</p>`,
+    );
+  } catch (error) {
+    toast(error.message, "error");
+  }
+}
+async function renameCurrentThread() {
+  if (state.role !== "owner" || !state.thread) return;
+  const title = prompt("New thread name", state.thread.title);
+  if (title === null || !title.trim()) return;
+  await updateThread({ title: title.trim() });
+  await refreshThreads();
+  toast("Thread renamed", "success");
+}
+async function deleteCurrentThread() {
+  if (state.role !== "owner" || !state.thread) return;
+  if (!confirm(`Delete thread "${state.thread.title}" and its stored files/artifacts?`)) return;
+  await apiJson(`/api/threads/${state.thread.id}`, { method: "DELETE" });
+  state.thread = null;
+  state.messages = [];
+  state.selectedArtifacts.clear();
+  await refreshThreads();
+  if (state.threads.length) await selectThread(state.threads[0].id);
+  else renderMessages();
+  toast("Thread deleted", "success");
+}
+function setupEvents() {
+  themeApply(safeStorageGet("rajai_local_theme", "glass-admin"));
+  $("themeSelect").onchange = (event) => themeApply(event.target.value);
+  $("showKey").onclick = () => {
+    $("apiKey").type = $("apiKey").type === "password" ? "text" : "password";
+    $("showKey").textContent = $("apiKey").type === "password" ? "Show" : "Hide";
+  };
+  $("unlockBtn").onclick = unlock;
+  $("checkStatus").onclick = loadManifest;
+  $("newThread").onclick = newThread;
+  $("renameThread").onclick = renameCurrentThread;
+  $("deleteThread").onclick = deleteCurrentThread;
+  $("refreshThreads").onclick = refreshThreads;
+  $("threadSearch").oninput = renderThreads;
+  qsa(".mode").forEach((button) => {
+    button.onclick = () => setMode(button.dataset.mode);
+  });
+  $("modelSelect").onchange = () => {
+    if (state.role === "owner" && state.thread) updateThread({ model: $("modelSelect").value });
+  };
+  $("saveMemory").onclick = async () => {
+    await updateThread({
+      pinned_context: $("pinnedContext").value,
+      summary: $("threadSummary").value,
+    });
+    toast("Thread memory saved", "success");
+  };
+  $("sendBtn").onclick = sendMessage;
+  $("question").onkeydown = (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      sendMessage();
+    }
+  };
+  $("clearComposer").onclick = () => {
+    $("question").value = "";
+  };
+  $("fileInput").onchange = (event) => uploadFiles(event.target.files);
+  $("messages").onclick = (event) => {
+    const button = event.target.closest(".example");
+    if (!button) return;
+    setMode(button.dataset.mode);
+    $("question").value = button.dataset.prompt;
+    $("question").focus();
+  };
+  qsa(".tab").forEach((button) => {
+    button.onclick = () => {
+      qsa(".tab").forEach((item) => item.classList.toggle("active", item === button));
+      qsa(".panel-section").forEach((section) => {
+        section.classList.toggle("active", section.id === `panel-${button.dataset.tab}`);
+      });
+    };
+  });
+  $("refreshArtifacts").onclick = refreshArtifacts;
+  $("refreshDocuments").onclick = refreshDocuments;
+  $("downloadThread").onclick = downloadThread;
+  $("runAgent").onclick = runAgent;
+  $("generateImage").onclick = () => mediaCall("image");
+  $("generateVideo").onclick = () => mediaCall("video");
+  $("generateMoviePlan").onclick = () => mediaCall("plan");
+  $("generateNarration").onclick = () => mediaCall("narration");
+  $("createTitleCard").onclick = () => mediaCall("title");
+  $("renderSlideshow").onclick = () => mediaCall("slideshow");
+  $("clearMediaSelection").onclick = () => {
+    state.selectedArtifacts.clear();
+    refreshArtifacts();
+  };
+  $("editSelectedImage").onclick = () => localMediaCall("image-edit");
+  $("compressSelectedPdf").onclick = () => localMediaCall("pdf-compress");
+  $("cleanSelectedAudio").onclick = () => localMediaCall("audio-edit");
+  $("editSelectedVideo").onclick = () => localMediaCall("video-edit");
+  $("createSnapshot").onclick = createSnapshot;
+  $("modalClose").onclick = () => $("modal").classList.add("hidden");
+  $("modal").onclick = (event) => {
+    if (event.target === $("modal")) $("modal").classList.add("hidden");
+  };
+  $("mobileTools").onclick = () => $("rightbar").classList.toggle("mobile-open");
+}
+try {
   setupEvents();
-}catch(error){
-  console.error("RajAIAssist UI initialization failed",error);
-  const info=$("endpointInfo");
-  if(info){info.className="notice error";info.textContent=`UI initialization failed: ${error.message}`}
+} catch (error) {
+  console.error("RajAIAssist UI initialization failed", error);
+  const info = $("endpointInfo");
+  if (info) {
+    info.className = "notice error";
+    info.textContent = `UI initialization failed: ${error.message}`;
+  }
 }
 loadManifest();
-setInterval(()=>{if(!state.busy)loadManifest()},Number(CFG.endpointRefreshMs||45000));
+setInterval(() => {
+  if (!state.busy) loadManifest();
+}, Number(CFG.endpointRefreshMs || 45000));
+
 </script>
 </body>
 </html>
