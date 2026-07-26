@@ -1,11 +1,11 @@
 {
-  "backend_url": "https://feeds-measurement-puzzles-fossil.trycloudflare.com",
-  "expires_at": 1785080134,
-  "issued_at": 1785044134,
+  "backend_url": "https://colours-workshops-talking-map.trycloudflare.com",
+  "expires_at": 1785080172,
+  "issued_at": 1785044172,
   "model": "gemini-3.5-flash",
   "online": true,
   "provider": "kaggle",
   "schema_version": 1,
-  "signature": "18166b65616364ac16ef994882a95de472b62e98e5bf6396e41c4a2207e9536c",
+  "signature": "91fab56474a5ede480ba4fd4d9e41f7b8597b7ab30e2693b15e72f9f03520b89",
   "version": "2.0.0"
 }
